@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+   PercentPro stores everything on the device it runs on.
+
+   Auto Backup is switched off in the manifest, and these rules exclude the app's
+   private storage as a second line of defence for the platform versions that
+   consult this file even when allowBackup is false.
+
+   The reason is not squeamishness, it is accuracy. Cloud backup copies progress
+   and achievements to a Google account, which is a network transfer and needs an
+   account. The settings screen tells the reader that the app makes no network
+   requests and that nothing leaves the device. That is only true while backup
+   stays off, so backup stays off and this file says the same thing in the form
+   the platform expects.
+-->
+<data-extraction-rules>
+    <cloud-backup>
+        <exclude domain="root" />
+        <exclude domain="file" />
+        <exclude domain="database" />
+        <exclude domain="sharedpref" />
+        <exclude domain="external" />
+    </cloud-backup>
+    <device-transfer>
+        <exclude domain="root" />
+        <exclude domain="file" />
+        <exclude domain="database" />
+        <exclude domain="sharedpref" />
+        <exclude domain="external" />
+    </device-transfer>
+</data-extraction-rules>

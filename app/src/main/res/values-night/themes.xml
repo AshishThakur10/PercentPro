@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!--
+      Dark launch window. Without this the system paints the light
+      Theme.PercentPro background first, so a dark-mode user gets a white flash
+      before the Compose content appears.
+    -->
+    <style name="Theme.PercentPro" parent="android:Theme.Material.NoActionBar">
+        <item name="android:windowBackground">@color/window_background</item>
+    </style>
+</resources>

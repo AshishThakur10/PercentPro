@@ -1,0 +1,932 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:tools="http://schemas.android.com/tools"
+    tools:ignore="TypographyDashes,TypographyFractions">
+    <string name="app_name">PercentPro</string>
+    <string name="brand_by">by AT Labs</string>
+    <string name="brand_tagline">Learn percentages. Master aptitude.</string>
+
+    <!-- Language -->
+    <string name="language_label">Language</string>
+    <string name="language_english">English</string>
+    <string name="language_hindi">Hindi</string>
+
+    <!-- Welcome -->
+    <string name="welcome_title">Welcome to PercentPro</string>
+    <string name="welcome_message">Start from the very first lesson, or pick up exactly where you left off.</string>
+
+    <!-- Primary action -->
+    <string name="cta_start_named_lesson">Start %1$s</string>
+    <string name="cta_continue_named_lesson">Continue: %1$s</string>
+    <string name="cta_all_done_title">Every available lesson is finished</string>
+    <string name="cta_all_done_body">The rest of the course is still being written. Come back in a later update.</string>
+
+    <!-- Progress -->
+    <string name="progress_title">Your progress</string>
+    <string name="progress_stat_xp">Total XP</string>
+    <string name="progress_stat_streak">Day streak</string>
+    <string name="progress_stat_completion">Course done</string>
+    <string name="progress_xp_value">%1$d XP</string>
+    <string name="progress_completion_value">%1$d%%</string>
+    <string name="progress_completion_indicator">Course completion: %1$d%%</string>
+    <string name="progress_lessons_done">Lessons finished: %1$d of %2$d</string>
+    <string name="progress_nothing_yet">No lessons finished yet. Your first one is ready when you are.</string>
+    <plurals name="progress_streak_value">
+        <item quantity="one">%1$d day</item>
+        <item quantity="other">%1$d days</item>
+    </plurals>
+
+    <!-- Learning path -->
+    <string name="learning_path_title">Your learning path</string>
+    <string name="learning_path_subtitle">From absolute zero to exam ready, one lesson at a time.</string>
+    <string name="learning_path_full_title">Learning path</string>
+    <string name="learning_path_full_subtitle">Ten lessons. Finish them in order to unlock the next one.</string>
+
+    <!-- Lesson statuses -->
+    <string name="lesson_status_available">Ready</string>
+    <string name="lesson_status_in_progress">In progress</string>
+    <string name="lesson_status_completed">Completed</string>
+    <string name="lesson_status_locked">Locked</string>
+    <string name="lesson_status_upcoming">Coming soon</string>
+    <string name="lesson_locked_sequence_reason">Finish \"%1$s\" first to unlock this lesson.</string>
+    <string name="lesson_locked_upcoming_reason">This lesson is still being written and will arrive in a later update.</string>
+
+    <!-- Lesson card metadata -->
+    <string name="lesson_duration">%1$d min</string>
+    <string name="lesson_number">Lesson %1$d</string>
+    <string name="lesson_meta">%1$s · %2$s</string>
+    <string name="difficulty_easy">Easy</string>
+    <string name="difficulty_medium">Medium</string>
+    <string name="difficulty_hard">Hard</string>
+    <string name="cd_lesson_node">Lesson %1$d, %2$s, %3$s</string>
+
+    <!-- Lesson engine -->
+    <string name="lesson_engine_step">Step %1$d of %2$d</string>
+    <string name="lesson_engine_next">Next</string>
+    <string name="lesson_engine_previous">Back</string>
+    <string name="lesson_engine_finish">Complete lesson</string>
+    <string name="lesson_engine_return_to_path">Back to learning path</string>
+    <string name="lesson_engine_start_over">Start from the beginning</string>
+    <string name="cd_exit_lesson">Leave lesson</string>
+
+    <!-- Lesson completion -->
+    <string name="lesson_complete_title">Lesson complete</string>
+    <string name="lesson_complete_body">%1$s is finished. The next lesson on the path is now unlocked.</string>
+    <string name="lesson_complete_body_no_next">%1$s is finished. You have completed every lesson available right now.</string>
+
+    <!-- Block types -->
+    <string name="block_intro_label">Introduction</string>
+    <string name="block_explanation_label">Explanation</string>
+    <string name="block_formula_label">Formula</string>
+    <string name="block_example_label">Worked example</string>
+    <string name="block_visual_label">Visual</string>
+    <string name="block_summary_label">Summary</string>
+
+    <!-- Percentage grid -->
+    <string name="grid_shade_label">Shade</string>
+    <string name="grid_value">%1$d%%</string>
+    <string name="grid_caption_value">%1$d of 100 squares shaded = %1$d%%</string>
+
+    <!-- Lesson 1: What Is a Percentage? -->
+    <string name="lesson_1_title">What Is a Percentage?</string>
+    <string name="lesson_1_description">Per hundred, and the one idea the whole course is built on.</string>
+    <string name="l1_intro_title">What is a percentage?</string>
+    <string name="l1_intro_body">A percentage tells you how much of something you have, measured against exactly 100 equal parts. It is the everyday shortcut for saying \"out of every hundred\".</string>
+    <string name="l1_per_hundred_title">It means \"per hundred\"</string>
+    <string name="l1_per_hundred_body">The word comes from two words: per and hundred. A percentage always measures against a base of 100.</string>
+    <string name="l1_b1" formatted="false">25% is read as \"25 out of 100\".</string>
+    <string name="l1_b2" formatted="false">50% is read as \"50 out of 100\".</string>
+    <string name="l1_b3" formatted="false">10% is read as \"10 out of 100\".</string>
+    <string name="l1_symbol_title" formatted="false">The symbol %</string>
+    <string name="l1_symbol_body" formatted="false">The percent sign % is the standard way to write a percentage. You will meet it in every competitive exam paper.</string>
+    <string name="l1_symbol_b1" formatted="false">Read % as \"percent\".</string>
+    <string name="l1_symbol_b2" formatted="false">25% is spoken as \"twenty-five percent\".</string>
+    <string name="l1_symbol_b3">Some papers write \"25 per cent\" instead. The meaning is identical.</string>
+    <string name="l1_formula">Percentage = (Part ÷ Whole) × 100</string>
+    <string name="l1_formula_caption">The part and the whole must refer to the same quantity.</string>
+    <string name="l1_example_50_title">Example: 50 out of 100</string>
+    <string name="l1_e50_prompt" formatted="false">Out of 100 equal parts, how many does 50% stand for?</string>
+    <string name="l1_e50_result">50 of the 100 parts</string>
+    <string name="l1_example_25_title">Example: 25 out of 100</string>
+    <string name="l1_e25_prompt" formatted="false">Out of 100 equal parts, how many does 25% stand for?</string>
+    <string name="l1_e25_result">25 of the 100 parts</string>
+    <string name="l1_example_100_title" formatted="false">Example: 100% is the whole</string>
+    <string name="l1_e100_prompt" formatted="false">What does 100% of a quantity mean?</string>
+    <string name="l1_e100_result">The entire quantity</string>
+    <string name="l1_summary_title">Remember</string>
+    <string name="l1_s1">A percentage means per hundred.</string>
+    <string name="l1_s2" formatted="false">The symbol % means percent.</string>
+    <string name="l1_s3" formatted="false">100% represents the complete reference quantity.</string>
+
+    <!-- Lesson 2: Understanding Percentages Visually -->
+    <string name="lesson_2_title">Understanding Percentages Visually</string>
+    <string name="lesson_2_description">See a percentage as shaded squares on a hundred-square grid.</string>
+    <string name="l2_intro_title">Seeing a percentage</string>
+    <string name="l2_intro_body" formatted="false">A hundred parts are easier to picture than a formula. Split a whole into 100 equal squares and every single square becomes 1%.</string>
+    <string name="l2_grid_title">The hundred-square grid</string>
+    <string name="l2_grid_caption">Pick a value to shade that many squares.</string>
+    <string name="l2_explain_title">How many squares means what</string>
+    <string name="l2_explain_body" formatted="false">Each square in the grid is exactly 1% of the whole. Shading a number of squares therefore shows that percentage straight away.</string>
+    <string name="l2_b25" formatted="false">25 shaded squares means 25%.</string>
+    <string name="l2_b50" formatted="false">50 shaded squares means 50%.</string>
+    <string name="l2_b75" formatted="false">75 shaded squares means 75%.</string>
+    <string name="l2_note_title">Why one hundred?</string>
+    <string name="l2_note_body" formatted="false">A 100-square grid has exactly 100 parts, so each part can stand for one whole percent. A 10-square grid could only ever show multiples of 10%.</string>
+    <string name="l2_summary_title">Remember</string>
+    <string name="l2_s1">A 10 × 10 grid is 100 equal squares.</string>
+    <string name="l2_s2" formatted="false">One square represents 1%.</string>
+    <string name="l2_s3">Shaded squares read directly as a percentage.</string>
+
+    <!-- Lesson 3: Fractions to Percentages -->
+    <string name="lesson_3_title">Fractions to Percentages</string>
+    <string name="lesson_3_description">Convert &#189;, &#188;, &#190; and &#8539; into percentages confidently.</string>
+    <string name="l3_intro_title">Fractions are percentages in disguise</string>
+    <string name="l3_intro_body">A fraction and a percentage often describe the very same proportion. Moving between the two is a staple of the quantitative section.</string>
+    <string name="l3_method_title">Two ways to convert</string>
+    <string name="l3_method_body">Use whichever route is quicker for the fraction in front of you.</string>
+    <string name="l3_method_b1">If the denominator divides 100, rewrite the fraction with 100 on the bottom and read the numerator as the percentage.</string>
+    <string name="l3_method_b2">Otherwise divide the numerator by the denominator, then multiply by 100.</string>
+    <string name="l3_formula">Percentage = (Numerator ÷ Denominator) × 100</string>
+    <string name="l3_formula_caption">Round the result only when the question asks you to.</string>
+    <string name="l3_example_1_2_title">Example: one half</string>
+    <string name="l3_e1_2_prompt">Convert ½ into a percentage.</string>
+    <string name="l3_e1_2_result" formatted="false">½ = 50%</string>
+    <string name="l3_example_1_4_title">Example: one quarter</string>
+    <string name="l3_e1_4_prompt">Convert ¼ into a percentage.</string>
+    <string name="l3_e1_4_result" formatted="false">¼ = 25%</string>
+    <string name="l3_example_3_4_title">Example: three quarters</string>
+    <string name="l3_e3_4_prompt">Convert ¾ into a percentage.</string>
+    <string name="l3_e3_4_result" formatted="false">¾ = 75%</string>
+    <string name="l3_example_1_5_title">Example: one fifth</string>
+    <string name="l3_e1_5_prompt">Convert ⅕ into a percentage.</string>
+    <string name="l3_e1_5_result" formatted="false">⅕ = 20%</string>
+    <string name="l3_caution_title">Not every denominator divides 100</string>
+    <string name="l3_caution_body" formatted="false">One third is ⅓, and 100 does not divide by 3 cleanly. Use the divide-then-multiply method there: 1 ÷ 3 = 0.333…, then × 100 = 33.33%.</string>
+    <string name="l3_summary_title">Remember</string>
+    <string name="l3_s1">Denominators that divide 100 convert in a single step.</string>
+    <string name="l3_s2">Everything else uses divide by the denominator, then multiply by 100.</string>
+    <string name="l3_s3" formatted="false">½ = 50%, ¼ = 25%, ¾ = 75%, ⅕ = 20%.</string>
+
+
+    <!-- Navigation -->
+    <string name="tab_home">Home</string>
+    <string name="tab_learn">Learn</string>
+    <string name="tab_practice">Practice</string>
+    <string name="tab_settings">Settings</string>
+
+    <string name="cd_percentage_grid">A grid of 10 &#215; 10 squares with %1$d of the 100 squares shaded, which is %1$d%%</string>
+
+    <!-- Practice: topics -->
+    <string name="practice_title">Practice</string>
+    <string name="practice_subtitle">Topic-wise questions on the lessons you can already reach.</string>
+    <string name="practice_topic_last_result">Last result: %1$d%% (%2$d of %3$d)</string>
+    <string name="practice_topic_never_attempted">Not attempted yet</string>
+    <string name="practice_start_topic">Start practice</string>
+    <string name="cd_practice_topic">%1$s, %2$s. %3$s</string>
+
+    <!-- Practice: session -->
+    <string name="practice_question_counter">Question %1$d of %2$d</string>
+    <string name="practice_check_answer">Check answer</string>
+    <string name="practice_next_question">Next question</string>
+    <string name="practice_finish">Finish practice</string>
+    <string name="practice_correct_answer">Correct</string>
+    <string name="practice_incorrect_answer">Not quite</string>
+    <string name="practice_your_answer">You answered: %1$s</string>
+    <string name="practice_correct_answer_label">Correct answer: %1$s</string>
+    <string name="practice_explanation_label">Explanation</string>
+    <string name="practice_unanswered_label">Not answered</string>
+    <string name="cd_option_correct">Correct option</string>
+    <string name="cd_option_selected">Your selection</string>
+
+    <!-- Practice: exit confirmation -->
+    <string name="practice_exit_title">Leave practice?</string>
+    <string name="practice_exit_message_clean">Your answers will be lost.</string>
+    <string name="practice_exit_confirm">Leave</string>
+    <string name="practice_exit_cancel">Keep practising</string>
+
+    <!-- Practice: results -->
+    <string name="practice_results_title">Practice complete</string>
+    <string name="practice_results_score_value">%1$d%%</string>
+    <string name="practice_results_score">Score</string>
+    <string name="practice_results_correct">Correct</string>
+    <string name="practice_results_incorrect">Incorrect</string>
+    <string name="practice_results_unanswered">Unanswered</string>
+    <string name="practice_results_total">Questions</string>
+    <string name="practice_results_review">Review answers</string>
+    <string name="practice_results_again">Practice again</string>
+    <string name="practice_results_return">Back to topics</string>
+    <string name="practice_message_perfect">Perfect score. These basics are locked in.</string>
+    <string name="practice_message_good">Strong work. A quick revision will make it stick.</string>
+    <string name="practice_message_fair">Good effort. Review the ones you missed.</string>
+    <string name="practice_message_weak">A solid start. Go through the explanations once more.</string>
+    <string name="practice_message_empty">No questions were available for this topic.</string>
+    <string name="cd_practice_score">Score %1$d%%, correct %2$d, asked %3$d</string>
+
+    <!-- Practice: review -->
+    <string name="practice_review_title">Review answers</string>
+    <string name="practice_review_back">Back to results</string>
+    <plurals name="practice_topic_count">
+        <item quantity="one">%1$d question</item>
+        <item quantity="other">%1$d questions</item>
+    </plurals>
+    <plurals name="practice_unanswered_banner">
+        <item quantity="one">%1$d question is still unanswered.</item>
+        <item quantity="other">%1$d questions are still unanswered.</item>
+    </plurals>
+    <plurals name="practice_exit_message">
+        <item quantity="one">This attempt has %1$d question unanswered and will not be saved.</item>
+        <item quantity="other">This attempt has %1$d questions unanswered and will not be saved.</item>
+    </plurals>
+
+    <!-- Mock tests: landing -->
+    <string name="mock_title_percentage_aptitude">Percentage Aptitude Test</string>
+    <string name="mock_description_percentage_aptitude">A 15-question timed paper covering the whole percentage syllabus. Original practice questions written for this app.</string>
+    <string name="mock_entry_title">Mock Tests</string>
+    <string name="mock_entry_subtitle">Timed percentage aptitude papers</string>
+    <string name="mock_landing_description">A percentage-topic practice paper for competitive-exam preparation. This is not a full SSC, Railway or banking examination.</string>
+    <string name="mock_rules_questions">Questions</string>
+    <string name="mock_rules_duration">Duration</string>
+    <string name="mock_rules_marks_correct">Correct answer</string>
+    <string name="mock_rules_marks_incorrect">Incorrect answer</string>
+    <string name="mock_rules_marks_unanswered">Not answered</string>
+    <string name="mock_rules_marks_value_correct">+%1$s mark</string>
+    <string name="mock_rules_marks_value_incorrect">%1$s mark</string>
+    <string name="mock_rules_marks_value_unanswered">0 marks</string>
+    <string name="mock_rules_questions_value">%1$d</string>
+    <string name="mock_rules_duration_value">%1$d min</string>
+    <string name="mock_start_test">Start Test</string>
+    <plurals name="mock_insufficient_questions">
+        <item quantity="one">Only %1$d question is available right now, so this test cannot start.</item>
+        <item quantity="other">Only %1$d questions are available right now, so this test cannot start.</item>
+    </plurals>
+    <string name="mock_recent_results">Recent results</string>
+    <string name="mock_no_results_yet">No mock tests attempted yet.</string>
+    <string name="mock_result_line">%1$s · %2$s of %3$s · %4$s%%</string>
+    <string name="mock_view_result">View</string>
+    <string name="mock_timed_out_badge">Timed out</string>
+    <string name="mock_manual_badge">Submitted</string>
+    <string name="cd_mock_result_row">%1$s, score %2$s percent, %3$s of %4$s correct</string>
+
+    <!-- Mock tests: instructions -->
+    <string name="mock_instructions_title">Before you begin</string>
+    <string name="mock_instructions_body">Read the rules carefully. The clock starts the moment you tap Start Test and cannot be paused.</string>
+    <string name="mock_instructions_negative">There is negative marking. A wrong answer costs marks, so leaving a question blank is better than guessing every one.</string>
+    <string name="mock_instructions_palette">Use the question palette to jump to any question, mark one for review and come back to it later.</string>
+    <string name="mock_instructions_timeout">The test submits itself automatically when the time runs out.</string>
+    <string name="mock_instructions_confirm">I understand, start the test</string>
+    <string name="mock_instructions_cancel">Not yet</string>
+
+    <!-- Mock tests: exam -->
+    <string name="mock_exam_counter">Question %1$d of %2$d</string>
+    <string name="mock_timer_value">%1$02d:%2$02d</string>
+    <string name="cd_mock_timer">Time left, %1$d minutes %2$d seconds</string>
+    <string name="mock_mark_review">Mark for Review</string>
+    <string name="mock_unmark_review">Remove Review Mark</string>
+    <string name="mock_clear_response">Clear Response</string>
+    <string name="mock_palette_title">Question palette</string>
+    <string name="mock_palette_legend">States: not visited, visited, answered, marked for review, answered and marked.</string>
+    <string name="mock_palette_toggle">Show question palette</string>
+    <string name="mock_palette_close">Close question palette</string>
+    <string name="mock_submit_test">Submit Test</string>
+    <string name="mock_palette_state_not_visited">not visited</string>
+    <string name="mock_palette_state_visited">visited, not answered</string>
+    <string name="mock_palette_state_answered">answered</string>
+    <string name="mock_palette_state_review">marked for review</string>
+    <string name="mock_palette_state_answered_review">answered and marked for review</string>
+    <string name="cd_mock_palette_cell">Question %1$d, %2$s</string>
+    <string name="mock_review_marked_badge">Marked</string>
+
+    <!-- Mock tests: submit confirmation -->
+    <string name="mock_submit_dialog_title">Submit test?</string>
+    <string name="mock_submit_dialog_body">You have answered %1$d of %2$d questions and marked %3$d for review.</string>
+    <string name="mock_submit_dialog_submit">Submit now</string>
+    <string name="mock_submit_dialog_back">Return to test</string>
+
+    <!-- Mock tests: results -->
+    <string name="mock_results_title">Test complete</string>
+    <string name="mock_results_timed_out_note">Time ran out, so the paper was submitted automatically.</string>
+    <string name="mock_results_manually_submitted_note">You submitted the paper before the time ran out.</string>
+    <string name="mock_result_total">Questions</string>
+    <string name="mock_result_attempted">Attempted</string>
+    <string name="mock_result_correct">Correct</string>
+    <string name="mock_result_incorrect">Incorrect</string>
+    <string name="mock_result_unanswered">Unanswered</string>
+    <string name="mock_result_review">Marked for review</string>
+    <string name="mock_result_score">Your score</string>
+    <string name="mock_result_max_marks">Maximum marks</string>
+    <string name="mock_result_accuracy">Accuracy (of attempted)</string>
+    <string name="mock_result_percentage">Percentage score (of maximum)</string>
+    <string name="mock_result_time_taken">Time taken</string>
+    <string name="mock_result_time_value">%1$d min %2$d sec</string>
+    <string name="mock_result_time_value_seconds">%1$d sec</string>
+    <string name="mock_result_review_all">Review All Answers</string>
+    <string name="mock_result_retry">Retry Mock Test</string>
+    <string name="mock_result_return">Return to Mock Tests</string>
+    <string name="mock_score_value">%1$s / %2$s</string>
+    <string name="mock_percent_value">%1$d%%</string>
+    <string name="cd_mock_score_summary">Scored %1$s out of %2$s. Accuracy %3$d percent. Percentage score %4$d percent.</string>
+
+    <!-- Mock tests: review -->
+    <string name="mock_review_title">Answer review</string>
+    <string name="mock_review_your_answer">Your answer: %1$s</string>
+    <string name="mock_review_not_answered">You did not answer this question.</string>
+    <string name="mock_status_correct">Correct</string>
+    <string name="mock_status_your_answer">You chose this</string>
+    <string name="mock_review_explanation">Explanation</string>
+    <string name="mock_review_back">Back to results</string>
+
+    <!-- Mock tests: recovery and errors -->
+    <string name="mock_restore_corrupt">A saved test could not be read, so it was discarded. Starting a fresh one is safe.</string>
+    <string name="mock_restore_unknown_test">A saved test referred to a paper that no longer exists, so it was discarded.</string>
+    <string name="mock_restore_missing_questions">A saved test referred to questions that are no longer available, so it was discarded.</string>
+    <string name="mock_restore_recovered">Time ran out while the app was closed, so your saved paper was submitted automatically.</string>
+    <string name="mock_restore_ok">Continue</string>
+    <string name="mock_no_questions">This test has no questions available.</string>
+
+    <!-- ===== Phase 5: XP, streaks, daily goals, achievements ===== -->
+    <string name="gam_section_title">Your momentum</string>
+    <string name="gam_section_subtitle">XP, streaks and daily goals from what you actually complete.</string>
+
+    <string name="gam_total_xp">Total XP</string>
+    <string name="gam_streak_current">Current streak</string>
+    <string name="gam_daily_goal">Daily question goal</string>
+    <string name="gam_daily_goal_progress">%1$d of %2$d questions today</string>
+    <string name="gam_daily_goal_reached">Daily goal reached. Well done!</string>
+    <string name="gam_daily_goal_progress_a11y">Today\'s goal: %1$d of %2$d questions answered</string>
+    <string name="gam_goal_picker_title">Choose your daily goal</string>
+    <string name="gam_goal_option">%1$d questions a day</string>
+
+    <string name="gam_streak_none">Start a streak today</string>
+    <string name="gam_streak_at_risk">Finish something today to keep it</string>
+    <string name="gam_streak_explainer">A day counts when you complete a lesson, submit at least five questions, or complete a mock test.</string>
+    <string name="gam_streak_longest_value">Best so far: %1$d</string>
+
+
+    <string name="gam_shortcut_continue">Continue learning</string>
+    <string name="gam_shortcut_practice">Topic practice</string>
+    <string name="gam_shortcut_mock">Mock tests</string>
+    <string name="gam_shortcut_achievements">Achievements</string>
+
+    <!-- Achievements screen -->
+    <string name="achievements_title">Achievements</string>
+    <string name="achievements_subtitle">%1$d of %2$d unlocked</string>
+    <string name="achievements_empty">No achievements yet. Learn something to get started.</string>
+    <string name="achievements_locked">Locked</string>
+    <string name="achievements_unlocked_on">Unlocked %1$s</string>
+    <string name="achievements_progress_a11y">%1$s: %2$s, %3$d of %4$d</string>
+
+    <string name="achievement_first_steps_title">First Steps</string>
+    <string name="achievement_first_steps_description">Complete your first lesson.</string>
+    <string name="achievement_first_steps_badge">Starter</string>
+
+    <string name="achievement_curious_learner_title">Curious Learner</string>
+    <string name="achievement_curious_learner_description">Answer 10 different questions.</string>
+    <string name="achievement_curious_learner_badge">Explorer</string>
+
+    <string name="achievement_practice_pro_title">Practice Pro</string>
+    <string name="achievement_practice_pro_description">Answer 50 different questions.</string>
+    <string name="achievement_practice_pro_badge">Grinder</string>
+
+    <string name="achievement_century_club_title">Century Club</string>
+    <string name="achievement_century_club_description">Answer 100 different questions.</string>
+    <string name="achievement_century_club_badge">Centurion</string>
+
+    <string name="achievement_three_day_streak_title">Three-Day Streak</string>
+    <string name="achievement_three_day_streak_description">Keep a 3-day streak going.</string>
+    <string name="achievement_three_day_streak_badge">Consistent</string>
+
+    <string name="achievement_seven_day_streak_title">Seven-Day Streak</string>
+    <string name="achievement_seven_day_streak_description">Keep a 7-day streak going.</string>
+    <string name="achievement_seven_day_streak_badge">Unbroken</string>
+
+    <string name="achievement_goal_getter_title">Goal Getter</string>
+    <string name="achievement_goal_getter_description">Reach your daily question goal on a day.</string>
+    <string name="achievement_goal_getter_badge">On target</string>
+
+    <string name="achievement_mock_test_starter_title">Mock Test Starter</string>
+    <string name="achievement_mock_test_starter_description">Complete your first mock test.</string>
+    <string name="achievement_mock_test_starter_badge">Test taker</string>
+
+    <string name="achievement_perfect_practice_title">Perfect Practice</string>
+    <string name="achievement_perfect_practice_description">Get every question right in a topic practice session.</string>
+    <string name="achievement_perfect_practice_badge">Flawless</string>
+
+    <string name="achievement_dedicated_learner_title">Dedicated Learner</string>
+    <string name="achievement_dedicated_learner_description">Complete 10 lessons.</string>
+    <string name="achievement_dedicated_learner_badge">Scholar</string>
+
+    <string name="gam_total_xp_value">%1$d</string>
+    <string name="gam_streak_zero">—</string>
+    <string name="gam_achievements_short">%1$d/%2$d</string>
+    <string name="gam_streak_achievements_label">Achievements</string>
+    <plurals name="gam_streak_days">
+        <item quantity="one">%1$d day</item>
+        <item quantity="other">%1$d days</item>
+    </plurals>
+    <string name="gam_shortcuts_title">Jump to</string>
+    <string name="gam_shortcut_go">Go</string>
+    <string name="gam_xp_earned_generic">+%1$d XP earned</string>
+    <string name="gam_achievements_unlocked_header">Achievement unlocked</string>
+    <!-- ==== BEGIN GENERATED LESSON PROSE (Phase 6) ==== -->
+    <string name="l04_b1_body" formatted="false">A percentage is just a decimal scaled by 100. Because 1 = 100/100, converting between a decimal and a percentage is the same operation as converting between metres and centimetres: you scale by 100. In this lesson you will learn to move the decimal point two places to the right, and you will see why decimals larger than 1 produce percentages larger than 100%.</string>
+    <string name="l04_b1_title" formatted="false">Turn decimals into percentages</string>
+    <string name="l04_b2_b1" formatted="false">0.45 -&gt; 0.45 x 100 -&gt; 45</string>
+    <string name="l04_b2_b2" formatted="false">0.07 -&gt; 0.07 x 100 -&gt; 7</string>
+    <string name="l04_b2_b3" formatted="false">0.9 -&gt; 0.9 x 100 -&gt; 90 (one digit, so add a zero)</string>
+    <string name="l04_b2_b4" formatted="false">0.06 -&gt; 6</string>
+    <string name="l04_b2_body" formatted="false">Multiplying by 100 moves the decimal point two places to the right. You can move the point itself, or you can write out the shifted number. Either way the answer is the decimal written as a percentage. If there is only one digit after the point, add a zero so you still shift two places.</string>
+    <string name="l04_b2_title" formatted="false">The rule: shift two places right</string>
+    <string name="l04_b3_caption" formatted="false">Equivalently: move the decimal point two places to the right.</string>
+    <string name="l04_b3_formula" formatted="false">percentage = decimal x 100</string>
+    <string name="l04_b4_body" formatted="false">A percentage above 100% is not an error. It simply means the part is larger than the whole being measured. A score of 1.25 as a decimal is 125% of a full mark, and a quantity that grew to 2.5 times its starting size is 250% of what it was. The rule does not change at all; only the size of the number changes.</string>
+    <string name="l04_b4_title" formatted="false">Decimals above 1 give percentages above 100</string>
+    <string name="l04_b5_s1_prompt" formatted="false">Write the decimal</string>
+    <string name="l04_b5_s1_result" formatted="false">0.23</string>
+    <string name="l04_b5_s2_prompt" formatted="false">Multiply by 100</string>
+    <string name="l04_b5_s2_result" formatted="false">0.23 x 100 = 23</string>
+    <string name="l04_b5_s3_prompt" formatted="false">Answer</string>
+    <string name="l04_b5_s3_result" formatted="false">23%</string>
+    <string name="l04_b5_title" formatted="false">Example: 0.23 as a percentage</string>
+    <string name="l04_b6_s1_prompt" formatted="false">Write the decimal</string>
+    <string name="l04_b6_s1_result" formatted="false">2.5</string>
+    <string name="l04_b6_s2_prompt" formatted="false">Multiply by 100</string>
+    <string name="l04_b6_s2_result" formatted="false">2.5 x 100 = 250</string>
+    <string name="l04_b6_s3_prompt" formatted="false">Answer</string>
+    <string name="l04_b6_s3_result" formatted="false">250%, which is 2.5 times the whole</string>
+    <string name="l04_b6_title" formatted="false">Example: 2.5 as a percentage</string>
+    <string name="l04_b7_body" formatted="false">Moving the decimal point to the left divides by 100 and turns 0.45 into 4.5%. That is the conversion from a percentage to a decimal, done backwards. Remember which direction you are going: to a percentage, the number gets bigger, so the point moves right.</string>
+    <string name="l04_b7_title" formatted="false">Shifting the wrong way</string>
+    <string name="l04_b8_answer" formatted="false">0.8 x 100 = 80%, and 0.035 x 100 = 3.5%.</string>
+    <string name="l04_b8_body" formatted="false">Convert 0.8 into a percentage, then convert 0.035 into a percentage.</string>
+    <string name="l04_b8_title" formatted="false">Knowledge check</string>
+    <string name="l04_b9_b1" formatted="false">To convert a decimal to a percentage, multiply by 100, which shifts the point two places right.</string>
+    <string name="l04_b9_b2" formatted="false">Decimals below 1 give percentages below 100%; decimals above 1 give percentages above 100%.</string>
+    <string name="l04_b9_b3" formatted="false">If there is only one digit after the point, add a zero before shifting.</string>
+    <string name="l04_b9_title" formatted="false">Summary</string>
+    <string name="l05_b10_b1" formatted="false">part = (p / 100) x number. Convert first, then multiply.</string>
+    <string name="l05_b10_b2" formatted="false">1% of a number is that number shifted two places left; then multiply by the percentage.</string>
+    <string name="l05_b10_b3" formatted="false">A percentage below 100% must give an answer below the original number.</string>
+    <string name="l05_b10_title" formatted="false">Summary</string>
+    <string name="l05_b1_body" formatted="false">This is the single most-used percentage operation in aptitude questions. The idea is that a percentage is a fraction of 100, so to take p% of a number you convert p% into a decimal, multiply, and read the result. You will also learn the 1% method, which turns many exam questions into one-step mental arithmetic.</string>
+    <string name="l05_b1_title" formatted="false">Find a percentage of any number</string>
+    <string name="l05_b2_b1" formatted="false">Convert: 15% = 15/100 = 3/20</string>
+    <string name="l05_b2_b2" formatted="false">Multiply: 200 x 15 = 3000</string>
+    <string name="l05_b2_b3" formatted="false">Divide by 100: 3000 / 100 = 30</string>
+    <string name="l05_b2_body" formatted="false">Write the percentage as a fraction over 100, multiply by the number, then divide by 100. If you can cancel the 100 against something in the question first, the division disappears entirely and you are left with a single multiplication.</string>
+    <string name="l05_b2_title" formatted="false">The three-step method</string>
+    <string name="l05_b3_caption" formatted="false">Equivalently: part = number x p, then move the decimal point two places left.</string>
+    <string name="l05_b3_formula" formatted="false">part = (p / 100) x number</string>
+    <string name="l05_b4_body" formatted="false">One percent is simply one hundredth, so 1% of a number is that number with its decimal point shifted two places left. Once you know 1%, any whole-number percentage is just that multiplied: 6% is six times 1%. This is the fastest route when the percentage is a small whole number, which is exactly what aptitude papers tend to use.</string>
+    <string name="l05_b4_title" formatted="false">The 1% method</string>
+    <string name="l05_b5_s1_prompt" formatted="false">Convert the percentage</string>
+    <string name="l05_b5_s1_result" formatted="false">15% = 0.15</string>
+    <string name="l05_b5_s2_prompt" formatted="false">Multiply by the number</string>
+    <string name="l05_b5_s2_result" formatted="false">200 x 0.15</string>
+    <string name="l05_b5_s3_prompt" formatted="false">Answer</string>
+    <string name="l05_b5_s3_result" formatted="false">30</string>
+    <string name="l05_b5_title" formatted="false">Example: 15% of 200</string>
+    <string name="l05_b6_s1_prompt" formatted="false">Find 1%</string>
+    <string name="l05_b6_s1_result" formatted="false">4500 x 0.01</string>
+    <string name="l05_b6_s2_prompt" formatted="false">Multiply by 6</string>
+    <string name="l05_b6_s2_result" formatted="false">45 x 6</string>
+    <string name="l05_b6_s3_prompt" formatted="false">Answer</string>
+    <string name="l05_b6_s3_result" formatted="false">270</string>
+    <string name="l05_b6_title" formatted="false">Example: 6% of 4500, using 1%</string>
+    <string name="l05_b7_s1_prompt" formatted="false">Convert the percentage</string>
+    <string name="l05_b7_s1_result" formatted="false">7.5% = 0.075</string>
+    <string name="l05_b7_s2_prompt" formatted="false">Multiply by the number</string>
+    <string name="l05_b7_s2_result" formatted="false">400 x 0.075</string>
+    <string name="l05_b7_s3_prompt" formatted="false">Answer</string>
+    <string name="l05_b7_s3_result" formatted="false">30</string>
+    <string name="l05_b7_title" formatted="false">Example: 7.5% of 400</string>
+    <string name="l05_b8_body" formatted="false">15% of 200 is 30, not 150. The number 150 is 75% of 200, because it is three quarters of it. Always check that your answer is smaller than the original number when the percentage is below 100%; if it is larger, you have multiplied instead of found the part.</string>
+    <string name="l05_b8_title" formatted="false">Taking the percentage of the wrong number</string>
+    <string name="l05_b9_answer" formatted="false">1% of 350 = 3.5, so 12% = 3.5 x 12 = 42.</string>
+    <string name="l05_b9_body" formatted="false">Find 12% of 350 using the 1% method.</string>
+    <string name="l05_b9_title" formatted="false">Knowledge check</string>
+    <string name="l06_b1_body" formatted="false">When you know a part and the percentage it represents, you are being asked for the whole. The operation is the exact inverse of the previous lesson: divide by the percentage instead of multiplying. This is the operation behind every \'is what percent of\' and every \'what was the original\' question.</string>
+    <string name="l06_b1_title" formatted="false">Work backwards to the original value</string>
+    <string name="l06_b2_body" formatted="false">Turn the percentage into a decimal, then divide the part by that decimal. Because multiplication and division undo each other, you can always verify the answer by multiplying it back by the same percentage. If the product is not the original part, the arithmetic has gone wrong somewhere.</string>
+    <string name="l06_b2_title" formatted="false">The method, and the check that proves it</string>
+    <string name="l06_b3_caption" formatted="false">Check it by multiplying the whole by p% and confirming you recover the part.</string>
+    <string name="l06_b3_formula" formatted="false">whole = part / (p / 100)</string>
+    <string name="l06_b4_s1_prompt" formatted="false">Convert the percentage</string>
+    <string name="l06_b4_s1_result" formatted="false">15% = 0.15</string>
+    <string name="l06_b4_s2_prompt" formatted="false">Divide the part by it</string>
+    <string name="l06_b4_s2_result" formatted="false">30 / 0.15</string>
+    <string name="l06_b4_s3_prompt" formatted="false">Check by multiplying back</string>
+    <string name="l06_b4_s3_result" formatted="false">200 x 0.15</string>
+    <string name="l06_b4_title" formatted="false">Example: 30 is 15% of what?</string>
+    <string name="l06_b5_s1_prompt" formatted="false">Convert the percentage</string>
+    <string name="l06_b5_s1_result" formatted="false">25% = 0.25</string>
+    <string name="l06_b5_s2_prompt" formatted="false">Divide the part by it</string>
+    <string name="l06_b5_s2_result" formatted="false">45 / 0.25</string>
+    <string name="l06_b5_s3_prompt" formatted="false">Check by multiplying back</string>
+    <string name="l06_b5_s3_result" formatted="false">180 x 0.25</string>
+    <string name="l06_b5_title" formatted="false">Example: 45 is 25% of what?</string>
+    <string name="l06_b6_s1_prompt" formatted="false">Rewrite the division as a fraction</string>
+    <string name="l06_b6_s1_result" formatted="false">45 / (25/100)</string>
+    <string name="l06_b6_s2_prompt" formatted="false">Cancel</string>
+    <string name="l06_b6_s2_result" formatted="false">100 / 25</string>
+    <string name="l06_b6_s3_prompt" formatted="false">Answer</string>
+    <string name="l06_b6_s3_result" formatted="false">45 x 4</string>
+    <string name="l06_b6_title" formatted="false">Example: cancelling before dividing</string>
+    <string name="l06_b7_body" formatted="false">If 30 is 15% of the whole, the whole must be larger than 30, because 30 is only a part of it. Any method that produces a number smaller than the given part is wrong. When the percentage is below 100%, dividing always moves you upward.</string>
+    <string name="l06_b7_title" formatted="false">Multiplying instead of dividing</string>
+    <string name="l06_b8_answer" formatted="false">84 / 0.12 = 700. Check: 700 x 0.12 = 84.</string>
+    <string name="l06_b8_body" formatted="false">84 is 12% of what number?</string>
+    <string name="l06_b8_title" formatted="false">Knowledge check</string>
+    <string name="l06_b9_b1" formatted="false">whole = part / (p / 100). This is the inverse of finding a percentage of a number.</string>
+    <string name="l06_b9_b2" formatted="false">Always multiply back to check the answer.</string>
+    <string name="l06_b9_b3" formatted="false">Cancelling 100 against a factor of p turns the division into a multiplication.</string>
+    <string name="l06_b9_title" formatted="false">Summary</string>
+    <string name="l07_b10_b1" formatted="false">The percentage is always calculated on the starting value.</string>
+    <string name="l07_b10_b2" formatted="false">new value = value x (1 + p/100) for a rise, value x (1 - p/100) for a fall.</string>
+    <string name="l07_b10_b3" formatted="false">A fall and the rise needed to undo it are measured on different bases, so they are not equal.</string>
+    <string name="l07_b10_title" formatted="false">Summary</string>
+    <string name="l07_b1_body" formatted="false">When a price, a salary or a population rises by a percentage, the percentage is always taken of the starting value. That single rule causes most of the errors in this topic. You will also learn why a 50% fall needs more than a 50% rise to recover, which is the idea that examiners return to again and again.</string>
+    <string name="l07_b1_title" formatted="false">Increase and decrease, and which base to use</string>
+    <string name="l07_b2_body" formatted="false">The percentage describes the change, and the change is measured against where the quantity started. So to find how much a 20% rise on 250 adds, calculate 20% of 250 and add that to 250. Calculating 20% of the new value instead would give a different, incorrect answer.</string>
+    <string name="l07_b2_title" formatted="false">Always take the percentage of the original</string>
+    <string name="l07_b3_caption" formatted="false">Use 1 - p/100 for a decrease.</string>
+    <string name="l07_b3_formula" formatted="false">change = value x (p / 100) new value = value x (1 + p / 100)</string>
+    <string name="l07_b4_s1_prompt" formatted="false">Find the change: 20% of 250</string>
+    <string name="l07_b4_s1_result" formatted="false">250 x 0.20</string>
+    <string name="l07_b4_s2_prompt" formatted="false">Add it to the original</string>
+    <string name="l07_b4_s2_result" formatted="false">250 + 50</string>
+    <string name="l07_b4_s3_prompt" formatted="false">Check with the multiplier</string>
+    <string name="l07_b4_s3_result" formatted="false">250 x 1.20</string>
+    <string name="l07_b4_title" formatted="false">Example: 250 increased by 20%</string>
+    <string name="l07_b5_s1_prompt" formatted="false">Find the decrease: 15% of 80</string>
+    <string name="l07_b5_s1_result" formatted="false">80 x 0.15</string>
+    <string name="l07_b5_s2_prompt" formatted="false">Subtract it from the original</string>
+    <string name="l07_b5_s2_result" formatted="false">80 - 12</string>
+    <string name="l07_b5_s3_prompt" formatted="false">Check with the multiplier</string>
+    <string name="l07_b5_s3_result" formatted="false">80 x 0.85</string>
+    <string name="l07_b5_title" formatted="false">Example: 80 decreased by 15%</string>
+    <string name="l07_b6_body" formatted="false">After a 50% fall from 200 you are at 100, which is half the original. To return to 200 you must now gain 100 on a base of 100, which is a 100% rise, not 50%. The loss and the recovery are measured against different bases, so they can never cancel unless both are zero.</string>
+    <string name="l07_b6_title" formatted="false">Why falls and rises are not symmetric</string>
+    <string name="l07_b7_s1_prompt" formatted="false">Start at 200 and fall 50%</string>
+    <string name="l07_b7_s1_result" formatted="false">200 x 0.5</string>
+    <string name="l07_b7_s2_prompt" formatted="false">The recovery is measured on the new base</string>
+    <string name="l07_b7_s2_result" formatted="false">100 / 100</string>
+    <string name="l07_b7_s3_prompt" formatted="false">Required rise</string>
+    <string name="l07_b7_s3_result" formatted="false">100 / 100 x 100</string>
+    <string name="l07_b7_title" formatted="false">Example: recovering from a fall</string>
+    <string name="l07_b8_body" formatted="false">For a 20% rise on 250, working out 20% of 300 gives 60 and an answer of 310. That is wrong because 300 is the value you are trying to find, not the one you started from. Whenever the question gives you the starting value and the percentage, the starting value is the base.</string>
+    <string name="l07_b8_title" formatted="false">Applying the percentage to the new value</string>
+    <string name="l07_b9_answer" formatted="false">400 - 100 = 300. To recover, 100 / 300 x 100 = 33.33% (about 33.33%, one third).</string>
+    <string name="l07_b9_body" formatted="false">A quantity falls from 400 by 25%. What is the new value, and what rise on the new value would bring it back to 400?</string>
+    <string name="l07_b9_title" formatted="false">Knowledge check</string>
+    <string name="l08_b10_b1" formatted="false">Each change multiplies the current value, not the original one.</string>
+    <string name="l08_b10_b2" formatted="false">Chain the multipliers, then subtract 1 to get the net decimal change.</string>
+    <string name="l08_b10_b3" formatted="false">A rise of a% then a fall of b% gives a net of a - b - ab/100.</string>
+    <string name="l08_b10_title" formatted="false">Summary</string>
+    <string name="l08_b1_body" formatted="false">When a price rises 10% and then rises 20%, the second change is not applied to the original price; it is applied to the price after the first change. This lesson gives you a formula that produces the net effect without doing the two-step arithmetic, which is what makes these questions quick rather than laborious.</string>
+    <string name="l08_b1_title" formatted="false">Two changes in a row</string>
+    <string name="l08_b2_body" formatted="false">Each change multiplies the current value by a number slightly above or below 1. A 10% rise multiplies by 1.10, a 20% fall multiplies by 0.80. Chaining the multipliers gives the overall multiplier, and subtracting 1 from it gives the net percentage change.</string>
+    <string name="l08_b2_title" formatted="false">Build the multiplier</string>
+    <string name="l08_b3_caption" formatted="false">For a rise of a% then a fall of b%: net % = a - b - (a x b / 100).</string>
+    <string name="l08_b3_formula" formatted="false">net % = (multiplier1 x multiplier2 - 1) x 100</string>
+    <string name="l08_b4_s1_prompt" formatted="false">Step 1: increase 100 by 10%</string>
+    <string name="l08_b4_s1_result" formatted="false">100 x 1.10</string>
+    <string name="l08_b4_s2_prompt" formatted="false">Step 2: increase the result by 20%</string>
+    <string name="l08_b4_s2_result" formatted="false">110 x 1.20</string>
+    <string name="l08_b4_s3_prompt" formatted="false">Net change</string>
+    <string name="l08_b4_s3_result" formatted="false">132 - 100</string>
+    <string name="l08_b4_s4_prompt" formatted="false">Check with the formula</string>
+    <string name="l08_b4_s4_result" formatted="false">(1.10 x 1.20) - 1</string>
+    <string name="l08_b4_title" formatted="false">Example: +10% then +20%</string>
+    <string name="l08_b5_s1_prompt" formatted="false">Step 1: increase 100 by 10%</string>
+    <string name="l08_b5_s1_result" formatted="false">100 x 1.10</string>
+    <string name="l08_b5_s2_prompt" formatted="false">Step 2: decrease 110 by 10%</string>
+    <string name="l08_b5_s2_result" formatted="false">110 x 0.10</string>
+    <string name="l08_b5_s3_prompt" formatted="false">Net change</string>
+    <string name="l08_b5_s3_result" formatted="false">99 - 100</string>
+    <string name="l08_b5_s4_prompt" formatted="false">Check with the formula</string>
+    <string name="l08_b5_s4_result" formatted="false">10 - 10 - (10 x 10 / 100)</string>
+    <string name="l08_b5_title" formatted="false">Example: +10% then -10%</string>
+    <string name="l08_b6_body" formatted="false">A rise of a% followed by a fall of b% gives a net change of a - b - ab/100. The correction term is always subtracted, because the fall was measured on a base that the rise had already enlarged. When a and b are equal, the net is always negative, however large the percentage, which is a useful sanity check.</string>
+    <string name="l08_b6_title" formatted="false">The form to memorise</string>
+    <string name="l08_b7_s1_prompt" formatted="false">Step 1: increase 200 by 50%</string>
+    <string name="l08_b7_s1_result" formatted="false">200 x 1.5</string>
+    <string name="l08_b7_s2_prompt" formatted="false">Step 2: decrease the result by 50%</string>
+    <string name="l08_b7_s2_result" formatted="false">300 x 0.5</string>
+    <string name="l08_b7_s3_prompt" formatted="false">Net change</string>
+    <string name="l08_b7_s3_result" formatted="false">150 - 200</string>
+    <string name="l08_b7_s4_prompt" formatted="false">Check with the formula</string>
+    <string name="l08_b7_s4_result" formatted="false">50 - 50 - (50 x 50 / 100)</string>
+    <string name="l08_b7_title" formatted="false">Example: +50% then -50%</string>
+    <string name="l08_b8_body" formatted="false">Adding 10% and 20% gives 30%, but the correct net is 32%. The extra 2% appears because the 20% was applied to 110 rather than to 100, so it carries a little of the first rise with it. Adding is wrong in every case except when one of the changes is zero.</string>
+    <string name="l08_b8_title" formatted="false">Adding the two percentages</string>
+    <string name="l08_b9_answer" formatted="false">500 x 0.80 = 400, then 400 x 1.25 = 500. Net change 0%, because 25 - 20 - (20 x 25 / 100) = 0.</string>
+    <string name="l08_b9_body" formatted="false">A value of 500 falls by 20% and then rises by 25%. What is the final value, and what is the net change?</string>
+    <string name="l08_b9_title" formatted="false">Knowledge check</string>
+    <string name="l09_b10_b1" formatted="false">If A is p% more than B, then A : B = (100 + p) : 100.</string>
+    <string name="l09_b10_b2" formatted="false">For p% less, the ratio is (100 - p) : 100.</string>
+    <string name="l09_b10_b3" formatted="false">Chain comparisons by expressing everything against the common quantity and multiplying the factors.</string>
+    <string name="l09_b10_title" formatted="false">Summary</string>
+    <string name="l09_b1_body" formatted="false">Comparison questions usually ask for a ratio, not a raw number: if A is 25% more than B, what is A to B? The method is to put both quantities on the same footing of 100 and read off the ratio. Once you can do that, chained comparisons across three or four quantities become routine.</string>
+    <string name="l09_b1_title" formatted="false">When is one quantity what percent more than another?</string>
+    <string name="l09_b2_body" formatted="false">If B is taken as 100, then A being 25% more than B must be 125. The ratio is simply 125 to 100. If A is 20% less than B, then with B as 100, A is 80, giving 80 to 100. Always make the quantity that the percentage is measured from equal to 100.</string>
+    <string name="l09_b2_title" formatted="false">Put both on a scale of 100</string>
+    <string name="l09_b3_caption" formatted="false">For p% less, use (100 - p) : 100.</string>
+    <string name="l09_b3_formula" formatted="false">If A is p% more than B, then A : B = (100 + p) : 100</string>
+    <string name="l09_b4_s1_prompt" formatted="false">Take B as 100</string>
+    <string name="l09_b4_s1_result" formatted="false">B</string>
+    <string name="l09_b4_s2_prompt" formatted="false">A is 25 more than B</string>
+    <string name="l09_b4_s2_result" formatted="false">125 - 100</string>
+    <string name="l09_b4_s3_prompt" formatted="false">Write the ratio</string>
+    <string name="l09_b4_s3_result" formatted="false">125 : 100</string>
+    <string name="l09_b4_title" formatted="false">Example: A is 25% more than B</string>
+    <string name="l09_b5_s1_prompt" formatted="false">Take B as 100</string>
+    <string name="l09_b5_s1_result" formatted="false">B</string>
+    <string name="l09_b5_s2_prompt" formatted="false">A is 20 less than B</string>
+    <string name="l09_b5_s2_result" formatted="false">100 - 20</string>
+    <string name="l09_b5_s3_prompt" formatted="false">Write the ratio</string>
+    <string name="l09_b5_s3_result" formatted="false">80 : 100</string>
+    <string name="l09_b5_title" formatted="false">Example: A is 20% less than B</string>
+    <string name="l09_b6_body" formatted="false">When B is itself a percentage of C, express everything in terms of C and the chain collapses into one multiplication. Take C as 100, build B from it, then build A from B. The result tells you A against C directly, which is usually what the question asks.</string>
+    <string name="l09_b6_title" formatted="false">Chaining two comparisons</string>
+    <string name="l09_b7_s1_prompt" formatted="false">A is 50% more than B, and B is 20% less than C. Take C as 100.</string>
+    <string name="l09_b7_s1_result" formatted="false">C</string>
+    <string name="l09_b7_s2_prompt" formatted="false">Build B from C</string>
+    <string name="l09_b7_s2_result" formatted="false">100 x 0.80</string>
+    <string name="l09_b7_s3_prompt" formatted="false">Build A from B</string>
+    <string name="l09_b7_s3_result" formatted="false">80 x 1.50</string>
+    <string name="l09_b7_s4_prompt" formatted="false">Compare A with C</string>
+    <string name="l09_b7_s4_result" formatted="false">120 - 100</string>
+    <string name="l09_b7_title" formatted="false">Example: chaining through B</string>
+    <string name="l09_b8_body" formatted="false">If A is 25% more than B, then A is the larger quantity and must be the larger term of the ratio. Writing A : B = 4 : 5 would claim that A is the smaller one, which contradicts the question. As a quick check, the first term should feel bigger whenever the percentage is positive.</string>
+    <string name="l09_b8_title" formatted="false">Reversing the ratio</string>
+    <string name="l09_b9_answer" formatted="false">A : B = 110 : 100 = 11 : 10.</string>
+    <string name="l09_b9_body" formatted="false">If A is 10% more than B, write A : B in lowest whole-number terms.</string>
+    <string name="l09_b9_title" formatted="false">Knowledge check</string>
+    <string name="l10_b10_b1" formatted="false">Percentage points are a subtraction with no base.</string>
+    <string name="l10_b10_b2" formatted="false">Percentage change divides by the earlier value.</string>
+    <string name="l10_b10_b3" formatted="false">Both can be true at once; say which one you mean.</string>
+    <string name="l10_b10_title" formatted="false">Summary</string>
+    <string name="l10_b1_body" formatted="false">News reports and exam papers both talk about percentages, but two different calculations hide behind the word. A change in percentage points is a plain subtraction. A percentage change is a relative shift measured against the starting value. Mixing them up is one of the most common traps in this subject, so this lesson makes the distinction explicit.</string>
+    <string name="l10_b1_title" formatted="false">Percentage points and percentage change are different</string>
+    <string name="l10_b2_body" formatted="false">A percentage point is an absolute unit. Going from 20% to 25% is a rise of 5 percentage points, full stop. A percentage change asks by what proportion of the original the value moved: from 20% to 25% is a rise of 5 out of 20, which is 25% relative. The base for a percentage change is the earlier value; there is no base at all in a percentage-point difference.</string>
+    <string name="l10_b2_title" formatted="false">Two different measurements</string>
+    <string name="l10_b3_caption" formatted="false">percentage change = (new - old) / old x 100</string>
+    <string name="l10_b3_formula" formatted="false">percentage points = new % - old %</string>
+    <string name="l10_b4_s1_prompt" formatted="false">In percentage points</string>
+    <string name="l10_b4_s1_result" formatted="false">25 - 20</string>
+    <string name="l10_b4_s2_prompt" formatted="false">As a percentage change</string>
+    <string name="l10_b4_s2_result" formatted="false">5 / 20 x 100</string>
+    <string name="l10_b4_s3_prompt" formatted="false">So both statements are true, and they are not the same fact</string>
+    <string name="l10_b4_s3_result" formatted="false">5 points</string>
+    <string name="l10_b4_title" formatted="false">Example: 20% rises to 25%</string>
+    <string name="l10_b5_s1_prompt" formatted="false">In percentage points</string>
+    <string name="l10_b5_s1_result" formatted="false">30 - 40</string>
+    <string name="l10_b5_s2_prompt" formatted="false">As a percentage change</string>
+    <string name="l10_b5_s2_result" formatted="false">-10 / 40 x 100</string>
+    <string name="l10_b5_s3_prompt" formatted="false">The fall is 10 points but 25%</string>
+    <string name="l10_b5_s3_result" formatted="false">-10 points</string>
+    <string name="l10_b5_title" formatted="false">Example: 40% falls to 30%</string>
+    <string name="l10_b6_body" formatted="false">Interest rates, tax slabs, poll shares and pass marks are all quoted in percentage points. A loan rate moving from 8% to 10% is described as a rise of 2 percentage points, and that is what the borrower pays, in absolute terms, on a fixed principal. Describing it as a 25% rise would suggest the rate itself grew by a quarter, which is a true but very different fact.</string>
+    <string name="l10_b6_title" formatted="false">Where the distinction matters</string>
+    <string name="l10_b7_s1_prompt" formatted="false">In percentage points</string>
+    <string name="l10_b7_s1_result" formatted="false">10 - 8</string>
+    <string name="l10_b7_s2_prompt" formatted="false">As a percentage change</string>
+    <string name="l10_b7_s2_result" formatted="false">2 / 8 x 100</string>
+    <string name="l10_b7_s3_prompt" formatted="false">On a principal of 1000</string>
+    <string name="l10_b7_s3_result" formatted="false">8% is 80, 10% is 100</string>
+    <string name="l10_b7_title" formatted="false">Example: an interest rate from 8% to 10%</string>
+    <string name="l10_b8_body" formatted="false">If a pass mark rises from 33% to 40%, the marks needed went up by 7 percentage points. But a student who needed 33 out of 100 now needs 40, which is a rise of about 21% in the marks themselves. Reporting only one of the two hides the other.</string>
+    <string name="l10_b8_title" formatted="false">Saying \'rose by 5%\' when it rose by 5 points</string>
+    <string name="l10_b9_answer" formatted="false">5 percentage points, and 5 / 10 x 100 = 50% relative increase.</string>
+    <string name="l10_b9_body" formatted="false">A discount moves from 10% to 15%. State both the change in percentage points and the relative percentage change.</string>
+    <string name="l10_b9_title" formatted="false">Knowledge check</string>
+    <string name="l11_b1_body" formatted="false">A proportion can be written as a fraction, as a decimal, or as a percentage, and all three can appear in the same question. Comparing them is easy once everything is converted to one form. The conversions are: multiply a fraction by 100 to get a percentage, and multiply a decimal by 100 to get a percentage.</string>
+    <string name="l11_b1_title" formatted="false">Three ways of writing the same quantity</string>
+    <string name="l11_b2_body" formatted="false">Comparing 33/100 with 1/3 directly tells you nothing, because the denominators differ. Converting both to percentages puts them on a common scale: 33/100 is 33%, and 1/3 is 33.33%. Now the comparison is immediate. When one of the three forms is already a percentage, convert the others to match it.</string>
+    <string name="l11_b2_title" formatted="false">Normalise before comparing</string>
+    <string name="l11_b3_caption" formatted="false">Common fractions worth memorising: 1/2 = 50%, 1/4 = 25%, 3/4 = 75%, 1/5 = 20%, 1/10 = 10%.</string>
+    <string name="l11_b3_formula" formatted="false">fraction a/b -&gt; (a / b) x 100 % decimal -&gt; x 100 %</string>
+    <string name="l11_b4_b1" formatted="false">1/2 = 50% and 2/3 of a half is 33.33%, not 50%</string>
+    <string name="l11_b4_b2" formatted="false">1/5 = 20%, so 3/5 = 60%</string>
+    <string name="l11_b4_b3" formatted="false">1/8 = 12.5%, which makes 12.5% problems quick</string>
+    <string name="l11_b4_body" formatted="false">A handful of fractions carry most of the weight in these questions, because they have clean percentage equivalents. If you know them by heart you can recognise an answer without computing anything.</string>
+    <string name="l11_b4_title" formatted="false">Common fractions</string>
+    <string name="l11_b5_s1_prompt" formatted="false">Convert 3/4</string>
+    <string name="l11_b5_s1_result" formatted="false">(3 / 4) x 100</string>
+    <string name="l11_b5_s2_prompt" formatted="false">Convert 0.42</string>
+    <string name="l11_b5_s2_result" formatted="false">0.42 x 100</string>
+    <string name="l11_b5_s3_prompt" formatted="false">Convert 5/20</string>
+    <string name="l11_b5_s3_result" formatted="false">5 / 20 = 1/4</string>
+    <string name="l11_b5_s4_prompt" formatted="false">Order them</string>
+    <string name="l11_b5_s4_result" formatted="false">75%, 42%, 25%</string>
+    <string name="l11_b5_title" formatted="false">Example: converting three forms</string>
+    <string name="l11_b6_s1_prompt" formatted="false">Convert each</string>
+    <string name="l11_b6_s1_result" formatted="false">1/3, 0.34, 35%</string>
+    <string name="l11_b6_s2_prompt" formatted="false">Order them</string>
+    <string name="l11_b6_s2_result" formatted="false">33.33%, 34%, 35%</string>
+    <string name="l11_b6_s3_prompt" formatted="false">So the order is</string>
+    <string name="l11_b6_s3_result" formatted="false">1/3, 0.34, 35%</string>
+    <string name="l11_b6_title" formatted="false">Example: ordering three quantities</string>
+    <string name="l11_b7_body" formatted="false">0.3 looks bigger than 25% but it is only 30% against 25%, so in this case the decimal does win. Try 0.29 against 2/7: 0.29 is 29%, while 2/7 is about 28.57%, so the decimal wins again. But try 0.4 against 3/8: 0.4 is 40% and 3/8 is 37.5%, and now the fraction looks larger than the decimal if you never converted. Always convert.</string>
+    <string name="l11_b7_title" formatted="false">Comparing across forms without converting</string>
+    <string name="l11_b8_answer" formatted="false">0.29 = 29%, and 2/7 is about 28.57%, so 0.29 is larger.</string>
+    <string name="l11_b8_body" formatted="false">Which is larger, 0.29 or 2/7?</string>
+    <string name="l11_b8_title" formatted="false">Knowledge check</string>
+    <string name="l11_b9_b1" formatted="false">Multiply fractions and decimals by 100 to reach percentages.</string>
+    <string name="l11_b9_b2" formatted="false">Compare only after everything is in the same form.</string>
+    <string name="l11_b9_b3" formatted="false">Know 1/2, 1/4, 3/4, 1/5 and 1/10 by heart.</string>
+    <string name="l11_b9_title" formatted="false">Summary</string>
+    <string name="l12_b10_b1" formatted="false">Clean fractions of 100 are fast but only for clean numbers.</string>
+    <string name="l12_b10_b2" formatted="false">For exactly two changes use a - b - ab/100 after a rise, or b - a - ab/100 after a fall.</string>
+    <string name="l12_b10_b3" formatted="false">Turn comparison questions into ratios on a scale of 100, then reduce.</string>
+    <string name="l12_b10_b4" formatted="false">Never extend a shortcut beyond the case where it is exact.</string>
+    <string name="l12_b10_title" formatted="false">Summary</string>
+    <string name="l12_b1_body" formatted="false">This lesson collects the techniques that survive exam conditions. Each one is stated with the situation it is good for and, just as importantly, the situation where it does not apply. A shortcut presented without its limits is worse than no shortcut, because it produces a confident wrong answer. None of the methods below are tricks that work only for tidy numbers.</string>
+    <string name="l12_b1_title" formatted="false">Shortcuts that hold up under pressure</string>
+    <string name="l12_b2_body" formatted="false">Halves, quarters, fifths and tenths have exact percentage equivalents, so the whole question collapses into one subtraction or division. This is the fastest route when the numbers are friendly. It is not a general method: there is no clean fraction behind 33%, and forcing 33% into \'a third\' gives an answer that is wrong rather than approximate.</string>
+    <string name="l12_b2_title" formatted="false">Shortcut 1: clean fractions of 100</string>
+    <string name="l12_b3_s1_prompt" formatted="false">12.5% is one eighth</string>
+    <string name="l12_b3_s1_result" formatted="false">100 / 8</string>
+    <string name="l12_b3_s2_prompt" formatted="false">Divide by 8</string>
+    <string name="l12_b3_s2_result" formatted="false">640 / 8</string>
+    <string name="l12_b3_s3_prompt" formatted="false">Answer</string>
+    <string name="l12_b3_s3_result" formatted="false">80</string>
+    <string name="l12_b3_title" formatted="false">Example: 12.5% of 640</string>
+    <string name="l12_b4_body" formatted="false">For exactly two changes there is a direct formula. A rise of a% followed by a fall of b% nets a - b - ab/100. The mirror case, a fall of a% then a rise of b%, nets b - a - ab/100. Either way the correction term ab/100 is subtracted. This replaces two rounds of multiplying the running value, which is where arithmetic slips usually happen. Use it for exactly two changes; with three changes, multiply the three factors instead.</string>
+    <string name="l12_b4_title" formatted="false">Shortcut 2: the net formula for two changes</string>
+    <string name="l12_b5_s1_prompt" formatted="false">This is the mirror case, so use b - a - ab/100</string>
+    <string name="l12_b5_s1_result" formatted="false">a = 20, b = 25</string>
+    <string name="l12_b5_s2_prompt" formatted="false">Substitute</string>
+    <string name="l12_b5_s2_result" formatted="false">25 - 20 - (20 x 25 / 100)</string>
+    <string name="l12_b5_s3_prompt" formatted="false">Check on 500</string>
+    <string name="l12_b5_s3_result" formatted="false">500 x 0.80 = 400, then 400 x 1.25</string>
+    <string name="l12_b5_title" formatted="false">Example: 20% fall then 25% rise</string>
+    <string name="l12_b6_body" formatted="false">Convert a \'what percent more or less\' question into a ratio on a scale of 100 and reduce it. This is especially fast when both percentages are whole numbers, because the ratio terms are then whole numbers too and reduction is quick.</string>
+    <string name="l12_b6_title" formatted="false">Shortcut 3: ratio form for comparisons</string>
+    <string name="l12_b7_s1_prompt" formatted="false">Let the original be 100</string>
+    <string name="l12_b7_s1_result" formatted="false">100</string>
+    <string name="l12_b7_s2_prompt" formatted="false">Equal steps mean equal percentages</string>
+    <string name="l12_b7_s2_result" formatted="false">(1 + x/100)^2</string>
+    <string name="l12_b7_s3_prompt" formatted="false">This needs a square root</string>
+    <string name="l12_b7_s3_result" formatted="false">sqrt(1.40)</string>
+    <string name="l12_b7_title" formatted="false">Example: a 40% rise in two equal steps</string>
+    <string name="l12_b8_body" formatted="false">Halving and halving again gives one quarter, so two successive 50% falls leave 25%. That is true. But it does not generalise: two 40% falls leave 36%, not 20%, because the second fall is measured on the already-reduced value. Similarly, a 33% fall is close to one third but is not one third. Always use the exact formula unless the numbers really are clean.</string>
+    <string name="l12_b8_title" formatted="false">Treating a special case as a general rule</string>
+    <string name="l12_b9_answer" formatted="false">100 x 0.60 = 60, then 60 x 1.40 = 84. Net -16%, since 40 - 40 - (40 x 40 / 100) = -16.</string>
+    <string name="l12_b9_body" formatted="false">A price falls 40% and then rises 40%. Using 100 as the base, what is the final value and the net change?</string>
+    <string name="l12_b9_title" formatted="false">Knowledge check</string>
+    <!-- ==== END GENERATED LESSON PROSE (Phase 6) ==== -->
+
+
+
+
+
+    <!-- ===== BEGIN COURSE SECTIONS AND LESSON METADATA (Phase 6) ===== -->
+    <string name="section_beginner_title">Beginner</string>
+    <string name="section_beginner_description">What a percentage means, how to convert it, and how to take a percentage of any number.</string>
+    <string name="section_intermediate_title">Intermediate</string>
+    <string name="section_intermediate_description">Changes, comparisons and the shortcuts that make two-step questions quick.</string>
+    <string name="section_competitive_title">Competitive exam applications</string>
+    <string name="section_competitive_description">The same ideas applied to marks, salary, population, prices and elections.</string>
+    <string name="lesson_4_title">Decimals to Percentages</string>
+    <string name="lesson_4_description">Turn any decimal into a percentage by shifting the point two places right.</string>
+    <string name="lesson_5_title">Finding a Percentage of a Number</string>
+    <string name="lesson_5_description">Take a percentage of any quantity, including the 1% method.</string>
+    <string name="lesson_6_title">Finding the Original Whole</string>
+    <string name="lesson_6_description">Work backwards from a part to the number it came from.</string>
+    <string name="lesson_7_title">Percentage Increase and Decrease</string>
+    <string name="lesson_7_description">Apply a change to the right base, and see why falls and rises are not symmetric.</string>
+    <string name="lesson_8_title">Successive Percentage Changes</string>
+    <string name="lesson_8_description">Two changes in a row, and the formula for the net effect.</string>
+    <string name="lesson_9_title">Percentage Comparison Problems</string>
+    <string name="lesson_9_description">Convert "what percent more" questions into ratios and chain them.</string>
+    <string name="lesson_10_title">Competitive Exam Challenge</string>
+    <string name="lesson_10_description">A mixed set across every topic covered so far. Arriving in a later phase.</string>
+    <string name="lesson_11_title">Percentage Points vs Percentage Change</string>
+    <string name="lesson_11_description">Two different measurements that are easy to confuse, and where the difference matters.</string>
+    <string name="lesson_12_title">Comparing Fractions, Decimals, and Percentages</string>
+    <string name="lesson_12_description">Bring every form onto one scale before comparing.</string>
+    <string name="lesson_13_title">Exam Shortcuts and Mental Calculation</string>
+    <string name="lesson_13_description">Shortcuts that hold up under exam pressure, with the limits of each one stated.</string>
+    <string name="lesson_14_title">Population Increase and Decrease</string>
+    <string name="lesson_14_description">Growth, decline and change over two periods. Arriving in a later phase.</string>
+    <string name="lesson_15_title">Salary, Expenditure, and Savings</string>
+    <string name="lesson_15_description">How income is split, and how one change affects the rest. Arriving in a later phase.</string>
+    <string name="lesson_16_title">Marks, Pass Marks, and Exam Results</string>
+    <string name="lesson_16_description">Pass percentages, how many needed to pass, and shortfalls. Arriving in a later phase.</string>
+    <string name="lesson_17_title">Election and Voting Percentage Problems</string>
+    <string name="lesson_17_description">Votes polled, turnout, shares and margins. Arriving in a later phase.</string>
+    <string name="lesson_18_title">Price Changes, Discounts, and Tax</string>
+    <string name="lesson_18_description">Marked price, discount chains and tax added at the till. Arriving in a later phase.</string>
+    <string name="lesson_19_title">Profit, Loss, and Percentage Relationships</string>
+    <string name="lesson_19_description">Profit and loss percentages and what they are measured against. Arriving in a later phase.</string>
+    <string name="lesson_20_title">Reverse Percentage Problems</string>
+    <string name="lesson_20_description">Given a changed value, recover the original. Arriving in a later phase.</string>
+    <string name="lesson_21_title">Mixed Percentage Word Problems</string>
+    <string name="lesson_21_description">Several percentages interacting in one problem. Arriving in a later phase.</string>
+    <string name="lesson_upcoming_label">Not yet written</string>
+    <string name="section_progress">%1$d of %2$d done</string>
+    <!-- ===== END COURSE SECTIONS AND LESSON METADATA (Phase 6) ===== -->
+
+
+
+
+
+
+
+
+
+    <!-- ===== BEGIN PHASE 7 INSIGHT STRINGS ===== -->
+    <string name="insights_title" formatted="false">Learning insights</string>
+    <string name="insights_subtitle" formatted="false">Where you are strong and what to work on next.</string>
+    <string name="insights_overall_attempted" formatted="false">Questions answered</string>
+    <string name="insights_overall_accuracy" formatted="false">Overall accuracy</string>
+    <string name="insights_strongest_topic" formatted="false">Strongest topic</string>
+    <string name="insights_weakest_topic" formatted="false">Needs the most work</string>
+    <string name="insights_suggested_next" formatted="false">Suggested next step</string>
+    <string name="insights_by_topic" formatted="false">Topic by topic</string>
+    <string name="insights_recent" formatted="false">Recent performance</string>
+    <string name="insights_no_data_title" formatted="false">No answers recorded yet</string>
+    <string name="insights_no_data_body" formatted="false">Answer questions in practice or a mock test and your strengths and weak spots will appear here.</string>
+    <string name="insights_legacy_note" formatted="false">Practice sessions answered before this feature started are not included, because only session totals were saved.</string>
+    <string name="insights_back" formatted="false">Back</string>
+    <string name="insights_status_not_enough_data" formatted="false">Not enough data</string>
+    <string name="insights_status_needs_practice" formatted="false">Needs practice</string>
+    <string name="insights_status_improving" formatted="false">Improving</string>
+    <string name="insights_status_strong" formatted="false">Strong</string>
+    <string name="insights_status_not_enough_data_body" formatted="false">Answer at least %1$d questions here to see a verdict.</string>
+    <string name="insights_easy_only_caution" formatted="false">Mostly easy questions so far, so this may not reflect harder topics.</string>
+    <string name="insights_trend_up" formatted="false">Up %1$d points</string>
+    <string name="insights_trend_down" formatted="false">Down %1$d points</string>
+    <string name="insights_trend_steady" formatted="false">Holding steady</string>
+    <string name="insights_trend_locked" formatted="false">Keep practising to unlock your trend</string>
+    <string name="insights_recent_window" formatted="false">Last %1$d answers</string>
+    <string name="insights_vs_previous" formatted="false">Compared with the %1$d answers before</string>
+    <string name="rec_title_resume_lesson" formatted="false">Finish your current lesson</string>
+    <string name="rec_title_continue_course" formatted="false">Continue the course</string>
+    <string name="rec_title_practice_weak" formatted="false">Practise a weak topic</string>
+    <string name="rec_title_step_up" formatted="false">Try harder questions</string>
+    <string name="rec_title_mixed_review" formatted="false">Do a mixed review</string>
+    <string name="rec_title_start_lesson_one" formatted="false">Start with the first lesson</string>
+    <string name="rec_title_keep_practising" formatted="false">Keep consolidating</string>
+    <string name="rec_continue_learning" formatted="false">Continue learning</string>
+    <string name="rec_view_insights" formatted="false">View insights</string>
+    <string name="rec_start_practice" formatted="false">Start practice</string>
+    <string name="rec_open_insights" formatted="false">Open insights</string>
+    <string name="rec_reason_lesson_in_progress" formatted="false">You have not finished this lesson yet.</string>
+    <string name="rec_reason_next_lesson" formatted="false">This is the next lesson on your path.</string>
+    <string name="rec_reason_low_accuracy" formatted="false">Your accuracy here is %1$d%%.</string>
+    <string name="rec_reason_strong_on_easy" formatted="false">Easy questions here are %1$d%% correct.</string>
+    <string name="rec_reason_balanced" formatted="false">You have practised %1$d topics at a similar level.</string>
+    <string name="rec_reason_no_history" formatted="false">Answer a few questions to get a tailored suggestion.</string>
+    <string name="rec_reason_course_complete" formatted="false">You have finished every available lesson.</string>
+    <string name="targeted_title_mixed" formatted="false">Mixed review</string>
+    <string name="targeted_mixed_subtitle" formatted="false">Questions across %1$d topics</string>
+    <string name="targeted_start" formatted="false">Start</string>
+    <string name="insights_topic_counts" formatted="false">%1$d answered, %2$d correct</string>
+    <string name="insights_accuracy_value" formatted="false">%1$d%%</string>
+    <string name="insights_recent_accuracy_value" formatted="false">%1$d%% accuracy</string>
+    <string name="insights_lessons_completed_value" formatted="false">%1$d lessons completed</string>
+    <string name="insights_topics_covered" formatted="false">%1$d topics practised</string>
+    <string name="cd_insights_accuracy" formatted="false">Accuracy %1$d percent from %2$d answers</string>
+    <string name="cd_topic_performance" formatted="false">%1$s: %2$d answers, %3$d correct, %4$d percent accuracy, %5$s</string>
+    <string name="cd_recommendation" formatted="false">Suggestion: %1$s. %2$s</string>
+    <!-- ===== END PHASE 7 INSIGHT STRINGS ===== -->
+    <!-- ===== BEGIN PHASE 8 STRINGS ===== -->
+    <string name="onboarding_body_1" formatted="false">Short, practical lessons that make percentages and aptitude feel easy.</string>
+    <string name="onboarding_title_2" formatted="false">Practise, don\'t just read</string>
+    <string name="onboarding_body_2" formatted="false">Answer exam-style questions, run a timed mock test and see exactly where you stand.</string>
+    <string name="onboarding_title_3" formatted="false">Everything stays on this phone</string>
+    <string name="onboarding_body_3" formatted="false">Your progress, answers and rewards are stored only on this device. There is no account and no sign-up.</string>
+    <string name="onboarding_next" formatted="false">Next</string>
+    <string name="onboarding_back" formatted="false">Back</string>
+    <string name="onboarding_skip" formatted="false">Skip</string>
+    <string name="onboarding_start" formatted="false">Start learning</string>
+    <string name="onboarding_page_indicator" formatted="false">Page %1$d of %2$d</string>
+    <string name="settings_title" formatted="false">Settings</string>
+    <string name="settings_section_learning" formatted="false">Learning</string>
+    <string name="settings_section_data" formatted="false">Your data</string>
+    <string name="settings_section_about" formatted="false">About</string>
+    <string name="settings_daily_goal" formatted="false">Daily goal</string>
+    <string name="settings_daily_goal_description" formatted="false">Questions to answer each day to keep your streak.</string>
+    <string name="settings_achievements" formatted="false">Achievements</string>
+    <string name="settings_achievements_value" formatted="false">%1$d of %2$d unlocked</string>
+    <string name="settings_progress" formatted="false">Course progress</string>
+    <string name="settings_progress_value" formatted="false">%1$d of %2$d lessons</string>
+    <string name="settings_version" formatted="false">Version</string>
+    <string name="settings_privacy_title" formatted="false">Your data stays on your phone</string>
+    <string name="settings_privacy_body" formatted="false">PercentPro works entirely offline. It makes no network requests and sends nothing to a server, because there is no server.
+
+Your lesson progress, practice answers, mock test results, XP and achievements are stored in private app storage on this device only. Uninstalling the app deletes them, and they cannot be recovered by anyone.
+
+No account is created, no advertising or analytics SDK is included, and no personal data is collected or shared.</string>
+    <string name="settings_no_reset" formatted="false">Resetting progress is not available</string>
+    <string name="settings_no_reset_body" formatted="false">Your progress is kept deliberately permanent. Uninstalling the app is the only way to remove it.</string>
+    <string name="settings_built_by" formatted="false">Made by %1$s</string>
+    <string name="mock_result_out_of" formatted="false">Out of %1$s</string>
+    <string name="cd_option_incorrect" formatted="false">Incorrect option</string>
+    <string name="mock_exit_dialog_title" formatted="false">Leave this mock test?</string>
+    <string name="mock_exit_dialog_body" formatted="false">The paper has %1$d of %2$d questions answered and is still running. Leaving now discards this attempt and your answers cannot be recovered.</string>
+    <string name="mock_exit_dialog_confirm" formatted="false">Leave test</string>
+    <string name="mock_exit_dialog_cancel" formatted="false">Keep working</string>
+    <!-- ===== END PHASE 8 STRINGS ===== -->
+</resources>

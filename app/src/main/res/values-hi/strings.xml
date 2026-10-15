@@ -1,0 +1,933 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:tools="http://schemas.android.com/tools"
+    tools:ignore="TypographyDashes,TypographyFractions">
+    <string name="app_name">PercentPro</string>
+    <string name="brand_by">AT Labs द्वारा</string>
+    <string name="brand_tagline">प्रतिशत सीखें। योग्यता में मास्टर बनें।</string>
+
+    <!-- Language -->
+    <string name="language_label">भाषा</string>
+    <string name="language_english">अंग्रेज़ी</string>
+    <string name="language_hindi">हिन्दी</string>
+
+    <!-- Welcome -->
+    <string name="welcome_title">PercentPro में आपका स्वागत है</string>
+    <string name="welcome_message">बिल्कुल पहले पाठ से शुरू करें, या जहाँ छोड़ा था वहीं से आगे बढ़ें।</string>
+
+    <!-- Primary action -->
+    <string name="cta_start_named_lesson">%1$s शुरू करें</string>
+    <string name="cta_continue_named_lesson">जारी रखें: %1$s</string>
+    <string name="cta_all_done_title">उपलब्ध सभी पाठ पूरे हो चुके हैं</string>
+    <string name="cta_all_done_body">कोर्स का बाकी हिस्सा अभी लिखा जा रहा है। अगले अपडेट में फिर आइए।</string>
+
+    <!-- Progress -->
+    <string name="progress_title">आपकी प्रगति</string>
+    <string name="progress_stat_xp">कुल XP</string>
+    <string name="progress_stat_streak">दिन की स्ट्रीक</string>
+    <string name="progress_stat_completion">कोर्स पूर्णता</string>
+    <string name="progress_xp_value">%1$d XP</string>
+    <string name="progress_completion_value">%1$d%%</string>
+    <string name="progress_completion_indicator">कोर्स पूर्णता: %1$d%%</string>
+    <string name="progress_lessons_done">पूरे किए गए पाठ: %2$d में से %1$d</string>
+    <string name="progress_nothing_yet">अभी कोई पाठ पूरा नहीं हुआ। पहला पाठ आपके लिए तैयार है।</string>
+    <plurals name="progress_streak_value">
+        <item quantity="one">%1$d दिन</item>
+        <item quantity="other">%1$d दिन</item>
+    </plurals>
+
+    <!-- Learning path -->
+    <string name="learning_path_title">आपका लर्निंग पाथ</string>
+    <string name="learning_path_subtitle">बिल्कुल शून्य से परीक्षा-तैयारी तक, एक-एक पाठ के साथ।</string>
+    <string name="learning_path_full_title">लर्निंग पाथ</string>
+    <string name="learning_path_full_subtitle">दस पाठ। क्रम में पूरे करें, तभी अगला पाठ खुलेगा।</string>
+
+    <!-- Lesson statuses -->
+    <string name="lesson_status_available">तैयार</string>
+    <string name="lesson_status_in_progress">जारी है</string>
+    <string name="lesson_status_completed">पूरा हुआ</string>
+    <string name="lesson_status_locked">लॉक है</string>
+    <string name="lesson_status_upcoming">जल्द आ रहा है</string>
+    <string name="lesson_locked_sequence_reason">इसे खोलने के लिए पहले \"%1$s\" पूरा करें।</string>
+    <string name="lesson_locked_upcoming_reason">यह पाठ अभी लिखा जा रहा है और अगले अपडेट में आएगा।</string>
+
+    <!-- Lesson card metadata -->
+    <string name="lesson_duration">%1$d मिनट</string>
+    <string name="lesson_number">पाठ %1$d</string>
+    <string name="lesson_meta">%1$s · %2$s</string>
+    <string name="difficulty_easy">आसान</string>
+    <string name="difficulty_medium">मध्यम</string>
+    <string name="difficulty_hard">कठिन</string>
+    <string name="cd_lesson_node">पाठ %1$d, %2$s, %3$s</string>
+
+    <!-- Lesson engine -->
+    <string name="lesson_engine_step">चरण %2$d में से %1$d</string>
+    <string name="lesson_engine_next">आगे</string>
+    <string name="lesson_engine_previous">पीछे</string>
+    <string name="lesson_engine_finish">पाठ पूरा करें</string>
+    <string name="lesson_engine_return_to_path">लर्निंग पाथ पर लौटें</string>
+    <string name="lesson_engine_start_over">शुरुआत से पढ़ें</string>
+    <string name="cd_exit_lesson">पाठ से बाहर निकलें</string>
+
+    <!-- Lesson completion -->
+    <string name="lesson_complete_title">पाठ पूरा हुआ</string>
+    <string name="lesson_complete_body">%1$s पूरा हो गया। पाथ का अगला पाठ अब खुल गया है।</string>
+    <string name="lesson_complete_body_no_next">%1$s पूरा हो गया। आपने अभी उपलब्ध सभी पाठ पूरे कर लिए हैं।</string>
+
+    <!-- Block types -->
+    <string name="block_intro_label">परिचय</string>
+    <string name="block_explanation_label">व्याख्या</string>
+    <string name="block_formula_label">सूत्र</string>
+    <string name="block_example_label">हल किया गया उदाहरण</string>
+    <string name="block_visual_label">चित्र</string>
+    <string name="block_summary_label">सारांश</string>
+
+    <!-- Percentage grid -->
+    <string name="grid_shade_label">छायांकित करें</string>
+    <string name="grid_value">%1$d%%</string>
+    <string name="grid_caption_value">100 में से %1$d वर्ग छायांकित = %1$d%%</string>
+    <string name="cd_percentage_grid">10 गुणा 10 का वर्ग-जाल, जिसमें 100 में से %1$d वर्ग छायांकित हैं, यानी %1$d प्रतिशत</string>
+
+    <!-- Lesson 1: What Is a Percentage? -->
+    <string name="lesson_1_title">प्रतिशत क्या है?</string>
+    <string name="lesson_1_description">प्रति सौ, और पूरे कोर्स की नींव यही एक विचार है।</string>
+    <string name="l1_intro_title">प्रतिशत क्या होता है?</string>
+    <string name="l1_intro_body">प्रतिशत बताता है कि किसी वस्तु का कितना हिस्सा है, जिसकी गिनती हमेशा ठीक 100 बराबर भागों के सापेक्ष की जाती है। यह \"हर सौ में से\" कहने का रोज़मरा का छोटा रास्ता है।</string>
+    <string name="l1_per_hundred_title">इसका अर्थ है \"प्रति सौ\"</string>
+    <string name="l1_per_hundred_body">यह शब्द दो शब्दों से बना है: प्रति और सौ। प्रतिशत की गणना हमेशा आधार 100 के सापेक्ष होती है।</string>
+    <string name="l1_b1" formatted="false">25% को \"100 में से 25\" पढ़ा जाता है।</string>
+    <string name="l1_b2" formatted="false">50% को \"100 में से 50\" पढ़ा जाता है।</string>
+    <string name="l1_b3" formatted="false">10% को \"100 में से 10\" पढ़ा जाता है।</string>
+    <string name="l1_symbol_title" formatted="false">चिह्न %</string>
+    <string name="l1_symbol_body" formatted="false">प्रतिशत चिह्न % प्रतिशत लिखने का मानक तरीका है। प्रतियोगी परीक्षा के हर पत्र में यह मिलेगा।</string>
+    <string name="l1_symbol_b1" formatted="false">% को \"प्रतिशत\" पढ़ें।</string>
+    <string name="l1_symbol_b2" formatted="false">25% को \"पच्चीस प्रतिशत\" कहा जाता है।</string>
+    <string name="l1_symbol_b3">कुछ पत्र इसके बजाय \"25 प्रतिशत\" लिखते हैं। अर्थ एक ही रहता है।</string>
+    <string name="l1_formula">प्रतिशत = (भाग ÷ पूरा) × 100</string>
+    <string name="l1_formula_caption">भाग और पूरा एक ही मात्रा के संदर्भ में होने चाहिए।</string>
+    <string name="l1_example_50_title">उदाहरण: 100 में से 50</string>
+    <string name="l1_e50_prompt" formatted="false">100 बराबर भागों में 50% का कितना हिस्सा है?</string>
+    <string name="l1_e50_result">100 भागों में से 50</string>
+    <string name="l1_example_25_title">उदाहरण: 100 में से 25</string>
+    <string name="l1_e25_prompt" formatted="false">100 बराबर भागों में 25% का कितना हिस्सा है?</string>
+    <string name="l1_e25_result">100 भागों में से 25</string>
+    <string name="l1_example_100_title" formatted="false">उदाहरण: 100% पूरा होता है</string>
+    <string name="l1_e100_prompt" formatted="false">किसी मात्रा का 100% क्या दर्शाता है?</string>
+    <string name="l1_e100_result">वह पूरी मात्रा</string>
+    <string name="l1_summary_title">याद रखें</string>
+    <string name="l1_s1">प्रतिशत का अर्थ है प्रति सौ।</string>
+    <string name="l1_s2" formatted="false">% चिह्न प्रतिशत दर्शाता है।</string>
+    <string name="l1_s3" formatted="false">100% पूरी संदर्भ मात्रा को दर्शाता है।</string>
+
+    <!-- Lesson 2: Understanding Percentages Visually -->
+    <string name="lesson_2_title">प्रतिशत को देखकर समझें</string>
+    <string name="lesson_2_description">सौ वर्गों के जाल में छायांकित वर्गों के रूप में प्रतिशत देखें।</string>
+    <string name="l2_intro_title">प्रतिशत को देखना</string>
+    <string name="l2_intro_body" formatted="false">सौ भाग किसी सूत्र से ज़्यादा आसानी से दिखाई देते हैं। किसी पूरी वस्तु को 100 बराबर वर्गों में बाँटिए, और हर एक वर्ग 1% बन जाता है।</string>
+    <string name="l2_grid_title">सौ वर्गों का जाल</string>
+    <string name="l2_grid_caption">उतने वर्ग छायांकित करने के लिए कोई मान चुनें।</string>
+    <string name="l2_explain_title">कितने वर्ग, कितना प्रतिशत</string>
+    <string name="l2_explain_body" formatted="false">जाल का हर वर्ग पूरे का ठीक 1% है। इसलिए जितने वर्ग छायांकित होंगे, उतना प्रतिशत सीधे दिख जाता है।</string>
+    <string name="l2_b25" formatted="false">25 छायांकित वर्गों का अर्थ 25% है।</string>
+    <string name="l2_b50" formatted="false">50 छायांकित वर्गों का अर्थ 50% है।</string>
+    <string name="l2_b75" formatted="false">75 छायांकित वर्गों का अर्थ 75% है।</string>
+    <string name="l2_note_title">सौ ही क्यों?</string>
+    <string name="l2_note_body" formatted="false">100 वर्गों के जाल में ठीक 100 भाग होते हैं, इसलिए हर भाग पूरे एक प्रतिशत के बराबर हो सकता है। 10 वर्गों के जाल में केवल 10% के गुणज हो दिख पाते।</string>
+    <string name="l2_summary_title">याद रखें</string>
+    <string name="l2_s1">10 × 10 का जाल यानी 100 बराबर वर्ग।</string>
+    <string name="l2_s2" formatted="false">एक वर्ग = 1%।</string>
+    <string name="l2_s3">छायांकित वर्ग सीधे प्रतिशत बताते हैं।</string>
+
+    <!-- Lesson 3: Fractions to Percentages -->
+    <string name="lesson_3_title">भिन्न को प्रतिशत में बदलें</string>
+    <string name="lesson_3_description">½, ¼, ¾ और ⅕ को आत्मविश्वास से प्रतिशत में बदलें।</string>
+    <string name="l3_intro_title">भिन्न छिपा हुआ प्रतिशत है</string>
+    <string name="l3_intro_body">भिन्न और प्रतिशत अक्सर एक ही अनुपात बताते हैं। दोनों के बीच बदलना परिमाणात्मक अनुभाग की एक प्रमुख कला है।</string>
+    <string name="l3_method_title">बदलने के दो तरीके</string>
+    <string name="l3_method_body">जो भी तरीका सामने आए भिन्न के लिए जल्दी हो, वही अपनाइए।</string>
+    <string name="l3_method_b1">यदि हर भाग 100 में बराबर बँट जाता है, तो भिन्न को नीचे 100 के साथ लिखिए और ऊपर वाली संख्या ही प्रतिशत है।</string>
+    <string name="l3_method_b2">नहीं तो ऊपर की संख्या को नीचे वाली से भाग दीजिए, फिर 100 से गुणा कीजिए।</string>
+    <string name="l3_formula">प्रतिशत = (ऊपरी संख्या ÷ निचली संख्या) × 100</string>
+    <string name="l3_formula_caption">गोल करें तभी, जब प्रश्न में कहा गया हो।</string>
+    <string name="l3_example_1_2_title">उदाहरण: आधा</string>
+    <string name="l3_e1_2_prompt">½ को प्रतिशत में बदलिए।</string>
+    <string name="l3_e1_2_result" formatted="false">½ = 50%</string>
+    <string name="l3_example_1_4_title">उदाहरण: एक चौथाई</string>
+    <string name="l3_e1_4_prompt">¼ को प्रतिशत में बदलिए।</string>
+    <string name="l3_e1_4_result" formatted="false">¼ = 25%</string>
+    <string name="l3_example_3_4_title">उदाहरण: तीन चौथाई</string>
+    <string name="l3_e3_4_prompt">¾ को प्रतिशत में बदलिए।</string>
+    <string name="l3_e3_4_result" formatted="false">¾ = 75%</string>
+    <string name="l3_example_1_5_title">उदाहरण: एक पाँचवाँ</string>
+    <string name="l3_e1_5_prompt">⅕ को प्रतिशत में बदलिए।</string>
+    <string name="l3_e1_5_result" formatted="false">⅕ = 20%</string>
+    <string name="l3_caution_title">हर हर नहीं बँटता</string>
+    <string name="l3_caution_body" formatted="false">एक तिहाई यानी ⅓ है, और 100 तीन से साफ़ी से बँटता नहीं। वहाँ भाग-देकर-गुणा वाला तरीका अपनाइए: 1 ÷ 3 = 0.333…, फिर × 100 = 33.33%।</string>
+    <string name="l3_summary_title">याद रखें</string>
+    <string name="l3_s1">जो हर 100 में बँट जाते हैं, वे एक ही चरण में बदल जाते हैं।</string>
+    <string name="l3_s2">बाकी के लिए नीचे वाली से भाग दीजिए, फिर 100 से गुणा कीजिए।</string>
+    <string name="l3_s3" formatted="false">½ = 50%, ¼ = 25%, ¾ = 75%, ⅕ = 20%।</string>
+
+
+    <!-- Navigation -->
+    <string name="tab_home">होम</string>
+    <string name="tab_learn">सीखें</string>
+    <string name="tab_practice">अभ्यास</string>
+    <string name="tab_settings">सेटिंग्स</string>
+
+
+    <!-- Practice: topics -->
+    <string name="practice_title">अभ्यास</string>
+    <string name="practice_subtitle">उन पाठों पर विषयवार प्रश्न जिन्हें आप पहले ही पूरा कर सकते हैं।</string>
+    <string name="practice_topic_last_result">पिछला परिणाम: %1$d%% (%3$d में से %2$d)</string>
+    <string name="practice_topic_never_attempted">अभी तक कोई प्रयास नहीं</string>
+    <string name="practice_start_topic">अभ्यास शुरू करें</string>
+    <string name="cd_practice_topic">%1$s, %2$s. %3$s</string>
+
+    <!-- Practice: session -->
+    <string name="practice_question_counter">प्रश्न %2$d में से %1$d</string>
+    <string name="practice_check_answer">उत्तर जाँचें</string>
+    <string name="practice_next_question">अगला प्रश्न</string>
+    <string name="practice_finish">अभ्यास समाप्त करें</string>
+    <string name="practice_correct_answer">सही</string>
+    <string name="practice_incorrect_answer">ग़लत</string>
+    <string name="practice_your_answer">आपने चुना: %1$s</string>
+    <string name="practice_correct_answer_label">सही उत्तर: %1$s</string>
+    <string name="practice_explanation_label">व्याख्या</string>
+    <string name="practice_unanswered_label">उत्तर नहीं दिया</string>
+    <string name="cd_option_correct">सही विकल्प</string>
+    <string name="cd_option_selected">आपका चयन</string>
+
+    <!-- Practice: exit confirmation -->
+    <string name="practice_exit_title">अभ्यास छोड़ें?</string>
+    <string name="practice_exit_message_clean">आपके उत्तर खो जाएँगे।</string>
+    <string name="practice_exit_confirm">छोड़ें</string>
+    <string name="practice_exit_cancel">अभ्यास जारी रखें</string>
+
+    <!-- Practice: results -->
+    <string name="practice_results_title">अभ्यास पूरा हुआ</string>
+    <string name="practice_results_score_value">%1$d%%</string>
+    <string name="practice_results_score">स्कोर</string>
+    <string name="practice_results_correct">सही</string>
+    <string name="practice_results_incorrect">ग़लत</string>
+    <string name="practice_results_unanswered">बिना उत्तर</string>
+    <string name="practice_results_total">प्रश्न</string>
+    <string name="practice_results_review">उत्तर देखें</string>
+    <string name="practice_results_again">फिर से अभ्यास करें</string>
+    <string name="practice_results_return">विषयों पर लौटें</string>
+    <string name="practice_message_perfect">पूरे अंक। ये बुनियादी बातें अब पक्की हैं।</string>
+    <string name="practice_message_good">बहुत अच्छा काम। एक बार दोहराव से यह पक्का हो जाएगा।</string>
+    <string name="practice_message_fair">अच्छी कोशिश। जो छूटे, उन्हें दोबारा देखें।</string>
+    <string name="practice_message_weak">अच्छी शुरुआत। व्याख्याएँ एक बार फिर पढ़ें।</string>
+    <string name="practice_message_empty">इस विषय के लिए कोई प्रश्न उपलब्ध नहीं था।</string>
+    <string name="cd_practice_score">स्कोर %1$d%%, सही %2$d, पूछे गए %3$d</string>
+
+    <!-- Practice: review -->
+    <string name="practice_review_title">उत्तर देखें</string>
+    <string name="practice_review_back">परिणाम पर लौटें</string>
+    <plurals name="practice_topic_count">
+        <item quantity="one">%1$d प्रश्न</item>
+        <item quantity="other">%1$d प्रश्न</item>
+    </plurals>
+    <plurals name="practice_unanswered_banner">
+        <item quantity="one">%1$d प्रश्न बिना उत्तर के है।</item>
+        <item quantity="other">%1$d प्रश्न बिना उत्तर के हैं।</item>
+    </plurals>
+    <plurals name="practice_exit_message">
+        <item quantity="one">इस प्रयास में %1$d प्रश्न बिना उत्तर के है और यह सहेजा नहीं जाएगा।</item>
+        <item quantity="other">इस प्रयास में %1$d प्रश्न बिना उत्तर के हैं और यह सहेजा नहीं जाएगा।</item>
+    </plurals>
+
+    <!-- Mock tests: landing -->
+    <string name="mock_title_percentage_aptitude">प्रतिशत अभिरुचि परीक्षण</string>
+    <string name="mock_description_percentage_aptitude">पूरे प्रतिशत पाठ्यक्रम पर आधारित 15 प्रश्नों की timed परीक्षा। इस ऐप के लिए लिखे गए मौलिक अभ्यास प्रश्न।</string>
+    <string name="mock_entry_title">मॉक टेस्ट</string>
+    <string name="mock_entry_subtitle">समयबद्ध प्रतिशत योग्यता प्रश्नपत्र</string>
+    <string name="mock_landing_description">प्रतियोगी परीक्षा की तैयारी के लिए प्रतिशत विषय का अभ्यास पत्र। यह कोई पूरी SSC, रेलवे या बैंकिंग परीक्षा नहीं है।</string>
+    <string name="mock_rules_questions">प्रश्न</string>
+    <string name="mock_rules_duration">समय</string>
+    <string name="mock_rules_marks_correct">सही उत्तर</string>
+    <string name="mock_rules_marks_incorrect">ग़लत उत्तर</string>
+    <string name="mock_rules_marks_unanswered">उत्तर न दिया</string>
+    <string name="mock_rules_marks_value_correct">+%1$s अंक</string>
+    <string name="mock_rules_marks_value_incorrect">%1$s अंक</string>
+    <string name="mock_rules_marks_value_unanswered">0 अंक</string>
+    <string name="mock_rules_questions_value">%1$d</string>
+    <string name="mock_rules_duration_value">%1$d मिनट</string>
+    <string name="mock_start_test">टेस्ट शुरू करें</string>
+    <plurals name="mock_insufficient_questions">
+        <item quantity="one">अभी केवल %1$d प्रश्न उपलब्ध हैं, इसलिए यह टेस्ट शुरू नहीं हो सकता।</item>
+        <item quantity="other">अभी केवल %1$d प्रश्न उपलब्ध हैं, इसलिए यह टेस्ट शुरू नहीं हो सकता।</item>
+    </plurals>
+    <string name="mock_recent_results">हाल के परिणाम</string>
+    <string name="mock_no_results_yet">अभी तक कोई मॉक टेस्ट नहीं दिया गया।</string>
+    <string name="mock_result_line">%1$s · %3$s में से %2$s · %4$s%%</string>
+    <string name="mock_view_result">देखें</string>
+    <string name="mock_timed_out_badge">समय समाप्त</string>
+    <string name="mock_manual_badge">जमा किया</string>
+    <string name="cd_mock_result_row">%1$s, स्कोर %2$s प्रतिशत, %4$s में से %3$s सही</string>
+
+    <!-- Mock tests: instructions -->
+    <string name="mock_instructions_title">शुरू करने से पहले</string>
+    <string name="mock_instructions_body">नियम ध्यान से पढ़ें। "टेस्ट शुरू करें" दबाते ही घड़ी शुरू हो जाती है और उसे रोका नहीं जा सकता।</string>
+    <string name="mock_instructions_negative">इसमें नकारात्मक अंकन है। ग़लत उत्तर पर अंक कटते हैं, इसलिए हर प्रश्न में अनुमान लगाने से बेहतर है कि कुछ छोड़ दें।</string>
+    <string name="mock_instructions_palette">प्रश्न पैलेट से किसी भी प्रश्न पर सीधे जाएँ, उसे समीक्षा के लिए चिह्नित करें और बाद में लौटें।</string>
+    <string name="mock_instructions_timeout">समय समाप्त होने पर टेस्ट अपने आप जमा हो जाता है।</string>
+    <string name="mock_instructions_confirm">समझ गया, टेस्ट शुरू करें</string>
+    <string name="mock_instructions_cancel">अभी नहीं</string>
+
+    <!-- Mock tests: exam -->
+    <string name="mock_exam_counter">प्रश्न %2$d में से %1$d</string>
+    <string name="mock_timer_value">%1$02d:%2$02d</string>
+    <string name="cd_mock_timer">शेष समय, %1$d मिनट %2$d सेकंड</string>
+    <string name="mock_mark_review">समीक्षा के लिए चिह्नित करें</string>
+    <string name="mock_unmark_review">चिह्न हटाएँ</string>
+    <string name="mock_clear_response">उत्तर मिटाएँ</string>
+    <string name="mock_palette_title">प्रश्न पैलेट</string>
+    <string name="mock_palette_legend">स्थितियाँ: नहीं देखा, देखा, उत्तर दिया, समीक्षा हेतु चिह्नित, उत्तर दिया और चिह्नित।</string>
+    <string name="mock_palette_toggle">प्रश्न पैलेट दिखाएँ</string>
+    <string name="mock_palette_close">प्रश्न पैलेट बंद करें</string>
+    <string name="mock_submit_test">टेस्ट जमा करें</string>
+    <string name="mock_palette_state_not_visited">नहीं देखा गया</string>
+    <string name="mock_palette_state_visited">देखा, उत्तर नहीं दिया</string>
+    <string name="mock_palette_state_answered">उत्तर दिया</string>
+    <string name="mock_palette_state_review">समीक्षा हेतु चिह्नित</string>
+    <string name="mock_palette_state_answered_review">उत्तर दिया और चिह्नित</string>
+    <string name="cd_mock_palette_cell">प्रश्न %1$d, %2$s</string>
+    <string name="mock_review_marked_badge">चिह्नित</string>
+
+    <!-- Mock tests: submit confirmation -->
+    <string name="mock_submit_dialog_title">टेस्ट जमा करें?</string>
+    <string name="mock_submit_dialog_body">आपने %2$d में से %1$d प्रश्नों के उत्तर दिए हैं और %3$d को समीक्षा हेतु चिह्नित किया है।</string>
+    <string name="mock_submit_dialog_submit">अभी जमा करें</string>
+    <string name="mock_submit_dialog_back">टेस्ट पर लौटें</string>
+
+    <!-- Mock tests: results -->
+    <string name="mock_results_title">टेस्ट पूरा हुआ</string>
+    <string name="mock_results_timed_out_note">समय समाप्त हो गया, इसलिए पत्र अपने आप जमा कर दिया गया।</string>
+    <string name="mock_results_manually_submitted_note">समय समाप्त होने से पहले आपने पत्र जमा कर दिया।</string>
+    <string name="mock_result_total">प्रश्न</string>
+    <string name="mock_result_attempted">उत्तर दिए</string>
+    <string name="mock_result_correct">सही</string>
+    <string name="mock_result_incorrect">ग़लत</string>
+    <string name="mock_result_unanswered">बिना उत्तर</string>
+    <string name="mock_result_review">समीक्षा हेतु चिह्नित</string>
+    <string name="mock_result_score">आपका स्कोर</string>
+    <string name="mock_result_max_marks">अधिकतम अंक</string>
+    <string name="mock_result_accuracy">शुद्धता (उत्तर दिए गए में)</string>
+    <string name="mock_result_percentage">प्रतिशत स्कोर (अधिकतम में)</string>
+    <string name="mock_result_time_taken">लगा समय</string>
+    <string name="mock_result_time_value">%1$d मिनट %2$d सेकंड</string>
+    <string name="mock_result_time_value_seconds">%1$d सेकंड</string>
+    <string name="mock_result_review_all">सभी उत्तर देखें</string>
+    <string name="mock_result_retry">फिर से टेस्ट दें</string>
+    <string name="mock_result_return">मॉक टेस्ट पर लौटें</string>
+    <string name="mock_score_value">%1$s / %2$s</string>
+    <string name="mock_percent_value">%1$d%%</string>
+    <string name="cd_mock_score_summary">%2$s में से %1$s अंक। शुद्धता %3$d प्रतिशत। प्रतिशत स्कोर %4$d प्रतिशत।</string>
+
+    <!-- Mock tests: review -->
+    <string name="mock_review_title">उत्तर समीक्षा</string>
+    <string name="mock_review_your_answer">आपका उत्तर: %1$s</string>
+    <string name="mock_review_not_answered">आपने इस प्रश्न का उत्तर नहीं दिया।</string>
+    <string name="mock_status_correct">सही</string>
+    <string name="mock_status_your_answer">आपने यही चुना</string>
+    <string name="mock_review_explanation">व्याख्या</string>
+    <string name="mock_review_back">परिणाम पर लौटें</string>
+
+    <!-- Mock tests: recovery and errors -->
+    <string name="mock_restore_corrupt">सहेजा गया टेस्ट पढ़ा नहीं जा सका, इसलिए उसे हटा दिया गया। नया टेस्ट शुरू करना सुरक्षित है।</string>
+    <string name="mock_restore_unknown_test">सहेजे गए टेस्ट का पत्र अब उपलब्ध नहीं है, इसलिए उसे हटा दिया गया।</string>
+    <string name="mock_restore_missing_questions">सहेजे गए टेस्ट के कुछ प्रश्न अब उपलब्ध नहीं हैं, इसलिए उसे हटा दिया गया।</string>
+    <string name="mock_restore_recovered">ऐप बंद रहने के दौरान समय समाप्त हो गया, इसलिए आपका सहेजा पत्र अपने आप जमा कर दिया गया।</string>
+    <string name="mock_restore_ok">ठीक है</string>
+    <string name="mock_no_questions">इस टेस्ट में कोई प्रश्न उपलब्ध नहीं है।</string>
+
+    <!-- ===== चरण 5: XP, स्ट्रीक, दैनिक लक्ष्य, उपलब्धियां ===== -->
+    <string name="gam_section_title">आपकी प्रगति</string>
+    <string name="gam_section_subtitle">आपने जो पूरा किया उससे XP, स्ट्रीक और दैनिक लक्ष्य।</string>
+
+    <string name="gam_total_xp">कुल XP</string>
+    <string name="gam_streak_current">वर्तमान स्ट्रीक</string>
+    <string name="gam_daily_goal">दैनिक प्रश्न लक्ष्य</string>
+    <string name="gam_daily_goal_progress">आज %2$d में से %1$d प्रश्न</string>
+    <string name="gam_daily_goal_reached">दैनिक लक्ष्य पूरा हुआ। बहुत बढ़िया!</string>
+    <string name="gam_daily_goal_progress_a11y">आज का लक्ष्य: %2$d में से %1$d प्रश्नों के उत्तर दिए</string>
+    <string name="gam_goal_picker_title">अपना दैनिक लक्ष्य चुनें</string>
+    <string name="gam_goal_option">प्रतिदिन %1$d प्रश्न</string>
+
+    <string name="gam_streak_none">आज से स्ट्रीक शुरू करें</string>
+    <string name="gam_streak_at_risk">स्ट्रीक बनाए रखने के लिए आज कुछ पूरा करें</string>
+    <string name="gam_streak_explainer">दिन तब गिना जाता है जब आप कोई पाठ पूरा करें, कम से कम पांच प्रश्नों के उत्तर दें, या मॉक टेस्ट पूरा करें।</string>
+    <string name="gam_streak_longest_value">अब तक सर्वश्रेष्ठ: %1$d</string>
+
+
+    <string name="gam_shortcut_continue">सीखना जारी रखें</string>
+    <string name="gam_shortcut_practice">टॉपिक प्रैक्टिस</string>
+    <string name="gam_shortcut_mock">मॉक टेस्ट</string>
+    <string name="gam_shortcut_achievements">उपलब्धियां</string>
+
+    <!-- उपलब्धियां स्क्रीन -->
+    <string name="achievements_title">उपलब्धियां</string>
+    <string name="achievements_subtitle">%2$d में से %1$d अनलॉक</string>
+    <string name="achievements_empty">अभी कोई उपलब्धि नहीं। शुरू करने के लिए कुछ सीखें।</string>
+    <string name="achievements_locked">लॉक</string>
+    <string name="achievements_unlocked_on">%1$s को अनलॉक हुआ</string>
+    <string name="achievements_progress_a11y">%1$s: %2$s, %4$d में से %3$d</string>
+
+    <string name="achievement_first_steps_title">पहला कदम</string>
+    <string name="achievement_first_steps_description">अपना पहला पाठ पूरा करें।</string>
+    <string name="achievement_first_steps_badge">शुरुआती</string>
+
+    <string name="achievement_curious_learner_title">जिज्ञासु शिक्षार्थी</string>
+    <string name="achievement_curious_learner_description">10 अलग-अलग प्रश्नों के उत्तर दें।</string>
+    <string name="achievement_curious_learner_badge">खोजी</string>
+
+    <string name="achievement_practice_pro_title">प्रैक्टिस प्रो</string>
+    <string name="achievement_practice_pro_description">50 अलग-अलग प्रश्नों के उत्तर दें।</string>
+    <string name="achievement_practice_pro_badge">अभ्यासी</string>
+
+    <string name="achievement_century_club_title">सेंचुरी क्लब</string>
+    <string name="achievement_century_club_description">100 अलग-अलग प्रश्नों के उत्तर दें।</string>
+    <string name="achievement_century_club_badge">सेंचुरियन</string>
+
+    <string name="achievement_three_day_streak_title">तीन दिन की स्ट्रीक</string>
+    <string name="achievement_three_day_streak_description">3 दिन की स्ट्रीक बनाए रखें।</string>
+    <string name="achievement_three_day_streak_badge">नियमित</string>
+
+    <string name="achievement_seven_day_streak_title">सात दिन की स्ट्रीक</string>
+    <string name="achievement_seven_day_streak_description">7 दिन की स्ट्रीक बनाए रखें।</string>
+    <string name="achievement_seven_day_streak_badge">अटूट</string>
+
+    <string name="achievement_goal_getter_title">लक्ष्य हासिल करने वाला</string>
+    <string name="achievement_goal_getter_description">किसी दिन अपना दैनिक प्रश्न लक्ष्य पूरा करें।</string>
+    <string name="achievement_goal_getter_badge">लक्ष्य पर</string>
+
+    <string name="achievement_mock_test_starter_title">मॉक टेस्ट शुरुआती</string>
+    <string name="achievement_mock_test_starter_description">अपना पहला मॉक टेस्ट पूरा करें।</string>
+    <string name="achievement_mock_test_starter_badge">परीक्षार्थी</string>
+
+    <string name="achievement_perfect_practice_title">परफेक्ट प्रैक्टिस</string>
+    <string name="achievement_perfect_practice_description">टॉपिक प्रैक्टिस सत्र में हर प्रश्न का सही उत्तर दें।</string>
+    <string name="achievement_perfect_practice_badge">त्रुटिहीन</string>
+
+    <string name="achievement_dedicated_learner_title">समर्पित शिक्षार्थी</string>
+    <string name="achievement_dedicated_learner_description">10 पाठ पूरे करें।</string>
+    <string name="achievement_dedicated_learner_badge">विद्वान</string>
+
+    <string name="gam_total_xp_value">%1$d</string>
+    <string name="gam_streak_zero">—</string>
+    <string name="gam_achievements_short">%1$d/%2$d</string>
+    <string name="gam_streak_achievements_label">उपलब्धियां</string>
+    <plurals name="gam_streak_days">
+        <item quantity="one">%1$d दिन</item>
+        <item quantity="other">%1$d दिन</item>
+    </plurals>
+    <string name="gam_shortcuts_title">यहां जाएं</string>
+    <string name="gam_shortcut_go">जाएं</string>
+    <string name="gam_xp_earned_generic">+%1$d XP अर्जित</string>
+    <string name="gam_achievements_unlocked_header">उपलब्धि अनलॉक हुई</string>
+    <!-- ==== BEGIN GENERATED LESSON PROSE (Phase 6) ==== -->
+    <string name="l04_b1_body" formatted="false">प्रतिशत केवल 100 से गुणी की गई दशमलव होती है। चूँकि 1 = 100/100, दशमलव को प्रतिशत में बदलना वही क्रिया है जैसे मीटर को सेंटीमीटर में बदलना: 100 से गुणा करना। इस पाठ में आप दशमलव बिंदु को दो स्थान दाएँ खिसकाना सीखेंगे, और यह भी जानेंगे कि 1 से बड़े दशमलव से 100% से बड़ा प्रतिशत कैसे बनता है।</string>
+    <string name="l04_b1_title" formatted="false">दशमलव को प्रतिशत में बदलें</string>
+    <string name="l04_b2_b1" formatted="false">0.45 -&gt; 0.45 x 100 -&gt; 45</string>
+    <string name="l04_b2_b2" formatted="false">0.07 -&gt; 0.07 x 100 -&gt; 7</string>
+    <string name="l04_b2_b3" formatted="false">0.9 -&gt; 0.9 x 100 -&gt; 90 (एक अंक, इसलिए शून्य जोड़ें)</string>
+    <string name="l04_b2_b4" formatted="false">0.06 -&gt; 6</string>
+    <string name="l04_b2_body" formatted="false">100 से गुणा करने पर दशमलव बिंदु दो स्थान दाएँ चला जाता है। आप बिंदु को हिला सकते हैं, या खिसका हुआ नंबर लिख सकते हैं। दोनों तरीकों से उत्तर वही आता है। यदि बिंदु के बाद केवल एक अंक हो, तो एक शून्य जोड़ दें ताकि दो स्थान खिसकें।</string>
+    <string name="l04_b2_title" formatted="false">नियम: दो स्थान दाएँ खिसकाएँ</string>
+    <string name="l04_b3_caption" formatted="false">यह समतुल्य रूप से: दशमलव बिंदु को दो स्थान दाएँ खिसकाएँ।</string>
+    <string name="l04_b3_formula" formatted="false">प्रतिशत = दशमलव x 100</string>
+    <string name="l04_b4_body" formatted="false">100% से बड़ा प्रतिशत कोई त्रुटि नहीं है। इसका अर्थ बस यह है कि भाग, जिसका माप लिया जा रहा है, उस पूरे से बड़ा है। दशमलव 1.25 अंक पूरे अंक के 125% के बराबर है, और जो मात्रा अपने शुरुआती आकार की 2.5 गुनी हो गई, वह 250% है। नियम वही रहता है; केवल संख्या बड़ी होती है।</string>
+    <string name="l04_b4_title" formatted="false">1 से बड़े दशमलव से 100% से बड़ा प्रतिशत</string>
+    <string name="l04_b5_s1_prompt" formatted="false">दशमलव लिखें</string>
+    <string name="l04_b5_s1_result" formatted="false">0.23</string>
+    <string name="l04_b5_s2_prompt" formatted="false">100 से गुणा करें</string>
+    <string name="l04_b5_s2_result" formatted="false">0.23 x 100 = 23</string>
+    <string name="l04_b5_s3_prompt" formatted="false">उत्तर</string>
+    <string name="l04_b5_s3_result" formatted="false">23%</string>
+    <string name="l04_b5_title" formatted="false">उदाहरण: 0.23 को प्रतिशत में</string>
+    <string name="l04_b6_s1_prompt" formatted="false">दशमलव लिखें</string>
+    <string name="l04_b6_s1_result" formatted="false">2.5</string>
+    <string name="l04_b6_s2_prompt" formatted="false">100 से गुणा करें</string>
+    <string name="l04_b6_s2_result" formatted="false">2.5 x 100 = 250</string>
+    <string name="l04_b6_s3_prompt" formatted="false">उत्तर</string>
+    <string name="l04_b6_s3_result" formatted="false">250%, यानी पूरे का 2.5 गुना</string>
+    <string name="l04_b6_title" formatted="false">उदाहरण: 2.5 को प्रतिशत में</string>
+    <string name="l04_b7_body" formatted="false">दशमलव बिंदु को बाएँ खिसकाना 100 से भाग करता है और 0.45 को 4.5% बना देता है। यह प्रतिशत से दशमलव में बदलने का काम उल्टी दिशा में करना है। याद रखें कि आप किस दिशा में जा रहे हैं: प्रतिशत की ओर संख्या बड़ी होती है, इसलिए बिंदु दाएँ जाता है।</string>
+    <string name="l04_b7_title" formatted="false">गलत दिशा में खिसकाना</string>
+    <string name="l04_b8_answer" formatted="false">0.8 x 100 = 80%, और 0.035 x 100 = 3.5%।</string>
+    <string name="l04_b8_body" formatted="false">0.8 को प्रतिशत में बदलें, फिर 0.035 को प्रतिशत में बदलें।</string>
+    <string name="l04_b8_title" formatted="false">ज्ञान परीक्षण</string>
+    <string name="l04_b9_b1" formatted="false">दशमलव को प्रतिशत में बदलने के लिए 100 से गुणा करें, जिससे बिंदु दो स्थान दाएँ खिसकता है।</string>
+    <string name="l04_b9_b2" formatted="false">1 से छोटे दशमलव 100% से छोटा प्रतिशत देते हैं; 1 से बड़े दशमलव 100% से बड़ा प्रतिशत देते हैं।</string>
+    <string name="l04_b9_b3" formatted="false">यदि बिंदु के बाद केवल एक अंक हो, तो खिसकाने से पहले एक शून्य जोड़ें।</string>
+    <string name="l04_b9_title" formatted="false">सारांश</string>
+    <string name="l05_b10_b1" formatted="false">भाग = (p / 100) x संख्या। पहले बदलें, फिर गुणा करें।</string>
+    <string name="l05_b10_b2" formatted="false">किसी संख्या का 1% वही संख्या दो स्थान बाएँ खिसककर है; फिर प्रतिशत से गुणा करें।</string>
+    <string name="l05_b10_b3" formatted="false">100% से कम प्रतिशत का उत्तर मूल संख्या से कम होना चाहिए।</string>
+    <string name="l05_b10_title" formatted="false">सारांश</string>
+    <string name="l05_b1_body" formatted="false">यह अभिरुचि प्रश्नों में सबसे अधिक प्रयोग होने वाला प्रतिशत क्रियाविधि है। विचार यह है कि प्रतिशत 100 का एक भिन्न होता है, इसलिए किसी संख्या का p% निकालने के लिए p% को दशमलव में बदलें, गुणा करें और उत्तर पढ़ें। आप 1% विधि भी सीखेंगे, जो कई प्रश्नों को एक-चरणीय मानक हिसाब से बदल देती है।</string>
+    <string name="l05_b1_title" formatted="false">किसी भी संख्या का प्रतिशत ज्ञात करें</string>
+    <string name="l05_b2_b1" formatted="false">बदलें: 15% = 15/100 = 3/20</string>
+    <string name="l05_b2_b2" formatted="false">गुणा करें: 200 x 15 = 3000</string>
+    <string name="l05_b2_b3" formatted="false">100 से भाग दें: 3000 / 100 = 30</string>
+    <string name="l05_b2_body" formatted="false">प्रतिशत को 100 के ऊपर भिन्न के रूप में लिखें, संख्या से गुणा करें, फिर 100 से भाग दें। यदि आप पहले प्रश्न में उपलब्ध किसी पद से 100 का निरसन कर सकें, तो भाग पूरी तरह समाप्त हो जाता है और एक ही गुणा शेष रहता है।</string>
+    <string name="l05_b2_title" formatted="false">तीन-चरणीय विधि</string>
+    <string name="l05_b3_caption" formatted="false">समतुल्य रूप से: भाग = संख्या x p, फिर दशमलव बिंदु दो स्थान बाएँ खिसकाएँ।</string>
+    <string name="l05_b3_formula" formatted="false">भाग = (p / 100) x संख्या</string>
+    <string name="l05_b4_body" formatted="false">एक प्रतिशत एक सौवाँ भाग होता है, इसलिए किसी संख्या का 1% वही संख्या होता है जिसका दशमलव बिंदु दो स्थान बाएँ खिसका हो। 1% जान लेने पर कोई भी पूर्णांक प्रतिशत उसका गुणा है: 6% यानी 1% का छह गुना। यह तब सबसे तेज़ तरीका है जब प्रतिशत छोटा पूर्णांक हो, और अभिरुचि प्रश्न-पत्र प्रायः ऐसा ही देते हैं।</string>
+    <string name="l05_b4_title" formatted="false">1% विधि</string>
+    <string name="l05_b5_s1_prompt" formatted="false">प्रतिशत बदलें</string>
+    <string name="l05_b5_s1_result" formatted="false">15% = 0.15</string>
+    <string name="l05_b5_s2_prompt" formatted="false">संख्या से गुणा करें</string>
+    <string name="l05_b5_s2_result" formatted="false">30</string>
+    <string name="l05_b5_s3_prompt" formatted="false">उत्तर</string>
+    <string name="l05_b5_s3_result" formatted="false">30</string>
+    <string name="l05_b5_title" formatted="false">उदाहरण: 200 का 15%</string>
+    <string name="l05_b6_s1_prompt" formatted="false">1% निकालें</string>
+    <string name="l05_b6_s1_result" formatted="false">45</string>
+    <string name="l05_b6_s2_prompt" formatted="false">6 से गुणा करें</string>
+    <string name="l05_b6_s2_result" formatted="false">270</string>
+    <string name="l05_b6_s3_prompt" formatted="false">उत्तर</string>
+    <string name="l05_b6_s3_result" formatted="false">270</string>
+    <string name="l05_b6_title" formatted="false">उदाहरण: 4500 का 6%, 1% विधि से</string>
+    <string name="l05_b7_s1_prompt" formatted="false">प्रतिशत बदलें</string>
+    <string name="l05_b7_s1_result" formatted="false">7.5% = 0.075</string>
+    <string name="l05_b7_s2_prompt" formatted="false">संख्या से गुणा करें</string>
+    <string name="l05_b7_s2_result" formatted="false">30</string>
+    <string name="l05_b7_s3_prompt" formatted="false">उत्तर</string>
+    <string name="l05_b7_s3_result" formatted="false">7.5% is exactly one fifteenth of 400</string>
+    <string name="l05_b7_title" formatted="false">उदाहरण: 400 का 7.5%</string>
+    <string name="l05_b8_body" formatted="false">200 का 15% 30 है, 150 नहीं। संख्या 150, 200 का 75% है, क्योंकि वह उसका तीन चौथाई है। जब प्रतिशत 100% से कम हो तो हमेशा जाँचें कि आपका उत्तर मूल संख्या से छोटा है; यदि वह बड़ा है, तो आपने भाग निकालने के बजाय गुणा कर दिया है।</string>
+    <string name="l05_b8_title" formatted="false">गलत संख्या का प्रतिशत लेना</string>
+    <string name="l05_b9_answer" formatted="false">350 का 1% = 3.5, इसलिए 12% = 3.5 x 12 = 42।</string>
+    <string name="l05_b9_body" formatted="false">1% विधि से 350 का 12% निकालें।</string>
+    <string name="l05_b9_title" formatted="false">ज्ञान परीक्षण</string>
+    <string name="l06_b1_body" formatted="false">जब आपको एक भाग और वह प्रतिशत ज्ञात हो, तो आपसे पूछा जा रहा है कि पूरा क्या था। यह क्रिया पिछले पाठ की ठीक विपरीत है: गुणा करने के बजाय प्रतिशत से भाग दें। हर \'किसका कितने प्रतिशत\' और हर \'मूल क्या था\' प्रश्न के पीछे यही क्रिया होती है।</string>
+    <string name="l06_b1_title" formatted="false">मूल मान तक पीछे जाएँ</string>
+    <string name="l06_b2_body" formatted="false">प्रतिशत को दशमलव में बदलें, फिर भाग को उस दशमलव से भाग दें। चूँकि गुणा और भाग एक दूसरे को पूरा करते हैं, आप उत्तर को उसी प्रतिशत से वापस गुणा करके हमेशा जाँच सकते हैं। यदि गुणनफल मूल भाग नहीं है, तो कहीं हिसाब गड़बड़ है।</string>
+    <string name="l06_b2_title" formatted="false">विधि, और उसे सिद्ध करने वाली जाँच</string>
+    <string name="l06_b3_caption" formatted="false">पूरे को p% से गुणा करके जाँचें कि भाग वापस मिलता है।</string>
+    <string name="l06_b3_formula" formatted="false">पूरा = भाग / (p / 100)</string>
+    <string name="l06_b4_s1_prompt" formatted="false">प्रतिशत बदलें</string>
+    <string name="l06_b4_s1_result" formatted="false">15% = 0.15</string>
+    <string name="l06_b4_s2_prompt" formatted="false">भाग को इससे भाग दें</string>
+    <string name="l06_b4_s2_result" formatted="false">200</string>
+    <string name="l06_b4_s3_prompt" formatted="false">वापस गुणा करके जाँचें</string>
+    <string name="l06_b4_s3_result" formatted="false">30, which matches</string>
+    <string name="l06_b4_title" formatted="false">उदाहरण: 30, किसका 15% है?</string>
+    <string name="l06_b5_s1_prompt" formatted="false">प्रतिशत बदलें</string>
+    <string name="l06_b5_s1_result" formatted="false">25% = 0.25</string>
+    <string name="l06_b5_s2_prompt" formatted="false">भाग को इससे भाग दें</string>
+    <string name="l06_b5_s2_result" formatted="false">180</string>
+    <string name="l06_b5_s3_prompt" formatted="false">वापस गुणा करके जाँचें</string>
+    <string name="l06_b5_s3_result" formatted="false">45, which matches</string>
+    <string name="l06_b5_title" formatted="false">उदाहरण: 45, किसका 25% है?</string>
+    <string name="l06_b6_s1_prompt" formatted="false">भाग को भिन्न के रूप में लिखें</string>
+    <string name="l06_b6_s1_result" formatted="false">45 x 100 / 25</string>
+    <string name="l06_b6_s2_prompt" formatted="false">निरसन करें</string>
+    <string name="l06_b6_s2_result" formatted="false">4</string>
+    <string name="l06_b6_s3_prompt" formatted="false">उत्तर</string>
+    <string name="l06_b6_s3_result" formatted="false">180, with no decimal needed</string>
+    <string name="l06_b6_title" formatted="false">उदाहरण: भाग से पहले निरसन</string>
+    <string name="l06_b7_body" formatted="false">यदि 30, पूरे का 15% है, तो पूरा 30 से बड़ा होना चाहिए, क्योंकि 30 उसका केवल एक भाग है। कोई भी विधि जो दिए गए भाग से छोटी संख्या दे, वह गलत है। जब प्रतिशत 100% से कम हो, तो भाग करना हमेशा आपको ऊपर ले जाता है।</string>
+    <string name="l06_b7_title" formatted="false">गुणा करना, भाग न करना</string>
+    <string name="l06_b8_answer" formatted="false">84 / 0.12 = 700। जाँच: 700 x 0.12 = 84।</string>
+    <string name="l06_b8_body" formatted="false">84 किस संख्या का 12% है?</string>
+    <string name="l06_b8_title" formatted="false">ज्ञान परीक्षण</string>
+    <string name="l06_b9_b1" formatted="false">पूरा = भाग / (p / 100)। यह संख्या का प्रतिशत निकालने की विपरीत क्रिया है।</string>
+    <string name="l06_b9_b2" formatted="false">उत्तर जाँचने के लिए हमेशा वापस गुणा करें।</string>
+    <string name="l06_b9_b3" formatted="false">p के किसी गुणनखंड के साथ 100 का निरसन करने से भाग एक गुणा बन जाता है।</string>
+    <string name="l06_b9_title" formatted="false">सारांश</string>
+    <string name="l07_b10_b1" formatted="false">प्रतिशत हमेशा शुरुआती मान पर ही निकाला जाता है।</string>
+    <string name="l07_b10_b2" formatted="false">वृद्धि के लिए नया मान = मान x (1 + p/100), कमी के लिए मान x (1 - p/100)।</string>
+    <string name="l07_b10_b3" formatted="false">गिरावट और उसे पूरा करने वाली वृद्धि अलग आधार पर मापी जाती हैं, इसलिए बराबर नहीं होतीं।</string>
+    <string name="l07_b10_title" formatted="false">सारांश</string>
+    <string name="l07_b1_body" formatted="false">जब कोई मूल्य, वेतन या जनसंख्या प्रतिशत में बढ़ती है, तो प्रतिशत हमेशा शुरुआती मान का होता है। इसी एक नियम से इस विषय की अधिकांश त्रुटियाँ होती हैं। आप यह भी सीखेंगे कि 50% की कमी की भरपाई के लिए 50% से अधिक वृद्धि क्यों चाहिए, और यही विचार परीक्षक बार-बार पूछते हैं।</string>
+    <string name="l07_b1_title" formatted="false">वृद्धि और ह्रास, और किस आधार का उपयोग करें</string>
+    <string name="l07_b2_body" formatted="false">प्रतिशत परिवर्तन का वर्णन करता है, और परिवर्तन मापा जाता है उस मात्रा के शुरुआती मूल्य के सापेक्ष। इसलिए 250 पर 20% वृद्धि में जो जुड़ेगा, वह 250 का 20% निकालकर 250 में जोड़ना है। नए मान का 20% निकालने से अलग और गलत उत्तर आएगा।</string>
+    <string name="l07_b2_title" formatted="false">प्रतिशत हमेशा मूल का लें</string>
+    <string name="l07_b3_caption" formatted="false">ह्रास के लिए 1 - p/100 का प्रयोग करें।</string>
+    <string name="l07_b3_formula" formatted="false">परिवर्तन = मान x (p / 100) नया मान = मान x (1 + p / 100)</string>
+    <string name="l07_b4_s1_prompt" formatted="false">परिवर्तन निकालें: 250 का 20%</string>
+    <string name="l07_b4_s1_result" formatted="false">50</string>
+    <string name="l07_b4_s2_prompt" formatted="false">इसे मूल में जोड़ें</string>
+    <string name="l07_b4_s2_result" formatted="false">300</string>
+    <string name="l07_b4_s3_prompt" formatted="false">गुणक से जाँचें</string>
+    <string name="l07_b4_s3_result" formatted="false">300</string>
+    <string name="l07_b4_title" formatted="false">उदाहरण: 250 में 20% वृद्धि</string>
+    <string name="l07_b5_s1_prompt" formatted="false">कमी निकालें: 80 का 15%</string>
+    <string name="l07_b5_s1_result" formatted="false">12</string>
+    <string name="l07_b5_s2_prompt" formatted="false">इसे मूल से घटाएँ</string>
+    <string name="l07_b5_s2_result" formatted="false">68</string>
+    <string name="l07_b5_s3_prompt" formatted="false">गुणक से जाँचें</string>
+    <string name="l07_b5_s3_result" formatted="false">68</string>
+    <string name="l07_b5_title" formatted="false">उदाहरण: 80 में 15% की कमी</string>
+    <string name="l07_b6_body" formatted="false">200 से 50% गिरने पर आप 100 पर पहुँचते हैं, जो मूल का आधा है। 200 पर लौटने के लिए अब 100 के आधार पर 100 बढ़ाना होगा, यानी 100% वृद्धि, 50% नहीं। हानि और भरपाई अलग-अलग आधार पर मापी जाती हैं, इसलिए दोनों शून्य होने पर ही वे रद्द हो सकती हैं।</string>
+    <string name="l07_b6_title" formatted="false">गिरावट और वृद्धि सममित क्यों नहीं हैं</string>
+    <string name="l07_b7_s1_prompt" formatted="false">200 से शुरू करें और 50% गिरावट लगाएँ</string>
+    <string name="l07_b7_s1_result" formatted="false">100</string>
+    <string name="l07_b7_s2_prompt" formatted="false">भरपाई नए आधार पर मापी जाती है</string>
+    <string name="l07_b7_s2_result" formatted="false">+100 to return to 200</string>
+    <string name="l07_b7_s3_prompt" formatted="false">आवश्यक वृद्धि</string>
+    <string name="l07_b7_s3_result" formatted="false">100%, not 50%</string>
+    <string name="l07_b7_title" formatted="false">उदाहरण: गिरावट से उबरना</string>
+    <string name="l07_b8_body" formatted="false">250 पर 20% वृद्धि में, 300 का 20% निकालने पर 60 मिलता है और उत्तर 310। यह गलत है क्योंकि 300 वही मान है जिसे आप खोज रहे हैं, वह नहीं जिससे आपने शुरू किया। जब प्रश्न शुरुआती मान और प्रतिशत दोनों दे, तो आधार शुरुआती मान ही होता है।</string>
+    <string name="l07_b8_title" formatted="false">नए मान पर प्रतिशत लगाना</string>
+    <string name="l07_b9_answer" formatted="false">400 - 100 = 300। वापस पाने के लिए 100 / 300 x 100 = 33.33% (लगभग 33.33%, यानी एक तिहाई)।</string>
+    <string name="l07_b9_body" formatted="false">एक मात्रा 400 से 25% घटती है। नया मान क्या है, और नए मान पर कितनी वृद्धि उसे 400 पर लौटा देगी?</string>
+    <string name="l07_b9_title" formatted="false">ज्ञान परीक्षण</string>
+    <string name="l08_b10_b1" formatted="false">हर परिवर्तन मौजूदा मान को गुणा करता है, मूल को नहीं।</string>
+    <string name="l08_b10_b2" formatted="false">गुणकों को जोड़ें, फिर 1 घटाकर शुद्ध दशमलव परिवर्तन पाएँ।</string>
+    <string name="l08_b10_b3" formatted="false">a% वृद्धि के बाद b% कमी से शुद्ध मान a - b - ab/100 आता है।</string>
+    <string name="l08_b10_title" formatted="false">सारांश</string>
+    <string name="l08_b1_body" formatted="false">जब कोई मूल्य 10% बढ़ता है और फिर 20% बढ़ता है, तो दूसरा परिवर्तन मूल मूल्य पर नहीं, पहले परिवर्तन के बाद के मूल्य पर लागू होता है। इस पाठ में एक सूत्र दिया गया है जो दो-चरणीय गणना किए बिना शुद्ध प्रभाव बता देता है, और इसी से ये प्रश्न तेज़ होते हैं।</string>
+    <string name="l08_b1_title" formatted="false">लगातार दो परिवर्तन</string>
+    <string name="l08_b2_body" formatted="false">हर परिवर्तन मौजूदा मान को 1 से थोड़ा ऊपर या नीचे की संख्या से गुणा करता है। 10% वृद्धि 1.10 से गुणा करती है, 20% कमी 0.80 से। गुणकों को जोड़ने से कुल गुणक मिलता है, और उसमें से 1 घटाने पर शुद्ध प्रतिशत परिवर्तन मिलता है।</string>
+    <string name="l08_b2_title" formatted="false">गुणक बनाएँ</string>
+    <string name="l08_b3_caption" formatted="false">a% वृद्धि के बाद b% कमी के लिए: शुद्ध % = a - b - (a x b / 100)।</string>
+    <string name="l08_b3_formula" formatted="false">शुद्ध % = (गुणक1 x गुणक2 - 1) x 100</string>
+    <string name="l08_b4_s1_prompt" formatted="false">चरण 1: 100 में 10% वृद्धि</string>
+    <string name="l08_b4_s1_result" formatted="false">110</string>
+    <string name="l08_b4_s2_prompt" formatted="false">चरण 2: परिणाम में 20% वृद्धि</string>
+    <string name="l08_b4_s2_result" formatted="false">132</string>
+    <string name="l08_b4_s3_prompt" formatted="false">शुद्ध परिवर्तन</string>
+    <string name="l08_b4_s3_result" formatted="false">+32%</string>
+    <string name="l08_b4_s4_prompt" formatted="false">सूत्र से जाँचें</string>
+    <string name="l08_b4_s4_result" formatted="false">0.32, so +32%</string>
+    <string name="l08_b4_title" formatted="false">उदाहरण: +10% फिर +20%</string>
+    <string name="l08_b5_s1_prompt" formatted="false">चरण 1: 100 में 10% वृद्धि</string>
+    <string name="l08_b5_s1_result" formatted="false">110</string>
+    <string name="l08_b5_s2_prompt" formatted="false">चरण 2: 110 में 10% की कमी</string>
+    <string name="l08_b5_s2_result" formatted="false">11, so 110 - 11 = 99</string>
+    <string name="l08_b5_s3_prompt" formatted="false">शुद्ध परिवर्तन</string>
+    <string name="l08_b5_s3_result" formatted="false">-1, so -1%</string>
+    <string name="l08_b5_s4_prompt" formatted="false">सूत्र से जाँचें</string>
+    <string name="l08_b5_s4_result" formatted="false">-1</string>
+    <string name="l08_b5_title" formatted="false">उदाहरण: +10% फिर -10%</string>
+    <string name="l08_b6_body" formatted="false">a% वृद्धि के बाद b% कमी से शुद्ध परिवर्तन a - b - ab/100 आता है। संशोधन पद हमेशा घटाया जाता है, क्योंकि कमी उस आधार पर मापी गई थी जिसे वृद्धि ने पहले ही बढ़ा दिया था। जब a और b बराबर हों, तो शुद्ध परिवर्तन हमेशा ऋणात्मक होता है, चाहे प्रतिशत कितना भी बड़ा हो, और यह एक उपयोगी जाँच है।</string>
+    <string name="l08_b6_title" formatted="false">याद रखने योग्य रूप</string>
+    <string name="l08_b7_s1_prompt" formatted="false">चरण 1: 200 में 50% वृद्धि</string>
+    <string name="l08_b7_s1_result" formatted="false">300</string>
+    <string name="l08_b7_s2_prompt" formatted="false">चरण 2: परिणाम में 50% कमी</string>
+    <string name="l08_b7_s2_result" formatted="false">150</string>
+    <string name="l08_b7_s3_prompt" formatted="false">शुद्ध परिवर्तन</string>
+    <string name="l08_b7_s3_result" formatted="false">-50, so -25%</string>
+    <string name="l08_b7_s4_prompt" formatted="false">सूत्र से जाँचें</string>
+    <string name="l08_b7_s4_result" formatted="false">-25</string>
+    <string name="l08_b7_title" formatted="false">उदाहरण: +50% फिर -50%</string>
+    <string name="l08_b8_body" formatted="false">10% और 20% जोड़ने पर 30% आता है, जबकि सही शुद्ध मान 32% है। अतिरिक्त 2% इसलिए आता है क्योंकि 20% 100 के बजाय 110 पर लगा, इसलिए वह पहली वृद्धि का कुछ भाग भी साथ ले गया। एक परिवर्तन शून्य होने को छोड़कर, हर स्थिति में जोड़ना गलत है।</string>
+    <string name="l08_b8_title" formatted="false">दोनों प्रतिशत जोड़ देना</string>
+    <string name="l08_b9_answer" formatted="false">500 x 0.80 = 400, फिर 400 x 1.25 = 500। शुद्ध परिवर्तन 0%, क्योंकि 25 - 20 - (20 x 25 / 100) = 0।</string>
+    <string name="l08_b9_body" formatted="false">500 का मान 20% घटता है और फिर 25% बढ़ता है। अंतिम मान क्या है, और शुद्ध परिवर्तन क्या?</string>
+    <string name="l08_b9_title" formatted="false">ज्ञान परीक्षण</string>
+    <string name="l09_b10_b1" formatted="false">यदि A, B से p% अधिक है, तो A : B = (100 + p) : 100।</string>
+    <string name="l09_b10_b2" formatted="false">p% कम के लिए अनुपात (100 - p) : 100 है।</string>
+    <string name="l09_b10_b3" formatted="false">तुलनाओं को उभयनिष्ठ मात्रा के सापेक्ष व्यक्त करके और गुणनखंडों को गुणा करके शृंखलाबद्ध करें।</string>
+    <string name="l09_b10_title" formatted="false">सारांश</string>
+    <string name="l09_b1_body" formatted="false">तुलना प्रश्न आम तौर पर कच्ची संख्या नहीं, अनुपात माँगते हैं: यदि A, B से 25% अधिक है, तो A : B क्या है? विधि यह है कि दोनों मात्राओं को 100 के एक ही आधार पर रखें और अनुपात पढ़ लें। यह आ जाने पर तीन या चार मात्राओं तक की शृंखलाबद्ध तुलना भी सामान्य हो जाती है।</string>
+    <string name="l09_b1_title" formatted="false">एक मात्रा दूसरी से कितने प्रतिशत अधिक है?</string>
+    <string name="l09_b2_body" formatted="false">यदि B को 100 मान लिया जाए, तो B से 25% अधिक A 125 होगा। अनुपात सीधे 125 : 100 है। यदि A, B से 20% कम है, तो B को 100 मानने पर A 80 होगा, जो 80 : 100 देता है। हमेशा उस मात्रा को 100 बनाएँ जिसके सापेक्ष प्रतिशत दिया गया है।</string>
+    <string name="l09_b2_title" formatted="false">दोनों को 100 के पैमाने पर रखें</string>
+    <string name="l09_b3_caption" formatted="false">p% कम के लिए (100 - p) : 100 का प्रयोग करें।</string>
+    <string name="l09_b3_formula" formatted="false">यदि A, B से p% अधिक है, तो A : B = (100 + p) : 100</string>
+    <string name="l09_b4_s1_prompt" formatted="false">B को 100 मानें</string>
+    <string name="l09_b4_s1_result" formatted="false">100</string>
+    <string name="l09_b4_s2_prompt" formatted="false">A, B से 25 अधिक है</string>
+    <string name="l09_b4_s2_result" formatted="false">25, so A = 125</string>
+    <string name="l09_b4_s3_prompt" formatted="false">अनुपात लिखें</string>
+    <string name="l09_b4_s3_result" formatted="false">5 : 4</string>
+    <string name="l09_b4_title" formatted="false">उदाहरण: A, B से 25% अधिक है</string>
+    <string name="l09_b5_s1_prompt" formatted="false">B को 100 मानें</string>
+    <string name="l09_b5_s1_result" formatted="false">100</string>
+    <string name="l09_b5_s2_prompt" formatted="false">A, B से 20 कम है</string>
+    <string name="l09_b5_s2_result" formatted="false">80, so A = 80</string>
+    <string name="l09_b5_s3_prompt" formatted="false">अनुपात लिखें</string>
+    <string name="l09_b5_s3_result" formatted="false">4 : 5</string>
+    <string name="l09_b5_title" formatted="false">उदाहरण: A, B से 20% कम है</string>
+    <string name="l09_b6_body" formatted="false">जब B स्वयं C का कोई प्रतिशत है, तो सब कुछ C के रूप में व्यक्त करें और शृंखला एक ही गुणा में समा जाती है। C को 100 मानें, उससे B बनाएँ, फिर B से A बनाएँ। परिणाम सीधे A और C का संबंध बताता है, जो प्रायः ही प्रश्न माँगता है।</string>
+    <string name="l09_b6_title" formatted="false">दो तुलनाओं को जोड़ना</string>
+    <string name="l09_b7_s1_prompt" formatted="false">A, B से 50% अधिक है, और B, C से 20% कम है। C को 100 मानें।</string>
+    <string name="l09_b7_s1_result" formatted="false">100</string>
+    <string name="l09_b7_s2_prompt" formatted="false">C से B बनाएँ</string>
+    <string name="l09_b7_s2_result" formatted="false">80</string>
+    <string name="l09_b7_s3_prompt" formatted="false">B से A बनाएँ</string>
+    <string name="l09_b7_s3_result" formatted="false">120</string>
+    <string name="l09_b7_s4_prompt" formatted="false">A की C से तुलना</string>
+    <string name="l09_b7_s4_result" formatted="false">20, so A is 20% more than C</string>
+    <string name="l09_b7_title" formatted="false">उदाहरण: B से होकर शृंखला</string>
+    <string name="l09_b8_body" formatted="false">यदि A, B से 25% अधिक है, तो A बड़ी मात्रा है और अनुपात में बड़ा पद होना चाहिए। A : B = 4 : 5 लिखना यह दावा करेगा कि A छोटी है, जो प्रश्न के विपरीत है। त्वरित जाँच: प्रतिशत धनात्मक होने पर पहला पद बड़ा महसूस होना चाहिए।</string>
+    <string name="l09_b8_title" formatted="false">अनुपात उलट देना</string>
+    <string name="l09_b9_answer" formatted="false">A : B = 110 : 100 = 11 : 10।</string>
+    <string name="l09_b9_body" formatted="false">यदि A, B से 10% अधिक है, तो A : B को न्यूनतम पूर्णांक पदों में लिखें।</string>
+    <string name="l09_b9_title" formatted="false">ज्ञान परीक्षण</string>
+    <string name="l10_b10_b1" formatted="false">प्रतिशत अंक बिना आधार के घटाव हैं।</string>
+    <string name="l10_b10_b2" formatted="false">प्रतिशत परिवर्तन पहले के मान से भाग देकर निकाला जाता है।</string>
+    <string name="l10_b10_b3" formatted="false">दोनों एक साथ सत्य हो सकते हैं; बताएँ कि आपका कौन-सा अभिप्राय है।</string>
+    <string name="l10_b10_title" formatted="false">सारांश</string>
+    <string name="l10_b1_body" formatted="false">समाचार और परीक्षा दोनों प्रतिशत की बात करते हैं, पर इस शब्द के पीछे दो अलग गणनाएँ हैं। प्रतिशत अंकों में परिवर्तन एक सादा घटाव है। प्रतिशत परिवर्तन एक सापेक्ष बदलाव है जो शुरुआती मान पर मापा जाता है। इन दोनों को मिलाना इस विषय की सबसे आम चुनौतियों में से एक है, इसलिए यह पाठ इस भेद को स्पष्ट करता है।</string>
+    <string name="l10_b1_title" formatted="false">प्रतिशत अंक और प्रतिशत परिवर्तन अलग हैं</string>
+    <string name="l10_b2_body" formatted="false">प्रतिशत अंक एक निरपेक्ष इकाई है। 20% से 25% जाना 5 प्रतिशत अंकों की वृद्धि है, बस इतना ही। प्रतिशत परिवर्तन पूछता है कि मान अपने मूल के कितने भाग से हिला: 20% से 25% में 20 में से 5 की वृद्धि है, जो सापेक्ष रूप से 25% है। प्रतिशत परिवर्तन का आधार पहले का मान है; प्रतिशत-अंक अंतर में कोई आधार होता ही नहीं।</string>
+    <string name="l10_b2_title" formatted="false">दो अलग माप</string>
+    <string name="l10_b3_caption" formatted="false">प्रतिशत परिवर्तन = (नया - पुराना) / पुराना x 100</string>
+    <string name="l10_b3_formula" formatted="false">प्रतिशत अंक = नया % - पुराना %</string>
+    <string name="l10_b4_s1_prompt" formatted="false">प्रतिशत अंकों में</string>
+    <string name="l10_b4_s1_result" formatted="false">5 points</string>
+    <string name="l10_b4_s2_prompt" formatted="false">प्रतिशत परिवर्तन के रूप में</string>
+    <string name="l10_b4_s2_result" formatted="false">25%</string>
+    <string name="l10_b4_s3_prompt" formatted="false">अतः दोनों कथन सत्य हैं, पर वे एक ही तथ्य नहीं हैं</string>
+    <string name="l10_b4_s3_result" formatted="false">25%</string>
+    <string name="l10_b4_title" formatted="false">उदाहरण: 20% से बढ़कर 25%</string>
+    <string name="l10_b5_s1_prompt" formatted="false">प्रतिशत अंकों में</string>
+    <string name="l10_b5_s1_result" formatted="false">-10 points</string>
+    <string name="l10_b5_s2_prompt" formatted="false">प्रतिशत परिवर्तन के रूप में</string>
+    <string name="l10_b5_s2_result" formatted="false">-25%</string>
+    <string name="l10_b5_s3_prompt" formatted="false">गिरावट 10 अंक की है पर 25% की</string>
+    <string name="l10_b5_s3_result" formatted="false">-25%</string>
+    <string name="l10_b5_title" formatted="false">उदाहरण: 40% से घटकर 30%</string>
+    <string name="l10_b6_body" formatted="false">ब्याज दर, कर सीमाएँ, जनमत सर्वेक्षण और उत्तीर्ण अंक सब प्रतिशत अंकों में बताए जाते हैं। 8% से 10% होने वाली दर को 2 प्रतिशत अंकों की वृद्धि कहा जाता है, और स्थिर मूलधन पर यही राशि उधारदार को देनी पड़ती है। इसे 25% वृद्धि कहना यह भ्रम पैदा करेगा कि दर स्वयं एक चौथाई बढ़ी, जो सत्य तो है पर बहुत भिन्न तथ्य है।</string>
+    <string name="l10_b6_title" formatted="false">यह भेद कहाँ मायने रखता है</string>
+    <string name="l10_b7_s1_prompt" formatted="false">प्रतिशत अंकों में</string>
+    <string name="l10_b7_s1_result" formatted="false">2 points</string>
+    <string name="l10_b7_s2_prompt" formatted="false">प्रतिशत परिवर्तन के रूप में</string>
+    <string name="l10_b7_s2_result" formatted="false">25%</string>
+    <string name="l10_b7_s3_prompt" formatted="false">1000 के मूलधन पर</string>
+    <string name="l10_b7_s3_result" formatted="false">20 more, not 250</string>
+    <string name="l10_b7_title" formatted="false">उदाहरण: ब्याज दर 8% से 10%</string>
+    <string name="l10_b8_body" formatted="false">यदि उत्तीर्ण अंक 33% से 40% हो जाए, तो आवश्यक अंक 7 प्रतिशत अंक बढ़ गए। पर जिस विद्यार्थी को 100 में से 33 चाहिए थे, अब 40 चाहिए, यानी अंकों में लगभग 21% की वृद्धि। दोनों में से केवल एक बताना दूसरे को छिपा देता है।</string>
+    <string name="l10_b8_title" formatted="false">\'5% बढ़ा\' कहना जबकि 5 अंक बढ़ा</string>
+    <string name="l10_b9_answer" formatted="false">5 प्रतिशत अंक, और 5 / 10 x 100 = 50% सापेक्ष वृद्धि।</string>
+    <string name="l10_b9_body" formatted="false">एक छूट 10% से 15% हो जाती है। प्रतिशत अंक में परिवर्तन और सापेक्ष प्रतिशत परिवर्तन, दोनों बताएँ।</string>
+    <string name="l10_b9_title" formatted="false">ज्ञान परीक्षण</string>
+    <string name="l11_b1_body" formatted="false">एक अनुपात को भिन्न, दशमलव या प्रतिशत के रूप में लिखा जा सकता है, और एक ही प्रश्न में तीनों आ सकते हैं। एक ही रूप में बदलने पर तुलना आसान हो जाती है। रूपांतरण हैं: प्रतिशत पाने के लिए भिन्न को 100 से गुणा करें, और दशमलव को 100 से गुणा करें।</string>
+    <string name="l11_b1_title" formatted="false">एक ही मात्रा को लिखने के तीन तरीके</string>
+    <string name="l11_b2_body" formatted="false">33/100 की तुलना 1/3 से सीधे करने से कुछ नहीं निकलता, क्योंकि निचली संख्याएँ अलग हैं। दोनों को प्रतिशत में बदलने पर वे एक ही पैमाने पर आ जाते हैं: 33/100 यानी 33%, और 1/3 यानी 33.33%। अब तुलना तुरंत स्पष्ट है। जब तीनों में से एक रूप पहले से प्रतिशत हो, तो बाकी को उसी में बदलें।</string>
+    <string name="l11_b2_title" formatted="false">तुलना से पहले एक ही रूप में बदलें</string>
+    <string name="l11_b3_caption" formatted="false">याद रखने योग्य सामान्य भिन्न: 1/2 = 50%, 1/4 = 25%, 3/4 = 75%, 1/5 = 20%, 1/10 = 10%।</string>
+    <string name="l11_b3_formula" formatted="false">भिन्न a/b -&gt; (a / b) x 100 % दशमलव -&gt; x 100 %</string>
+    <string name="l11_b4_b1" formatted="false">1/2 = 50%, और आधे का 2/3 यानी 33.33% है, 50% नहीं</string>
+    <string name="l11_b4_b2" formatted="false">1/5 = 20%, इसलिए 3/5 = 60%</string>
+    <string name="l11_b4_b3" formatted="false">1/8 = 12.5%, जिससे 12.5% वाले प्रश्न तेज़ हो जाते हैं</string>
+    <string name="l11_b4_body" formatted="false">कुछ भिन्न इन प्रश्नों का अधिकांश भार ढोते हैं, क्योंकि उनके साफ प्रतिशत रूप हैं। यदि आप इन्हें रट लें, तो आप बिना कुछ गणना किए उत्तर पहचान लेते हैं।</string>
+    <string name="l11_b4_title" formatted="false">सामान्य भिन्न</string>
+    <string name="l11_b5_s1_prompt" formatted="false">3/4 बदलें</string>
+    <string name="l11_b5_s1_result" formatted="false">75%</string>
+    <string name="l11_b5_s2_prompt" formatted="false">0.42 बदलें</string>
+    <string name="l11_b5_s2_result" formatted="false">42%</string>
+    <string name="l11_b5_s3_prompt" formatted="false">5/20 बदलें</string>
+    <string name="l11_b5_s3_result" formatted="false">25%</string>
+    <string name="l11_b5_s4_prompt" formatted="false">क्रम दें</string>
+    <string name="l11_b5_s4_result" formatted="false">75% &gt; 42% &gt; 25%</string>
+    <string name="l11_b5_title" formatted="false">उदाहरण: तीनों रूपों में बदलना</string>
+    <string name="l11_b6_s1_prompt" formatted="false">तीनों बदलें</string>
+    <string name="l11_b6_s1_result" formatted="false">33.33%, 34%, 35%</string>
+    <string name="l11_b6_s2_prompt" formatted="false">क्रम दें</string>
+    <string name="l11_b6_s2_result" formatted="false">33.33% &lt; 34% &lt; 35%</string>
+    <string name="l11_b6_s3_prompt" formatted="false">अतः क्रम है</string>
+    <string name="l11_b6_s3_result" formatted="false">smallest, middle, largest</string>
+    <string name="l11_b6_title" formatted="false">उदाहरण: तीन मात्राओं का क्रम</string>
+    <string name="l11_b7_body" formatted="false">0.3, 25% से बड़ा दिखता है, पर वह केवल 30% के विरुद्ध 25% है, अतः यहाँ दशमलव जीतता है। 0.29 और 2/7 आज़माएँ: 0.29 यानी 29%, जबकि 2/7 लगभग 28.57%, फिर भी दशमलव जीता। पर 0.4 और 3/8 आज़माएँ: 0.4 यानी 40% और 3/8 यानी 37.5%, और यहाँ बिना बदले भिन्न दशमलव से बड़ा दिखेगा। हमेशा बदलें।</string>
+    <string name="l11_b7_title" formatted="false">बिना बदले अलग-अलग रूपों की तुलना</string>
+    <string name="l11_b8_answer" formatted="false">0.29 = 29%, और 2/7 लगभग 28.57%, अतः 0.29 बड़ा है।</string>
+    <string name="l11_b8_body" formatted="false">कौन बड़ा है, 0.29 या 2/7?</string>
+    <string name="l11_b8_title" formatted="false">ज्ञान परीक्षण</string>
+    <string name="l11_b9_b1" formatted="false">प्रतिशत तक पहुँचने के लिए भिन्न और दशमलव को 100 से गुणा करें।</string>
+    <string name="l11_b9_b2" formatted="false">केवल तभी तुलना करें जब सब कुछ एक ही रूप में हो।</string>
+    <string name="l11_b9_b3" formatted="false">1/2, 1/4, 3/4, 1/5 और 1/10 याद रखें।</string>
+    <string name="l11_b9_title" formatted="false">सारांश</string>
+    <string name="l12_b10_b1" formatted="false">100 के साफ भिन्न तेज़ हैं पर केवल साफ संख्याओं के लिए।</string>
+    <string name="l12_b10_b2" formatted="false">ठीक दो परिवर्तनों के लिए वृद्धि के बाद a - b - ab/100, और कमी के बाद b - a - ab/100 लगाएँ।</string>
+    <string name="l12_b10_b3" formatted="false">तुलना वाले प्रश्नों को 100 के पैमाने पर अनुपात में बदलें, फिर सरल करें।</string>
+    <string name="l12_b10_b4" formatted="false">शॉर्टकट को उस स्थिति से आगे कभी बढ़ाएँ नहीं जहाँ वह ठीक हो।</string>
+    <string name="l12_b10_title" formatted="false">सारांश</string>
+    <string name="l12_b1_body" formatted="false">यह पाठ उन तकनीकों को एकत्र करता है जो परीक्षा की परिस्थितियों में टिकती हैं। हर एक को उस स्थिति के साथ दिया गया है जिसमें यह उपयोगी है, और उतना ही महत्वपूर्ण रूप से वह स्थिति भी जहाँ यह लागू नहीं होती। बिना सीमा बताए बताई गई शॉर्टकट विधि किसी शॉर्टकट से भी बुरी होती है, क्योंकि वह आत्मविश्वासपूर्ण गलत उत्तर देती है। नीचे दी गई कोई विधि केवल सुंदर संख्याओं के लिए काम नहीं करती।</string>
+    <string name="l12_b1_title" formatted="false">दबाव में भी सही रहने वाली शॉर्टकट विधियाँ</string>
+    <string name="l12_b2_body" formatted="false">आधे, चौथाई, पाँचवें और दसवें भागों के ठीक प्रतिशत रूप होते हैं, इसलिए पूरा प्रश्न एक घटाव या भाग में समा जाता है। जब संख्याएँ अनुकूल हों, यह सबसे तेज़ रास्ता है। यह सामान्य विधि नहीं है: 33% के पीछे कोई साफ भिन्न नहीं, और 33% को \'एक तिहाई\' में बाँधने से उत्तर गलत निकलता है, अनुमानित नहीं।</string>
+    <string name="l12_b2_title" formatted="false">शॉर्टकट 1: 100 के साफ भिन्न</string>
+    <string name="l12_b3_s1_prompt" formatted="false">12.5% एक आठवाँ भाग है</string>
+    <string name="l12_b3_s1_result" formatted="false">12.5, so 12.5% = 1/8</string>
+    <string name="l12_b3_s2_prompt" formatted="false">8 से भाग दें</string>
+    <string name="l12_b3_s2_result" formatted="false">80</string>
+    <string name="l12_b3_s3_prompt" formatted="false">उत्तर</string>
+    <string name="l12_b3_s3_result" formatted="false">80</string>
+    <string name="l12_b3_title" formatted="false">उदाहरण: 640 का 12.5%</string>
+    <string name="l12_b4_body" formatted="false">ठीक दो परिवर्तनों के लिए सीधा सूत्र है। a% वृद्धि के बाद b% कमी से शुद्ध मान a - b - ab/100 आता है। इसका प्रतिरूपी स्थिति, a% कमी के बाद b% वृद्धि, से शुद्ध मान b - a - ab/100 आता है। दोनों में संशोधन पद ab/100 घटाया जाता है। यह बरतीबार मान को दो बार गुणा करने की जगह लेता है, जहाँ गणना में चूक आमतौर पर होती है। इसे ठीक दो परिवर्तनों के लिए प्रयोग करें; तीन परिवर्तनों में तीन गुणकों को गुणा करें।</string>
+    <string name="l12_b4_title" formatted="false">शॉर्टकट 2: दो परिवर्तनों के लिए शुद्ध सूत्र</string>
+    <string name="l12_b5_s1_prompt" formatted="false">यह प्रतिरूपी स्थिति है, इसलिए b - a - ab/100 लगाएँ</string>
+    <string name="l12_b5_s1_result" formatted="false">b - a - ab/100</string>
+    <string name="l12_b5_s2_prompt" formatted="false">मान रखें</string>
+    <string name="l12_b5_s2_result" formatted="false">0</string>
+    <string name="l12_b5_s3_prompt" formatted="false">500 पर जाँचें</string>
+    <string name="l12_b5_s3_result" formatted="false">500, so the net change is 0%</string>
+    <string name="l12_b5_title" formatted="false">उदाहरण: 20% कमी फिर 25% वृद्धि</string>
+    <string name="l12_b6_body" formatted="false">\'कितने प्रतिशत अधिक या कम\' वाले प्रश्न को 100 के पैमाने पर अनुपात में बदलें और उसे सरल करें। यह विशेष रूप से तब तेज़ है जब दोनों प्रतिशत पूर्णांक हों, क्योंकि तब अनुपात के पद भी पूर्णांक होते हैं और सरल करना शीघ्र होता है।</string>
+    <string name="l12_b6_title" formatted="false">शॉर्टकट 3: तुलना के लिए अनुपात रूप</string>
+    <string name="l12_b7_s1_prompt" formatted="false">मूल को 100 मानें</string>
+    <string name="l12_b7_s1_result" formatted="false">total multiplier 1.40</string>
+    <string name="l12_b7_s2_prompt" formatted="false">समान चरणों का अर्थ समान प्रतिशत</string>
+    <string name="l12_b7_s2_result" formatted="false">= 1.40</string>
+    <string name="l12_b7_s3_prompt" formatted="false">इसमें वर्गमूल चाहिए</string>
+    <string name="l12_b7_s3_result" formatted="false">no clean answer, so not a shortcut</string>
+    <string name="l12_b7_title" formatted="false">उदाहरण: दो समान चरणों में 40% वृद्धि</string>
+    <string name="l12_b8_body" formatted="false">आधा करने के बाद फिर आधा करने से एक चौथाई बनता है, इसलिए लगातार दो 50% गिरावट से 25% बचता है। यह सत्य है। पर यह सामान्य नहीं होता: दो 40% गिरावट से 36% बचता है, 20% नहीं, क्योंकि दूसरी गिरावट पहले से घटे मान पर मापी जाती है। इसी प्रकार 33% गिरावट एक तिहाई के निकट है पर एक तिहाई नहीं। जब तक संख्याएँ सचमुच साफ न हों, हमेशा सूत्र ही लगाएँ।</string>
+    <string name="l12_b8_title" formatted="false">विशेष स्थिति को सामान्य नियम समझना</string>
+    <string name="l12_b9_answer" formatted="false">100 x 0.60 = 60, फिर 60 x 1.40 = 84। शुद्ध -16%, क्योंकि 40 - 40 - (40 x 40 / 100) = -16।</string>
+    <string name="l12_b9_body" formatted="false">कोई मूल्य 40% घटता है और फिर 40% बढ़ता है। 100 को आधार मानकर अंतिम मान और शुद्ध परिवर्तन बताएँ।</string>
+    <string name="l12_b9_title" formatted="false">ज्ञान परीक्षण</string>
+    <!-- ==== END GENERATED LESSON PROSE (Phase 6) ==== -->
+<!-- ===== पाठ अनुभाग और पाठ मेटाडेटा (चरण 6) ===== -->
+
+
+
+
+
+    <!-- ===== BEGIN COURSE SECTIONS AND LESSON METADATA (Phase 6) ===== -->
+    <string name="section_beginner_title">शुरुआती</string>
+    <string name="section_beginner_description">प्रतिशत का अर्थ, उसे बदलना, और किसी भी संख्या का प्रतिशत निकालना।</string>
+    <string name="section_intermediate_title">मध्यम</string>
+    <string name="section_intermediate_description">परिवर्तन, तुलना, और वे शॉर्टकट जो दो-चरणीय प्रश्न तेज़ बना देते हैं।</string>
+    <string name="section_competitive_title">प्रतियोगी परीक्षा अनुप्रयोग</string>
+    <string name="section_competitive_description">वही विचार अंकों, वेतन, जनसंख्या, मूल्य और चुनाव पर लागू।</string>
+    <string name="lesson_4_title">दशमलव से प्रतिशत</string>
+    <string name="lesson_4_description">बिंदु को दो स्थान दाएँ खिसकाकर किसी भी दशमलव को प्रतिशत में बदलें।</string>
+    <string name="lesson_5_title">संख्या का प्रतिशत निकालना</string>
+    <string name="lesson_5_description">किसी भी मात्रा का प्रतिशत निकालें, 1% विधि सहित।</string>
+    <string name="lesson_6_title">मूल पूरा ज्ञात करना</string>
+    <string name="lesson_6_description">भाग से उसकी मूल संख्या तक पीछे जाएँ।</string>
+    <string name="lesson_7_title">प्रतिशत वृद्धि और ह्रास</string>
+    <string name="lesson_7_description">परिवर्तन सही आधार पर लगाएँ, और जानें कि गिरावट व वृद्धि सममित क्यों नहीं।</string>
+    <string name="lesson_8_title">लगातार प्रतिशत परिवर्तन</string>
+    <string name="lesson_8_description">लगातार दो परिवर्तन और शुद्ध प्रभाव का सूत्र।</string>
+    <string name="lesson_9_title">प्रतिशत तुलना समस्याएँ</string>
+    <string name="lesson_9_description">"कितने प्रतिशत अधिक" वाले प्रश्नों को अनुपात में बदलें और जोड़ें।</string>
+    <string name="lesson_10_title">प्रतियोगी परीक्षा चुनौती</string>
+    <string name="lesson_10_description">अब तक के सभी विषयों का मिश्रित सेट। एक बाद के चरण में।</string>
+    <string name="lesson_11_title">प्रतिशत अंक बनाम प्रतिशत परिवर्तन</string>
+    <string name="lesson_11_description">दो अलग माप जिन्हें आसानी से मिला दिया जाता है, और यह भेद कहाँ मायने रखता है।</string>
+    <string name="lesson_12_title">भिन्न, दशमलव और प्रतिशत की तुलना</string>
+    <string name="lesson_12_description">तुलना से पहले हर रूप को एक ही पैमाने पर लाएँ।</string>
+    <string name="lesson_13_title">परीक्षा शॉर्टकट और मानक गणना</string>
+    <string name="lesson_13_description">वे शॉर्टकट जो परीक्षा के दबाव में टिकते हैं, हर एक की सीमा सहित।</string>
+    <string name="lesson_14_title">जनसंख्या वृद्धि और ह्रास</string>
+    <string name="lesson_14_description">वृद्धि, गिरावट और दो अवधियों में परिवर्तन। एक बाद के चरण में।</string>
+    <string name="lesson_15_title">वेतन, व्यय और बचत</string>
+    <string name="lesson_15_description">आय का विभाजन, और एक परिवर्तन का बाकी पर प्रभाव। एक बाद के चरण में।</string>
+    <string name="lesson_16_title">अंक, उत्तीर्ण अंक और परीक्षा परिणाम</string>
+    <string name="lesson_16_description">उत्तीर्ण प्रतिशत, उत्तीर्ण होने के लिए कितने अंक, और कमी। एक बाद के चरण में।</string>
+    <string name="lesson_17_title">चुनाव और मतदान प्रतिशत समस्याएँ</string>
+    <string name="lesson_17_description">डाले गए मत, भागीदारी, हिस्सेदारी और अंतर। एक बाद के चरण में।</string>
+    <string name="lesson_18_title">मूल्य परिवर्तन, छूट और कर</string>
+    <string name="lesson_18_description">अंकित मूल्य, छूट की शृंखला और दुकान पर लगने वाला कर। एक बाद के चरण में।</string>
+    <string name="lesson_19_title">लाभ, हानि और प्रतिशत संबंध</string>
+    <string name="lesson_19_description">लाभ और हानि के प्रतिशत और वे किसके सापेक्ष मापे जाते हैं। एक बाद के चरण में।</string>
+    <string name="lesson_20_title">उलटे प्रतिशत प्रश्न</string>
+    <string name="lesson_20_description">बदले हुए मान से मूल मान प्राप्त करें। एक बाद के चरण में।</string>
+    <string name="lesson_21_title">मिश्रित प्रतिशत शब्द समस्याएँ</string>
+    <string name="lesson_21_description">एक ही प्रश्न में कई प्रतिशत एक-दूसरे पर प्रभाव डालते हैं। एक बाद के चरण में।</string>
+    <string name="lesson_upcoming_label">अभी लिखा नहीं गया</string>
+    <string name="section_progress">%2$d में से %1$d पूरे</string>
+    <!-- ===== END COURSE SECTIONS AND LESSON METADATA (Phase 6) ===== -->
+
+
+
+
+
+
+
+
+
+    <!-- ===== BEGIN PHASE 7 INSIGHT STRINGS ===== -->
+    <string name="insights_title" formatted="false">सीखने की जानकारी</string>
+    <string name="insights_subtitle" formatted="false">आप कहाँ मजबूत हैं और आगे क्या करना है।</string>
+    <string name="insights_overall_attempted" formatted="false">उत्तर दिए गए प्रश्न</string>
+    <string name="insights_overall_accuracy" formatted="false">कुल शुद्धता</string>
+    <string name="insights_strongest_topic" formatted="false">सबसे मजबूत विषय</string>
+    <string name="insights_weakest_topic" formatted="false">सबसे अधिक मेहनत चाहिए</string>
+    <string name="insights_suggested_next" formatted="false">सुझाया गया अगला कदम</string>
+    <string name="insights_by_topic" formatted="false">विषयवार विवरण</string>
+    <string name="insights_recent" formatted="false">हाल का प्रदर्शन</string>
+    <string name="insights_no_data_title" formatted="false">अभी तक कोई उत्तर दर्ज नहीं हुआ</string>
+    <string name="insights_no_data_body" formatted="false">प्रैक्टिस या मॉक टेस्ट में प्रश्नों के उत्तर दें, और आपकी मजबूती व कमजोरियाँ यहाँ दिखने लगेंगी।</string>
+    <string name="insights_legacy_note" formatted="false">इस सुविधा से पहले दिए गए प्रैक्टिस उत्तर शामिल नहीं हैं, क्योंकि केवल सत्र का कुल सहेजा गया था।</string>
+    <string name="insights_back" formatted="false">वापस</string>
+    <string name="insights_status_not_enough_data" formatted="false">पर्याप्त आँकड़े नहीं</string>
+    <string name="insights_status_needs_practice" formatted="false">अभ्यास चाहिए</string>
+    <string name="insights_status_improving" formatted="false">सुधार हो रहा है</string>
+    <string name="insights_status_strong" formatted="false">मजबूत</string>
+    <string name="insights_status_not_enough_data_body" formatted="false">यहाँ कम से कम %1$d प्रश्नों के उत्तर दें तो नतीजा दिखेगा।</string>
+    <string name="insights_easy_only_caution" formatted="false">अब तक ज़्यादातर आसान प्रश्न, इसलिए यह कठिन विषयों का सही संकेत नहीं दे सकता।</string>
+    <string name="insights_trend_up" formatted="false">%1$d अंक ऊपर</string>
+    <string name="insights_trend_down" formatted="false">%1$d अंक नीचे</string>
+    <string name="insights_trend_steady" formatted="false">स्थिर बना हुआ</string>
+    <string name="insights_trend_locked" formatted="false">अपना रुझान देखने के लिए अभ्यास जारी रखें</string>
+    <string name="insights_recent_window" formatted="false">पिछले %1$d उत्तर</string>
+    <string name="insights_vs_previous" formatted="false">पहले के %1$d उत्तरों की तुलना में</string>
+    <string name="rec_title_resume_lesson" formatted="false">अपना चालू पाठ पूरा करें</string>
+    <string name="rec_title_continue_course" formatted="false">पाठ्यक्रम जारी रखें</string>
+    <string name="rec_title_practice_weak" formatted="false">कमजोर विषय का अभ्यास करें</string>
+    <string name="rec_title_step_up" formatted="false">कठिन प्रश्न आज़माएँ</string>
+    <string name="rec_title_mixed_review" formatted="false">मिश्रित समीक्षा करें</string>
+    <string name="rec_title_start_lesson_one" formatted="false">पहले पाठ से शुरू करें</string>
+    <string name="rec_title_keep_practising" formatted="false">मजबूती बनाए रखें</string>
+    <string name="rec_continue_learning" formatted="false">सीखना जारी रखें</string>
+    <string name="rec_view_insights" formatted="false">जानकारी देखें</string>
+    <string name="rec_start_practice" formatted="false">अभ्यास शुरू करें</string>
+    <string name="rec_open_insights" formatted="false">जानकारी खोलें</string>
+    <string name="rec_reason_lesson_in_progress" formatted="false">आपने यह पाठ अभी पूरा नहीं किया है।</string>
+    <string name="rec_reason_next_lesson" formatted="false">आपके पाठ्यक्रम में यह अगला पाठ है।</string>
+    <string name="rec_reason_low_accuracy" formatted="false">यहाँ आपकी शुद्धता %1$d%% है।</string>
+    <string name="rec_reason_strong_on_easy" formatted="false">यहाँ आसान प्रश्नों में %1$d%% सही हैं।</string>
+    <string name="rec_reason_balanced" formatted="false">आपने %1$d विषय समान स्तर पर अभ्यास किए हैं।</string>
+    <string name="rec_reason_no_history" formatted="false">व्यक्तिगत सुझाव के लिए कुछ प्रश्नों के उत्तर दें।</string>
+    <string name="rec_reason_course_complete" formatted="false">आपने सभी उपलब्ध पाठ पूरे कर लिए हैं।</string>
+    <string name="targeted_title_mixed" formatted="false">मिश्रित समीक्षा</string>
+    <string name="targeted_mixed_subtitle" formatted="false">%1$d विषयों के प्रश्न</string>
+    <string name="targeted_start" formatted="false">शुरू करें</string>
+    <string name="insights_topic_counts" formatted="false">%1$d उत्तर, %2$d सही</string>
+    <string name="insights_accuracy_value" formatted="false">%1$d%%</string>
+    <string name="insights_recent_accuracy_value" formatted="false">%1$d%% शुद्धता</string>
+    <string name="insights_lessons_completed_value" formatted="false">%1$d पाठ पूरे</string>
+    <string name="insights_topics_covered" formatted="false">%1$d विषयों का अभ्यास</string>
+    <string name="cd_insights_accuracy" formatted="false">%2$d उत्तरों से शुद्धता %1$d प्रतिशत</string>
+    <string name="cd_topic_performance" formatted="false">%1$s: %2$d उत्तर, %3$d सही, %4$d प्रतिशत शुद्धता, %5$s</string>
+    <string name="cd_recommendation" formatted="false">सुझाव: %1$s। %2$s</string>
+    <!-- ===== END PHASE 7 INSIGHT STRINGS ===== -->
+    <!-- ===== BEGIN PHASE 8 STRINGS ===== -->
+    <string name="onboarding_body_1" formatted="false">छोटे और व्यावहारिक पाठ जो प्रतिशत और एप्टीट्यूड को आसान बना देते हैं।</string>
+    <string name="onboarding_title_2" formatted="false">सिर्फ़ पढ़िए नहीं, अभ्यास कीजिए</string>
+    <string name="onboarding_body_2" formatted="false">परीक्षा-शैली के प्रश्नों के उत्तर दीजिए, समयबद्ध मॉक टेस्ट दीजिए और जानिए आपकी वर्तमान स्थिति क्या है।</string>
+    <string name="onboarding_title_3" formatted="false">सब कुछ इसी फ़ोन पर रहता है</string>
+    <string name="onboarding_body_3" formatted="false">आपकी प्रगति, उत्तर और पुरस्कार केवल इसी डिवाइस पर सहेजे जाते हैं। कोई अकाउंट और साइन-अप नहीं है।</string>
+    <string name="onboarding_next" formatted="false">आगे</string>
+    <string name="onboarding_back" formatted="false">पीछे</string>
+    <string name="onboarding_skip" formatted="false">छोड़ें</string>
+    <string name="onboarding_start" formatted="false">पढ़ना शुरू करें</string>
+    <string name="onboarding_page_indicator" formatted="false">पृष्ठ %1$d / %2$d</string>
+    <string name="settings_title" formatted="false">सेटिंग्स</string>
+    <string name="settings_section_learning" formatted="false">पढ़ाई</string>
+    <string name="settings_section_data" formatted="false">आपका डेटा</string>
+    <string name="settings_section_about" formatted="false">ऐप के बारे में</string>
+    <string name="settings_daily_goal" formatted="false">दैनिक लक्ष्य</string>
+    <string name="settings_daily_goal_description" formatted="false">अपनी स्ट्रीक बनाए रखने के लिए रोज़ाना उत्तर दिए जाने वाले प्रश्न।</string>
+    <string name="settings_achievements" formatted="false">उपलब्धियाँ</string>
+    <string name="settings_achievements_value" formatted="false">%2$d में से %1$d अनलॉक</string>
+    <string name="settings_progress" formatted="false">कोर्स प्रगति</string>
+    <string name="settings_progress_value" formatted="false">%2$d में से %1$d पाठ</string>
+    <string name="settings_version" formatted="false">वर्शन</string>
+    <string name="settings_privacy_title" formatted="false">आपका डेटा आपके फ़ोन पर ही रहता है</string>
+    <string name="settings_privacy_body" formatted="false">PercentPro पूरी तरह ऑफ़लाइन काम करता है। यह कोई नेटवर्क अनुरोध नहीं करता और किसी सर्वर पर कुछ नहीं भेजता, क्योंकि कोई सर्वर है ही नहीं।
+
+आपकी पाठ प्रगति, अभ्यास के उत्तर, मॉक टेस्ट परिणाम, XP और उपलब्धियाँ केवल इसी डिवाइस पर निजी ऐप स्टोरेज में सहेजी जाती हैं। ऐप हटाने पर ये मिट जाती हैं, और इन्हें कोई वापस नहीं पा सकता।
+
+कोई अकाउंट नहीं बनता, कोई विज्ञापन या एनालिटिक्स SDK शामिल नहीं है, और कोई व्यक्तिगत डेटा एकत्र या साझा नहीं किया जाता।</string>
+    <string name="settings_no_reset" formatted="false">प्रगति रीसेट करना उपलब्ध नहीं है</string>
+    <string name="settings_no_reset_body" formatted="false">आपकी प्रगति जानबूझकर स्थायी रखी जाती है। इसे हटाने का एकमात्र तरीका ऐप को अनइंस्टॉल करना है।</string>
+    <string name="settings_built_by" formatted="false">%1$s द्वारा बनाया गया</string>
+    <string name="mock_result_out_of" formatted="false">%1$s में से</string>
+    <string name="cd_option_incorrect" formatted="false">गलत विकल्प</string>
+    <string name="mock_exit_dialog_title" formatted="false">यह मॉक टेस्ट छोड़ें?</string>
+    <string name="mock_exit_dialog_body" formatted="false">%2$d में से %1$d प्रश्नों के उत्तर दिए जा चुके हैं और टेस्ट अभी चल रहा है। अभी जाने पर यह प्रयास रद्द हो जाएगा और आपके उत्तर वापस नहीं मिलेंगे।</string>
+    <string name="mock_exit_dialog_confirm" formatted="false">टेस्ट छोड़ें</string>
+    <string name="mock_exit_dialog_cancel" formatted="false">जारी रखें</string>
+    <!-- ===== END PHASE 8 STRINGS ===== -->
+</resources>

@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!--
+      The window background the system paints before the first Compose frame.
+      It has to match the app's own light background, otherwise a dark-mode user
+      sees a white flash at launch and then a dark screen.
+    -->
+    <style name="Theme.PercentPro" parent="android:Theme.Material.Light.NoActionBar">
+        <item name="android:windowBackground">@color/window_background</item>
+    </style>
+</resources>

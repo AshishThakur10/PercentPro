@@ -94,7 +94,39 @@ data class ExamYearPaper(
 ) {
     val isSpan: Boolean get() = year == null
 
-    /** Stable id, also the exam-paper key used by the mock test engine. */
-    val id: String
-        get() = "exam_${examId.value}" + (year?.let { "_$it" } ?: "_${scheme.fromYear}")
+    /**
+     * Stable id, also the key the mock test engine resolves.
+     *
+     * Built by [idFor] and in the same package as the parser that reads it, so
+     * the two cannot drift. These ids are not interchangeable with the generic
+     * exam paper ids, which are built by MockTestCatalog itself.
+     */
+    val id: String get() = year?.let { idFor(examId, it) } ?: idFor(examId, scheme.fromYear)
+
+    companion object {
+        /**
+         * Distinguishes a year paper from a generic exam paper.
+         *
+         * Both end in an exam id, so without this a year paper and its plain
+         * counterpart would be indistinguishable to the resolver.
+         */
+        const val YEAR_PAPER_ID_PREFIX = "examyr_"
+
+        fun idFor(examId: ExamId, year: Int): String =
+            "$YEAR_PAPER_ID_PREFIX${examId.value}_$year"
+
+        /** Reads a year paper id back, or null when it is not one. */
+        fun parseId(id: String): Pair<ExamId, Int>? {
+            if (!id.startsWith(YEAR_PAPER_ID_PREFIX)) return null
+            val rest = id.removePrefix(YEAR_PAPER_ID_PREFIX)
+            val separator = rest.lastIndexOf('_')
+            if (separator <= 0 || separator == rest.length - 1) return null
+            val examId = rest.take(separator)
+            val year = rest.substring(separator + 1).toIntOrNull() ?: return null
+            if (!EXAM_ID_PATTERN.matches(examId)) return null
+            return runCatching { ExamId(examId) }.getOrNull()?.let { it to year }
+        }
+
+        private val EXAM_ID_PATTERN = Regex("^[a-z0-9_]+$")
+    }
 }

@@ -321,8 +321,8 @@ private fun InstructionsPlaceholder(
         // An exam paper is built only from questions tagged for that exam, so it
         // can honestly have too few. Saying how many are there turns a dead
         // button into an explanation.
-        if (startBlocker is StartBlocker.NotEnoughQuestions) {
-            Text(
+        when (startBlocker) {
+            is StartBlocker.NotEnoughQuestions -> Text(
                 text = pluralStringResource(
                     R.plurals.mock_insufficient_questions,
                     startBlocker.available,
@@ -332,6 +332,15 @@ private fun InstructionsPlaceholder(
                 color = MaterialTheme.colorScheme.error,
                 textAlign = TextAlign.Center
             )
+
+            is StartBlocker.UnknownPaper -> Text(
+                text = stringResource(R.string.mock_unknown_paper),
+                style = MaterialTheme.typography.bodyMedium,
+                color = MaterialTheme.colorScheme.error,
+                textAlign = TextAlign.Center
+            )
+
+            null -> Unit
         }
 
         Button(

@@ -310,13 +310,59 @@ class ExamYearPapersTest {
     // ---- resolution and repetition -----------------------------------------
 
     @Test
+    fun `the id the year list hands over must resolve to a paper`() {
+        // The path a reader actually takes: the card in the year list supplies
+        // the id, and MockTestExamViewModel.startTest resolves it. These two
+        // used to build ids with different prefixes, so every tap produced an id
+        // nothing could resolve and Start did nothing at all.
+        exams.available().forEach { exam ->
+            exams.papersFor(exam.id).forEach { paper ->
+                val config = catalog.testById(MockTestId(paper.id))
+                assertNotNull("${exam.id.value}: '${paper.id}' does not resolve", config)
+                assertEquals("${paper.id} wrong exam", exam.id, config!!.examId)
+            }
+            exams.papersFor(exam.id, includeEveryYear = true).forEach { paper ->
+                assertNotNull(
+                    "${exam.id.value}: year id '${paper.id}' does not resolve",
+                    catalog.testById(MockTestId(paper.id))
+                )
+            }
+        }
+    }
+
+    @Test
+    fun `every year list id is prefixed so it cannot be mistaken for a plain exam paper`() {
+        exams.available().forEach { exam ->
+            exams.papersFor(exam.id, includeEveryYear = true).forEach { paper ->
+                assertTrue(
+                    "'${paper.id}' lacks the year-paper prefix",
+                    paper.id.startsWith(com.atlabs.percentpro.model.ExamYearPaper.YEAR_PAPER_ID_PREFIX)
+                )
+            }
+        }
+        // And the plain exam papers must not carry it.
+        catalog.tests().filter { it.examId != null }.forEach {
+            assertFalse(
+                "'${it.id.value}' should not be prefixed as a year paper",
+                it.id.value.startsWith(
+                    com.atlabs.percentpro.model.ExamYearPaper.YEAR_PAPER_ID_PREFIX
+                )
+            )
+        }
+    }
+
+    @Test
     fun `a year paper id resolves back to the same config`() {
         // This is the path the mock test engine and its saved-session restore
         // both take, so it has to round-trip or a stored paper is unrecoverable.
-        val config = catalog.yearPaper(ExamId("ibps_po"), 2024)!!
-        val restored = catalog.testById(MockTestId(config.id.value))
+        val paper = exams.papersFor(ExamId("ibps_po"), includeEveryYear = true)
+            .first { it.year == 2024 }
+        val restored = catalog.testById(MockTestId(paper.id))
         assertNotNull("a year paper id did not resolve", restored)
-        assertEquals(config, restored)
+        assertEquals(
+            catalog.yearPaper(ExamId("ibps_po"), 2024),
+            restored
+        )
     }
 
     @Test

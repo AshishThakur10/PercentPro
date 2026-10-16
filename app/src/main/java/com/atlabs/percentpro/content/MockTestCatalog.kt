@@ -2,6 +2,7 @@ package com.atlabs.percentpro.content
 
 import com.atlabs.percentpro.R
 import com.atlabs.percentpro.model.ExamId
+import com.atlabs.percentpro.model.ExamYearPaper
 import com.atlabs.percentpro.model.ExamYearScheme
 import com.atlabs.percentpro.model.MockTestConfig
 import com.atlabs.percentpro.model.MockTestId
@@ -78,7 +79,7 @@ class MockTestCatalog(private val exams: ExamCatalog = ExamCatalog()) {
         if (!exams.hasYear(examId, year)) return null
         val exam = exams.examById(examId)?.takeIf { it.isAvailable } ?: return null
         return MockTestConfig(
-            id = MockTestId(yearPaperId(examId, year)),
+            id = MockTestId(ExamYearPaper.idFor(examId, year)),
             titleRes = exam.titleRes,
             descriptionRes = exam.descriptionRes,
             questionCount = EXAM_PAPER_QUESTIONS,
@@ -105,16 +106,7 @@ class MockTestCatalog(private val exams: ExamCatalog = ExamCatalog()) {
     }
 
     /** Parses a year paper id back into its exam and year. */
-    fun parseYearPaperId(id: String): Pair<ExamId, Int>? {
-        if (!id.startsWith(YEAR_PAPER_PREFIX)) return null
-        val rest = id.removePrefix(YEAR_PAPER_PREFIX)
-        val separator = rest.lastIndexOf('_')
-        if (separator <= 0 || separator == rest.length - 1) return null
-        val examId = rest.take(separator)
-        val year = rest.substring(separator + 1).toIntOrNull() ?: return null
-        if (!EXAM_ID_PATTERN.matches(examId)) return null
-        return runCatching { ExamId(examId) }.getOrNull()?.let { it to year }
-    }
+    fun parseYearPaperId(id: String): Pair<ExamId, Int>? = ExamYearPaper.parseId(id)
 
     private fun yearPaperById(id: String): MockTestConfig? =
         parseYearPaperId(id)?.let { (examId, year) -> yearPaper(examId, year) }
@@ -122,10 +114,6 @@ class MockTestCatalog(private val exams: ExamCatalog = ExamCatalog()) {
     private companion object {
 
         const val FIFTEEN_MINUTES = 15 * 60 * 1000L
-
-        const val YEAR_PAPER_PREFIX = "examyr_"
-
-        val EXAM_ID_PATTERN = Regex("^[a-z0-9_]+$")
 
         val TESTS = listOf(
             MockTestConfig(
@@ -141,9 +129,6 @@ class MockTestCatalog(private val exams: ExamCatalog = ExamCatalog()) {
         ) + examPapers()
     }
 }
-
-private fun yearPaperId(examId: ExamId, year: Int): String =
-    "examyr_${examId.value}_$year"
 
 /**
  * One paper per confirmed examination.

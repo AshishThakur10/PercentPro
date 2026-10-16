@@ -313,6 +313,7 @@
     <string name="exam_papers_no_exams">अभी कोई परीक्षा पेपर उपलब्ध नहीं है।</string>
     <string name="cd_exam_papers_card">%1$s। %2$s। %3$s।</string>
 
+    <string name="mock_unknown_paper">यह पेपर अभी उपलब्ध नहीं है।</string>
     <string name="exam_papers_back">वापस</string>
     <string name="exam_papers_no_gap">रिकॉर्ड में कोई कमी नहीं</string>
     <plurals name="exam_papers_paper_questions">

@@ -313,6 +313,7 @@
     <string name="exam_papers_no_exams">No examination papers are available yet.</string>
     <string name="cd_exam_papers_card">%1$s. %2$s. %3$s.</string>
 
+    <string name="mock_unknown_paper">This paper is not available right now.</string>
     <string name="exam_papers_back">Back</string>
     <string name="exam_papers_no_gap">No gaps in the record</string>
     <plurals name="exam_papers_paper_questions">

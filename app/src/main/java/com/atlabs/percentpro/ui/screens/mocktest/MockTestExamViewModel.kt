@@ -55,6 +55,14 @@ sealed interface StartBlocker {
      * say how close it is rather than only that it failed.
      */
     data class NotEnoughQuestions(val available: Int, val required: Int) : StartBlocker
+
+    /**
+     * The catalog holds no paper with this id.
+     *
+     * Should be unreachable: ids come from the catalog's own list. It exists so
+     * that a mistake here is visible instead of presenting as a dead button.
+     */
+    data class UnknownPaper(val id: String) : StartBlocker
 }
 
 data class MockTestExamUiState(
@@ -213,7 +221,14 @@ class MockTestExamViewModel(
     // ---- starting ----------------------------------------------------------
 
     fun startTest() {
-        val config = mockTestCatalog.testById(testId) ?: return
+        val config = mockTestCatalog.testById(testId)
+        if (config == null) {
+            // Previously a silent return, so an id the catalog could not resolve
+            // looked exactly like a button that had stopped working. A reader
+            // deserves to be told, and so does whoever shipped the bad id.
+            _uiState.update { it.copy(startBlocker = StartBlocker.UnknownPaper(testId.value)) }
+            return
+        }
         viewModelScope.launch {
             val existing = mockTestRepository.restoreActiveSession(now())
             if (existing is MockTestCodec.SessionRestore.Ready) {

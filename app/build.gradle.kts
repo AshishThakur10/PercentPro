@@ -30,8 +30,11 @@ android {
         applicationId = "com.atlabs.percentpro"
         minSdk = 23
         targetSdk = 36
-        versionCode = 1
-        versionName = "1.0"
+        // versionCode is the integer Play orders releases by and must only ever
+        // increase; versionName is what a reader sees. Settings reads this at
+        // runtime from PackageManager, so there is no second copy to keep in step.
+        versionCode = 2
+        versionName = "1.0.1"
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
     }

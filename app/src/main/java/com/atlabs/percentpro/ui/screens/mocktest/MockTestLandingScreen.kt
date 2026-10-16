@@ -25,6 +25,7 @@ import androidx.compose.material3.TextButton
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
 import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
@@ -39,8 +40,12 @@ import androidx.compose.ui.unit.dp
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import androidx.lifecycle.viewmodel.compose.viewModel
 import com.atlabs.percentpro.R
+import com.atlabs.percentpro.content.ExamCatalog
 import com.atlabs.percentpro.content.formatMarks
+import com.atlabs.percentpro.content.formatPenalty
 import com.atlabs.percentpro.data.AppContainer
+import com.atlabs.percentpro.model.AppLanguage
+import com.atlabs.percentpro.model.ExamDefinition
 import com.atlabs.percentpro.model.MockTestId
 import com.atlabs.percentpro.model.MockTestResult
 import com.atlabs.percentpro.ui.components.SectionHeader
@@ -48,6 +53,7 @@ import com.atlabs.percentpro.ui.components.SectionHeader
 @Composable
 fun MockTestLandingRoute(
     container: AppContainer,
+    language: AppLanguage,
     onStartTest: (MockTestId) -> Unit,
     onOpenResult: (String) -> Unit,
     modifier: Modifier = Modifier
@@ -58,6 +64,7 @@ fun MockTestLandingRoute(
 
     MockTestLandingScreen(
         uiState = uiState,
+        language = language,
         onStartTest = onStartTest,
         onOpenResult = onOpenResult,
         modifier = modifier
@@ -67,6 +74,7 @@ fun MockTestLandingRoute(
 @Composable
 fun MockTestLandingScreen(
     uiState: MockTestLandingUiState,
+    language: AppLanguage,
     onStartTest: (MockTestId) -> Unit,
     onOpenResult: (String) -> Unit,
     modifier: Modifier = Modifier
@@ -118,6 +126,7 @@ fun MockTestLandingScreen(
                         item(key = "test_${landingItem.config.id.value}") {
                             MockTestCard(
                                 item = landingItem,
+                                language = language,
                                 onStart = {
                                     pendingTestId = landingItem.config.id.value
                                     showInstructions = true
@@ -174,10 +183,12 @@ fun MockTestLandingScreen(
 @Composable
 private fun MockTestCard(
     item: MockTestLandingItem,
+    language: AppLanguage,
     onStart: () -> Unit,
     modifier: Modifier = Modifier
 ) {
     val config = item.config
+    val examCatalog = remember { ExamCatalog() }
     Card(
         modifier = modifier.fillMaxWidth(),
         shape = MaterialTheme.shapes.large,
@@ -196,12 +207,31 @@ private fun MockTestCard(
                 color = MaterialTheme.colorScheme.onSurfaceVariant,
                 modifier = Modifier.padding(top = 6.dp)
             )
-            Text(
-                text = stringResource(R.string.mock_landing_description),
-                style = MaterialTheme.typography.bodySmall,
-                color = MaterialTheme.colorScheme.onSurfaceVariant,
-                modifier = Modifier.padding(top = 8.dp)
-            )
+
+            // An exam card carries its own scope note rather than repeating the
+            // generic disclaimer, which said "not a full examination" and is
+            // both too weak and now wrong for these: they use a real scheme.
+            val exam = config.examId?.let { examCatalog.examById(it) }
+            if (exam != null && exam.isAvailable) {
+                Text(
+                    text = stringResource(
+                        R.string.exam_paper_practice_note,
+                        exam.paper.forLanguage(language),
+                        exam.section.forLanguage(language)
+                    ),
+                    style = MaterialTheme.typography.bodySmall,
+                    color = MaterialTheme.colorScheme.onSurfaceVariant,
+                    modifier = Modifier.padding(top = 8.dp)
+                )
+                ExamPatternBlock(exam = exam)
+            } else {
+                Text(
+                    text = stringResource(R.string.mock_landing_description),
+                    style = MaterialTheme.typography.bodySmall,
+                    color = MaterialTheme.colorScheme.onSurfaceVariant,
+                    modifier = Modifier.padding(top = 8.dp)
+                )
+            }
 
             Column(modifier = Modifier.padding(top = 14.dp)) {
                 RuleRow(
@@ -219,11 +249,14 @@ private fun MockTestCard(
                         config.marksPerCorrect.formatMarks()
                     )
                 )
+                // formatPenalty, not formatMarks: a third of a mark is four
+                // twelfths and has no terminating decimal, so it has to print as
+                // the fraction or the learner cannot check their own arithmetic.
                 RuleRow(
                     label = stringResource(R.string.mock_rules_marks_incorrect),
                     value = stringResource(
                         R.string.mock_rules_marks_value_incorrect,
-                        config.negativeMark.formatMarks()
+                        config.negativeMark.formatPenalty()
                     )
                 )
                 RuleRow(
@@ -263,6 +296,68 @@ private fun MockTestCard(
                 )
             }
         }
+    }
+}
+
+/**
+ * What the real paper looks like, under an exam card.
+ *
+ * Deliberately shows the real section size rather than the drill's fifteen
+ * questions: a learner comparing this app to a previous paper should be able to
+ * see exactly how much of that paper percentage covers.
+ */
+@Composable
+private fun ExamPatternBlock(
+    exam: ExamDefinition,
+    modifier: Modifier = Modifier
+) {
+    Column(modifier = modifier.padding(top = 12.dp)) {
+        Text(
+            text = stringResource(R.string.exam_card_pattern),
+            style = MaterialTheme.typography.labelLarge,
+            color = MaterialTheme.colorScheme.secondary
+        )
+        Text(
+            text = pluralStringResource(
+                R.plurals.exam_card_section_questions,
+                exam.realSectionQuestionCount,
+                exam.realSectionQuestionCount
+            ),
+            style = MaterialTheme.typography.bodySmall,
+            color = MaterialTheme.colorScheme.onSurfaceVariant,
+            modifier = Modifier.padding(top = 4.dp)
+        )
+        Text(
+            text = pluralStringResource(
+                R.plurals.exam_card_paper_duration,
+                exam.paperDurationMinutes,
+                exam.paperDurationMinutes
+            ),
+            style = MaterialTheme.typography.bodySmall,
+            color = MaterialTheme.colorScheme.onSurfaceVariant
+        )
+        Text(
+            // SSC CHSL times each section at fifteen minutes while SSC CGL gives
+            // one allowance for the whole of Tier 1, so the two are described
+            // differently rather than sharing one line of copy.
+            text = if (exam.hasSectionalTimer) {
+                pluralStringResource(
+                    R.plurals.exam_card_section_timer,
+                    exam.sectionDurationMinutes,
+                    exam.sectionDurationMinutes
+                )
+            } else {
+                stringResource(R.string.exam_card_shares_timer)
+            },
+            style = MaterialTheme.typography.bodySmall,
+            color = MaterialTheme.colorScheme.onSurfaceVariant
+        )
+        Text(
+            text = stringResource(R.string.exam_card_drill_note),
+            style = MaterialTheme.typography.bodySmall,
+            color = MaterialTheme.colorScheme.onSurfaceVariant,
+            modifier = Modifier.padding(top = 6.dp)
+        )
     }
 }
 

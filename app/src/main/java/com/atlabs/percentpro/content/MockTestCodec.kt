@@ -202,10 +202,10 @@ object MockTestCodec {
         val incorrect = intAt(9) ?: return null
         val unanswered = intAt(10) ?: return null
         val marked = intAt(11) ?: return null
-        val scoreQuarters = intAt(12) ?: return null
-        val maxQuarters = intAt(13) ?: return null
-        val correctQuarters = intAt(14) ?: return null
-        val penaltyQuarters = fields[15].toIntOrNull() ?: return null
+        val scoreTwelfths = intAt(12) ?: return null
+        val maxTwelfths = intAt(13) ?: return null
+        val correctTwelfths = intAt(14) ?: return null
+        val penaltyTwelfths = fields[15].toIntOrNull() ?: return null
         val timeTaken = longAt(16) ?: return null
         val submission = when (fields[17]) {
             "MANUAL" -> MockTestSubmission.MANUAL
@@ -219,7 +219,7 @@ object MockTestCodec {
         if (records.size != total) return null
         val answeredRecords = records.count { it.selectedOptionIndex != null }
         if (answeredRecords != correct + incorrect) return null
-        if (scoreQuarters != correct * correctQuarters - incorrect * penaltyQuarters) return null
+        if (scoreTwelfths != correct * correctTwelfths - incorrect * penaltyTwelfths) return null
 
         return MockTestResult(
             sessionId = sessionId,
@@ -233,10 +233,10 @@ object MockTestCodec {
             incorrect = incorrect,
             unanswered = unanswered,
             markedForReview = marked,
-            scoreInQuarters = scoreQuarters,
-            maxMarksInQuarters = maxQuarters,
-            marksPerCorrectInQuarters = correctQuarters,
-            negativeMarkInQuarters = penaltyQuarters,
+            scoreInTwelfths = scoreTwelfths,
+            maxMarksInTwelfths = maxTwelfths,
+            marksPerCorrectInTwelfths = correctTwelfths,
+            negativeMarkInTwelfths = penaltyTwelfths,
             timeTakenMillis = timeTaken,
             submission = submission
         )
@@ -262,10 +262,10 @@ object MockTestCodec {
         result.incorrect.toString(),
         result.unanswered.toString(),
         result.markedForReview.toString(),
-        result.scoreInQuarters.toString(),
-        result.maxMarksInQuarters.toString(),
-        result.marksPerCorrectInQuarters.toString(),
-        result.negativeMarkInQuarters.toString(),
+        result.scoreInTwelfths.toString(),
+        result.maxMarksInTwelfths.toString(),
+        result.marksPerCorrectInTwelfths.toString(),
+        result.negativeMarkInTwelfths.toString(),
         result.timeTakenMillis.toString(),
         result.submission.name
     ).joinToString(SEP) + "\n"

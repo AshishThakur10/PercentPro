@@ -77,8 +77,8 @@ class MockTestSavedReviewViewModel(
                         descriptionRes = R.string.mock_landing_description,
                         questionCount = result.totalQuestions,
                         durationMillis = 0L,
-                        marksPerCorrectInQuarters = result.marksPerCorrectInQuarters,
-                        negativeMarkInQuarters = result.negativeMarkInQuarters
+                        marksPerCorrectInTwelfths = result.marksPerCorrectInTwelfths,
+                        negativeMarkInTwelfths = result.negativeMarkInTwelfths
                     ),
                     questions = questions,
                     startedAtEpochMillis = result.startedAtEpochMillis,

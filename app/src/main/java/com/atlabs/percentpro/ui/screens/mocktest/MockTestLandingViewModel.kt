@@ -4,6 +4,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import androidx.lifecycle.viewmodel.initializer
 import androidx.lifecycle.viewmodel.viewModelFactory
+import com.atlabs.percentpro.content.ExamCatalog
 import com.atlabs.percentpro.content.MockTestCatalog
 import com.atlabs.percentpro.content.MockTestSelector
 import com.atlabs.percentpro.content.QuestionRepository
@@ -40,6 +41,7 @@ data class MockTestLandingUiState(
 class MockTestLandingViewModel(
     private val mockTestCatalog: MockTestCatalog,
     private val questionRepository: QuestionRepository,
+    private val examCatalog: ExamCatalog,
     mockTestRepository: MockTestRepository
 ) : ViewModel() {
 
@@ -64,11 +66,15 @@ class MockTestLandingViewModel(
         )
 
     /** Deterministic: the same config always yields the same paper. */
-    fun selectQuestions(config: MockTestConfig): List<Question> = MockTestSelector.select(
-        config = config,
-        topics = questionRepository.availableTopics(),
-        questionsByTopic = questionRepository::questionsFor
-    )
+    fun selectQuestions(config: MockTestConfig): List<Question> {
+        val examId = config.examId
+        return MockTestSelector.select(
+            config = config,
+            topics = questionRepository.availableTopics(),
+            questionsByTopic = questionRepository::questionsFor,
+            difficultyMix = examId?.let { examCatalog.examById(it)?.difficultyMix }
+        )
+    }
 
     companion object {
         private const val MAX_RECENT_RESULTS = 5
@@ -78,6 +84,7 @@ class MockTestLandingViewModel(
                 MockTestLandingViewModel(
                     mockTestCatalog = container.mockTestCatalog,
                     questionRepository = container.questionRepository,
+                    examCatalog = container.examCatalog,
                     mockTestRepository = container.mockTestRepository
                 )
             }

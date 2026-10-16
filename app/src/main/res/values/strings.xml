@@ -239,10 +239,10 @@
 
     <!-- Mock tests: landing -->
     <string name="mock_title_percentage_aptitude">Percentage Aptitude Test</string>
-    <string name="mock_description_percentage_aptitude">A 15-question timed paper covering the whole percentage syllabus. Original practice questions written for this app.</string>
+    <string name="mock_description_percentage_aptitude">A 15-question timed paper covering the whole percentage syllabus. Original questions written for this app.</string>
     <string name="mock_entry_title">Mock Tests</string>
     <string name="mock_entry_subtitle">Timed percentage aptitude papers</string>
-    <string name="mock_landing_description">A percentage-topic practice paper for competitive-exam preparation. This is not a full SSC, Railway or banking examination.</string>
+    <string name="mock_landing_description">A percentage practice paper for competitive-exam preparation. Original questions written for this app, not a full SSC, Railway or banking examination.</string>
     <string name="mock_rules_questions">Questions</string>
     <string name="mock_rules_duration">Duration</string>
     <string name="mock_rules_marks_correct">Correct answer</string>
@@ -260,6 +260,86 @@
     </plurals>
     <string name="mock_recent_results">Recent results</string>
     <string name="mock_no_results_yet">No mock tests attempted yet.</string>
+
+    <!-- Examination papers: the published shape of each real paper -->
+    <!-- Provenance tags on a question -->
+    <string name="cd_exam_tag">Examined for %1$s, %2$s, %3$s</string>
+    <string name="practice_exam_filter_label">Filter by exam</string>
+    <plurals name="cd_practice_exam_filter">
+        <item quantity="one">%1$s. %2$d question tagged for this exam.</item>
+        <item quantity="other">%1$s. %2$d questions tagged for this exam.</item>
+    </plurals>
+
+    <!-- Exam cards and papers -->
+    <string name="exam_card_pattern">Real exam pattern</string>
+    <plurals name="exam_card_section_questions">
+        <item quantity="one">%1$d question in the real section</item>
+        <item quantity="other">%1$d questions in the real section</item>
+    </plurals>
+    <plurals name="exam_card_paper_duration">
+        <item quantity="one">%1$d minute for the whole paper</item>
+        <item quantity="other">%1$d minutes for the whole paper</item>
+    </plurals>
+    <plurals name="exam_card_section_timer">
+        <item quantity="one">%1$d minute for this section alone</item>
+        <item quantity="other">%1$d minutes for this section alone</item>
+    </plurals>
+    <string name="exam_card_shares_timer">No separate timer for this section</string>
+    <string name="exam_card_drill_note">This app covers percentage. A paper is a drill through the percentage part of the section, not the whole section.</string>
+    <string name="exam_paper_practice_note">A percentage drill in the marking scheme used by %1$s, %2$s. Not a copy of the paper.</string>
+
+    <!-- Exam papers by year -->
+    <string name="practice_papers_by_year_title">Exam papers by year</string>
+    <string name="practice_papers_by_year_subtitle">Practise percentage against the pattern each examination used that year.</string>
+    <string name="exam_papers_scope_note">Questions are written for this app to match each year\'s published pattern. None is a reproduction of a past paper.</string>
+    <string name="exam_papers_eras_label">Pattern eras</string>
+    <string name="exam_papers_years_label">Every year</string>
+    <string name="exam_papers_show_years">Show every year</string>
+    <string name="exam_papers_show_eras">Show pattern eras</string>
+    <plurals name="exam_papers_scheme_line">
+        <item quantity="one">%1$d question in the real section · %2$s per correct · %3$s for wrong</item>
+        <item quantity="other">%1$d questions in the real section · %2$s per correct · %3$s for wrong</item>
+    </plurals>
+    <plurals name="exam_papers_years_available">
+        <item quantity="one">%1$d year</item>
+        <item quantity="other">%1$d years</item>
+    </plurals>
+    <plurals name="exam_papers_years_missing">
+        <item quantity="one">%1$d year</item>
+        <item quantity="other">%1$d years</item>
+    </plurals>
+    <string name="exam_papers_gap_title">A gap in the record</string>
+    <string name="exam_papers_gap_reason">%1$s could not be confirmed against the official notice, so no paper is offered for those years rather than guess at a marking scheme you would be scored against.</string>
+    <string name="exam_papers_no_exams">No examination papers are available yet.</string>
+    <string name="cd_exam_papers_card">%1$s. %2$s. %3$s.</string>
+
+    <string name="exam_papers_back">Back</string>
+    <string name="exam_papers_no_gap">No gaps in the record</string>
+    <plurals name="exam_papers_paper_questions">
+        <item quantity="one">%1$d question</item>
+        <item quantity="other">%1$d questions</item>
+    </plurals>
+    <plurals name="exam_papers_paper_minutes">
+        <item quantity="one">%1$d minute on the clock</item>
+        <item quantity="other">%1$d minutes on the clock</item>
+    </plurals>
+
+    <string name="exam_title_ssc_cgl">SSC CGL</string>
+    <string name="exam_desc_ssc_cgl">Tier 1 puts 25 quantitative aptitude questions worth 50 marks in a 60 minute paper, with one shared allowance for all four sections.</string>
+    <string name="exam_title_ssc_chsl">SSC CHSL</string>
+    <string name="exam_desc_ssc_chsl">Tier 1 has the same 25 question quantitative aptitude section as SSC CGL, but each section is timed separately at 15 minutes.</string>
+    <string name="exam_title_ssc_gd">SSC GD Constable</string>
+    <string name="exam_desc_ssc_gd">Elementary Mathematics is one of four 20 question sections in a 60 minute paper worth 160 marks in total.</string>
+    <string name="exam_title_ssc_mts">SSC MTS</string>
+    <string name="exam_desc_ssc_mts">Not available yet. The published pattern has been revised more than once and we could not confirm a current scheme, so no paper is offered rather than print one we cannot stand behind.</string>
+    <string name="exam_title_rrb_ntpc">RRB NTPC</string>
+    <string name="exam_desc_rrb_ntpc">CBT 1 asks 30 mathematics questions inside a 100 question, 90 minute test. One mark is deducted as exactly one third for every wrong answer.</string>
+    <string name="exam_title_rrb_group_d">RRB Group D</string>
+    <string name="exam_desc_rrb_group_d">Level 1 asks 20 mathematics questions in a 100 question, 90 minute computer based test, also deducting one third of a mark per wrong answer.</string>
+    <string name="exam_title_ibps_po">IBPS PO Prelims</string>
+    <string name="exam_desc_ibps_po">The quantitative aptitude section is 35 questions with 20 minutes on the clock and no chance to return to it once time is up.</string>
+    <string name="exam_title_ibps_clerk">IBPS Clerk Prelims</string>
+    <string name="exam_desc_ibps_clerk">Numerical Ability is 35 questions, also timed separately at 20 minutes within a 60 minute prelims paper.</string>
     <string name="mock_result_line">%1$s · %2$s of %3$s · %4$s%%</string>
     <string name="mock_view_result">View</string>
     <string name="mock_timed_out_badge">Timed out</string>

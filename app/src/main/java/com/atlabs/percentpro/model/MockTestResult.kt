@@ -30,22 +30,22 @@ data class MockTestResult(
     val incorrect: Int,
     val unanswered: Int,
     val markedForReview: Int,
-    val scoreInQuarters: Int,
-    val maxMarksInQuarters: Int,
-    val marksPerCorrectInQuarters: Int,
-    val negativeMarkInQuarters: Int,
+    val scoreInTwelfths: Int,
+    val maxMarksInTwelfths: Int,
+    val marksPerCorrectInTwelfths: Int,
+    val negativeMarkInTwelfths: Int,
     val timeTakenMillis: Long,
     val submission: MockTestSubmission
 ) {
-    val score: Double get() = scoreInQuarters / MockTestConfig.QUARTER
+    val score: Double get() = scoreInTwelfths / MockTestConfig.MARKS_UNIT
 
-    val maxMarks: Double get() = maxMarksInQuarters / MockTestConfig.QUARTER
+    val maxMarks: Double get() = maxMarksInTwelfths / MockTestConfig.MARKS_UNIT
 
     val accuracyPercent: Int
         get() = if (correct + incorrect <= 0) 0 else correct * 100 / (correct + incorrect)
 
     val percentagePercent: Int
-        get() = if (maxMarksInQuarters <= 0) 0 else scoreInQuarters * 100 / maxMarksInQuarters
+        get() = if (maxMarksInTwelfths <= 0) 0 else scoreInTwelfths * 100 / maxMarksInTwelfths
 
     val didTimeOut: Boolean get() = submission == MockTestSubmission.TIMEOUT
 
@@ -76,10 +76,10 @@ data class MockTestResult(
                 incorrect = score.incorrect,
                 unanswered = score.unanswered,
                 markedForReview = score.markedForReview,
-                scoreInQuarters = score.scoreInQuarters,
-                maxMarksInQuarters = score.maxMarksInQuarters,
-                marksPerCorrectInQuarters = config.marksPerCorrectInQuarters,
-                negativeMarkInQuarters = config.negativeMarkInQuarters,
+                scoreInTwelfths = score.scoreInTwelfths,
+                maxMarksInTwelfths = score.maxMarksInTwelfths,
+                marksPerCorrectInTwelfths = config.marksPerCorrectInTwelfths,
+                negativeMarkInTwelfths = config.negativeMarkInTwelfths,
                 // Never negative, and never longer than the test itself.
                 timeTakenMillis = (completedAtEpochMillis - session.startedAtEpochMillis)
                     .coerceAtLeast(0L),

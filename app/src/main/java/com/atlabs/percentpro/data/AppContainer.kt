@@ -2,6 +2,7 @@ package com.atlabs.percentpro.data
 
 import android.content.Context
 import com.atlabs.percentpro.content.LessonAvailability
+import com.atlabs.percentpro.content.ExamCatalog
 import com.atlabs.percentpro.content.MockTestCatalog
 import com.atlabs.percentpro.content.OnboardingRules
 import com.atlabs.percentpro.content.LessonCatalog
@@ -53,6 +54,7 @@ class AppContainer(context: Context) {
     }
 
     val mockTestCatalog: MockTestCatalog by lazy { MockTestCatalog() }
+    val examCatalog: ExamCatalog by lazy { ExamCatalog() }
 
     val mockTestRepository: MockTestRepository by lazy {
         MockTestRepository(

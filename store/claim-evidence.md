@@ -40,7 +40,7 @@ keep the two in step.
 
 | Not claimed | Why |
 |---|---|
-| Past-year or real exam questions | Every question is authored for this app. `tools/question_bank_data.py` is the source; there is no external paper behind them. Claiming otherwise would be false and is exactly what the metadata policy prohibits. |
+| Past-year or real exam questions | Every question is still authored for this app; `tools/question_bank_data.py` is the source and no external paper is reproduced. The app now names the examinations its papers follow and uses their published scheme, which is a claim about *pattern*, not provenance. The wording is checked by `CourseContentValidationTest`, which forbids "asked in" and "previous year" in any prompt and requires a source URL before any tag may cite a dated paper. |
 | Any official affiliation or endorsement | PercentPro is independent. The listing carries an explicit non-affiliation note. |
 | Guaranteed scores, ranks or exam success | No such guarantee is possible or made. |
 | Number of lessons beyond what is playable | Lessons 13–21 are catalogued but not yet written; `LessonAvailability` gates them. The listing describes the progression, not a count of 21. |

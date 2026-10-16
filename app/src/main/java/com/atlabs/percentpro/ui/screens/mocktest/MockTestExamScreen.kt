@@ -48,6 +48,7 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalLifecycleOwner
+import androidx.compose.ui.res.pluralStringResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.semantics.contentDescription
 import androidx.compose.ui.semantics.heading
@@ -60,6 +61,7 @@ import androidx.lifecycle.LifecycleEventObserver
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import androidx.lifecycle.viewmodel.compose.viewModel
 import com.atlabs.percentpro.R
+import com.atlabs.percentpro.ui.components.ProvenanceChips
 import com.atlabs.percentpro.content.MockTestCodec
 import com.atlabs.percentpro.data.AppContainer
 import com.atlabs.percentpro.model.AppLanguage
@@ -165,7 +167,8 @@ fun MockTestExamRoute(
                     modifier = Modifier.fillMaxSize(),
                     onStart = viewModel::startTest,
                     restoreProblem = uiState.restoreProblem,
-                    onDismissProblem = viewModel::dismissRestoreProblem
+                    onDismissProblem = viewModel::dismissRestoreProblem,
+                    startBlocker = uiState.startBlocker
                 )
 
                 MockTestPhase.IN_PROGRESS -> ExamPaper(
@@ -288,6 +291,7 @@ private fun InstructionsPlaceholder(
     onStart: () -> Unit,
     restoreProblem: com.atlabs.percentpro.content.MockTestCodec.RestoreFailure?,
     onDismissProblem: () -> Unit,
+    startBlocker: StartBlocker? = null,
     modifier: Modifier = Modifier
 ) {
     Column(
@@ -313,7 +317,27 @@ private fun InstructionsPlaceholder(
                 Text(stringResource(R.string.mock_restore_ok))
             }
         }
-        Button(onClick = onStart, modifier = Modifier.padding(top = 16.dp)) {
+
+        // An exam paper is built only from questions tagged for that exam, so it
+        // can honestly have too few. Saying how many are there turns a dead
+        // button into an explanation.
+        if (startBlocker is StartBlocker.NotEnoughQuestions) {
+            Text(
+                text = pluralStringResource(
+                    R.plurals.mock_insufficient_questions,
+                    startBlocker.available,
+                    startBlocker.available
+                ),
+                style = MaterialTheme.typography.bodyMedium,
+                color = MaterialTheme.colorScheme.error,
+                textAlign = TextAlign.Center
+            )
+        }
+
+        Button(
+            onClick = onStart,
+            modifier = Modifier.padding(top = 16.dp)
+        ) {
             Text(stringResource(R.string.mock_start_test))
         }
     }
@@ -358,6 +382,17 @@ private fun ExamPaper(
                     text = question.prompt.forLanguage(language),
                     style = MaterialTheme.typography.titleLarge,
                     modifier = Modifier.semantics { heading() }
+                )
+            }
+
+            // Which exam this question was drawn for. A paper is built from one
+            // exam's tagged questions, so the reader can see why the questions
+            // are pitched the way they are.
+            item(key = "provenance") {
+                ProvenanceChips(
+                    question = question,
+                    language = language,
+                    modifier = Modifier.padding(bottom = 4.dp)
                 )
             }
 

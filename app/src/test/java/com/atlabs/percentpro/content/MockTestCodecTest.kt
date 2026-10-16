@@ -243,9 +243,9 @@ class MockTestCodecTest {
         val restored = MockTestCodec.decodeResults(MockTestCodec.encodeResults(listOf(result)))
             .single()
 
-        assertEquals(result.marksPerCorrectInQuarters, restored.marksPerCorrectInQuarters)
-        assertEquals(result.negativeMarkInQuarters, restored.negativeMarkInQuarters)
-        assertEquals(result.scoreInQuarters, restored.scoreInQuarters)
+        assertEquals(result.marksPerCorrectInTwelfths, restored.marksPerCorrectInTwelfths)
+        assertEquals(result.negativeMarkInTwelfths, restored.negativeMarkInTwelfths)
+        assertEquals(result.scoreInTwelfths, restored.scoreInTwelfths)
     }
 
     @Test

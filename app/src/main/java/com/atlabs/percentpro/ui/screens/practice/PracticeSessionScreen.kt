@@ -60,10 +60,12 @@ import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import androidx.lifecycle.viewmodel.compose.viewModel
 import com.atlabs.percentpro.R
 import com.atlabs.percentpro.model.RewardOutcome
+import com.atlabs.percentpro.ui.components.ProvenanceChips
 import com.atlabs.percentpro.ui.components.RewardEarnedPanel
 import com.atlabs.percentpro.data.AppContainer
 import com.atlabs.percentpro.model.AppLanguage
 import com.atlabs.percentpro.model.LessonId
+import com.atlabs.percentpro.model.Provenance
 import com.atlabs.percentpro.model.Question
 import com.atlabs.percentpro.model.QuestionId
 
@@ -312,6 +314,17 @@ private fun AnsweringBody(
                 text = question.prompt.forLanguage(language),
                 style = MaterialTheme.typography.titleLarge,
                 modifier = Modifier.semantics { heading() }
+            )
+        }
+
+        // Which exams this question is written for, shown above the options so a
+        // learner can see why it looks the way it does before answering. Renders
+        // nothing for an untagged question.
+        item(key = "provenance") {
+            ProvenanceChips(
+                question = question,
+                language = language,
+                modifier = Modifier.padding(bottom = 4.dp)
             )
         }
 
@@ -726,7 +739,9 @@ private fun PracticeReviewBody(
                 correctIndex = question.correctIndex,
                 submittedIndex = submittedIndexFor(question.id),
                 answered = isAnswered(question.id),
-                explanation = question.explanation.forLanguage(language)
+                explanation = question.explanation.forLanguage(language),
+                provenance = question.provenance,
+                language = language
             )
         }
         item(key = "back") {
@@ -757,6 +772,8 @@ private fun ReviewQuestionCard(
     submittedIndex: Int?,
     answered: Boolean,
     explanation: String,
+    provenance: List<Provenance> = emptyList(),
+    language: AppLanguage = AppLanguage.ENGLISH,
     modifier: Modifier = Modifier
 ) {
     val correctLabel = stringResource(R.string.cd_option_correct)
@@ -773,6 +790,11 @@ private fun ReviewQuestionCard(
                 text = "$number. $prompt",
                 style = MaterialTheme.typography.titleSmall,
                 modifier = Modifier.semantics { heading() }
+            )
+            ProvenanceChips(
+                provenance = provenance,
+                language = language,
+                modifier = Modifier.padding(top = 8.dp, bottom = 4.dp)
             )
             options.forEachIndexed { index, option ->
                 val isCorrect = index == correctIndex

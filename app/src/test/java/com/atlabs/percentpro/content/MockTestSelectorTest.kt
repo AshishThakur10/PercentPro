@@ -26,8 +26,8 @@ class MockTestSelectorTest {
         descriptionRes = R.string.mock_description_percentage_aptitude,
         questionCount = questionCount,
         durationMillis = 15 * 60 * 1000L,
-        marksPerCorrectInQuarters = 4,
-        negativeMarkInQuarters = 1
+        marksPerCorrectInTwelfths = 12,
+        negativeMarkInTwelfths = 3
     )
 
     private fun question(id: String, topic: LessonId) = Question(

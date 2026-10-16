@@ -27,6 +27,7 @@ import com.atlabs.percentpro.ui.components.ShortcutAction
 import com.atlabs.percentpro.content.OnboardingStatus
 import com.atlabs.percentpro.content.PracticePlanner
 import com.atlabs.percentpro.model.DifficultyFilter
+import com.atlabs.percentpro.model.ExamId
 import com.atlabs.percentpro.model.PracticePlan
 import com.atlabs.percentpro.model.RecommendationDestination
 import com.atlabs.percentpro.ui.localization.ProvideAppLocale
@@ -44,6 +45,8 @@ import com.atlabs.percentpro.ui.screens.mocktest.MockTestSavedReviewRoute
 import com.atlabs.percentpro.ui.screens.onboarding.OnboardingScreen
 import com.atlabs.percentpro.ui.screens.settings.SettingsRoute
 import com.atlabs.percentpro.ui.screens.practice.PracticeSessionRoute
+import com.atlabs.percentpro.ui.screens.practice.ExamPaperYearsRoute
+import com.atlabs.percentpro.ui.screens.practice.ExamPapersRoute
 import com.atlabs.percentpro.ui.screens.practice.PracticeTopicRoute
 import com.atlabs.percentpro.ui.screens.practice.PracticeTopicViewModel
 
@@ -98,6 +101,12 @@ private sealed interface RootDestination {
 
     /** Mock test list, reached from the Practice tab. */
     data object MockTests : RootDestination
+
+    /** Which examinations have year-by-year papers. Last entry on the Practice tab. */
+    data object ExamPapers : RootDestination
+
+    /** The years one examination has papers for. */
+    data class ExamPaperYears(val examId: ExamId) : RootDestination
     data class MockTestExam(val id: MockTestId) : RootDestination
 
     /** A finished paper opened from the results list. Read-only. */
@@ -122,6 +131,8 @@ private sealed interface RootDestination {
 private const val LESSON_PREFIX = "lesson:"
 private const val PRACTICE_PREFIX = "practice:"
 private const val MOCK_TESTS_KEY = "mock_tests"
+private const val EXAM_PAPERS_KEY = "exam_papers"
+private const val EXAM_PAPER_YEARS_PREFIX = "exam_paper_years:"
 private const val MOCK_TEST_EXAM_PREFIX = "mock_test_exam:"
 private const val MOCK_TEST_REVIEW_PREFIX = "mock_test_review:"
 private const val ACHIEVEMENTS_KEY = "achievements"
@@ -132,6 +143,9 @@ private fun destinationToKey(destination: RootDestination): String = when (desti
     is RootDestination.Lesson -> "$LESSON_PREFIX${destination.id.storageKey}"
     is RootDestination.Practice -> "$PRACTICE_PREFIX${destination.topic.storageKey}"
     RootDestination.MockTests -> MOCK_TESTS_KEY
+    RootDestination.ExamPapers -> EXAM_PAPERS_KEY
+    is RootDestination.ExamPaperYears ->
+        "$EXAM_PAPER_YEARS_PREFIX${destination.examId.value}"
     is RootDestination.MockTestExam -> "$MOCK_TEST_EXAM_PREFIX${destination.id.value}"
     is RootDestination.MockTestSavedReview -> "$MOCK_TEST_REVIEW_PREFIX${destination.sessionId}"
     RootDestination.Achievements -> ACHIEVEMENTS_KEY
@@ -149,6 +163,12 @@ private fun destinationFromKey(key: String): RootDestination? = when {
         ?.let { RootDestination.Practice(it) }
 
     key == MOCK_TESTS_KEY -> RootDestination.MockTests
+
+    key == EXAM_PAPERS_KEY -> RootDestination.ExamPapers
+
+    key.startsWith(EXAM_PAPER_YEARS_PREFIX) -> runCatching {
+        ExamId(key.removePrefix(EXAM_PAPER_YEARS_PREFIX))
+    }.getOrNull()?.let { RootDestination.ExamPaperYears(it) }
 
     key.startsWith(MOCK_TEST_EXAM_PREFIX) -> MockTestId(
         key.removePrefix(MOCK_TEST_EXAM_PREFIX)
@@ -203,6 +223,10 @@ private fun AppShell(
         }
     }
     val openMockTests = { destinationKey = destinationToKey(RootDestination.MockTests) }
+    val openExamPapers = { destinationKey = destinationToKey(RootDestination.ExamPapers) }
+    val openExamPaperYears: (ExamId) -> Unit = { examId ->
+        destinationKey = destinationToKey(RootDestination.ExamPaperYears(examId))
+    }
     val openMockTestExam: (MockTestId) -> Unit = { testId ->
         destinationKey = destinationToKey(RootDestination.MockTestExam(testId))
     }
@@ -216,6 +240,23 @@ private fun AppShell(
         if (!plan.isEmpty) {
             destinationKey = destinationToKey(RootDestination.TargetedPractice(plan))
         }
+    }
+
+    /**
+     * A drill through one topic, restricted to one exam's questions.
+     *
+     * Goes through [PracticePlanner] rather than assembling ids here, so an exam
+     * with nothing tagged for the topic falls back the same way a difficulty with
+     * nothing authored at does, instead of opening an empty session.
+     */
+    val openExamPractice: (LessonId, ExamId) -> Unit = { topic, examId ->
+        startPlannedPractice(
+            PracticePlanner.planTopic(
+                topic = topic,
+                questionsFor = container.questionRepository::questionsFor,
+                exam = examId
+            )
+        )
     }
 
     // One place that turns any destination into a runnable plan, so a
@@ -309,6 +350,7 @@ private fun AppShell(
             BackHandler(onBack = closeDestination)
             MockTestLandingRoute(
                 container = container,
+                language = language,
                 onStartTest = openMockTestExam,
                 onOpenResult = openMockTestResult,
                 modifier = Modifier.fillMaxSize()
@@ -324,6 +366,27 @@ private fun AppShell(
                 container = container,
                 testId = destination.id,
                 language = language,
+                onExit = closeDestination,
+                modifier = Modifier.fillMaxSize()
+            )
+            return
+        }
+
+        RootDestination.ExamPapers -> {
+            BackHandler(onBack = closeDestination)
+            ExamPapersRoute(
+                onExamSelected = openExamPaperYears,
+                onExit = closeDestination,
+                modifier = Modifier.fillMaxSize()
+            )
+            return
+        }
+
+        is RootDestination.ExamPaperYears -> {
+            BackHandler(onBack = closeDestination)
+            ExamPaperYearsRoute(
+                examId = destination.examId,
+                onPaperSelected = openMockTestExam,
                 onExit = closeDestination,
                 modifier = Modifier.fillMaxSize()
             )
@@ -423,7 +486,9 @@ private fun AppShell(
                 AppTab.PRACTICE -> PracticeTopicRoute(
                     container = container,
                     onTopicSelected = openPractice,
-                    onOpenMockTests = openMockTests
+                    onExamSelected = openExamPractice,
+                    onOpenMockTests = openMockTests,
+                    onOpenExamPapers = openExamPapers
                 )
 
                 AppTab.SETTINGS -> SettingsRoute(

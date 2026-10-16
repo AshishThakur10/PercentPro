@@ -24,8 +24,8 @@ class MockTestScoringTest {
         descriptionRes = R.string.mock_description_percentage_aptitude,
         questionCount = 4,
         durationMillis = 15 * 60 * 1000L,
-        marksPerCorrectInQuarters = 4,
-        negativeMarkInQuarters = 1
+        marksPerCorrectInTwelfths = 12,
+        negativeMarkInTwelfths = 3
     )
 
     private fun question(id: String, correctIndex: Int) = Question(
@@ -54,7 +54,7 @@ class MockTestScoringTest {
     )
 
     @Test
-    fun `marks are held as whole quarter marks`() {
+    fun `marks are held as whole twelfths of a mark`() {
         assertEquals(1.0, config.marksPerCorrect, 0.0)
         assertEquals(0.25, config.negativeMark, 0.0)
         assertEquals(4.0, config.maxScore, 0.0)
@@ -72,14 +72,14 @@ class MockTestScoringTest {
         assertEquals(4, score.correct)
         assertEquals(0, score.incorrect)
         assertEquals(0, score.unanswered)
-        assertEquals(16, score.scoreInQuarters)
-        assertEquals(16, score.maxMarksInQuarters)
+        assertEquals(48, score.scoreInTwelfths)
+        assertEquals(48, score.maxMarksInTwelfths)
         assertEquals(4.0, score.score, 0.0)
         assertEquals(100, score.percentagePercent)
     }
 
     @Test
-    fun `wrong answers are deducted at a quarter mark each`() {
+    fun `wrong answers are deducted at the configured penalty each`() {
         // q1 correct, q2 wrong, q3 wrong, q4 unanswered: +1 -0.25 -0.25 = 0.50
         var live = session()
         live = live.goTo(0).selectOption(0)
@@ -91,7 +91,7 @@ class MockTestScoringTest {
         assertEquals(1, score.correct)
         assertEquals(2, score.incorrect)
         assertEquals(1, score.unanswered)
-        assertEquals(2, score.scoreInQuarters)
+        assertEquals(6, score.scoreInTwelfths)
         assertEquals(0.5, score.score, 0.0)
     }
 
@@ -103,7 +103,7 @@ class MockTestScoringTest {
         val score = live.score()
 
         assertEquals(3, score.unanswered)
-        assertEquals(4, score.scoreInQuarters)
+        assertEquals(12, score.scoreInTwelfths)
     }
 
     @Test
@@ -117,7 +117,7 @@ class MockTestScoringTest {
 
         assertEquals(0, score.correct)
         assertEquals(4, score.incorrect)
-        assertEquals(-4, score.scoreInQuarters)
+        assertEquals(-12, score.scoreInTwelfths)
         assertEquals(-1.0, score.score, 0.0)
     }
 
@@ -142,7 +142,7 @@ class MockTestScoringTest {
 
         assertEquals(0, score.accuracyPercent)
         assertEquals(0, score.percentagePercent)
-        assertEquals(0, score.scoreInQuarters)
+        assertEquals(0, score.scoreInTwelfths)
     }
 
     @Test
@@ -191,11 +191,42 @@ class MockTestScoringTest {
     }
 
     @Test
+    fun `a third of a mark is exact and shown as a fraction`() {
+        // The Railway papers deduct one third, which is four twelfths but not a
+        // terminating decimal, so the score itself stays exact while the
+        // per-question penalty is rendered as the fraction a learner can check.
+        val railway = config.copy(
+            id = MockTestId("railway_third"),
+            marksPerCorrectInTwelfths = 12,
+            negativeMarkInTwelfths = 4
+        )
+        assertEquals(1.0, railway.marksPerCorrect, 0.0)
+        assertEquals(0.3333333333333333, railway.negativeMark, 1e-9)
+        // A config holds the penalty as a positive magnitude and lets the label
+        // say it is deducted, so both signs are reachable and both are honoured.
+        assertEquals("1/3", railway.negativeMark.formatPenalty())
+        assertEquals("-1/3", (-railway.negativeMark).formatPenalty())
+        assertEquals("0.25", config.negativeMark.formatPenalty())
+        assertEquals("-0.25", (-config.negativeMark).formatPenalty())
+        assertEquals("1.00", railway.marksPerCorrect.formatPenalty())
+
+        // Three wrong answers cost exactly one mark, not 0.99.
+        val score = MockTestScore.of(
+            config = railway,
+            totalQuestions = 4,
+            correct = 1,
+            incorrect = 3
+        )
+        assertEquals(0, score.scoreInTwelfths)
+        assertEquals(0.0, score.score, 0.0)
+    }
+
+    @Test
     fun `different marking schemes need no scoring change`() {
         val plusTwoMinusHalf = config.copy(
             id = MockTestId("plus_two"),
-            marksPerCorrectInQuarters = 8,
-            negativeMarkInQuarters = 2,
+            marksPerCorrectInTwelfths = 24,
+            negativeMarkInTwelfths = 6,
             questionCount = 2
         )
         val twoQuestions = questions.take(2)
@@ -219,8 +250,8 @@ class MockTestSessionTest {
         descriptionRes = R.string.mock_description_percentage_aptitude,
         questionCount = 3,
         durationMillis = 15 * 60 * 1000L,
-        marksPerCorrectInQuarters = 4,
-        negativeMarkInQuarters = 1
+        marksPerCorrectInTwelfths = 12,
+        negativeMarkInTwelfths = 3
     )
 
     private fun question(id: String) = Question(

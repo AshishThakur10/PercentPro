@@ -44,8 +44,71 @@ def num(value):
     return f"{float(value):.2f}".rstrip("0").rstrip(".")
 
 
-def question(qid, topic, difficulty, en, hi, options, correct, expl_en, expl_hi):
-    """options: list of (en, hi); correct: index."""
+"""
+The government examinations this bank writes papers for.
+
+Keyed by the exam id used in ExamCatalog.kt. Each entry records the paper and
+section label in both languages, because a tag is shown on screen and the
+localisation test fails the build if only one language is present.
+
+Only `ExamPattern` tags are defined here. A `VerifiedPyq` tag claims a specific
+question was asked on a specific date and carries a source URL, which is not
+something a generator can assert about a question it just wrote. Verified tags
+have to be entered against a real paper by hand.
+"""
+EXAM_LABELS = {
+    "ssc_cgl": {
+        "paper_en": "Tier 1", "paper_hi": "टियर 1",
+        "section_en": "Quantitative Aptitude", "section_hi": "संख्यात्मक अभिरुचि",
+    },
+    "ssc_chsl": {
+        "paper_en": "Tier 1", "paper_hi": "टियर 1",
+        "section_en": "Quantitative Aptitude", "section_hi": "संख्यात्मक अभिरुचि",
+    },
+    "ssc_gd": {
+        "paper_en": "CBT", "paper_hi": "सीबीटी",
+        "section_en": "Elementary Mathematics", "section_hi": "प्राथमिक गणित",
+    },
+    "rrb_ntpc": {
+        "paper_en": "CBT 1", "paper_hi": "सीबीटी 1",
+        "section_en": "Mathematics", "section_hi": "गणित",
+    },
+    "rrb_group_d": {
+        "paper_en": "CBT", "paper_hi": "सीबीटी",
+        "section_en": "Mathematics", "section_hi": "गणित",
+    },
+    "ibps_po": {
+        "paper_en": "Prelims", "paper_hi": "प्रीलिम्स",
+        "section_en": "Quantitative Aptitude", "section_hi": "संख्यात्मक अभिरुचि",
+    },
+    "ibps_clerk": {
+        "paper_en": "Prelims", "paper_hi": "प्रीलिम्स",
+        "section_en": "Numerical Ability", "section_hi": "संख्यात्मक क्षमता",
+    },
+}
+
+
+def exam_pattern(exam_id):
+    """The ExamPattern tag for an exam, validated against EXAM_LABELS."""
+    assert exam_id in EXAM_LABELS, f"unknown exam '{exam_id}'; add it to EXAM_LABELS"
+    labels = EXAM_LABELS[exam_id]
+    return {
+        "kind": "ExamPattern",
+        "examId": exam_id,
+        "paperEn": labels["paper_en"],
+        "paperHi": labels["paper_hi"],
+        "sectionEn": labels["section_en"],
+        "sectionHi": labels["section_hi"],
+    }
+
+
+def question(qid, topic, difficulty, en, hi, options, correct, expl_en, expl_hi,
+             exams=None):
+    """options: list of (en, hi); correct: index.
+
+    `exams` names the examinations this question is written for; see
+    exam_authoring.py for how those are assigned.
+    """
     assert len(options) == 4, f"{qid}: needs exactly 4 options"
     assert 0 <= correct <= 3, f"{qid}: correct index out of range"
     en_vals = [o[0] for o in options]
@@ -57,10 +120,16 @@ def question(qid, topic, difficulty, en, hi, options, correct, expl_en, expl_hi)
         assert en_o != hi_o or not any(c.isalpha() for c in en_o), \
             f"{qid}: option looks untranslated: {en_o!r}"
     assert en and hi and expl_en and expl_hi, f"{qid}: empty content"
+    exam_list = list(exams or [])
+    seen = set()
+    for exam_id in exam_list:
+        assert exam_id not in seen, f"{qid}: exam '{exam_id}' listed twice"
+        seen.add(exam_id)
     QUESTIONS.append({
         "id": qid, "topic": topic, "difficulty": difficulty,
         "en": en, "hi": hi, "options": options,
         "correct": correct, "explanation_en": expl_en, "explanation_hi": expl_hi,
+        "exams": exam_list,
     })
 
 

@@ -321,10 +321,10 @@ class AnswerLedgerRepositoryTest {
             incorrect = 0,
             unanswered = 1,
             markedForReview = 0,
-            scoreInQuarters = 4,
-            maxMarksInQuarters = 8,
-            marksPerCorrectInQuarters = 4,
-            negativeMarkInQuarters = 1,
+            scoreInTwelfths = 12,
+            maxMarksInTwelfths = 24,
+            marksPerCorrectInTwelfths = 12,
+            negativeMarkInTwelfths = 3,
             timeTakenMillis = 600_000L,
             submission = MockTestSubmission.MANUAL
         )
@@ -363,10 +363,10 @@ class AnswerLedgerRepositoryTest {
             incorrect = 0,
             unanswered = 0,
             markedForReview = 0,
-            scoreInQuarters = 4,
-            maxMarksInQuarters = 4,
-            marksPerCorrectInQuarters = 4,
-            negativeMarkInQuarters = 1,
+            scoreInTwelfths = 12,
+            maxMarksInTwelfths = 12,
+            marksPerCorrectInTwelfths = 12,
+            negativeMarkInTwelfths = 3,
             timeTakenMillis = 60_000L,
             submission = MockTestSubmission.MANUAL
         )
@@ -436,10 +436,10 @@ class AnswerLedgerRepositoryTest {
             incorrect = 0,
             unanswered = 0,
             markedForReview = 0,
-            scoreInQuarters = 4,
-            maxMarksInQuarters = 4,
-            marksPerCorrectInQuarters = 4,
-            negativeMarkInQuarters = 1,
+            scoreInTwelfths = 12,
+            maxMarksInTwelfths = 12,
+            marksPerCorrectInTwelfths = 12,
+            negativeMarkInTwelfths = 3,
             timeTakenMillis = 60_000L,
             submission = MockTestSubmission.MANUAL
         )
@@ -471,10 +471,10 @@ class AnswerLedgerRepositoryTest {
             incorrect = 0,
             unanswered = 0,
             markedForReview = 0,
-            scoreInQuarters = 4,
-            maxMarksInQuarters = 4,
-            marksPerCorrectInQuarters = 4,
-            negativeMarkInQuarters = 1,
+            scoreInTwelfths = 12,
+            maxMarksInTwelfths = 12,
+            marksPerCorrectInTwelfths = 12,
+            negativeMarkInTwelfths = 3,
             timeTakenMillis = 60_000L,
             submission = MockTestSubmission.MANUAL
         )
@@ -555,10 +555,10 @@ class AnswerLedgerRepositoryTest {
         incorrect = 1,
         unanswered = 0,
         markedForReview = 0,
-        scoreInQuarters = 3,
-        maxMarksInQuarters = (2 + if (extra == null) 0 else 1) * 4,
-        marksPerCorrectInQuarters = 4,
-        negativeMarkInQuarters = 1,
+        scoreInTwelfths = 9,
+        maxMarksInTwelfths = (2 + if (extra == null) 0 else 1) * 12,
+        marksPerCorrectInTwelfths = 12,
+        negativeMarkInTwelfths = 3,
         timeTakenMillis = 600_000L,
         submission = MockTestSubmission.MANUAL
     )

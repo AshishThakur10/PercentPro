@@ -4,6 +4,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import androidx.lifecycle.viewmodel.initializer
 import androidx.lifecycle.viewmodel.viewModelFactory
+import com.atlabs.percentpro.content.ExamCatalog
 import com.atlabs.percentpro.content.MockTestCatalog
 import com.atlabs.percentpro.content.MockTestCodec
 import com.atlabs.percentpro.content.MockTestSelector
@@ -44,6 +45,18 @@ enum class MockTestPhase {
     REVIEW
 }
 
+/** Why a paper cannot be started. */
+sealed interface StartBlocker {
+
+    /**
+     * The bank does not yet hold enough questions for this paper.
+     *
+     * [available] and [required] are both reported so the instructions page can
+     * say how close it is rather than only that it failed.
+     */
+    data class NotEnoughQuestions(val available: Int, val required: Int) : StartBlocker
+}
+
 data class MockTestExamUiState(
     val phase: MockTestPhase = MockTestPhase.INSTRUCTIONS,
     val session: MockTestSession? = null,
@@ -62,6 +75,16 @@ data class MockTestExamUiState(
      */
     val showExitDialog: Boolean = false,
     val restoreProblem: MockTestCodec.RestoreFailure? = null,
+
+    /**
+     * Set when the paper cannot be built, so Start explains itself.
+     *
+     * An exam paper is drawn only from questions tagged for that exam, so it can
+     * legitimately have too few. Silently doing nothing would leave the reader
+     * pressing a button that never responds, which is indistinguishable from a
+     * crash.
+     */
+    val startBlocker: StartBlocker? = null,
     val recoveredResult: MockTestResult? = null,
     /** XP and achievements from the submission that produced [result]. */
     val reward: RewardOutcome = RewardOutcome.NONE
@@ -109,6 +132,7 @@ data class MockTestExamUiState(
 class MockTestExamViewModel(
     private val mockTestCatalog: MockTestCatalog,
     private val questionRepository: QuestionRepository,
+    private val examCatalog: ExamCatalog,
     private val mockTestRepository: MockTestRepository,
     private val gamificationRepository: GamificationRepository,
     private val answerLedgerRepository: AnswerLedgerRepository,
@@ -201,9 +225,23 @@ class MockTestExamViewModel(
             val questions = MockTestSelector.select(
                 config = config,
                 topics = questionRepository.availableTopics(),
-                questionsByTopic = questionRepository::questionsFor
+                questionsByTopic = questionRepository::questionsFor,
+                difficultyMix = examCatalog.examById(config.examId ?: return@launch)
+                    ?.difficultyMix
             )
-            if (questions.size < config.questionCount) return@launch
+            if (questions.size < config.questionCount) {
+                // Say why rather than returning silently: a paper that cannot
+                // fill must not leave a Start button that does nothing.
+                _uiState.update {
+                    it.copy(
+                        startBlocker = StartBlocker.NotEnoughQuestions(
+                            available = questions.size,
+                            required = config.questionCount
+                        )
+                    )
+                }
+                return@launch
+            }
 
             val startedAt = now()
             val session = MockTestSession.start(
@@ -225,11 +263,17 @@ class MockTestExamViewModel(
                 session = session,
                 remainingMillis = session.remainingMillis(now()),
                 result = null,
-                showSubmitDialog = false
+                showSubmitDialog = false,
+                startBlocker = null
             )
         }
         startTicker()
         persist()
+    }
+
+    /** Clears a "cannot start" notice so Start can be tried again. */
+    fun dismissStartBlocker() {
+        _uiState.update { it.copy(startBlocker = null) }
     }
 
     // ---- timer -------------------------------------------------------------
@@ -473,6 +517,7 @@ class MockTestExamViewModel(
                 MockTestExamViewModel(
                     mockTestCatalog = container.mockTestCatalog,
                     questionRepository = container.questionRepository,
+                    examCatalog = container.examCatalog,
                     mockTestRepository = container.mockTestRepository,
                     gamificationRepository = container.gamificationRepository,
                     answerLedgerRepository = container.answerLedgerRepository,

@@ -15,6 +15,7 @@ import sys
 from fractions import Fraction
 
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+import exam_authoring  # noqa: E402
 from question_authoring import build_all  # noqa: E402
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -24,6 +25,13 @@ BEGIN = "        // ==== BEGIN GENERATED PHASE 6 QUESTIONS ===="
 END = "        // ==== END GENERATED PHASE 6 QUESTIONS ==="
 
 DIFFICULTY = {"EASY": "E", "MEDIUM": "M", "HARD": "H"}
+
+# The exams a generated question can be tagged for. Must match ExamCatalog.kt;
+# emit_questions.py checks it against the ids found there.
+EXAM_IDS = [
+    "ssc_cgl", "ssc_chsl", "ssc_gd", "ssc_mts", "rrb_ntpc", "rrb_group_d",
+    "ibps_po", "ibps_clerk",
+]
 
 TOPIC_CONST = {
     "DECIMALS_TO_PERCENTAGES": "DECIMALS_TO_PERCENTAGES",
@@ -51,6 +59,35 @@ def kt(text):
     return text.replace("\\", "\\\\").replace('"', '\\"')
 
 
+def render_provenance(tags):
+    """
+    Renders a question's provenance list as Kotlin.
+
+    Returns an empty string when a question has no tags, so the argument is
+    simply left out of the q() call rather than passing an emptyList that would
+    need regenerating whenever a tag is added later.
+    """
+    if not tags:
+        return ""
+    elements = [
+        f'''                    Provenance.ExamPattern(
+                        examId = ExamId("{tag["examId"]}"),
+                        paper = LocalizedText.of(
+                            "{kt(tag["paperEn"])}", "{kt(tag["paperHi"])}"
+                        ),
+                        section = LocalizedText.of(
+                            "{kt(tag["sectionEn"])}", "{kt(tag["sectionHi"])}"
+                        )
+                    )'''
+        for tag in tags
+    ]
+    return (
+        "                provenance = listOf(\n"
+        + ",\n".join(elements)
+        + "\n                )"
+    )
+
+
 def render(qs):
     out = []
     for q in qs:
@@ -58,6 +95,8 @@ def render(qs):
             f'                    "{kt(en)}" to "{kt(hi)}"'
             for en, hi in q["options"]
         )
+        provenance = render_provenance(q.get("provenance", []))
+        tail = ",\n" + provenance if provenance else ""
         out.append(f'''            q(
                 id = "{q["id"]}",
                 topic = {TOPIC_CONST[q["topic"]]},
@@ -69,7 +108,7 @@ def render(qs):
                 ),
                 correctIndex = {q["correct"]},
                 explanationEn = "{kt(q["explanation_en"])}",
-                explanationHi = "{kt(q["explanation_hi"])}"
+                explanationHi = "{kt(q["explanation_hi"])}"{tail}
             )''')
     return ",\n".join(out)
 
@@ -113,11 +152,47 @@ def ensure_constants(bank):
     return bank
 
 
+def check_exam_ids_agree_with_catalog():
+    """
+    Confirms the generator and ExamCatalog.kt know about the same exams.
+
+    A tag naming an exam the app does not define would render a chip with no
+    pattern behind it and no paper could be built for it, so this fails the
+    build rather than shipping an orphan.
+    """
+    catalog = os.path.join(
+        ROOT,
+        "app/src/main/java/com/atlabs/percentpro/content/ExamCatalog.kt",
+    )
+    text = open(catalog, encoding="utf-8").read()
+    in_catalog = set(re.findall(r'ExamId\("([a-z0-9_]+)"\)', text))
+    in_generator = set(EXAM_IDS)
+
+    unknown = in_generator - in_catalog
+    assert not unknown, (
+        f"generator tags questions for exams ExamCatalog.kt does not define: "
+        f"{sorted(unknown)}"
+    )
+    untagged = in_catalog - in_generator
+    assert not untagged, (
+        f"ExamCatalog.kt defines exams the generator never tags: "
+        f"{sorted(untagged)}; add them to exam_authoring.ACTIVE_EXAMS or mark "
+        f"them unavailable"
+    )
+
+
 def main():
     questions = build_all()
 
     ids = [q["id"] for q in questions]
     assert len(ids) == len(set(ids)), "duplicate generated question ids"
+
+    # Tag the bank before rendering, so a profile that cannot fill a paper is
+    # caught here rather than showing up as a dead Start button in the app.
+    assignment = exam_authoring.assign()
+    exam_authoring.verify(assignment)
+    exam_authoring.apply(assignment)
+    check_exam_ids_agree_with_catalog()
 
     bank = ensure_constants(open(BANK, encoding="utf-8").read())
     open(BANK, "w", encoding="utf-8").write(bank)

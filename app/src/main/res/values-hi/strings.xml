@@ -239,10 +239,10 @@
 
     <!-- Mock tests: landing -->
     <string name="mock_title_percentage_aptitude">प्रतिशत अभिरुचि परीक्षण</string>
-    <string name="mock_description_percentage_aptitude">पूरे प्रतिशत पाठ्यक्रम पर आधारित 15 प्रश्नों की timed परीक्षा। इस ऐप के लिए लिखे गए मौलिक अभ्यास प्रश्न।</string>
+    <string name="mock_description_percentage_aptitude">पूरे प्रतिशत पाठ्यक्रम पर आधारित 15 प्रश्नों की समयबद्ध परीक्षा। इस ऐप के लिए लिखे गए मौलिक प्रश्न।</string>
     <string name="mock_entry_title">मॉक टेस्ट</string>
     <string name="mock_entry_subtitle">समयबद्ध प्रतिशत योग्यता प्रश्नपत्र</string>
-    <string name="mock_landing_description">प्रतियोगी परीक्षा की तैयारी के लिए प्रतिशत विषय का अभ्यास पत्र। यह कोई पूरी SSC, रेलवे या बैंकिंग परीक्षा नहीं है।</string>
+    <string name="mock_landing_description">प्रतियोगी परीक्षा की तैयारी के लिए प्रतिशत का अभ्यास पत्र। इस ऐप के लिए लिखे गए मौलिक प्रश्न; यह कोई पूरी SSC, रेलवे या बैंकिंग परीक्षा नहीं है।</string>
     <string name="mock_rules_questions">प्रश्न</string>
     <string name="mock_rules_duration">समय</string>
     <string name="mock_rules_marks_correct">सही उत्तर</string>
@@ -260,6 +260,86 @@
     </plurals>
     <string name="mock_recent_results">हाल के परिणाम</string>
     <string name="mock_no_results_yet">अभी तक कोई मॉक टेस्ट नहीं दिया गया।</string>
+
+    <!-- Examination papers: the published shape of each real paper -->
+    <!-- Provenance tags on a question -->
+    <string name="cd_exam_tag">%1$s, %2$s, %3$s के लिए तैयार</string>
+    <string name="practice_exam_filter_label">परीक्षा से छाँटें</string>
+    <plurals name="cd_practice_exam_filter">
+        <item quantity="one">%1$s। इस परीक्षा के लिए %2$d प्रश्न चिह्नित है।</item>
+        <item quantity="other">%1$s। इस परीक्षा के लिए %2$d प्रश्न चिह्नित हैं।</item>
+    </plurals>
+
+    <!-- Exam cards and papers -->
+    <string name="exam_card_pattern">असली परीक्षा का पैटर्न</string>
+    <plurals name="exam_card_section_questions">
+        <item quantity="one">असली अनुभाग में %1$d प्रश्न</item>
+        <item quantity="other">असली अनुभाग में %1$d प्रश्न</item>
+    </plurals>
+    <plurals name="exam_card_paper_duration">
+        <item quantity="one">पूरे पेपर के लिए %1$d मिनट</item>
+        <item quantity="other">पूरे पेपर के लिए %1$d मिनट</item>
+    </plurals>
+    <plurals name="exam_card_section_timer">
+        <item quantity="one">केवल इस अनुभाग के लिए %1$d मिनट</item>
+        <item quantity="other">केवल इस अनुभाग के लिए %1$d मिनट</item>
+    </plurals>
+    <string name="exam_card_shares_timer">इस अनुभाग का अलग समय नहीं है</string>
+    <string name="exam_card_drill_note">यह ऐप प्रतिशत को कवर करता है। पेपर पूरे अनुभाग नहीं, बल्कि उसके प्रतिशत भाग का अभ्यास है।</string>
+    <string name="exam_paper_practice_note">%1$s, %2$s में इस्तेमाल होने वाली अंकन व्यवस्था के साथ प्रतिशत का अभ्यास। पेपर की नकल नहीं।</string>
+
+    <!-- Exam papers by year -->
+    <string name="practice_papers_by_year_title">वर्ष अनुसार परीक्षा पेपर</string>
+    <string name="practice_papers_by_year_subtitle">प्रतिशत का अभ्यास उस वर्ष परीक्षा द्वारा अपनाए गए पैटर्न के अनुसार कीजिए।</string>
+    <string name="exam_papers_scope_note">प्रश्न इस ऐप के लिए लिखे गए हैं ताकि वे हर वर्ष के प्रकाशित पैटर्न से मेल खाएँ। इनमें से कोई भी पिछले पेपर की नकल नहीं है।</string>
+    <string name="exam_papers_eras_label">पैटर्न के काल</string>
+    <string name="exam_papers_years_label">हर वर्ष</string>
+    <string name="exam_papers_show_years">हर वर्ष दिखाएँ</string>
+    <string name="exam_papers_show_eras">पैटर्न के काल दिखाएँ</string>
+    <plurals name="exam_papers_scheme_line">
+        <item quantity="one">असली अनुभाग में %1$d प्रश्न · सही के लिए %2$s · ग़लत के लिए %3$s</item>
+        <item quantity="other">असली अनुभाग में %1$d प्रश्न · सही के लिए %2$s · ग़लत के लिए %3$s</item>
+    </plurals>
+    <plurals name="exam_papers_years_available">
+        <item quantity="one">%1$d वर्ष</item>
+        <item quantity="other">%1$d वर्ष</item>
+    </plurals>
+    <plurals name="exam_papers_years_missing">
+        <item quantity="one">%1$d वर्ष</item>
+        <item quantity="other">%1$d वर्ष</item>
+    </plurals>
+    <string name="exam_papers_gap_title">रिकॉर्ड में एक कमी</string>
+    <string name="exam_papers_gap_reason">%1$s को आधिकारिक सूचना से पुष्ट नहीं किया जा सका, इसलिए उन वर्षों के लिए पेपर नहीं दिया गया है — ऐसी अंकन व्यवस्था का अनुमान लगाना बेहतर नहीं जिसके आपको स्कोर मिलेगा।</string>
+    <string name="exam_papers_no_exams">अभी कोई परीक्षा पेपर उपलब्ध नहीं है।</string>
+    <string name="cd_exam_papers_card">%1$s। %2$s। %3$s।</string>
+
+    <string name="exam_papers_back">वापस</string>
+    <string name="exam_papers_no_gap">रिकॉर्ड में कोई कमी नहीं</string>
+    <plurals name="exam_papers_paper_questions">
+        <item quantity="one">%1$d प्रश्न</item>
+        <item quantity="other">%1$d प्रश्न</item>
+    </plurals>
+    <plurals name="exam_papers_paper_minutes">
+        <item quantity="one">%1$d मिनट का समय</item>
+        <item quantity="other">%1$d मिनट का समय</item>
+    </plurals>
+
+    <string name="exam_title_ssc_cgl">SSC CGL</string>
+    <string name="exam_desc_ssc_cgl">टियर 1 में 60 मिनट के पेपर में 25 संख्यात्मक अभिरुचि प्रश्न 50 अंकों के होते हैं, और चारों विषयों के लिए समय एक साझा रूप से दिया जाता है।</string>
+    <string name="exam_title_ssc_chsl">SSC CHSL</string>
+    <string name="exam_desc_ssc_chsl">टियर 1 में संख्यात्मक अभिरुचि का वही 25 प्रश्नों का अनुभाग SSC CGL जैसा है, परंतु हर विषय का समय अलग से 15 मिनट तय होता है।</string>
+    <string name="exam_title_ssc_gd">SSC GD कॉन्स्टेबल</string>
+    <string name="exam_desc_ssc_gd">प्राथमिक गणित, 60 मिनट के पेपर के चार 20 प्रश्नों वाले अनुभागों में से एक है, जिसका कुल अंक 160 है।</string>
+    <string name="exam_title_ssc_mts">SSC MTS</string>
+    <string name="exam_desc_ssc_mts">अभी उपलब्ध नहीं। प्रकाशित पैटर्न में एक से अधिक बार बदलाव हुआ है और हम कोई वर्तमान व्यवस्था पुष्ट नहीं कर सके, इसलिए ऐसा पेपर नहीं दिया जाता जिसे हम सत्य कह सकें।</string>
+    <string name="exam_title_rrb_ntpc">RRB NTPC</string>
+    <string name="exam_desc_rrb_ntpc">सीबीटी 1 में 100 प्रश्नों के 90 मिनट के टेस्ट में 30 गणित प्रश्न आते हैं। हर ग़लत उत्तर पर ठीक एक तिहाई अंक कटौता होता है।</string>
+    <string name="exam_title_rrb_group_d">RRB ग्रुप D</string>
+    <string name="exam_desc_rrb_group_d">लेवल 1 में 100 प्रश्नों के 90 मिनट के कंप्यूटर आधारित टेस्ट में 20 गणित प्रश्न आते हैं, जिसमें भी प्रति ग़लत उत्तर एक तिहाई अंक कटता है।</string>
+    <string name="exam_title_ibps_po">IBPS PO प्रीलिम्स</string>
+    <string name="exam_desc_ibps_po">संख्यात्मक अभिरुचि अनुभाग में 35 प्रश्न होते हैं और उसके लिए 20 मिनट मिलते हैं; समय समाप्त होने पर आप उस अनुभाग पर लौट नहीं सकते।</string>
+    <string name="exam_title_ibps_clerk">IBPS क्लर्क प्रीलिम्स</string>
+    <string name="exam_desc_ibps_clerk">संख्यात्मक क्षमता में 35 प्रश्न होते हैं, जिनका समय भी 20 मिनट है और यह 60 मिनट के प्रीलिम्स पेपर में अलग से तय होता है।</string>
     <string name="mock_result_line">%1$s · %3$s में से %2$s · %4$s%%</string>
     <string name="mock_view_result">देखें</string>
     <string name="mock_timed_out_badge">समय समाप्त</string>

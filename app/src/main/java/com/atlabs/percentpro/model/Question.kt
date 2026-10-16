@@ -28,6 +28,10 @@ enum class QuestionDifficulty {
  *
  * [correctIndex] is the index into [options] in both languages, since the option
  * order is fixed and identical across them.
+ *
+ * [provenance] says which examinations this question is written for. It is empty
+ * for a question that is not tied to any exam, which is a normal state and not a
+ * gap: a topic drill needs no exam tag to be useful.
  */
 data class Question(
     val id: QuestionId,
@@ -36,7 +40,8 @@ data class Question(
     val prompt: LocalizedText,
     val options: List<LocalizedText>,
     val correctIndex: Int,
-    val explanation: LocalizedText
+    val explanation: LocalizedText,
+    val provenance: List<Provenance> = emptyList()
 ) {
 
     /**
@@ -51,7 +56,10 @@ data class Question(
             // Duplicate options make a question ambiguous rather than hard.
             options.distinctBy { it.english }.size == OPTION_COUNT &&
             prompt.isComplete &&
-            explanation.isComplete
+            explanation.isComplete &&
+            // An incomplete tag is a content fault like any other, so the
+            // question goes with it rather than showing a blank label.
+            provenance.all { it.isComplete }
 
     fun optionAt(index: Int, language: AppLanguage): String? =
         options.getOrNull(index)?.forLanguage(language)
@@ -60,4 +68,13 @@ data class Question(
         options[correctIndex].forLanguage(language)
 
     fun isCorrectAnswer(index: Int): Boolean = index == correctIndex
+
+    /** Whether this question is written for the given examination. */
+    fun isFrom(examId: ExamId): Boolean = provenance.any { it.examId == examId }
+
+    /** The tag shown on screen; the first is the primary one. */
+    val primaryProvenance: Provenance? get() = provenance.firstOrNull()
+
+    /** Examinations this question is tagged for, without repeats. */
+    val examIds: List<ExamId> get() = provenance.examIds()
 }

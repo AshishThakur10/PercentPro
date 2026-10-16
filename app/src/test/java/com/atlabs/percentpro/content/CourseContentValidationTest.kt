@@ -1,6 +1,7 @@
 package com.atlabs.percentpro.content
 
 import com.atlabs.percentpro.model.LessonId
+import com.atlabs.percentpro.model.Provenance
 import com.atlabs.percentpro.model.QuestionDifficulty
 import org.junit.Assert.assertEquals
 import org.junit.Assert.assertFalse
@@ -358,10 +359,12 @@ class CourseContentValidationTest {
     }
 
     @Test
-    fun `no question is attributed to a previous examination paper`() {
-        // The bank is original practice content. Claiming a real paper without
-        // the source would be a false attribution.
-        val banned = listOf("previous year", "ssc cgl", "ssc chsl", "ssc mts", "rrb", "bank po")
+    fun `no question claims to be a real past paper question`() {
+        // Attribution lives in a question's provenance metadata, never in the
+        // question text. A prompt reading "this is the SSC CGL 2023 question" is
+        // a claim about the world made to a learner, and the app only makes
+        // those claims where it can show a source (see Provenance.VerifiedPyq).
+        val banned = listOf("previous year", "asked in", "actual question")
         bank.all().forEach { question ->
             val text = question.prompt.english.lowercase()
             banned.forEach { phrase ->
@@ -370,6 +373,82 @@ class CourseContentValidationTest {
                     text.contains(phrase)
                 )
             }
+        }
+    }
+
+    @Test
+    fun `every exam tag names an exam the catalog defines`() {
+        val known = ExamCatalog().exams().map { it.id }.toSet()
+        bank.all().forEach { question ->
+            question.provenance.forEach { tag ->
+                assertTrue(
+                    "${question.id} is tagged for undefined exam ${tag.examId}",
+                    tag.examId in known
+                )
+            }
+        }
+    }
+
+    @Test
+    fun `no exam tag names a real paper without a source`() {
+        // The two Provenance cases are not interchangeable. ExamPattern claims
+        // only that a question was written for a section, which the app can
+        // stand behind for a question it wrote itself. VerifiedPyq claims a
+        // question came out of a dated paper, which is only defensible with
+        // somewhere to check. A tag that mixes the two would tell a learner a
+        // previous-year question exists when the app cannot show it.
+        bank.all().forEach { question ->
+            question.provenance.forEach { tag ->
+                when (tag) {
+                    is Provenance.ExamPattern -> assertFalse(
+                        "${question.id} uses ExamPattern with a year",
+                        tag.hasExactYear
+                    )
+
+                    is Provenance.VerifiedPyq -> assertTrue(
+                        "${question.id} cites a paper with no source",
+                        tag.sourceUrl.isNotBlank()
+                    )
+                }
+            }
+        }
+    }
+
+    @Test
+    fun `every tag is complete in both languages`() {
+        // Question.isValid drops a question carrying an incomplete tag, so a tag
+        // half-translated would silently remove a question from the bank rather
+        // than fail. This makes it visible instead.
+        bank.all().forEach { question ->
+            question.provenance.forEach { tag ->
+                assertTrue(
+                    "${question.id} has an incomplete tag for ${tag.examId}",
+                    tag.isComplete
+                )
+                assertTrue(
+                    "${question.id} tag is missing its paper label",
+                    tag.paper.isComplete
+                )
+                assertTrue(
+                    "${question.id} tag is missing its section label",
+                    tag.section.isComplete
+                )
+            }
+        }
+    }
+
+    @Test
+    fun `an exam tag only names a paper the catalog publishes`() {
+        // An exam held back because its scheme could not be confirmed must not
+        // have questions tagged for it either, or a reader could filter to it
+        // from practice while no paper exists to sit.
+        val withheld = ExamCatalog().exams().filterNot { it.isAvailable }
+        withheld.forEach { exam ->
+            val tagged = bank.all().filter { it.isFrom(exam.id) }
+            assertTrue(
+                "${exam.id} is unavailable but ${tagged.size} questions are tagged for it",
+                tagged.isEmpty()
+            )
         }
     }
 

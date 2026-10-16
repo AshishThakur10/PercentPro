@@ -1,6 +1,7 @@
 package com.atlabs.percentpro.content
 
 import com.atlabs.percentpro.model.DifficultyFilter
+import com.atlabs.percentpro.model.ExamId
 import com.atlabs.percentpro.model.LessonId
 import com.atlabs.percentpro.model.PracticeMode
 import com.atlabs.percentpro.model.PracticePlan
@@ -31,22 +32,26 @@ object PracticePlanner {
     const val MIN_TOPIC_QUESTIONS = 1
 
     /**
-     * A single-topic run, optionally filtered to one difficulty.
+     * A single-topic run, optionally filtered to one difficulty and one exam.
      *
      * Falls back to the unfiltered topic questions when the requested difficulty
-     * has nothing, because an empty screen helps nobody; the returned plan then
-     * carries [DifficultyFilter.ANY] so the caller can say so honestly.
+     * or exam has nothing, because an empty screen helps nobody; the returned
+     * plan then carries [DifficultyFilter.ANY] and a null [PracticePlan.examFilter]
+     * so the caller can say so honestly.
      */
-    fun planTopic(
+fun planTopic(
         topic: LessonId,
         questionsFor: (LessonId) -> List<Question>,
         difficulty: DifficultyFilter = DifficultyFilter.ANY,
-        limit: Int = DEFAULT_TARGETED_LENGTH
+        limit: Int = DEFAULT_TARGETED_LENGTH,
+        exam: ExamId? = null
     ): PracticePlan {
         val available = questionsFor(topic).filter { it.isValid }
         if (available.isEmpty()) return emptyPlan(PracticeMode.TOPIC, difficulty, topic)
 
-        val filtered = available.filter { difficulty.matches(it.difficulty) }
+        val filtered = available.filter {
+            difficulty.matches(it.difficulty) && (exam == null || it.isFrom(exam))
+        }
         if (filtered.isEmpty()) {
             val fallback = available.take(limit.coerceAtLeast(1))
             return PracticePlan(
@@ -63,7 +68,8 @@ object PracticePlanner {
             difficultyFilter = difficulty,
             questionIds = filtered.take(limit.coerceAtLeast(1)).map { it.id },
             topicIds = listOf(topic),
-            primaryTopic = topic
+            primaryTopic = topic,
+            examFilter = exam
         )
     }
 
@@ -78,7 +84,8 @@ object PracticePlanner {
         topics: List<LessonId>,
         questionsFor: (LessonId) -> List<Question>,
         difficulty: DifficultyFilter = DifficultyFilter.ANY,
-        limit: Int = DEFAULT_MIXED_LENGTH
+        limit: Int = DEFAULT_MIXED_LENGTH,
+        exam: ExamId? = null
     ): PracticePlan {
         val target = limit.coerceAtLeast(1)
         val pools = topics
@@ -86,6 +93,7 @@ object PracticePlanner {
                 topic to questionsFor(topic)
                     .filter { it.isValid }
                     .filter { difficulty.matches(it.difficulty) }
+                    .filter { exam == null || it.isFrom(exam) }
             }
             .filter { (_, questions) -> questions.isNotEmpty() }
 

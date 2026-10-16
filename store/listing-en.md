@@ -63,7 +63,7 @@ Switch the entire app between English and Hindi at any time from Settings. Lesso
 WORKS COMPLETELY OFFLINE
 There is no account to create and nothing to sign in to. There are no ads, no tracking and no analytics in the app. Your progress, your answers and your rewards are stored in private app storage on this phone and are never transmitted anywhere, because the app has no permission to make a network request at all. It works with no connection, and if you uninstall the app that data goes with it.
 
-A note on scope: the questions are written for this app to explain and drill the topic. They are not reproductions of any past paper, and PercentPro is not affiliated with, endorsed by, or a substitute for any exam board.
+A note on scope: every question in the app is written for this app to explain and drill percentage. Papers are labelled with the examination whose section they follow and use that examination's published marking scheme and timing, so you can see what the real thing looks like before you sit one. None of them is a reproduction of a past paper. PercentPro is not affiliated with, endorsed by, or a substitute for any exam board.
 ```
 
 Every claim above maps to something implemented and covered by the automated

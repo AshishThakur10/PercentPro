@@ -12,8 +12,8 @@ import kotlin.math.abs
  * learner actually attempted, while percentage score is measured against the
  * whole paper and includes negative marks.
  *
- * All arithmetic is integer based, with marks held in quarter marks, so a score
- * is exact and reproducible.
+ * All arithmetic is integer based, with marks held in twelfths of a mark, so a
+ * score is exact and reproducible.
  */
 data class MockTestScore(
     val totalQuestions: Int,
@@ -22,15 +22,15 @@ data class MockTestScore(
     val incorrect: Int,
     val unanswered: Int,
     val markedForReview: Int,
-    val correctMarksInQuarters: Int,
-    val penaltyInQuarters: Int,
-    val maxMarksInQuarters: Int
+    val correctMarksInTwelfths: Int,
+    val penaltyInTwelfths: Int,
+    val maxMarksInTwelfths: Int
 ) {
-    val scoreInQuarters: Int get() = correctMarksInQuarters - penaltyInQuarters
+    val scoreInTwelfths: Int get() = correctMarksInTwelfths - penaltyInTwelfths
 
-    val score: Double get() = scoreInQuarters / MockTestConfig.QUARTER
+    val score: Double get() = scoreInTwelfths / MockTestConfig.MARKS_UNIT
 
-    val maxMarks: Double get() = maxMarksInQuarters / MockTestConfig.QUARTER
+    val maxMarks: Double get() = maxMarksInTwelfths / MockTestConfig.MARKS_UNIT
 
     /** Correct answers as a share of questions attempted. */
     val accuracyPercent: Int
@@ -38,10 +38,10 @@ data class MockTestScore(
 
     /** Score as a share of the maximum obtainable, after negative marking. */
     val percentagePercent: Int
-        get() = if (maxMarksInQuarters <= 0) {
+        get() = if (maxMarksInTwelfths <= 0) {
             0
         } else {
-            ((scoreInQuarters.toLong() * 100L) / maxMarksInQuarters.toLong()).toInt()
+            ((scoreInTwelfths.toLong() * 100L) / maxMarksInTwelfths.toLong()).toInt()
         }
 
     val isPassed: Boolean get() = percentagePercent >= 40
@@ -59,9 +59,9 @@ data class MockTestScore(
                 incorrect = incorrect,
                 unanswered = session.unattemptedCount,
                 markedForReview = session.markedForReviewCount,
-                correctMarksInQuarters = correct * config.marksPerCorrectInQuarters,
-                penaltyInQuarters = incorrect * config.negativeMarkInQuarters,
-                maxMarksInQuarters = session.questionCount * config.marksPerCorrectInQuarters
+                correctMarksInTwelfths = correct * config.marksPerCorrectInTwelfths,
+                penaltyInTwelfths = incorrect * config.negativeMarkInTwelfths,
+                maxMarksInTwelfths = session.questionCount * config.marksPerCorrectInTwelfths
             )
         }
 
@@ -81,32 +81,58 @@ data class MockTestScore(
                 incorrect = incorrect,
                 unanswered = unanswered,
                 markedForReview = markedForReview,
-                correctMarksInQuarters = correct * config.marksPerCorrectInQuarters,
-                penaltyInQuarters = incorrect * config.negativeMarkInQuarters,
-                maxMarksInQuarters = totalQuestions * config.marksPerCorrectInQuarters
+                correctMarksInTwelfths = correct * config.marksPerCorrectInTwelfths,
+                penaltyInTwelfths = incorrect * config.negativeMarkInTwelfths,
+                maxMarksInTwelfths = totalQuestions * config.marksPerCorrectInTwelfths
             )
         }
     }
 }
 
 /**
- * Formats a quarter-mark score as a plain decimal, e.g. 3.75 or -0.25.
+ * Formats a mark score as a plain decimal, e.g. 3.75 or -0.25.
  *
- * The input is always an exact multiple of a quarter mark, so the remainder is
- * rendered from a fixed table rather than by dividing, which keeps -0.25 from
- * being printed as -0.10.
+ * The input is always an exact multiple of a twelfth of a mark, so the
+ * remainder is rendered from a fixed table rather than by dividing. Dividing
+ * would print -0.25 as -0.10 once floating point is involved.
  */
 fun Double.formatMarks(): String {
-    val quarters = Math.round(this * MockTestConfig.QUARTER).toInt()
-    val negative = quarters < 0
-    val magnitude = abs(quarters)
-    val whole = magnitude / 4
-    val remainder = magnitude % 4
+    val twelfths = Math.round(this * MockTestConfig.MARKS_UNIT).toInt()
+    val negative = twelfths < 0
+    val magnitude = abs(twelfths)
+    val whole = magnitude / TWELFTHS_PER_MARK
+    val remainder = magnitude % TWELFTHS_PER_MARK
     val sign = if (negative) "-" else ""
-    return "$sign$whole.${QUARTER_DECIMALS[remainder]}"
+    return "$sign$whole.${TWELFTH_DECIMALS[remainder]}"
 }
 
-private val QUARTER_DECIMALS = arrayOf("00", "25", "50", "75")
+/**
+ * Formats a penalty, preferring the exact fraction for a third of a mark.
+ *
+ * The Railway papers deduct one third, which is four twelfths but not a
+ * terminating decimal. Printing it as "0.33" would be a rounding error a learner
+ * can catch by hand, because three wrong answers at 0.33 is 0.99 and not 1.00.
+ * So a third is rendered as the fraction instead.
+ *
+ * The sign follows the input exactly as [formatMarks] does. A config holds the
+ * penalty as a positive magnitude and lets the surrounding label say whether it
+ * is being deducted, so both `1/3` and `-1/3` are reachable.
+ */
+fun Double.formatPenalty(): String {
+    val twelfths = Math.round(this * MockTestConfig.MARKS_UNIT).toInt()
+    if (abs(twelfths) != ONE_THIRD_IN_TWELFTHS) return formatMarks()
+    return if (twelfths < 0) "-1/3" else "1/3"
+}
+
+private const val TWELFTHS_PER_MARK = 12
+
+/** A penalty of exactly one third of a mark, held as twelfths. */
+private const val ONE_THIRD_IN_TWELFTHS = 4
+
+/** Rounded to two places for display; the arithmetic behind it stays exact. */
+private val TWELFTH_DECIMALS = arrayOf(
+    "00", "08", "17", "25", "33", "42", "50", "58", "67", "75", "83", "92"
+)
 
 /** Question ids in paper order, used when a result is written to disk. */
 fun MockTestSession.questionIdOrder(): List<QuestionId> = questions.map { it.id }

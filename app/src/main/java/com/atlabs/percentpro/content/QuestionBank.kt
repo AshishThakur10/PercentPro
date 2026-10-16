@@ -1,7 +1,9 @@
 package com.atlabs.percentpro.content
 
+import com.atlabs.percentpro.model.ExamId
 import com.atlabs.percentpro.model.LessonId
 import com.atlabs.percentpro.model.LocalizedText
+import com.atlabs.percentpro.model.Provenance
 import com.atlabs.percentpro.model.Question
 import com.atlabs.percentpro.model.QuestionDifficulty
 import com.atlabs.percentpro.model.QuestionId
@@ -41,7 +43,9 @@ class QuestionBank {
             options: List<Pair<String, String>>,
             correctIndex: Int,
             explanationEn: String,
-            explanationHi: String
+            explanationHi: String,
+            // Empty by default, so a hand-written topic drill needs no exam tag.
+            provenance: List<Provenance> = emptyList()
         ) = Question(
             id = QuestionId(id),
             topic = topic,
@@ -49,7 +53,8 @@ class QuestionBank {
             prompt = LocalizedText.of(en, hi),
             options = options.map { LocalizedText.of(it.first, it.second) },
             correctIndex = correctIndex,
-            explanation = LocalizedText.of(explanationEn, explanationHi)
+            explanation = LocalizedText.of(explanationEn, explanationHi),
+            provenance = provenance
         )
 
         private val E = QuestionDifficulty.EASY
@@ -488,7 +493,27 @@ class QuestionBank {
                 ),
                 correctIndex = 0,
                 explanationEn = "Shift the point two places right: 0.35 x 100 = 35. So 0.35 = 35%.",
-                explanationHi = "Shift the point two places right: 0.35 x 100 = 35. अतः 0.35 = 35%।"
+                explanationHi = "Shift the point two places right: 0.35 x 100 = 35. अतः 0.35 = 35%।",
+                provenance = listOf(
+                    Provenance.ExamPattern(
+                        examId = ExamId("ssc_gd"),
+                        paper = LocalizedText.of(
+                            "CBT", "सीबीटी"
+                        ),
+                        section = LocalizedText.of(
+                            "Elementary Mathematics", "प्राथमिक गणित"
+                        )
+                    ),
+                    Provenance.ExamPattern(
+                        examId = ExamId("rrb_group_d"),
+                        paper = LocalizedText.of(
+                            "CBT", "सीबीटी"
+                        ),
+                        section = LocalizedText.of(
+                            "Mathematics", "गणित"
+                        )
+                    )
+                )
             ),
             q(
                 id = "dec_060",
@@ -504,7 +529,27 @@ class QuestionBank {
                 ),
                 correctIndex = 0,
                 explanationEn = "Add a zero so you shift two places: 0.60 x 100 = 60. So 0.6 = 60%.",
-                explanationHi = "Add a zero so you shift two places: 0.60 x 100 = 60. अतः 0.6 = 60%।"
+                explanationHi = "Add a zero so you shift two places: 0.60 x 100 = 60. अतः 0.6 = 60%।",
+                provenance = listOf(
+                    Provenance.ExamPattern(
+                        examId = ExamId("ssc_gd"),
+                        paper = LocalizedText.of(
+                            "CBT", "सीबीटी"
+                        ),
+                        section = LocalizedText.of(
+                            "Elementary Mathematics", "प्राथमिक गणित"
+                        )
+                    ),
+                    Provenance.ExamPattern(
+                        examId = ExamId("rrb_group_d"),
+                        paper = LocalizedText.of(
+                            "CBT", "सीबीटी"
+                        ),
+                        section = LocalizedText.of(
+                            "Mathematics", "गणित"
+                        )
+                    )
+                )
             ),
             q(
                 id = "dec_0125",
@@ -520,7 +565,54 @@ class QuestionBank {
                 ),
                 correctIndex = 0,
                 explanationEn = "0.125 x 100 = 12.5, because one eighth is 12.5%. So 0.125 = 12.5%.",
-                explanationHi = "0.125 x 100 = 12.5, because one eighth is 12.5%. अतः 0.125 = 12.5%।"
+                explanationHi = "0.125 x 100 = 12.5, because one eighth is 12.5%. अतः 0.125 = 12.5%।",
+                provenance = listOf(
+                    Provenance.ExamPattern(
+                        examId = ExamId("ssc_cgl"),
+                        paper = LocalizedText.of(
+                            "Tier 1", "टियर 1"
+                        ),
+                        section = LocalizedText.of(
+                            "Quantitative Aptitude", "संख्यात्मक अभिरुचि"
+                        )
+                    ),
+                    Provenance.ExamPattern(
+                        examId = ExamId("ssc_chsl"),
+                        paper = LocalizedText.of(
+                            "Tier 1", "टियर 1"
+                        ),
+                        section = LocalizedText.of(
+                            "Quantitative Aptitude", "संख्यात्मक अभिरुचि"
+                        )
+                    ),
+                    Provenance.ExamPattern(
+                        examId = ExamId("ssc_gd"),
+                        paper = LocalizedText.of(
+                            "CBT", "सीबीटी"
+                        ),
+                        section = LocalizedText.of(
+                            "Elementary Mathematics", "प्राथमिक गणित"
+                        )
+                    ),
+                    Provenance.ExamPattern(
+                        examId = ExamId("rrb_ntpc"),
+                        paper = LocalizedText.of(
+                            "CBT 1", "सीबीटी 1"
+                        ),
+                        section = LocalizedText.of(
+                            "Mathematics", "गणित"
+                        )
+                    ),
+                    Provenance.ExamPattern(
+                        examId = ExamId("rrb_group_d"),
+                        paper = LocalizedText.of(
+                            "CBT", "सीबीटी"
+                        ),
+                        section = LocalizedText.of(
+                            "Mathematics", "गणित"
+                        )
+                    )
+                )
             ),
             q(
                 id = "dec_008",
@@ -536,7 +628,36 @@ class QuestionBank {
                 ),
                 correctIndex = 0,
                 explanationEn = "0.08 x 100 = 8. So 0.08 = 8%.",
-                explanationHi = "0.08 x 100 = 8. अतः 0.08 = 8%।"
+                explanationHi = "0.08 x 100 = 8. अतः 0.08 = 8%।",
+                provenance = listOf(
+                    Provenance.ExamPattern(
+                        examId = ExamId("ssc_gd"),
+                        paper = LocalizedText.of(
+                            "CBT", "सीबीटी"
+                        ),
+                        section = LocalizedText.of(
+                            "Elementary Mathematics", "प्राथमिक गणित"
+                        )
+                    ),
+                    Provenance.ExamPattern(
+                        examId = ExamId("rrb_group_d"),
+                        paper = LocalizedText.of(
+                            "CBT", "सीबीटी"
+                        ),
+                        section = LocalizedText.of(
+                            "Mathematics", "गणित"
+                        )
+                    ),
+                    Provenance.ExamPattern(
+                        examId = ExamId("ibps_clerk"),
+                        paper = LocalizedText.of(
+                            "Prelims", "प्रीलिम्स"
+                        ),
+                        section = LocalizedText.of(
+                            "Numerical Ability", "संख्यात्मक क्षमता"
+                        )
+                    )
+                )
             ),
             q(
                 id = "dec_0045",
@@ -552,7 +673,63 @@ class QuestionBank {
                 ),
                 correctIndex = 0,
                 explanationEn = "0.0045 x 100 = 0.45. So 0.0045 = 0.45%.",
-                explanationHi = "0.0045 x 100 = 0.45. अतः 0.0045 = 0.45%।"
+                explanationHi = "0.0045 x 100 = 0.45. अतः 0.0045 = 0.45%।",
+                provenance = listOf(
+                    Provenance.ExamPattern(
+                        examId = ExamId("ssc_cgl"),
+                        paper = LocalizedText.of(
+                            "Tier 1", "टियर 1"
+                        ),
+                        section = LocalizedText.of(
+                            "Quantitative Aptitude", "संख्यात्मक अभिरुचि"
+                        )
+                    ),
+                    Provenance.ExamPattern(
+                        examId = ExamId("ssc_chsl"),
+                        paper = LocalizedText.of(
+                            "Tier 1", "टियर 1"
+                        ),
+                        section = LocalizedText.of(
+                            "Quantitative Aptitude", "संख्यात्मक अभिरुचि"
+                        )
+                    ),
+                    Provenance.ExamPattern(
+                        examId = ExamId("ssc_gd"),
+                        paper = LocalizedText.of(
+                            "CBT", "सीबीटी"
+                        ),
+                        section = LocalizedText.of(
+                            "Elementary Mathematics", "प्राथमिक गणित"
+                        )
+                    ),
+                    Provenance.ExamPattern(
+                        examId = ExamId("rrb_ntpc"),
+                        paper = LocalizedText.of(
+                            "CBT 1", "सीबीटी 1"
+                        ),
+                        section = LocalizedText.of(
+                            "Mathematics", "गणित"
+                        )
+                    ),
+                    Provenance.ExamPattern(
+                        examId = ExamId("rrb_group_d"),
+                        paper = LocalizedText.of(
+                            "CBT", "सीबीटी"
+                        ),
+                        section = LocalizedText.of(
+                            "Mathematics", "गणित"
+                        )
+                    ),
+                    Provenance.ExamPattern(
+                        examId = ExamId("ibps_clerk"),
+                        paper = LocalizedText.of(
+                            "Prelims", "प्रीलिम्स"
+                        ),
+                        section = LocalizedText.of(
+                            "Numerical Ability", "संख्यात्मक क्षमता"
+                        )
+                    )
+                )
             ),
             q(
                 id = "dec_125",
@@ -568,7 +745,27 @@ class QuestionBank {
                 ),
                 correctIndex = 0,
                 explanationEn = "A decimal above 1 gives a percentage above 100: 1.25 x 100 = 125. So 1.25 = 125%.",
-                explanationHi = "A decimal above 1 gives a percentage above 100: 1.25 x 100 = 125. अतः 1.25 = 125%।"
+                explanationHi = "A decimal above 1 gives a percentage above 100: 1.25 x 100 = 125. अतः 1.25 = 125%।",
+                provenance = listOf(
+                    Provenance.ExamPattern(
+                        examId = ExamId("ssc_gd"),
+                        paper = LocalizedText.of(
+                            "CBT", "सीबीटी"
+                        ),
+                        section = LocalizedText.of(
+                            "Elementary Mathematics", "प्राथमिक गणित"
+                        )
+                    ),
+                    Provenance.ExamPattern(
+                        examId = ExamId("rrb_group_d"),
+                        paper = LocalizedText.of(
+                            "CBT", "सीबीटी"
+                        ),
+                        section = LocalizedText.of(
+                            "Mathematics", "गणित"
+                        )
+                    )
+                )
             ),
             q(
                 id = "dec_35",
@@ -584,7 +781,54 @@ class QuestionBank {
                 ),
                 correctIndex = 0,
                 explanationEn = "3.5 x 100 = 350. So 3.5 = 350%.",
-                explanationHi = "3.5 x 100 = 350. अतः 3.5 = 350%।"
+                explanationHi = "3.5 x 100 = 350. अतः 3.5 = 350%।",
+                provenance = listOf(
+                    Provenance.ExamPattern(
+                        examId = ExamId("ssc_cgl"),
+                        paper = LocalizedText.of(
+                            "Tier 1", "टियर 1"
+                        ),
+                        section = LocalizedText.of(
+                            "Quantitative Aptitude", "संख्यात्मक अभिरुचि"
+                        )
+                    ),
+                    Provenance.ExamPattern(
+                        examId = ExamId("ssc_chsl"),
+                        paper = LocalizedText.of(
+                            "Tier 1", "टियर 1"
+                        ),
+                        section = LocalizedText.of(
+                            "Quantitative Aptitude", "संख्यात्मक अभिरुचि"
+                        )
+                    ),
+                    Provenance.ExamPattern(
+                        examId = ExamId("ssc_gd"),
+                        paper = LocalizedText.of(
+                            "CBT", "सीबीटी"
+                        ),
+                        section = LocalizedText.of(
+                            "Elementary Mathematics", "प्राथमिक गणित"
+                        )
+                    ),
+                    Provenance.ExamPattern(
+                        examId = ExamId("rrb_ntpc"),
+                        paper = LocalizedText.of(
+                            "CBT 1", "सीबीटी 1"
+                        ),
+                        section = LocalizedText.of(
+                            "Mathematics", "गणित"
+                        )
+                    ),
+                    Provenance.ExamPattern(
+                        examId = ExamId("rrb_group_d"),
+                        paper = LocalizedText.of(
+                            "CBT", "सीबीटी"
+                        ),
+                        section = LocalizedText.of(
+                            "Mathematics", "गणित"
+                        )
+                    )
+                )
             ),
             q(
                 id = "dec_3dp",
@@ -600,7 +844,54 @@ class QuestionBank {
                 ),
                 correctIndex = 0,
                 explanationEn = "0.4567 x 100 = 45.67. So 0.4567 = 45.67%.",
-                explanationHi = "0.4567 x 100 = 45.67. अतः 0.4567 = 45.67%।"
+                explanationHi = "0.4567 x 100 = 45.67. अतः 0.4567 = 45.67%।",
+                provenance = listOf(
+                    Provenance.ExamPattern(
+                        examId = ExamId("ssc_cgl"),
+                        paper = LocalizedText.of(
+                            "Tier 1", "टियर 1"
+                        ),
+                        section = LocalizedText.of(
+                            "Quantitative Aptitude", "संख्यात्मक अभिरुचि"
+                        )
+                    ),
+                    Provenance.ExamPattern(
+                        examId = ExamId("ssc_chsl"),
+                        paper = LocalizedText.of(
+                            "Tier 1", "टियर 1"
+                        ),
+                        section = LocalizedText.of(
+                            "Quantitative Aptitude", "संख्यात्मक अभिरुचि"
+                        )
+                    ),
+                    Provenance.ExamPattern(
+                        examId = ExamId("ssc_gd"),
+                        paper = LocalizedText.of(
+                            "CBT", "सीबीटी"
+                        ),
+                        section = LocalizedText.of(
+                            "Elementary Mathematics", "प्राथमिक गणित"
+                        )
+                    ),
+                    Provenance.ExamPattern(
+                        examId = ExamId("rrb_ntpc"),
+                        paper = LocalizedText.of(
+                            "CBT 1", "सीबीटी 1"
+                        ),
+                        section = LocalizedText.of(
+                            "Mathematics", "गणित"
+                        )
+                    ),
+                    Provenance.ExamPattern(
+                        examId = ExamId("rrb_group_d"),
+                        paper = LocalizedText.of(
+                            "CBT", "सीबीटी"
+                        ),
+                        section = LocalizedText.of(
+                            "Mathematics", "गणित"
+                        )
+                    )
+                )
             ),
             q(
                 id = "dec_which_is_40",
@@ -616,7 +907,54 @@ class QuestionBank {
                 ),
                 correctIndex = 0,
                 explanationEn = "40% = 40/100 = 0.4. Dividing by 100 moves the point two places left.",
-                explanationHi = "40% = 40/100 = 0.4। 100 से भाग करने पर बिंदु दो स्थान बाएँ चला जाता है।"
+                explanationHi = "40% = 40/100 = 0.4। 100 से भाग करने पर बिंदु दो स्थान बाएँ चला जाता है।",
+                provenance = listOf(
+                    Provenance.ExamPattern(
+                        examId = ExamId("ssc_cgl"),
+                        paper = LocalizedText.of(
+                            "Tier 1", "टियर 1"
+                        ),
+                        section = LocalizedText.of(
+                            "Quantitative Aptitude", "संख्यात्मक अभिरुचि"
+                        )
+                    ),
+                    Provenance.ExamPattern(
+                        examId = ExamId("ssc_chsl"),
+                        paper = LocalizedText.of(
+                            "Tier 1", "टियर 1"
+                        ),
+                        section = LocalizedText.of(
+                            "Quantitative Aptitude", "संख्यात्मक अभिरुचि"
+                        )
+                    ),
+                    Provenance.ExamPattern(
+                        examId = ExamId("ssc_gd"),
+                        paper = LocalizedText.of(
+                            "CBT", "सीबीटी"
+                        ),
+                        section = LocalizedText.of(
+                            "Elementary Mathematics", "प्राथमिक गणित"
+                        )
+                    ),
+                    Provenance.ExamPattern(
+                        examId = ExamId("rrb_ntpc"),
+                        paper = LocalizedText.of(
+                            "CBT 1", "सीबीटी 1"
+                        ),
+                        section = LocalizedText.of(
+                            "Mathematics", "गणित"
+                        )
+                    ),
+                    Provenance.ExamPattern(
+                        examId = ExamId("rrb_group_d"),
+                        paper = LocalizedText.of(
+                            "CBT", "सीबीटी"
+                        ),
+                        section = LocalizedText.of(
+                            "Mathematics", "गणित"
+                        )
+                    )
+                )
             ),
             q(
                 id = "pct_20_of_350",
@@ -632,7 +970,72 @@ class QuestionBank {
                 ),
                 correctIndex = 0,
                 explanationEn = "20% of 350 = 20/100 x 350 = 70.",
-                explanationHi = "350 का 20% = 20/100 x 350 = 70।"
+                explanationHi = "350 का 20% = 20/100 x 350 = 70।",
+                provenance = listOf(
+                    Provenance.ExamPattern(
+                        examId = ExamId("ssc_cgl"),
+                        paper = LocalizedText.of(
+                            "Tier 1", "टियर 1"
+                        ),
+                        section = LocalizedText.of(
+                            "Quantitative Aptitude", "संख्यात्मक अभिरुचि"
+                        )
+                    ),
+                    Provenance.ExamPattern(
+                        examId = ExamId("ssc_chsl"),
+                        paper = LocalizedText.of(
+                            "Tier 1", "टियर 1"
+                        ),
+                        section = LocalizedText.of(
+                            "Quantitative Aptitude", "संख्यात्मक अभिरुचि"
+                        )
+                    ),
+                    Provenance.ExamPattern(
+                        examId = ExamId("ssc_gd"),
+                        paper = LocalizedText.of(
+                            "CBT", "सीबीटी"
+                        ),
+                        section = LocalizedText.of(
+                            "Elementary Mathematics", "प्राथमिक गणित"
+                        )
+                    ),
+                    Provenance.ExamPattern(
+                        examId = ExamId("rrb_ntpc"),
+                        paper = LocalizedText.of(
+                            "CBT 1", "सीबीटी 1"
+                        ),
+                        section = LocalizedText.of(
+                            "Mathematics", "गणित"
+                        )
+                    ),
+                    Provenance.ExamPattern(
+                        examId = ExamId("rrb_group_d"),
+                        paper = LocalizedText.of(
+                            "CBT", "सीबीटी"
+                        ),
+                        section = LocalizedText.of(
+                            "Mathematics", "गणित"
+                        )
+                    ),
+                    Provenance.ExamPattern(
+                        examId = ExamId("ibps_po"),
+                        paper = LocalizedText.of(
+                            "Prelims", "प्रीलिम्स"
+                        ),
+                        section = LocalizedText.of(
+                            "Quantitative Aptitude", "संख्यात्मक अभिरुचि"
+                        )
+                    ),
+                    Provenance.ExamPattern(
+                        examId = ExamId("ibps_clerk"),
+                        paper = LocalizedText.of(
+                            "Prelims", "प्रीलिम्स"
+                        ),
+                        section = LocalizedText.of(
+                            "Numerical Ability", "संख्यात्मक क्षमता"
+                        )
+                    )
+                )
             ),
             q(
                 id = "pct_25_of_80",
@@ -648,7 +1051,72 @@ class QuestionBank {
                 ),
                 correctIndex = 0,
                 explanationEn = "25% of 80 = 25/100 x 80 = 20.",
-                explanationHi = "80 का 25% = 25/100 x 80 = 20।"
+                explanationHi = "80 का 25% = 25/100 x 80 = 20।",
+                provenance = listOf(
+                    Provenance.ExamPattern(
+                        examId = ExamId("ssc_cgl"),
+                        paper = LocalizedText.of(
+                            "Tier 1", "टियर 1"
+                        ),
+                        section = LocalizedText.of(
+                            "Quantitative Aptitude", "संख्यात्मक अभिरुचि"
+                        )
+                    ),
+                    Provenance.ExamPattern(
+                        examId = ExamId("ssc_chsl"),
+                        paper = LocalizedText.of(
+                            "Tier 1", "टियर 1"
+                        ),
+                        section = LocalizedText.of(
+                            "Quantitative Aptitude", "संख्यात्मक अभिरुचि"
+                        )
+                    ),
+                    Provenance.ExamPattern(
+                        examId = ExamId("ssc_gd"),
+                        paper = LocalizedText.of(
+                            "CBT", "सीबीटी"
+                        ),
+                        section = LocalizedText.of(
+                            "Elementary Mathematics", "प्राथमिक गणित"
+                        )
+                    ),
+                    Provenance.ExamPattern(
+                        examId = ExamId("rrb_ntpc"),
+                        paper = LocalizedText.of(
+                            "CBT 1", "सीबीटी 1"
+                        ),
+                        section = LocalizedText.of(
+                            "Mathematics", "गणित"
+                        )
+                    ),
+                    Provenance.ExamPattern(
+                        examId = ExamId("rrb_group_d"),
+                        paper = LocalizedText.of(
+                            "CBT", "सीबीटी"
+                        ),
+                        section = LocalizedText.of(
+                            "Mathematics", "गणित"
+                        )
+                    ),
+                    Provenance.ExamPattern(
+                        examId = ExamId("ibps_po"),
+                        paper = LocalizedText.of(
+                            "Prelims", "प्रीलिम्स"
+                        ),
+                        section = LocalizedText.of(
+                            "Quantitative Aptitude", "संख्यात्मक अभिरुचि"
+                        )
+                    ),
+                    Provenance.ExamPattern(
+                        examId = ExamId("ibps_clerk"),
+                        paper = LocalizedText.of(
+                            "Prelims", "प्रीलिम्स"
+                        ),
+                        section = LocalizedText.of(
+                            "Numerical Ability", "संख्यात्मक क्षमता"
+                        )
+                    )
+                )
             ),
             q(
                 id = "pct_15_of_240",
@@ -664,7 +1132,72 @@ class QuestionBank {
                 ),
                 correctIndex = 0,
                 explanationEn = "15% of 240 = 15/100 x 240 = 36.",
-                explanationHi = "240 का 15% = 15/100 x 240 = 36।"
+                explanationHi = "240 का 15% = 15/100 x 240 = 36।",
+                provenance = listOf(
+                    Provenance.ExamPattern(
+                        examId = ExamId("ssc_cgl"),
+                        paper = LocalizedText.of(
+                            "Tier 1", "टियर 1"
+                        ),
+                        section = LocalizedText.of(
+                            "Quantitative Aptitude", "संख्यात्मक अभिरुचि"
+                        )
+                    ),
+                    Provenance.ExamPattern(
+                        examId = ExamId("ssc_chsl"),
+                        paper = LocalizedText.of(
+                            "Tier 1", "टियर 1"
+                        ),
+                        section = LocalizedText.of(
+                            "Quantitative Aptitude", "संख्यात्मक अभिरुचि"
+                        )
+                    ),
+                    Provenance.ExamPattern(
+                        examId = ExamId("ssc_gd"),
+                        paper = LocalizedText.of(
+                            "CBT", "सीबीटी"
+                        ),
+                        section = LocalizedText.of(
+                            "Elementary Mathematics", "प्राथमिक गणित"
+                        )
+                    ),
+                    Provenance.ExamPattern(
+                        examId = ExamId("rrb_ntpc"),
+                        paper = LocalizedText.of(
+                            "CBT 1", "सीबीटी 1"
+                        ),
+                        section = LocalizedText.of(
+                            "Mathematics", "गणित"
+                        )
+                    ),
+                    Provenance.ExamPattern(
+                        examId = ExamId("rrb_group_d"),
+                        paper = LocalizedText.of(
+                            "CBT", "सीबीटी"
+                        ),
+                        section = LocalizedText.of(
+                            "Mathematics", "गणित"
+                        )
+                    ),
+                    Provenance.ExamPattern(
+                        examId = ExamId("ibps_po"),
+                        paper = LocalizedText.of(
+                            "Prelims", "प्रीलिम्स"
+                        ),
+                        section = LocalizedText.of(
+                            "Quantitative Aptitude", "संख्यात्मक अभिरुचि"
+                        )
+                    ),
+                    Provenance.ExamPattern(
+                        examId = ExamId("ibps_clerk"),
+                        paper = LocalizedText.of(
+                            "Prelims", "प्रीलिम्स"
+                        ),
+                        section = LocalizedText.of(
+                            "Numerical Ability", "संख्यात्मक क्षमता"
+                        )
+                    )
+                )
             ),
             q(
                 id = "pct_40_of_250",
@@ -680,7 +1213,72 @@ class QuestionBank {
                 ),
                 correctIndex = 0,
                 explanationEn = "40% of 250 = 40/100 x 250 = 100.",
-                explanationHi = "250 का 40% = 40/100 x 250 = 100।"
+                explanationHi = "250 का 40% = 40/100 x 250 = 100।",
+                provenance = listOf(
+                    Provenance.ExamPattern(
+                        examId = ExamId("ssc_cgl"),
+                        paper = LocalizedText.of(
+                            "Tier 1", "टियर 1"
+                        ),
+                        section = LocalizedText.of(
+                            "Quantitative Aptitude", "संख्यात्मक अभिरुचि"
+                        )
+                    ),
+                    Provenance.ExamPattern(
+                        examId = ExamId("ssc_chsl"),
+                        paper = LocalizedText.of(
+                            "Tier 1", "टियर 1"
+                        ),
+                        section = LocalizedText.of(
+                            "Quantitative Aptitude", "संख्यात्मक अभिरुचि"
+                        )
+                    ),
+                    Provenance.ExamPattern(
+                        examId = ExamId("ssc_gd"),
+                        paper = LocalizedText.of(
+                            "CBT", "सीबीटी"
+                        ),
+                        section = LocalizedText.of(
+                            "Elementary Mathematics", "प्राथमिक गणित"
+                        )
+                    ),
+                    Provenance.ExamPattern(
+                        examId = ExamId("rrb_ntpc"),
+                        paper = LocalizedText.of(
+                            "CBT 1", "सीबीटी 1"
+                        ),
+                        section = LocalizedText.of(
+                            "Mathematics", "गणित"
+                        )
+                    ),
+                    Provenance.ExamPattern(
+                        examId = ExamId("rrb_group_d"),
+                        paper = LocalizedText.of(
+                            "CBT", "सीबीटी"
+                        ),
+                        section = LocalizedText.of(
+                            "Mathematics", "गणित"
+                        )
+                    ),
+                    Provenance.ExamPattern(
+                        examId = ExamId("ibps_po"),
+                        paper = LocalizedText.of(
+                            "Prelims", "प्रीलिम्स"
+                        ),
+                        section = LocalizedText.of(
+                            "Quantitative Aptitude", "संख्यात्मक अभिरुचि"
+                        )
+                    ),
+                    Provenance.ExamPattern(
+                        examId = ExamId("ibps_clerk"),
+                        paper = LocalizedText.of(
+                            "Prelims", "प्रीलिम्स"
+                        ),
+                        section = LocalizedText.of(
+                            "Numerical Ability", "संख्यात्मक क्षमता"
+                        )
+                    )
+                )
             ),
             q(
                 id = "pct_60_of_45",
@@ -696,7 +1294,63 @@ class QuestionBank {
                 ),
                 correctIndex = 0,
                 explanationEn = "60% of 45 = 60/100 x 45 = 27.",
-                explanationHi = "45 का 60% = 60/100 x 45 = 27।"
+                explanationHi = "45 का 60% = 60/100 x 45 = 27।",
+                provenance = listOf(
+                    Provenance.ExamPattern(
+                        examId = ExamId("ssc_cgl"),
+                        paper = LocalizedText.of(
+                            "Tier 1", "टियर 1"
+                        ),
+                        section = LocalizedText.of(
+                            "Quantitative Aptitude", "संख्यात्मक अभिरुचि"
+                        )
+                    ),
+                    Provenance.ExamPattern(
+                        examId = ExamId("ssc_chsl"),
+                        paper = LocalizedText.of(
+                            "Tier 1", "टियर 1"
+                        ),
+                        section = LocalizedText.of(
+                            "Quantitative Aptitude", "संख्यात्मक अभिरुचि"
+                        )
+                    ),
+                    Provenance.ExamPattern(
+                        examId = ExamId("ssc_gd"),
+                        paper = LocalizedText.of(
+                            "CBT", "सीबीटी"
+                        ),
+                        section = LocalizedText.of(
+                            "Elementary Mathematics", "प्राथमिक गणित"
+                        )
+                    ),
+                    Provenance.ExamPattern(
+                        examId = ExamId("rrb_group_d"),
+                        paper = LocalizedText.of(
+                            "CBT", "सीबीटी"
+                        ),
+                        section = LocalizedText.of(
+                            "Mathematics", "गणित"
+                        )
+                    ),
+                    Provenance.ExamPattern(
+                        examId = ExamId("ibps_po"),
+                        paper = LocalizedText.of(
+                            "Prelims", "प्रीलिम्स"
+                        ),
+                        section = LocalizedText.of(
+                            "Quantitative Aptitude", "संख्यात्मक अभिरुचि"
+                        )
+                    ),
+                    Provenance.ExamPattern(
+                        examId = ExamId("ibps_clerk"),
+                        paper = LocalizedText.of(
+                            "Prelims", "प्रीलिम्स"
+                        ),
+                        section = LocalizedText.of(
+                            "Numerical Ability", "संख्यात्मक क्षमता"
+                        )
+                    )
+                )
             ),
             q(
                 id = "pct_35_of_200",
@@ -712,7 +1366,72 @@ class QuestionBank {
                 ),
                 correctIndex = 0,
                 explanationEn = "35% of 200 = 35/100 x 200 = 70.",
-                explanationHi = "200 का 35% = 35/100 x 200 = 70।"
+                explanationHi = "200 का 35% = 35/100 x 200 = 70।",
+                provenance = listOf(
+                    Provenance.ExamPattern(
+                        examId = ExamId("ssc_cgl"),
+                        paper = LocalizedText.of(
+                            "Tier 1", "टियर 1"
+                        ),
+                        section = LocalizedText.of(
+                            "Quantitative Aptitude", "संख्यात्मक अभिरुचि"
+                        )
+                    ),
+                    Provenance.ExamPattern(
+                        examId = ExamId("ssc_chsl"),
+                        paper = LocalizedText.of(
+                            "Tier 1", "टियर 1"
+                        ),
+                        section = LocalizedText.of(
+                            "Quantitative Aptitude", "संख्यात्मक अभिरुचि"
+                        )
+                    ),
+                    Provenance.ExamPattern(
+                        examId = ExamId("ssc_gd"),
+                        paper = LocalizedText.of(
+                            "CBT", "सीबीटी"
+                        ),
+                        section = LocalizedText.of(
+                            "Elementary Mathematics", "प्राथमिक गणित"
+                        )
+                    ),
+                    Provenance.ExamPattern(
+                        examId = ExamId("rrb_ntpc"),
+                        paper = LocalizedText.of(
+                            "CBT 1", "सीबीटी 1"
+                        ),
+                        section = LocalizedText.of(
+                            "Mathematics", "गणित"
+                        )
+                    ),
+                    Provenance.ExamPattern(
+                        examId = ExamId("rrb_group_d"),
+                        paper = LocalizedText.of(
+                            "CBT", "सीबीटी"
+                        ),
+                        section = LocalizedText.of(
+                            "Mathematics", "गणित"
+                        )
+                    ),
+                    Provenance.ExamPattern(
+                        examId = ExamId("ibps_po"),
+                        paper = LocalizedText.of(
+                            "Prelims", "प्रीलिम्स"
+                        ),
+                        section = LocalizedText.of(
+                            "Quantitative Aptitude", "संख्यात्मक अभिरुचि"
+                        )
+                    ),
+                    Provenance.ExamPattern(
+                        examId = ExamId("ibps_clerk"),
+                        paper = LocalizedText.of(
+                            "Prelims", "प्रीलिम्स"
+                        ),
+                        section = LocalizedText.of(
+                            "Numerical Ability", "संख्यात्मक क्षमता"
+                        )
+                    )
+                )
             ),
             q(
                 id = "pct_125_of_320",
@@ -728,7 +1447,72 @@ class QuestionBank {
                 ),
                 correctIndex = 0,
                 explanationEn = "12.5% of 320 = 12.5/100 x 320 = 40.",
-                explanationHi = "320 का 12.5% = 12.5/100 x 320 = 40।"
+                explanationHi = "320 का 12.5% = 12.5/100 x 320 = 40।",
+                provenance = listOf(
+                    Provenance.ExamPattern(
+                        examId = ExamId("ssc_cgl"),
+                        paper = LocalizedText.of(
+                            "Tier 1", "टियर 1"
+                        ),
+                        section = LocalizedText.of(
+                            "Quantitative Aptitude", "संख्यात्मक अभिरुचि"
+                        )
+                    ),
+                    Provenance.ExamPattern(
+                        examId = ExamId("ssc_chsl"),
+                        paper = LocalizedText.of(
+                            "Tier 1", "टियर 1"
+                        ),
+                        section = LocalizedText.of(
+                            "Quantitative Aptitude", "संख्यात्मक अभिरुचि"
+                        )
+                    ),
+                    Provenance.ExamPattern(
+                        examId = ExamId("ssc_gd"),
+                        paper = LocalizedText.of(
+                            "CBT", "सीबीटी"
+                        ),
+                        section = LocalizedText.of(
+                            "Elementary Mathematics", "प्राथमिक गणित"
+                        )
+                    ),
+                    Provenance.ExamPattern(
+                        examId = ExamId("rrb_ntpc"),
+                        paper = LocalizedText.of(
+                            "CBT 1", "सीबीटी 1"
+                        ),
+                        section = LocalizedText.of(
+                            "Mathematics", "गणित"
+                        )
+                    ),
+                    Provenance.ExamPattern(
+                        examId = ExamId("rrb_group_d"),
+                        paper = LocalizedText.of(
+                            "CBT", "सीबीटी"
+                        ),
+                        section = LocalizedText.of(
+                            "Mathematics", "गणित"
+                        )
+                    ),
+                    Provenance.ExamPattern(
+                        examId = ExamId("ibps_po"),
+                        paper = LocalizedText.of(
+                            "Prelims", "प्रीलिम्स"
+                        ),
+                        section = LocalizedText.of(
+                            "Quantitative Aptitude", "संख्यात्मक अभिरुचि"
+                        )
+                    ),
+                    Provenance.ExamPattern(
+                        examId = ExamId("ibps_clerk"),
+                        paper = LocalizedText.of(
+                            "Prelims", "प्रीलिम्स"
+                        ),
+                        section = LocalizedText.of(
+                            "Numerical Ability", "संख्यात्मक क्षमता"
+                        )
+                    )
+                )
             ),
             q(
                 id = "pct_7_of_6400",
@@ -744,7 +1528,72 @@ class QuestionBank {
                 ),
                 correctIndex = 0,
                 explanationEn = "7% of 6400 = 7/100 x 6400 = 448.",
-                explanationHi = "6400 का 7% = 7/100 x 6400 = 448।"
+                explanationHi = "6400 का 7% = 7/100 x 6400 = 448।",
+                provenance = listOf(
+                    Provenance.ExamPattern(
+                        examId = ExamId("ssc_cgl"),
+                        paper = LocalizedText.of(
+                            "Tier 1", "टियर 1"
+                        ),
+                        section = LocalizedText.of(
+                            "Quantitative Aptitude", "संख्यात्मक अभिरुचि"
+                        )
+                    ),
+                    Provenance.ExamPattern(
+                        examId = ExamId("ssc_chsl"),
+                        paper = LocalizedText.of(
+                            "Tier 1", "टियर 1"
+                        ),
+                        section = LocalizedText.of(
+                            "Quantitative Aptitude", "संख्यात्मक अभिरुचि"
+                        )
+                    ),
+                    Provenance.ExamPattern(
+                        examId = ExamId("ssc_gd"),
+                        paper = LocalizedText.of(
+                            "CBT", "सीबीटी"
+                        ),
+                        section = LocalizedText.of(
+                            "Elementary Mathematics", "प्राथमिक गणित"
+                        )
+                    ),
+                    Provenance.ExamPattern(
+                        examId = ExamId("rrb_ntpc"),
+                        paper = LocalizedText.of(
+                            "CBT 1", "सीबीटी 1"
+                        ),
+                        section = LocalizedText.of(
+                            "Mathematics", "गणित"
+                        )
+                    ),
+                    Provenance.ExamPattern(
+                        examId = ExamId("rrb_group_d"),
+                        paper = LocalizedText.of(
+                            "CBT", "सीबीटी"
+                        ),
+                        section = LocalizedText.of(
+                            "Mathematics", "गणित"
+                        )
+                    ),
+                    Provenance.ExamPattern(
+                        examId = ExamId("ibps_po"),
+                        paper = LocalizedText.of(
+                            "Prelims", "प्रीलिम्स"
+                        ),
+                        section = LocalizedText.of(
+                            "Quantitative Aptitude", "संख्यात्मक अभिरुचि"
+                        )
+                    ),
+                    Provenance.ExamPattern(
+                        examId = ExamId("ibps_clerk"),
+                        paper = LocalizedText.of(
+                            "Prelims", "प्रीलिम्स"
+                        ),
+                        section = LocalizedText.of(
+                            "Numerical Ability", "संख्यात्मक क्षमता"
+                        )
+                    )
+                )
             ),
             q(
                 id = "pct_class_girls",
@@ -760,7 +1609,72 @@ class QuestionBank {
                 ),
                 correctIndex = 0,
                 explanationEn = "45% of 40 = 45/100 x 40 = 18 girls.",
-                explanationHi = "40 का 45% = 45/100 x 40 = 18 लड़कियाँ।"
+                explanationHi = "40 का 45% = 45/100 x 40 = 18 लड़कियाँ।",
+                provenance = listOf(
+                    Provenance.ExamPattern(
+                        examId = ExamId("ssc_cgl"),
+                        paper = LocalizedText.of(
+                            "Tier 1", "टियर 1"
+                        ),
+                        section = LocalizedText.of(
+                            "Quantitative Aptitude", "संख्यात्मक अभिरुचि"
+                        )
+                    ),
+                    Provenance.ExamPattern(
+                        examId = ExamId("ssc_chsl"),
+                        paper = LocalizedText.of(
+                            "Tier 1", "टियर 1"
+                        ),
+                        section = LocalizedText.of(
+                            "Quantitative Aptitude", "संख्यात्मक अभिरुचि"
+                        )
+                    ),
+                    Provenance.ExamPattern(
+                        examId = ExamId("ssc_gd"),
+                        paper = LocalizedText.of(
+                            "CBT", "सीबीटी"
+                        ),
+                        section = LocalizedText.of(
+                            "Elementary Mathematics", "प्राथमिक गणित"
+                        )
+                    ),
+                    Provenance.ExamPattern(
+                        examId = ExamId("rrb_ntpc"),
+                        paper = LocalizedText.of(
+                            "CBT 1", "सीबीटी 1"
+                        ),
+                        section = LocalizedText.of(
+                            "Mathematics", "गणित"
+                        )
+                    ),
+                    Provenance.ExamPattern(
+                        examId = ExamId("rrb_group_d"),
+                        paper = LocalizedText.of(
+                            "CBT", "सीबीटी"
+                        ),
+                        section = LocalizedText.of(
+                            "Mathematics", "गणित"
+                        )
+                    ),
+                    Provenance.ExamPattern(
+                        examId = ExamId("ibps_po"),
+                        paper = LocalizedText.of(
+                            "Prelims", "प्रीलिम्स"
+                        ),
+                        section = LocalizedText.of(
+                            "Quantitative Aptitude", "संख्यात्मक अभिरुचि"
+                        )
+                    ),
+                    Provenance.ExamPattern(
+                        examId = ExamId("ibps_clerk"),
+                        paper = LocalizedText.of(
+                            "Prelims", "प्रीलिम्स"
+                        ),
+                        section = LocalizedText.of(
+                            "Numerical Ability", "संख्यात्मक क्षमता"
+                        )
+                    )
+                )
             ),
             q(
                 id = "whole_40_is_20pct",
@@ -776,7 +1690,36 @@ class QuestionBank {
                 ),
                 correctIndex = 0,
                 explanationEn = "40 / (20/100) = 40 x 100 / 20 = 200. Check: 20% of 200 = 40.",
-                explanationHi = "40 / (20/100) = 40 x 100 / 20 = 200। जाँच: 200 का 20% = 40।"
+                explanationHi = "40 / (20/100) = 40 x 100 / 20 = 200। जाँच: 200 का 20% = 40।",
+                provenance = listOf(
+                    Provenance.ExamPattern(
+                        examId = ExamId("ssc_chsl"),
+                        paper = LocalizedText.of(
+                            "Tier 1", "टियर 1"
+                        ),
+                        section = LocalizedText.of(
+                            "Quantitative Aptitude", "संख्यात्मक अभिरुचि"
+                        )
+                    ),
+                    Provenance.ExamPattern(
+                        examId = ExamId("rrb_group_d"),
+                        paper = LocalizedText.of(
+                            "CBT", "सीबीटी"
+                        ),
+                        section = LocalizedText.of(
+                            "Mathematics", "गणित"
+                        )
+                    ),
+                    Provenance.ExamPattern(
+                        examId = ExamId("ibps_clerk"),
+                        paper = LocalizedText.of(
+                            "Prelims", "प्रीलिम्स"
+                        ),
+                        section = LocalizedText.of(
+                            "Numerical Ability", "संख्यात्मक क्षमता"
+                        )
+                    )
+                )
             ),
             q(
                 id = "whole_30_is_15pct",
@@ -792,7 +1735,36 @@ class QuestionBank {
                 ),
                 correctIndex = 0,
                 explanationEn = "30 / (15/100) = 30 x 100 / 15 = 200. Check: 15% of 200 = 30.",
-                explanationHi = "30 / (15/100) = 30 x 100 / 15 = 200। जाँच: 200 का 15% = 30।"
+                explanationHi = "30 / (15/100) = 30 x 100 / 15 = 200। जाँच: 200 का 15% = 30।",
+                provenance = listOf(
+                    Provenance.ExamPattern(
+                        examId = ExamId("ssc_chsl"),
+                        paper = LocalizedText.of(
+                            "Tier 1", "टियर 1"
+                        ),
+                        section = LocalizedText.of(
+                            "Quantitative Aptitude", "संख्यात्मक अभिरुचि"
+                        )
+                    ),
+                    Provenance.ExamPattern(
+                        examId = ExamId("rrb_group_d"),
+                        paper = LocalizedText.of(
+                            "CBT", "सीबीटी"
+                        ),
+                        section = LocalizedText.of(
+                            "Mathematics", "गणित"
+                        )
+                    ),
+                    Provenance.ExamPattern(
+                        examId = ExamId("ibps_clerk"),
+                        paper = LocalizedText.of(
+                            "Prelims", "प्रीलिम्स"
+                        ),
+                        section = LocalizedText.of(
+                            "Numerical Ability", "संख्यात्मक क्षमता"
+                        )
+                    )
+                )
             ),
             q(
                 id = "whole_45_is_25pct",
@@ -808,7 +1780,27 @@ class QuestionBank {
                 ),
                 correctIndex = 0,
                 explanationEn = "45 / (25/100) = 45 x 100 / 25 = 180. Check: 25% of 180 = 45.",
-                explanationHi = "45 / (25/100) = 45 x 100 / 25 = 180। जाँच: 180 का 25% = 45।"
+                explanationHi = "45 / (25/100) = 45 x 100 / 25 = 180। जाँच: 180 का 25% = 45।",
+                provenance = listOf(
+                    Provenance.ExamPattern(
+                        examId = ExamId("rrb_group_d"),
+                        paper = LocalizedText.of(
+                            "CBT", "सीबीटी"
+                        ),
+                        section = LocalizedText.of(
+                            "Mathematics", "गणित"
+                        )
+                    ),
+                    Provenance.ExamPattern(
+                        examId = ExamId("ibps_clerk"),
+                        paper = LocalizedText.of(
+                            "Prelims", "प्रीलिम्स"
+                        ),
+                        section = LocalizedText.of(
+                            "Numerical Ability", "संख्यात्मक क्षमता"
+                        )
+                    )
+                )
             ),
             q(
                 id = "whole_63_is_30pct",
@@ -824,7 +1816,54 @@ class QuestionBank {
                 ),
                 correctIndex = 0,
                 explanationEn = "63 / (30/100) = 63 x 100 / 30 = 210. Check: 30% of 210 = 63.",
-                explanationHi = "63 / (30/100) = 63 x 100 / 30 = 210। जाँच: 210 का 30% = 63।"
+                explanationHi = "63 / (30/100) = 63 x 100 / 30 = 210। जाँच: 210 का 30% = 63।",
+                provenance = listOf(
+                    Provenance.ExamPattern(
+                        examId = ExamId("ssc_cgl"),
+                        paper = LocalizedText.of(
+                            "Tier 1", "टियर 1"
+                        ),
+                        section = LocalizedText.of(
+                            "Quantitative Aptitude", "संख्यात्मक अभिरुचि"
+                        )
+                    ),
+                    Provenance.ExamPattern(
+                        examId = ExamId("ssc_chsl"),
+                        paper = LocalizedText.of(
+                            "Tier 1", "टियर 1"
+                        ),
+                        section = LocalizedText.of(
+                            "Quantitative Aptitude", "संख्यात्मक अभिरुचि"
+                        )
+                    ),
+                    Provenance.ExamPattern(
+                        examId = ExamId("rrb_ntpc"),
+                        paper = LocalizedText.of(
+                            "CBT 1", "सीबीटी 1"
+                        ),
+                        section = LocalizedText.of(
+                            "Mathematics", "गणित"
+                        )
+                    ),
+                    Provenance.ExamPattern(
+                        examId = ExamId("rrb_group_d"),
+                        paper = LocalizedText.of(
+                            "CBT", "सीबीटी"
+                        ),
+                        section = LocalizedText.of(
+                            "Mathematics", "गणित"
+                        )
+                    ),
+                    Provenance.ExamPattern(
+                        examId = ExamId("ibps_clerk"),
+                        paper = LocalizedText.of(
+                            "Prelims", "प्रीलिम्स"
+                        ),
+                        section = LocalizedText.of(
+                            "Numerical Ability", "संख्यात्मक क्षमता"
+                        )
+                    )
+                )
             ),
             q(
                 id = "whole_240_is_60pct",
@@ -840,7 +1879,54 @@ class QuestionBank {
                 ),
                 correctIndex = 0,
                 explanationEn = "240 / (60/100) = 240 x 100 / 60 = 400. Check: 60% of 400 = 240.",
-                explanationHi = "240 / (60/100) = 240 x 100 / 60 = 400। जाँच: 400 का 60% = 240।"
+                explanationHi = "240 / (60/100) = 240 x 100 / 60 = 400। जाँच: 400 का 60% = 240।",
+                provenance = listOf(
+                    Provenance.ExamPattern(
+                        examId = ExamId("ssc_cgl"),
+                        paper = LocalizedText.of(
+                            "Tier 1", "टियर 1"
+                        ),
+                        section = LocalizedText.of(
+                            "Quantitative Aptitude", "संख्यात्मक अभिरुचि"
+                        )
+                    ),
+                    Provenance.ExamPattern(
+                        examId = ExamId("ssc_chsl"),
+                        paper = LocalizedText.of(
+                            "Tier 1", "टियर 1"
+                        ),
+                        section = LocalizedText.of(
+                            "Quantitative Aptitude", "संख्यात्मक अभिरुचि"
+                        )
+                    ),
+                    Provenance.ExamPattern(
+                        examId = ExamId("rrb_ntpc"),
+                        paper = LocalizedText.of(
+                            "CBT 1", "सीबीटी 1"
+                        ),
+                        section = LocalizedText.of(
+                            "Mathematics", "गणित"
+                        )
+                    ),
+                    Provenance.ExamPattern(
+                        examId = ExamId("rrb_group_d"),
+                        paper = LocalizedText.of(
+                            "CBT", "सीबीटी"
+                        ),
+                        section = LocalizedText.of(
+                            "Mathematics", "गणित"
+                        )
+                    ),
+                    Provenance.ExamPattern(
+                        examId = ExamId("ibps_clerk"),
+                        paper = LocalizedText.of(
+                            "Prelims", "प्रीलिम्स"
+                        ),
+                        section = LocalizedText.of(
+                            "Numerical Ability", "संख्यात्मक क्षमता"
+                        )
+                    )
+                )
             ),
             q(
                 id = "whole_132_is_66pct",
@@ -856,7 +1942,54 @@ class QuestionBank {
                 ),
                 correctIndex = 0,
                 explanationEn = "132 / (66/100) = 132 x 100 / 66 = 200. Check: 66% of 200 = 132.",
-                explanationHi = "132 / (66/100) = 132 x 100 / 66 = 200। जाँच: 200 का 66% = 132।"
+                explanationHi = "132 / (66/100) = 132 x 100 / 66 = 200। जाँच: 200 का 66% = 132।",
+                provenance = listOf(
+                    Provenance.ExamPattern(
+                        examId = ExamId("ssc_cgl"),
+                        paper = LocalizedText.of(
+                            "Tier 1", "टियर 1"
+                        ),
+                        section = LocalizedText.of(
+                            "Quantitative Aptitude", "संख्यात्मक अभिरुचि"
+                        )
+                    ),
+                    Provenance.ExamPattern(
+                        examId = ExamId("ssc_chsl"),
+                        paper = LocalizedText.of(
+                            "Tier 1", "टियर 1"
+                        ),
+                        section = LocalizedText.of(
+                            "Quantitative Aptitude", "संख्यात्मक अभिरुचि"
+                        )
+                    ),
+                    Provenance.ExamPattern(
+                        examId = ExamId("rrb_ntpc"),
+                        paper = LocalizedText.of(
+                            "CBT 1", "सीबीटी 1"
+                        ),
+                        section = LocalizedText.of(
+                            "Mathematics", "गणित"
+                        )
+                    ),
+                    Provenance.ExamPattern(
+                        examId = ExamId("rrb_group_d"),
+                        paper = LocalizedText.of(
+                            "CBT", "सीबीटी"
+                        ),
+                        section = LocalizedText.of(
+                            "Mathematics", "गणित"
+                        )
+                    ),
+                    Provenance.ExamPattern(
+                        examId = ExamId("ibps_clerk"),
+                        paper = LocalizedText.of(
+                            "Prelims", "प्रीलिम्स"
+                        ),
+                        section = LocalizedText.of(
+                            "Numerical Ability", "संख्यात्मक क्षमता"
+                        )
+                    )
+                )
             ),
             q(
                 id = "whole_85_is_17pct",
@@ -872,7 +2005,45 @@ class QuestionBank {
                 ),
                 correctIndex = 0,
                 explanationEn = "85 / (17/100) = 85 x 100 / 17 = 500. Check: 17% of 500 = 85.",
-                explanationHi = "85 / (17/100) = 85 x 100 / 17 = 500। जाँच: 500 का 17% = 85।"
+                explanationHi = "85 / (17/100) = 85 x 100 / 17 = 500। जाँच: 500 का 17% = 85।",
+                provenance = listOf(
+                    Provenance.ExamPattern(
+                        examId = ExamId("ssc_cgl"),
+                        paper = LocalizedText.of(
+                            "Tier 1", "टियर 1"
+                        ),
+                        section = LocalizedText.of(
+                            "Quantitative Aptitude", "संख्यात्मक अभिरुचि"
+                        )
+                    ),
+                    Provenance.ExamPattern(
+                        examId = ExamId("ssc_chsl"),
+                        paper = LocalizedText.of(
+                            "Tier 1", "टियर 1"
+                        ),
+                        section = LocalizedText.of(
+                            "Quantitative Aptitude", "संख्यात्मक अभिरुचि"
+                        )
+                    ),
+                    Provenance.ExamPattern(
+                        examId = ExamId("rrb_ntpc"),
+                        paper = LocalizedText.of(
+                            "CBT 1", "सीबीटी 1"
+                        ),
+                        section = LocalizedText.of(
+                            "Mathematics", "गणित"
+                        )
+                    ),
+                    Provenance.ExamPattern(
+                        examId = ExamId("rrb_group_d"),
+                        paper = LocalizedText.of(
+                            "CBT", "सीबीटी"
+                        ),
+                        section = LocalizedText.of(
+                            "Mathematics", "गणित"
+                        )
+                    )
+                )
             ),
             q(
                 id = "whole_exam_marks",
@@ -888,7 +2059,54 @@ class QuestionBank {
                 ),
                 correctIndex = 0,
                 explanationEn = "36 / 0.45 = 80. Check: 45% of 80 = 36.",
-                explanationHi = "36 / 0.45 = 80। जाँच: 80 का 45% = 36।"
+                explanationHi = "36 / 0.45 = 80। जाँच: 80 का 45% = 36।",
+                provenance = listOf(
+                    Provenance.ExamPattern(
+                        examId = ExamId("ssc_cgl"),
+                        paper = LocalizedText.of(
+                            "Tier 1", "टियर 1"
+                        ),
+                        section = LocalizedText.of(
+                            "Quantitative Aptitude", "संख्यात्मक अभिरुचि"
+                        )
+                    ),
+                    Provenance.ExamPattern(
+                        examId = ExamId("ssc_chsl"),
+                        paper = LocalizedText.of(
+                            "Tier 1", "टियर 1"
+                        ),
+                        section = LocalizedText.of(
+                            "Quantitative Aptitude", "संख्यात्मक अभिरुचि"
+                        )
+                    ),
+                    Provenance.ExamPattern(
+                        examId = ExamId("rrb_ntpc"),
+                        paper = LocalizedText.of(
+                            "CBT 1", "सीबीटी 1"
+                        ),
+                        section = LocalizedText.of(
+                            "Mathematics", "गणित"
+                        )
+                    ),
+                    Provenance.ExamPattern(
+                        examId = ExamId("rrb_group_d"),
+                        paper = LocalizedText.of(
+                            "CBT", "सीबीटी"
+                        ),
+                        section = LocalizedText.of(
+                            "Mathematics", "गणित"
+                        )
+                    ),
+                    Provenance.ExamPattern(
+                        examId = ExamId("ibps_clerk"),
+                        paper = LocalizedText.of(
+                            "Prelims", "प्रीलिम्स"
+                        ),
+                        section = LocalizedText.of(
+                            "Numerical Ability", "संख्यात्मक क्षमता"
+                        )
+                    )
+                )
             ),
             q(
                 id = "inc_450_up_12",
@@ -904,7 +2122,72 @@ class QuestionBank {
                 ),
                 correctIndex = 0,
                 explanationEn = "12% of 450 = 54, and 450 + 54 = 504.",
-                explanationHi = "450 का 12% = 54, और 450 + 54 = 504।"
+                explanationHi = "450 का 12% = 54, और 450 + 54 = 504।",
+                provenance = listOf(
+                    Provenance.ExamPattern(
+                        examId = ExamId("ssc_cgl"),
+                        paper = LocalizedText.of(
+                            "Tier 1", "टियर 1"
+                        ),
+                        section = LocalizedText.of(
+                            "Quantitative Aptitude", "संख्यात्मक अभिरुचि"
+                        )
+                    ),
+                    Provenance.ExamPattern(
+                        examId = ExamId("ssc_chsl"),
+                        paper = LocalizedText.of(
+                            "Tier 1", "टियर 1"
+                        ),
+                        section = LocalizedText.of(
+                            "Quantitative Aptitude", "संख्यात्मक अभिरुचि"
+                        )
+                    ),
+                    Provenance.ExamPattern(
+                        examId = ExamId("ssc_gd"),
+                        paper = LocalizedText.of(
+                            "CBT", "सीबीटी"
+                        ),
+                        section = LocalizedText.of(
+                            "Elementary Mathematics", "प्राथमिक गणित"
+                        )
+                    ),
+                    Provenance.ExamPattern(
+                        examId = ExamId("rrb_ntpc"),
+                        paper = LocalizedText.of(
+                            "CBT 1", "सीबीटी 1"
+                        ),
+                        section = LocalizedText.of(
+                            "Mathematics", "गणित"
+                        )
+                    ),
+                    Provenance.ExamPattern(
+                        examId = ExamId("rrb_group_d"),
+                        paper = LocalizedText.of(
+                            "CBT", "सीबीटी"
+                        ),
+                        section = LocalizedText.of(
+                            "Mathematics", "गणित"
+                        )
+                    ),
+                    Provenance.ExamPattern(
+                        examId = ExamId("ibps_po"),
+                        paper = LocalizedText.of(
+                            "Prelims", "प्रीलिम्स"
+                        ),
+                        section = LocalizedText.of(
+                            "Quantitative Aptitude", "संख्यात्मक अभिरुचि"
+                        )
+                    ),
+                    Provenance.ExamPattern(
+                        examId = ExamId("ibps_clerk"),
+                        paper = LocalizedText.of(
+                            "Prelims", "प्रीलिम्स"
+                        ),
+                        section = LocalizedText.of(
+                            "Numerical Ability", "संख्यात्मक क्षमता"
+                        )
+                    )
+                )
             ),
             q(
                 id = "inc_800_down_25",
@@ -920,7 +2203,63 @@ class QuestionBank {
                 ),
                 correctIndex = 0,
                 explanationEn = "25% of 800 = 200, and 800 - 200 = 600.",
-                explanationHi = "800 का 25% = 200, और 800 - 200 = 600।"
+                explanationHi = "800 का 25% = 200, और 800 - 200 = 600।",
+                provenance = listOf(
+                    Provenance.ExamPattern(
+                        examId = ExamId("ssc_cgl"),
+                        paper = LocalizedText.of(
+                            "Tier 1", "टियर 1"
+                        ),
+                        section = LocalizedText.of(
+                            "Quantitative Aptitude", "संख्यात्मक अभिरुचि"
+                        )
+                    ),
+                    Provenance.ExamPattern(
+                        examId = ExamId("ssc_chsl"),
+                        paper = LocalizedText.of(
+                            "Tier 1", "टियर 1"
+                        ),
+                        section = LocalizedText.of(
+                            "Quantitative Aptitude", "संख्यात्मक अभिरुचि"
+                        )
+                    ),
+                    Provenance.ExamPattern(
+                        examId = ExamId("ssc_gd"),
+                        paper = LocalizedText.of(
+                            "CBT", "सीबीटी"
+                        ),
+                        section = LocalizedText.of(
+                            "Elementary Mathematics", "प्राथमिक गणित"
+                        )
+                    ),
+                    Provenance.ExamPattern(
+                        examId = ExamId("rrb_ntpc"),
+                        paper = LocalizedText.of(
+                            "CBT 1", "सीबीटी 1"
+                        ),
+                        section = LocalizedText.of(
+                            "Mathematics", "गणित"
+                        )
+                    ),
+                    Provenance.ExamPattern(
+                        examId = ExamId("rrb_group_d"),
+                        paper = LocalizedText.of(
+                            "CBT", "सीबीटी"
+                        ),
+                        section = LocalizedText.of(
+                            "Mathematics", "गणित"
+                        )
+                    ),
+                    Provenance.ExamPattern(
+                        examId = ExamId("ibps_clerk"),
+                        paper = LocalizedText.of(
+                            "Prelims", "प्रीलिम्स"
+                        ),
+                        section = LocalizedText.of(
+                            "Numerical Ability", "संख्यात्मक क्षमता"
+                        )
+                    )
+                )
             ),
             q(
                 id = "inc_2500_up_8",
@@ -936,7 +2275,72 @@ class QuestionBank {
                 ),
                 correctIndex = 0,
                 explanationEn = "8% of 2500 = 200, and 2500 + 200 = 2700.",
-                explanationHi = "2500 का 8% = 200, और 2500 + 200 = 2700।"
+                explanationHi = "2500 का 8% = 200, और 2500 + 200 = 2700।",
+                provenance = listOf(
+                    Provenance.ExamPattern(
+                        examId = ExamId("ssc_cgl"),
+                        paper = LocalizedText.of(
+                            "Tier 1", "टियर 1"
+                        ),
+                        section = LocalizedText.of(
+                            "Quantitative Aptitude", "संख्यात्मक अभिरुचि"
+                        )
+                    ),
+                    Provenance.ExamPattern(
+                        examId = ExamId("ssc_chsl"),
+                        paper = LocalizedText.of(
+                            "Tier 1", "टियर 1"
+                        ),
+                        section = LocalizedText.of(
+                            "Quantitative Aptitude", "संख्यात्मक अभिरुचि"
+                        )
+                    ),
+                    Provenance.ExamPattern(
+                        examId = ExamId("ssc_gd"),
+                        paper = LocalizedText.of(
+                            "CBT", "सीबीटी"
+                        ),
+                        section = LocalizedText.of(
+                            "Elementary Mathematics", "प्राथमिक गणित"
+                        )
+                    ),
+                    Provenance.ExamPattern(
+                        examId = ExamId("rrb_ntpc"),
+                        paper = LocalizedText.of(
+                            "CBT 1", "सीबीटी 1"
+                        ),
+                        section = LocalizedText.of(
+                            "Mathematics", "गणित"
+                        )
+                    ),
+                    Provenance.ExamPattern(
+                        examId = ExamId("rrb_group_d"),
+                        paper = LocalizedText.of(
+                            "CBT", "सीबीटी"
+                        ),
+                        section = LocalizedText.of(
+                            "Mathematics", "गणित"
+                        )
+                    ),
+                    Provenance.ExamPattern(
+                        examId = ExamId("ibps_po"),
+                        paper = LocalizedText.of(
+                            "Prelims", "प्रीलिम्स"
+                        ),
+                        section = LocalizedText.of(
+                            "Quantitative Aptitude", "संख्यात्मक अभिरुचि"
+                        )
+                    ),
+                    Provenance.ExamPattern(
+                        examId = ExamId("ibps_clerk"),
+                        paper = LocalizedText.of(
+                            "Prelims", "प्रीलिम्स"
+                        ),
+                        section = LocalizedText.of(
+                            "Numerical Ability", "संख्यात्मक क्षमता"
+                        )
+                    )
+                )
             ),
             q(
                 id = "inc_600_down_15",
@@ -952,7 +2356,72 @@ class QuestionBank {
                 ),
                 correctIndex = 0,
                 explanationEn = "15% of 600 = 90, and 600 - 90 = 510.",
-                explanationHi = "600 का 15% = 90, और 600 - 90 = 510।"
+                explanationHi = "600 का 15% = 90, और 600 - 90 = 510।",
+                provenance = listOf(
+                    Provenance.ExamPattern(
+                        examId = ExamId("ssc_cgl"),
+                        paper = LocalizedText.of(
+                            "Tier 1", "टियर 1"
+                        ),
+                        section = LocalizedText.of(
+                            "Quantitative Aptitude", "संख्यात्मक अभिरुचि"
+                        )
+                    ),
+                    Provenance.ExamPattern(
+                        examId = ExamId("ssc_chsl"),
+                        paper = LocalizedText.of(
+                            "Tier 1", "टियर 1"
+                        ),
+                        section = LocalizedText.of(
+                            "Quantitative Aptitude", "संख्यात्मक अभिरुचि"
+                        )
+                    ),
+                    Provenance.ExamPattern(
+                        examId = ExamId("ssc_gd"),
+                        paper = LocalizedText.of(
+                            "CBT", "सीबीटी"
+                        ),
+                        section = LocalizedText.of(
+                            "Elementary Mathematics", "प्राथमिक गणित"
+                        )
+                    ),
+                    Provenance.ExamPattern(
+                        examId = ExamId("rrb_ntpc"),
+                        paper = LocalizedText.of(
+                            "CBT 1", "सीबीटी 1"
+                        ),
+                        section = LocalizedText.of(
+                            "Mathematics", "गणित"
+                        )
+                    ),
+                    Provenance.ExamPattern(
+                        examId = ExamId("rrb_group_d"),
+                        paper = LocalizedText.of(
+                            "CBT", "सीबीटी"
+                        ),
+                        section = LocalizedText.of(
+                            "Mathematics", "गणित"
+                        )
+                    ),
+                    Provenance.ExamPattern(
+                        examId = ExamId("ibps_po"),
+                        paper = LocalizedText.of(
+                            "Prelims", "प्रीलिम्स"
+                        ),
+                        section = LocalizedText.of(
+                            "Quantitative Aptitude", "संख्यात्मक अभिरुचि"
+                        )
+                    ),
+                    Provenance.ExamPattern(
+                        examId = ExamId("ibps_clerk"),
+                        paper = LocalizedText.of(
+                            "Prelims", "प्रीलिम्स"
+                        ),
+                        section = LocalizedText.of(
+                            "Numerical Ability", "संख्यात्मक क्षमता"
+                        )
+                    )
+                )
             ),
             q(
                 id = "inc_320_up_5",
@@ -968,7 +2437,72 @@ class QuestionBank {
                 ),
                 correctIndex = 0,
                 explanationEn = "5% of 320 = 16, and 320 + 16 = 336.",
-                explanationHi = "320 का 5% = 16, और 320 + 16 = 336।"
+                explanationHi = "320 का 5% = 16, और 320 + 16 = 336।",
+                provenance = listOf(
+                    Provenance.ExamPattern(
+                        examId = ExamId("ssc_cgl"),
+                        paper = LocalizedText.of(
+                            "Tier 1", "टियर 1"
+                        ),
+                        section = LocalizedText.of(
+                            "Quantitative Aptitude", "संख्यात्मक अभिरुचि"
+                        )
+                    ),
+                    Provenance.ExamPattern(
+                        examId = ExamId("ssc_chsl"),
+                        paper = LocalizedText.of(
+                            "Tier 1", "टियर 1"
+                        ),
+                        section = LocalizedText.of(
+                            "Quantitative Aptitude", "संख्यात्मक अभिरुचि"
+                        )
+                    ),
+                    Provenance.ExamPattern(
+                        examId = ExamId("ssc_gd"),
+                        paper = LocalizedText.of(
+                            "CBT", "सीबीटी"
+                        ),
+                        section = LocalizedText.of(
+                            "Elementary Mathematics", "प्राथमिक गणित"
+                        )
+                    ),
+                    Provenance.ExamPattern(
+                        examId = ExamId("rrb_ntpc"),
+                        paper = LocalizedText.of(
+                            "CBT 1", "सीबीटी 1"
+                        ),
+                        section = LocalizedText.of(
+                            "Mathematics", "गणित"
+                        )
+                    ),
+                    Provenance.ExamPattern(
+                        examId = ExamId("rrb_group_d"),
+                        paper = LocalizedText.of(
+                            "CBT", "सीबीटी"
+                        ),
+                        section = LocalizedText.of(
+                            "Mathematics", "गणित"
+                        )
+                    ),
+                    Provenance.ExamPattern(
+                        examId = ExamId("ibps_po"),
+                        paper = LocalizedText.of(
+                            "Prelims", "प्रीलिम्स"
+                        ),
+                        section = LocalizedText.of(
+                            "Quantitative Aptitude", "संख्यात्मक अभिरुचि"
+                        )
+                    ),
+                    Provenance.ExamPattern(
+                        examId = ExamId("ibps_clerk"),
+                        paper = LocalizedText.of(
+                            "Prelims", "प्रीलिम्स"
+                        ),
+                        section = LocalizedText.of(
+                            "Numerical Ability", "संख्यात्मक क्षमता"
+                        )
+                    )
+                )
             ),
             q(
                 id = "inc_150_down_40",
@@ -984,7 +2518,72 @@ class QuestionBank {
                 ),
                 correctIndex = 0,
                 explanationEn = "40% of 150 = 60, and 150 - 60 = 90.",
-                explanationHi = "150 का 40% = 60, और 150 - 60 = 90।"
+                explanationHi = "150 का 40% = 60, और 150 - 60 = 90।",
+                provenance = listOf(
+                    Provenance.ExamPattern(
+                        examId = ExamId("ssc_cgl"),
+                        paper = LocalizedText.of(
+                            "Tier 1", "टियर 1"
+                        ),
+                        section = LocalizedText.of(
+                            "Quantitative Aptitude", "संख्यात्मक अभिरुचि"
+                        )
+                    ),
+                    Provenance.ExamPattern(
+                        examId = ExamId("ssc_chsl"),
+                        paper = LocalizedText.of(
+                            "Tier 1", "टियर 1"
+                        ),
+                        section = LocalizedText.of(
+                            "Quantitative Aptitude", "संख्यात्मक अभिरुचि"
+                        )
+                    ),
+                    Provenance.ExamPattern(
+                        examId = ExamId("ssc_gd"),
+                        paper = LocalizedText.of(
+                            "CBT", "सीबीटी"
+                        ),
+                        section = LocalizedText.of(
+                            "Elementary Mathematics", "प्राथमिक गणित"
+                        )
+                    ),
+                    Provenance.ExamPattern(
+                        examId = ExamId("rrb_ntpc"),
+                        paper = LocalizedText.of(
+                            "CBT 1", "सीबीटी 1"
+                        ),
+                        section = LocalizedText.of(
+                            "Mathematics", "गणित"
+                        )
+                    ),
+                    Provenance.ExamPattern(
+                        examId = ExamId("rrb_group_d"),
+                        paper = LocalizedText.of(
+                            "CBT", "सीबीटी"
+                        ),
+                        section = LocalizedText.of(
+                            "Mathematics", "गणित"
+                        )
+                    ),
+                    Provenance.ExamPattern(
+                        examId = ExamId("ibps_po"),
+                        paper = LocalizedText.of(
+                            "Prelims", "प्रीलिम्स"
+                        ),
+                        section = LocalizedText.of(
+                            "Quantitative Aptitude", "संख्यात्मक अभिरुचि"
+                        )
+                    ),
+                    Provenance.ExamPattern(
+                        examId = ExamId("ibps_clerk"),
+                        paper = LocalizedText.of(
+                            "Prelims", "प्रीलिम्स"
+                        ),
+                        section = LocalizedText.of(
+                            "Numerical Ability", "संख्यात्मक क्षमता"
+                        )
+                    )
+                )
             ),
             q(
                 id = "inc_1500_down_12",
@@ -1000,7 +2599,54 @@ class QuestionBank {
                 ),
                 correctIndex = 0,
                 explanationEn = "12% of 1500 = 180, and 1500 - 180 = 1320.",
-                explanationHi = "1500 का 12% = 180, और 1500 - 180 = 1320।"
+                explanationHi = "1500 का 12% = 180, और 1500 - 180 = 1320।",
+                provenance = listOf(
+                    Provenance.ExamPattern(
+                        examId = ExamId("ssc_cgl"),
+                        paper = LocalizedText.of(
+                            "Tier 1", "टियर 1"
+                        ),
+                        section = LocalizedText.of(
+                            "Quantitative Aptitude", "संख्यात्मक अभिरुचि"
+                        )
+                    ),
+                    Provenance.ExamPattern(
+                        examId = ExamId("ssc_chsl"),
+                        paper = LocalizedText.of(
+                            "Tier 1", "टियर 1"
+                        ),
+                        section = LocalizedText.of(
+                            "Quantitative Aptitude", "संख्यात्मक अभिरुचि"
+                        )
+                    ),
+                    Provenance.ExamPattern(
+                        examId = ExamId("rrb_ntpc"),
+                        paper = LocalizedText.of(
+                            "CBT 1", "सीबीटी 1"
+                        ),
+                        section = LocalizedText.of(
+                            "Mathematics", "गणित"
+                        )
+                    ),
+                    Provenance.ExamPattern(
+                        examId = ExamId("rrb_group_d"),
+                        paper = LocalizedText.of(
+                            "CBT", "सीबीटी"
+                        ),
+                        section = LocalizedText.of(
+                            "Mathematics", "गणित"
+                        )
+                    ),
+                    Provenance.ExamPattern(
+                        examId = ExamId("ibps_clerk"),
+                        paper = LocalizedText.of(
+                            "Prelims", "प्रीलिम्स"
+                        ),
+                        section = LocalizedText.of(
+                            "Numerical Ability", "संख्यात्मक क्षमता"
+                        )
+                    )
+                )
             ),
             q(
                 id = "inc_240_up_35",
@@ -1016,7 +2662,45 @@ class QuestionBank {
                 ),
                 correctIndex = 0,
                 explanationEn = "35% of 240 = 84, and 240 + 84 = 324.",
-                explanationHi = "240 का 35% = 84, और 240 + 84 = 324।"
+                explanationHi = "240 का 35% = 84, और 240 + 84 = 324।",
+                provenance = listOf(
+                    Provenance.ExamPattern(
+                        examId = ExamId("ssc_cgl"),
+                        paper = LocalizedText.of(
+                            "Tier 1", "टियर 1"
+                        ),
+                        section = LocalizedText.of(
+                            "Quantitative Aptitude", "संख्यात्मक अभिरुचि"
+                        )
+                    ),
+                    Provenance.ExamPattern(
+                        examId = ExamId("ssc_chsl"),
+                        paper = LocalizedText.of(
+                            "Tier 1", "टियर 1"
+                        ),
+                        section = LocalizedText.of(
+                            "Quantitative Aptitude", "संख्यात्मक अभिरुचि"
+                        )
+                    ),
+                    Provenance.ExamPattern(
+                        examId = ExamId("rrb_ntpc"),
+                        paper = LocalizedText.of(
+                            "CBT 1", "सीबीटी 1"
+                        ),
+                        section = LocalizedText.of(
+                            "Mathematics", "गणित"
+                        )
+                    ),
+                    Provenance.ExamPattern(
+                        examId = ExamId("ibps_clerk"),
+                        paper = LocalizedText.of(
+                            "Prelims", "प्रीलिम्स"
+                        ),
+                        section = LocalizedText.of(
+                            "Numerical Ability", "संख्यात्मक क्षमता"
+                        )
+                    )
+                )
             ),
             q(
                 id = "inc_jacket_price",
@@ -1032,7 +2716,72 @@ class QuestionBank {
                 ),
                 correctIndex = 0,
                 explanationEn = "10% of 1800 = 180, so 1800 + 180 = 1980.",
-                explanationHi = "1800 का 10% = 180, इसलिए 1800 + 180 = 1980।"
+                explanationHi = "1800 का 10% = 180, इसलिए 1800 + 180 = 1980।",
+                provenance = listOf(
+                    Provenance.ExamPattern(
+                        examId = ExamId("ssc_cgl"),
+                        paper = LocalizedText.of(
+                            "Tier 1", "टियर 1"
+                        ),
+                        section = LocalizedText.of(
+                            "Quantitative Aptitude", "संख्यात्मक अभिरुचि"
+                        )
+                    ),
+                    Provenance.ExamPattern(
+                        examId = ExamId("ssc_chsl"),
+                        paper = LocalizedText.of(
+                            "Tier 1", "टियर 1"
+                        ),
+                        section = LocalizedText.of(
+                            "Quantitative Aptitude", "संख्यात्मक अभिरुचि"
+                        )
+                    ),
+                    Provenance.ExamPattern(
+                        examId = ExamId("ssc_gd"),
+                        paper = LocalizedText.of(
+                            "CBT", "सीबीटी"
+                        ),
+                        section = LocalizedText.of(
+                            "Elementary Mathematics", "प्राथमिक गणित"
+                        )
+                    ),
+                    Provenance.ExamPattern(
+                        examId = ExamId("rrb_ntpc"),
+                        paper = LocalizedText.of(
+                            "CBT 1", "सीबीटी 1"
+                        ),
+                        section = LocalizedText.of(
+                            "Mathematics", "गणित"
+                        )
+                    ),
+                    Provenance.ExamPattern(
+                        examId = ExamId("rrb_group_d"),
+                        paper = LocalizedText.of(
+                            "CBT", "सीबीटी"
+                        ),
+                        section = LocalizedText.of(
+                            "Mathematics", "गणित"
+                        )
+                    ),
+                    Provenance.ExamPattern(
+                        examId = ExamId("ibps_po"),
+                        paper = LocalizedText.of(
+                            "Prelims", "प्रीलिम्स"
+                        ),
+                        section = LocalizedText.of(
+                            "Quantitative Aptitude", "संख्यात्मक अभिरुचि"
+                        )
+                    ),
+                    Provenance.ExamPattern(
+                        examId = ExamId("ibps_clerk"),
+                        paper = LocalizedText.of(
+                            "Prelims", "प्रीलिम्स"
+                        ),
+                        section = LocalizedText.of(
+                            "Numerical Ability", "संख्यात्मक क्षमता"
+                        )
+                    )
+                )
             ),
             q(
                 id = "succ_10_then_20",
@@ -1048,7 +2797,18 @@ class QuestionBank {
                 ),
                 correctIndex = 0,
                 explanationEn = "Step 1: 100 -> 110. Step 2: 110 -> 132. Net = 132 - 100 = 32%.",
-                explanationHi = "चरण 1: 100 -> 110। चरण 2: 110 -> 132। शुद्ध = 132 - 100 = 32%।"
+                explanationHi = "चरण 1: 100 -> 110। चरण 2: 110 -> 132। शुद्ध = 132 - 100 = 32%।",
+                provenance = listOf(
+                    Provenance.ExamPattern(
+                        examId = ExamId("ssc_chsl"),
+                        paper = LocalizedText.of(
+                            "Tier 1", "टियर 1"
+                        ),
+                        section = LocalizedText.of(
+                            "Quantitative Aptitude", "संख्यात्मक अभिरुचि"
+                        )
+                    )
+                )
             ),
             q(
                 id = "succ_10_then_minus_10",
@@ -1064,7 +2824,36 @@ class QuestionBank {
                 ),
                 correctIndex = 0,
                 explanationEn = "Step 1: 100 -> 110. Step 2: 110 -> 99. Net = 99 - 100 = -1%.",
-                explanationHi = "चरण 1: 100 -> 110। चरण 2: 110 -> 99। शुद्ध = 99 - 100 = -1%।"
+                explanationHi = "चरण 1: 100 -> 110। चरण 2: 110 -> 99। शुद्ध = 99 - 100 = -1%।",
+                provenance = listOf(
+                    Provenance.ExamPattern(
+                        examId = ExamId("ssc_cgl"),
+                        paper = LocalizedText.of(
+                            "Tier 1", "टियर 1"
+                        ),
+                        section = LocalizedText.of(
+                            "Quantitative Aptitude", "संख्यात्मक अभिरुचि"
+                        )
+                    ),
+                    Provenance.ExamPattern(
+                        examId = ExamId("ssc_chsl"),
+                        paper = LocalizedText.of(
+                            "Tier 1", "टियर 1"
+                        ),
+                        section = LocalizedText.of(
+                            "Quantitative Aptitude", "संख्यात्मक अभिरुचि"
+                        )
+                    ),
+                    Provenance.ExamPattern(
+                        examId = ExamId("rrb_ntpc"),
+                        paper = LocalizedText.of(
+                            "CBT 1", "सीबीटी 1"
+                        ),
+                        section = LocalizedText.of(
+                            "Mathematics", "गणित"
+                        )
+                    )
+                )
             ),
             q(
                 id = "succ_50_then_minus_50",
@@ -1080,7 +2869,36 @@ class QuestionBank {
                 ),
                 correctIndex = 0,
                 explanationEn = "Step 1: 200 -> 300. Step 2: 300 -> 150. Net = 150 - 200 = -25%.",
-                explanationHi = "चरण 1: 200 -> 300। चरण 2: 300 -> 150। शुद्ध = 150 - 200 = -25%।"
+                explanationHi = "चरण 1: 200 -> 300। चरण 2: 300 -> 150। शुद्ध = 150 - 200 = -25%।",
+                provenance = listOf(
+                    Provenance.ExamPattern(
+                        examId = ExamId("ssc_cgl"),
+                        paper = LocalizedText.of(
+                            "Tier 1", "टियर 1"
+                        ),
+                        section = LocalizedText.of(
+                            "Quantitative Aptitude", "संख्यात्मक अभिरुचि"
+                        )
+                    ),
+                    Provenance.ExamPattern(
+                        examId = ExamId("ssc_chsl"),
+                        paper = LocalizedText.of(
+                            "Tier 1", "टियर 1"
+                        ),
+                        section = LocalizedText.of(
+                            "Quantitative Aptitude", "संख्यात्मक अभिरुचि"
+                        )
+                    ),
+                    Provenance.ExamPattern(
+                        examId = ExamId("rrb_ntpc"),
+                        paper = LocalizedText.of(
+                            "CBT 1", "सीबीटी 1"
+                        ),
+                        section = LocalizedText.of(
+                            "Mathematics", "गणित"
+                        )
+                    )
+                )
             ),
             q(
                 id = "succ_minus_20_then_25",
@@ -1096,7 +2914,36 @@ class QuestionBank {
                 ),
                 correctIndex = 0,
                 explanationEn = "Step 1: 500 -> 400. Step 2: 400 -> 500. Net = 500 - 500 = 0%.",
-                explanationHi = "चरण 1: 500 -> 400। चरण 2: 400 -> 500। शुद्ध = 500 - 500 = 0%।"
+                explanationHi = "चरण 1: 500 -> 400। चरण 2: 400 -> 500। शुद्ध = 500 - 500 = 0%।",
+                provenance = listOf(
+                    Provenance.ExamPattern(
+                        examId = ExamId("ssc_cgl"),
+                        paper = LocalizedText.of(
+                            "Tier 1", "टियर 1"
+                        ),
+                        section = LocalizedText.of(
+                            "Quantitative Aptitude", "संख्यात्मक अभिरुचि"
+                        )
+                    ),
+                    Provenance.ExamPattern(
+                        examId = ExamId("ssc_chsl"),
+                        paper = LocalizedText.of(
+                            "Tier 1", "टियर 1"
+                        ),
+                        section = LocalizedText.of(
+                            "Quantitative Aptitude", "संख्यात्मक अभिरुचि"
+                        )
+                    ),
+                    Provenance.ExamPattern(
+                        examId = ExamId("rrb_ntpc"),
+                        paper = LocalizedText.of(
+                            "CBT 1", "सीबीटी 1"
+                        ),
+                        section = LocalizedText.of(
+                            "Mathematics", "गणित"
+                        )
+                    )
+                )
             ),
             q(
                 id = "succ_20_then_minus_20",
@@ -1112,7 +2959,36 @@ class QuestionBank {
                 ),
                 correctIndex = 0,
                 explanationEn = "Step 1: 250 -> 300. Step 2: 300 -> 240. Net = 240 - 250 = -4%.",
-                explanationHi = "चरण 1: 250 -> 300। चरण 2: 300 -> 240। शुद्ध = 240 - 250 = -4%।"
+                explanationHi = "चरण 1: 250 -> 300। चरण 2: 300 -> 240। शुद्ध = 240 - 250 = -4%।",
+                provenance = listOf(
+                    Provenance.ExamPattern(
+                        examId = ExamId("ssc_cgl"),
+                        paper = LocalizedText.of(
+                            "Tier 1", "टियर 1"
+                        ),
+                        section = LocalizedText.of(
+                            "Quantitative Aptitude", "संख्यात्मक अभिरुचि"
+                        )
+                    ),
+                    Provenance.ExamPattern(
+                        examId = ExamId("ssc_chsl"),
+                        paper = LocalizedText.of(
+                            "Tier 1", "टियर 1"
+                        ),
+                        section = LocalizedText.of(
+                            "Quantitative Aptitude", "संख्यात्मक अभिरुचि"
+                        )
+                    ),
+                    Provenance.ExamPattern(
+                        examId = ExamId("rrb_ntpc"),
+                        paper = LocalizedText.of(
+                            "CBT 1", "सीबीटी 1"
+                        ),
+                        section = LocalizedText.of(
+                            "Mathematics", "गणित"
+                        )
+                    )
+                )
             ),
             q(
                 id = "succ_minus_25_twice",
@@ -1128,7 +3004,36 @@ class QuestionBank {
                 ),
                 correctIndex = 0,
                 explanationEn = "Step 1: 400 -> 300. Step 2: 300 -> 225. Net = 225 - 400 = -43.75%.",
-                explanationHi = "चरण 1: 400 -> 300। चरण 2: 300 -> 225। शुद्ध = 225 - 400 = -43.75%।"
+                explanationHi = "चरण 1: 400 -> 300। चरण 2: 300 -> 225। शुद्ध = 225 - 400 = -43.75%।",
+                provenance = listOf(
+                    Provenance.ExamPattern(
+                        examId = ExamId("ssc_cgl"),
+                        paper = LocalizedText.of(
+                            "Tier 1", "टियर 1"
+                        ),
+                        section = LocalizedText.of(
+                            "Quantitative Aptitude", "संख्यात्मक अभिरुचि"
+                        )
+                    ),
+                    Provenance.ExamPattern(
+                        examId = ExamId("ssc_chsl"),
+                        paper = LocalizedText.of(
+                            "Tier 1", "टियर 1"
+                        ),
+                        section = LocalizedText.of(
+                            "Quantitative Aptitude", "संख्यात्मक अभिरुचि"
+                        )
+                    ),
+                    Provenance.ExamPattern(
+                        examId = ExamId("rrb_ntpc"),
+                        paper = LocalizedText.of(
+                            "CBT 1", "सीबीटी 1"
+                        ),
+                        section = LocalizedText.of(
+                            "Mathematics", "गणित"
+                        )
+                    )
+                )
             ),
             q(
                 id = "succ_25_twice",
@@ -1144,7 +3049,36 @@ class QuestionBank {
                 ),
                 correctIndex = 0,
                 explanationEn = "Step 1: 200 -> 250. Step 2: 250 -> 312.5. Net = 312.5 - 200 = 56.25%.",
-                explanationHi = "चरण 1: 200 -> 250। चरण 2: 250 -> 312.5। शुद्ध = 312.5 - 200 = 56.25%।"
+                explanationHi = "चरण 1: 200 -> 250। चरण 2: 250 -> 312.5। शुद्ध = 312.5 - 200 = 56.25%।",
+                provenance = listOf(
+                    Provenance.ExamPattern(
+                        examId = ExamId("ssc_cgl"),
+                        paper = LocalizedText.of(
+                            "Tier 1", "टियर 1"
+                        ),
+                        section = LocalizedText.of(
+                            "Quantitative Aptitude", "संख्यात्मक अभिरुचि"
+                        )
+                    ),
+                    Provenance.ExamPattern(
+                        examId = ExamId("ssc_chsl"),
+                        paper = LocalizedText.of(
+                            "Tier 1", "टियर 1"
+                        ),
+                        section = LocalizedText.of(
+                            "Quantitative Aptitude", "संख्यात्मक अभिरुचि"
+                        )
+                    ),
+                    Provenance.ExamPattern(
+                        examId = ExamId("rrb_ntpc"),
+                        paper = LocalizedText.of(
+                            "CBT 1", "सीबीटी 1"
+                        ),
+                        section = LocalizedText.of(
+                            "Mathematics", "गणित"
+                        )
+                    )
+                )
             ),
             q(
                 id = "succ_40_then_minus_40",
@@ -1160,7 +3094,36 @@ class QuestionBank {
                 ),
                 correctIndex = 0,
                 explanationEn = "Step 1: 100 -> 140. Step 2: 140 -> 84. Net = 84 - 100 = -16%.",
-                explanationHi = "चरण 1: 100 -> 140। चरण 2: 140 -> 84। शुद्ध = 84 - 100 = -16%।"
+                explanationHi = "चरण 1: 100 -> 140। चरण 2: 140 -> 84। शुद्ध = 84 - 100 = -16%।",
+                provenance = listOf(
+                    Provenance.ExamPattern(
+                        examId = ExamId("ssc_cgl"),
+                        paper = LocalizedText.of(
+                            "Tier 1", "टियर 1"
+                        ),
+                        section = LocalizedText.of(
+                            "Quantitative Aptitude", "संख्यात्मक अभिरुचि"
+                        )
+                    ),
+                    Provenance.ExamPattern(
+                        examId = ExamId("ssc_chsl"),
+                        paper = LocalizedText.of(
+                            "Tier 1", "टियर 1"
+                        ),
+                        section = LocalizedText.of(
+                            "Quantitative Aptitude", "संख्यात्मक अभिरुचि"
+                        )
+                    ),
+                    Provenance.ExamPattern(
+                        examId = ExamId("rrb_ntpc"),
+                        paper = LocalizedText.of(
+                            "CBT 1", "सीबीटी 1"
+                        ),
+                        section = LocalizedText.of(
+                            "Mathematics", "गणित"
+                        )
+                    )
+                )
             ),
             q(
                 id = "comp_25_more",
@@ -1176,7 +3139,54 @@ class QuestionBank {
                 ),
                 correctIndex = 0,
                 explanationEn = "Take B as 100. A is 125, so A : B = 125 : 100 = 5 : 4.",
-                explanationHi = "B को 100 मानें। A 125 है, इसलिए A : B = 125 : 100 = 5 : 4।"
+                explanationHi = "B को 100 मानें। A 125 है, इसलिए A : B = 125 : 100 = 5 : 4।",
+                provenance = listOf(
+                    Provenance.ExamPattern(
+                        examId = ExamId("ssc_gd"),
+                        paper = LocalizedText.of(
+                            "CBT", "सीबीटी"
+                        ),
+                        section = LocalizedText.of(
+                            "Elementary Mathematics", "प्राथमिक गणित"
+                        )
+                    ),
+                    Provenance.ExamPattern(
+                        examId = ExamId("rrb_ntpc"),
+                        paper = LocalizedText.of(
+                            "CBT 1", "सीबीटी 1"
+                        ),
+                        section = LocalizedText.of(
+                            "Mathematics", "गणित"
+                        )
+                    ),
+                    Provenance.ExamPattern(
+                        examId = ExamId("rrb_group_d"),
+                        paper = LocalizedText.of(
+                            "CBT", "सीबीटी"
+                        ),
+                        section = LocalizedText.of(
+                            "Mathematics", "गणित"
+                        )
+                    ),
+                    Provenance.ExamPattern(
+                        examId = ExamId("ibps_po"),
+                        paper = LocalizedText.of(
+                            "Prelims", "प्रीलिम्स"
+                        ),
+                        section = LocalizedText.of(
+                            "Quantitative Aptitude", "संख्यात्मक अभिरुचि"
+                        )
+                    ),
+                    Provenance.ExamPattern(
+                        examId = ExamId("ibps_clerk"),
+                        paper = LocalizedText.of(
+                            "Prelims", "प्रीलिम्स"
+                        ),
+                        section = LocalizedText.of(
+                            "Numerical Ability", "संख्यात्मक क्षमता"
+                        )
+                    )
+                )
             ),
             q(
                 id = "comp_20_less",
@@ -1192,7 +3202,54 @@ class QuestionBank {
                 ),
                 correctIndex = 0,
                 explanationEn = "Take B as 100. A is 80, so A : B = 80 : 100 = 4 : 5.",
-                explanationHi = "B को 100 मानें। A 80 है, इसलिए A : B = 80 : 100 = 4 : 5।"
+                explanationHi = "B को 100 मानें। A 80 है, इसलिए A : B = 80 : 100 = 4 : 5।",
+                provenance = listOf(
+                    Provenance.ExamPattern(
+                        examId = ExamId("ssc_gd"),
+                        paper = LocalizedText.of(
+                            "CBT", "सीबीटी"
+                        ),
+                        section = LocalizedText.of(
+                            "Elementary Mathematics", "प्राथमिक गणित"
+                        )
+                    ),
+                    Provenance.ExamPattern(
+                        examId = ExamId("rrb_ntpc"),
+                        paper = LocalizedText.of(
+                            "CBT 1", "सीबीटी 1"
+                        ),
+                        section = LocalizedText.of(
+                            "Mathematics", "गणित"
+                        )
+                    ),
+                    Provenance.ExamPattern(
+                        examId = ExamId("rrb_group_d"),
+                        paper = LocalizedText.of(
+                            "CBT", "सीबीटी"
+                        ),
+                        section = LocalizedText.of(
+                            "Mathematics", "गणित"
+                        )
+                    ),
+                    Provenance.ExamPattern(
+                        examId = ExamId("ibps_po"),
+                        paper = LocalizedText.of(
+                            "Prelims", "प्रीलिम्स"
+                        ),
+                        section = LocalizedText.of(
+                            "Quantitative Aptitude", "संख्यात्मक अभिरुचि"
+                        )
+                    ),
+                    Provenance.ExamPattern(
+                        examId = ExamId("ibps_clerk"),
+                        paper = LocalizedText.of(
+                            "Prelims", "प्रीलिम्स"
+                        ),
+                        section = LocalizedText.of(
+                            "Numerical Ability", "संख्यात्मक क्षमता"
+                        )
+                    )
+                )
             ),
             q(
                 id = "comp_10_more",
@@ -1208,7 +3265,72 @@ class QuestionBank {
                 ),
                 correctIndex = 0,
                 explanationEn = "Take B as 100. A is 110, so A : B = 110 : 100 = 11 : 10.",
-                explanationHi = "B को 100 मानें। A 110 है, इसलिए A : B = 110 : 100 = 11 : 10।"
+                explanationHi = "B को 100 मानें। A 110 है, इसलिए A : B = 110 : 100 = 11 : 10।",
+                provenance = listOf(
+                    Provenance.ExamPattern(
+                        examId = ExamId("ssc_cgl"),
+                        paper = LocalizedText.of(
+                            "Tier 1", "टियर 1"
+                        ),
+                        section = LocalizedText.of(
+                            "Quantitative Aptitude", "संख्यात्मक अभिरुचि"
+                        )
+                    ),
+                    Provenance.ExamPattern(
+                        examId = ExamId("ssc_chsl"),
+                        paper = LocalizedText.of(
+                            "Tier 1", "टियर 1"
+                        ),
+                        section = LocalizedText.of(
+                            "Quantitative Aptitude", "संख्यात्मक अभिरुचि"
+                        )
+                    ),
+                    Provenance.ExamPattern(
+                        examId = ExamId("ssc_gd"),
+                        paper = LocalizedText.of(
+                            "CBT", "सीबीटी"
+                        ),
+                        section = LocalizedText.of(
+                            "Elementary Mathematics", "प्राथमिक गणित"
+                        )
+                    ),
+                    Provenance.ExamPattern(
+                        examId = ExamId("rrb_ntpc"),
+                        paper = LocalizedText.of(
+                            "CBT 1", "सीबीटी 1"
+                        ),
+                        section = LocalizedText.of(
+                            "Mathematics", "गणित"
+                        )
+                    ),
+                    Provenance.ExamPattern(
+                        examId = ExamId("rrb_group_d"),
+                        paper = LocalizedText.of(
+                            "CBT", "सीबीटी"
+                        ),
+                        section = LocalizedText.of(
+                            "Mathematics", "गणित"
+                        )
+                    ),
+                    Provenance.ExamPattern(
+                        examId = ExamId("ibps_po"),
+                        paper = LocalizedText.of(
+                            "Prelims", "प्रीलिम्स"
+                        ),
+                        section = LocalizedText.of(
+                            "Quantitative Aptitude", "संख्यात्मक अभिरुचि"
+                        )
+                    ),
+                    Provenance.ExamPattern(
+                        examId = ExamId("ibps_clerk"),
+                        paper = LocalizedText.of(
+                            "Prelims", "प्रीलिम्स"
+                        ),
+                        section = LocalizedText.of(
+                            "Numerical Ability", "संख्यात्मक क्षमता"
+                        )
+                    )
+                )
             ),
             q(
                 id = "comp_40_more",
@@ -1224,7 +3346,72 @@ class QuestionBank {
                 ),
                 correctIndex = 0,
                 explanationEn = "Take B as 100. A is 140, so A : B = 140 : 100 = 7 : 5.",
-                explanationHi = "B को 100 मानें। A 140 है, इसलिए A : B = 140 : 100 = 7 : 5।"
+                explanationHi = "B को 100 मानें। A 140 है, इसलिए A : B = 140 : 100 = 7 : 5।",
+                provenance = listOf(
+                    Provenance.ExamPattern(
+                        examId = ExamId("ssc_cgl"),
+                        paper = LocalizedText.of(
+                            "Tier 1", "टियर 1"
+                        ),
+                        section = LocalizedText.of(
+                            "Quantitative Aptitude", "संख्यात्मक अभिरुचि"
+                        )
+                    ),
+                    Provenance.ExamPattern(
+                        examId = ExamId("ssc_chsl"),
+                        paper = LocalizedText.of(
+                            "Tier 1", "टियर 1"
+                        ),
+                        section = LocalizedText.of(
+                            "Quantitative Aptitude", "संख्यात्मक अभिरुचि"
+                        )
+                    ),
+                    Provenance.ExamPattern(
+                        examId = ExamId("ssc_gd"),
+                        paper = LocalizedText.of(
+                            "CBT", "सीबीटी"
+                        ),
+                        section = LocalizedText.of(
+                            "Elementary Mathematics", "प्राथमिक गणित"
+                        )
+                    ),
+                    Provenance.ExamPattern(
+                        examId = ExamId("rrb_ntpc"),
+                        paper = LocalizedText.of(
+                            "CBT 1", "सीबीटी 1"
+                        ),
+                        section = LocalizedText.of(
+                            "Mathematics", "गणित"
+                        )
+                    ),
+                    Provenance.ExamPattern(
+                        examId = ExamId("rrb_group_d"),
+                        paper = LocalizedText.of(
+                            "CBT", "सीबीटी"
+                        ),
+                        section = LocalizedText.of(
+                            "Mathematics", "गणित"
+                        )
+                    ),
+                    Provenance.ExamPattern(
+                        examId = ExamId("ibps_po"),
+                        paper = LocalizedText.of(
+                            "Prelims", "प्रीलिम्स"
+                        ),
+                        section = LocalizedText.of(
+                            "Quantitative Aptitude", "संख्यात्मक अभिरुचि"
+                        )
+                    ),
+                    Provenance.ExamPattern(
+                        examId = ExamId("ibps_clerk"),
+                        paper = LocalizedText.of(
+                            "Prelims", "प्रीलिम्स"
+                        ),
+                        section = LocalizedText.of(
+                            "Numerical Ability", "संख्यात्मक क्षमता"
+                        )
+                    )
+                )
             ),
             q(
                 id = "comp_30_less",
@@ -1240,7 +3427,72 @@ class QuestionBank {
                 ),
                 correctIndex = 0,
                 explanationEn = "Take B as 100. A is 70, so A : B = 70 : 100 = 7 : 10.",
-                explanationHi = "B को 100 मानें। A 70 है, इसलिए A : B = 70 : 100 = 7 : 10।"
+                explanationHi = "B को 100 मानें। A 70 है, इसलिए A : B = 70 : 100 = 7 : 10।",
+                provenance = listOf(
+                    Provenance.ExamPattern(
+                        examId = ExamId("ssc_cgl"),
+                        paper = LocalizedText.of(
+                            "Tier 1", "टियर 1"
+                        ),
+                        section = LocalizedText.of(
+                            "Quantitative Aptitude", "संख्यात्मक अभिरुचि"
+                        )
+                    ),
+                    Provenance.ExamPattern(
+                        examId = ExamId("ssc_chsl"),
+                        paper = LocalizedText.of(
+                            "Tier 1", "टियर 1"
+                        ),
+                        section = LocalizedText.of(
+                            "Quantitative Aptitude", "संख्यात्मक अभिरुचि"
+                        )
+                    ),
+                    Provenance.ExamPattern(
+                        examId = ExamId("ssc_gd"),
+                        paper = LocalizedText.of(
+                            "CBT", "सीबीटी"
+                        ),
+                        section = LocalizedText.of(
+                            "Elementary Mathematics", "प्राथमिक गणित"
+                        )
+                    ),
+                    Provenance.ExamPattern(
+                        examId = ExamId("rrb_ntpc"),
+                        paper = LocalizedText.of(
+                            "CBT 1", "सीबीटी 1"
+                        ),
+                        section = LocalizedText.of(
+                            "Mathematics", "गणित"
+                        )
+                    ),
+                    Provenance.ExamPattern(
+                        examId = ExamId("rrb_group_d"),
+                        paper = LocalizedText.of(
+                            "CBT", "सीबीटी"
+                        ),
+                        section = LocalizedText.of(
+                            "Mathematics", "गणित"
+                        )
+                    ),
+                    Provenance.ExamPattern(
+                        examId = ExamId("ibps_po"),
+                        paper = LocalizedText.of(
+                            "Prelims", "प्रीलिम्स"
+                        ),
+                        section = LocalizedText.of(
+                            "Quantitative Aptitude", "संख्यात्मक अभिरुचि"
+                        )
+                    ),
+                    Provenance.ExamPattern(
+                        examId = ExamId("ibps_clerk"),
+                        paper = LocalizedText.of(
+                            "Prelims", "प्रीलिम्स"
+                        ),
+                        section = LocalizedText.of(
+                            "Numerical Ability", "संख्यात्मक क्षमता"
+                        )
+                    )
+                )
             ),
             q(
                 id = "comp_12_5_more",
@@ -1256,7 +3508,63 @@ class QuestionBank {
                 ),
                 correctIndex = 0,
                 explanationEn = "Take B as 100. A is 112.5, so A : B = 112.5 : 100 = 9 : 8.",
-                explanationHi = "B को 100 मानें। A 112.5 है, इसलिए A : B = 112.5 : 100 = 9 : 8।"
+                explanationHi = "B को 100 मानें। A 112.5 है, इसलिए A : B = 112.5 : 100 = 9 : 8।",
+                provenance = listOf(
+                    Provenance.ExamPattern(
+                        examId = ExamId("ssc_cgl"),
+                        paper = LocalizedText.of(
+                            "Tier 1", "टियर 1"
+                        ),
+                        section = LocalizedText.of(
+                            "Quantitative Aptitude", "संख्यात्मक अभिरुचि"
+                        )
+                    ),
+                    Provenance.ExamPattern(
+                        examId = ExamId("ssc_chsl"),
+                        paper = LocalizedText.of(
+                            "Tier 1", "टियर 1"
+                        ),
+                        section = LocalizedText.of(
+                            "Quantitative Aptitude", "संख्यात्मक अभिरुचि"
+                        )
+                    ),
+                    Provenance.ExamPattern(
+                        examId = ExamId("ssc_gd"),
+                        paper = LocalizedText.of(
+                            "CBT", "सीबीटी"
+                        ),
+                        section = LocalizedText.of(
+                            "Elementary Mathematics", "प्राथमिक गणित"
+                        )
+                    ),
+                    Provenance.ExamPattern(
+                        examId = ExamId("rrb_ntpc"),
+                        paper = LocalizedText.of(
+                            "CBT 1", "सीबीटी 1"
+                        ),
+                        section = LocalizedText.of(
+                            "Mathematics", "गणित"
+                        )
+                    ),
+                    Provenance.ExamPattern(
+                        examId = ExamId("rrb_group_d"),
+                        paper = LocalizedText.of(
+                            "CBT", "सीबीटी"
+                        ),
+                        section = LocalizedText.of(
+                            "Mathematics", "गणित"
+                        )
+                    ),
+                    Provenance.ExamPattern(
+                        examId = ExamId("ibps_po"),
+                        paper = LocalizedText.of(
+                            "Prelims", "प्रीलिम्स"
+                        ),
+                        section = LocalizedText.of(
+                            "Quantitative Aptitude", "संख्यात्मक अभिरुचि"
+                        )
+                    )
+                )
             ),
             q(
                 id = "comp_chain",
@@ -1272,7 +3580,54 @@ class QuestionBank {
                 ),
                 correctIndex = 0,
                 explanationEn = "Take C as 100. B = 100 x 0.80 = 80. A = 80 x 1.50 = 120. So A is 120 - 100 = 20% more than C.",
-                explanationHi = "C को 100 मानें। B = 100 x 0.80 = 80। A = 80 x 1.50 = 120। अतः A, C से 120 - 100 = 20% अधिक है।"
+                explanationHi = "C को 100 मानें। B = 100 x 0.80 = 80। A = 80 x 1.50 = 120। अतः A, C से 120 - 100 = 20% अधिक है।",
+                provenance = listOf(
+                    Provenance.ExamPattern(
+                        examId = ExamId("ssc_cgl"),
+                        paper = LocalizedText.of(
+                            "Tier 1", "टियर 1"
+                        ),
+                        section = LocalizedText.of(
+                            "Quantitative Aptitude", "संख्यात्मक अभिरुचि"
+                        )
+                    ),
+                    Provenance.ExamPattern(
+                        examId = ExamId("ssc_chsl"),
+                        paper = LocalizedText.of(
+                            "Tier 1", "टियर 1"
+                        ),
+                        section = LocalizedText.of(
+                            "Quantitative Aptitude", "संख्यात्मक अभिरुचि"
+                        )
+                    ),
+                    Provenance.ExamPattern(
+                        examId = ExamId("ssc_gd"),
+                        paper = LocalizedText.of(
+                            "CBT", "सीबीटी"
+                        ),
+                        section = LocalizedText.of(
+                            "Elementary Mathematics", "प्राथमिक गणित"
+                        )
+                    ),
+                    Provenance.ExamPattern(
+                        examId = ExamId("rrb_ntpc"),
+                        paper = LocalizedText.of(
+                            "CBT 1", "सीबीटी 1"
+                        ),
+                        section = LocalizedText.of(
+                            "Mathematics", "गणित"
+                        )
+                    ),
+                    Provenance.ExamPattern(
+                        examId = ExamId("rrb_group_d"),
+                        paper = LocalizedText.of(
+                            "CBT", "सीबीटी"
+                        ),
+                        section = LocalizedText.of(
+                            "Mathematics", "गणित"
+                        )
+                    )
+                )
             ),
             q(
                 id = "comp_chain_less",
@@ -1288,7 +3643,45 @@ class QuestionBank {
                 ),
                 correctIndex = 0,
                 explanationEn = "Take A as 100. B = 125, then C = 125 x 1.20 = 150. So A is 50 short of 150, and 50/150 x 100 = 33.33% less than C.",
-                explanationHi = "A को 100 मानें। B = 125, फिर C = 125 x 1.20 = 150। अतः A, 150 से 50 कम है, और 50/150 x 100 = 33.33% कम है।"
+                explanationHi = "A को 100 मानें। B = 125, फिर C = 125 x 1.20 = 150। अतः A, 150 से 50 कम है, और 50/150 x 100 = 33.33% कम है।",
+                provenance = listOf(
+                    Provenance.ExamPattern(
+                        examId = ExamId("ssc_cgl"),
+                        paper = LocalizedText.of(
+                            "Tier 1", "टियर 1"
+                        ),
+                        section = LocalizedText.of(
+                            "Quantitative Aptitude", "संख्यात्मक अभिरुचि"
+                        )
+                    ),
+                    Provenance.ExamPattern(
+                        examId = ExamId("ssc_chsl"),
+                        paper = LocalizedText.of(
+                            "Tier 1", "टियर 1"
+                        ),
+                        section = LocalizedText.of(
+                            "Quantitative Aptitude", "संख्यात्मक अभिरुचि"
+                        )
+                    ),
+                    Provenance.ExamPattern(
+                        examId = ExamId("rrb_ntpc"),
+                        paper = LocalizedText.of(
+                            "CBT 1", "सीबीटी 1"
+                        ),
+                        section = LocalizedText.of(
+                            "Mathematics", "गणित"
+                        )
+                    ),
+                    Provenance.ExamPattern(
+                        examId = ExamId("rrb_group_d"),
+                        paper = LocalizedText.of(
+                            "CBT", "सीबीटी"
+                        ),
+                        section = LocalizedText.of(
+                            "Mathematics", "गणित"
+                        )
+                    )
+                )
             ),
             q(
                 id = "pts_20_to_25",
@@ -1304,7 +3697,18 @@ class QuestionBank {
                 ),
                 correctIndex = 0,
                 explanationEn = "Percentage points is a plain subtraction: 25 - 20 = +5. The relative percentage change would be 25%, which is a different statement.",
-                explanationHi = "प्रतिशत अंक सादा घटाव है: 25 - 20 = +5। सापेक्ष प्रतिशत परिवर्तन 25% होता, जो एक भिन्न कथन है।"
+                explanationHi = "प्रतिशत अंक सादा घटाव है: 25 - 20 = +5। सापेक्ष प्रतिशत परिवर्तन 25% होता, जो एक भिन्न कथन है।",
+                provenance = listOf(
+                    Provenance.ExamPattern(
+                        examId = ExamId("ssc_gd"),
+                        paper = LocalizedText.of(
+                            "CBT", "सीबीटी"
+                        ),
+                        section = LocalizedText.of(
+                            "Elementary Mathematics", "प्राथमिक गणित"
+                        )
+                    )
+                )
             ),
             q(
                 id = "pts_40_to_30",
@@ -1320,7 +3724,18 @@ class QuestionBank {
                 ),
                 correctIndex = 0,
                 explanationEn = "Percentage points is a plain subtraction: 30 - 40 = -10. The relative percentage change would be -25%, which is a different statement.",
-                explanationHi = "प्रतिशत अंक सादा घटाव है: 30 - 40 = -10। सापेक्ष प्रतिशत परिवर्तन -25% होता, जो एक भिन्न कथन है।"
+                explanationHi = "प्रतिशत अंक सादा घटाव है: 30 - 40 = -10। सापेक्ष प्रतिशत परिवर्तन -25% होता, जो एक भिन्न कथन है।",
+                provenance = listOf(
+                    Provenance.ExamPattern(
+                        examId = ExamId("ssc_gd"),
+                        paper = LocalizedText.of(
+                            "CBT", "सीबीटी"
+                        ),
+                        section = LocalizedText.of(
+                            "Elementary Mathematics", "प्राथमिक गणित"
+                        )
+                    )
+                )
             ),
             q(
                 id = "pts_8_to_10",
@@ -1336,7 +3751,27 @@ class QuestionBank {
                 ),
                 correctIndex = 0,
                 explanationEn = "Percentage points is a plain subtraction: 10 - 8 = +2. The relative percentage change would be 25%, which is a different statement.",
-                explanationHi = "प्रतिशत अंक सादा घटाव है: 10 - 8 = +2। सापेक्ष प्रतिशत परिवर्तन 25% होता, जो एक भिन्न कथन है।"
+                explanationHi = "प्रतिशत अंक सादा घटाव है: 10 - 8 = +2। सापेक्ष प्रतिशत परिवर्तन 25% होता, जो एक भिन्न कथन है।",
+                provenance = listOf(
+                    Provenance.ExamPattern(
+                        examId = ExamId("ssc_gd"),
+                        paper = LocalizedText.of(
+                            "CBT", "सीबीटी"
+                        ),
+                        section = LocalizedText.of(
+                            "Elementary Mathematics", "प्राथमिक गणित"
+                        )
+                    ),
+                    Provenance.ExamPattern(
+                        examId = ExamId("ibps_po"),
+                        paper = LocalizedText.of(
+                            "Prelims", "प्रीलिम्स"
+                        ),
+                        section = LocalizedText.of(
+                            "Quantitative Aptitude", "संख्यात्मक अभिरुचि"
+                        )
+                    )
+                )
             ),
             q(
                 id = "pts_50_to_55",
@@ -1352,7 +3787,27 @@ class QuestionBank {
                 ),
                 correctIndex = 0,
                 explanationEn = "Percentage points is a plain subtraction: 55 - 50 = +5. The relative percentage change would be 10%, which is a different statement.",
-                explanationHi = "प्रतिशत अंक सादा घटाव है: 55 - 50 = +5। सापेक्ष प्रतिशत परिवर्तन 10% होता, जो एक भिन्न कथन है।"
+                explanationHi = "प्रतिशत अंक सादा घटाव है: 55 - 50 = +5। सापेक्ष प्रतिशत परिवर्तन 10% होता, जो एक भिन्न कथन है।",
+                provenance = listOf(
+                    Provenance.ExamPattern(
+                        examId = ExamId("ssc_gd"),
+                        paper = LocalizedText.of(
+                            "CBT", "सीबीटी"
+                        ),
+                        section = LocalizedText.of(
+                            "Elementary Mathematics", "प्राथमिक गणित"
+                        )
+                    ),
+                    Provenance.ExamPattern(
+                        examId = ExamId("ibps_po"),
+                        paper = LocalizedText.of(
+                            "Prelims", "प्रीलिम्स"
+                        ),
+                        section = LocalizedText.of(
+                            "Quantitative Aptitude", "संख्यात्मक अभिरुचि"
+                        )
+                    )
+                )
             ),
             q(
                 id = "pts_33_to_40",
@@ -1368,7 +3823,18 @@ class QuestionBank {
                 ),
                 correctIndex = 0,
                 explanationEn = "Percentage points is a plain subtraction: 40 - 33 = +7. The relative percentage change would be 21.21%, which is a different statement.",
-                explanationHi = "प्रतिशत अंक सादा घटाव है: 40 - 33 = +7। सापेक्ष प्रतिशत परिवर्तन 21.21% होता, जो एक भिन्न कथन है।"
+                explanationHi = "प्रतिशत अंक सादा घटाव है: 40 - 33 = +7। सापेक्ष प्रतिशत परिवर्तन 21.21% होता, जो एक भिन्न कथन है।",
+                provenance = listOf(
+                    Provenance.ExamPattern(
+                        examId = ExamId("rrb_ntpc"),
+                        paper = LocalizedText.of(
+                            "CBT 1", "सीबीटी 1"
+                        ),
+                        section = LocalizedText.of(
+                            "Mathematics", "गणित"
+                        )
+                    )
+                )
             ),
             q(
                 id = "pts_16_to_20",
@@ -1384,7 +3850,27 @@ class QuestionBank {
                 ),
                 correctIndex = 0,
                 explanationEn = "Percentage points is a plain subtraction: 20 - 16 = +4. The relative percentage change would be 25%, which is a different statement.",
-                explanationHi = "प्रतिशत अंक सादा घटाव है: 20 - 16 = +4। सापेक्ष प्रतिशत परिवर्तन 25% होता, जो एक भिन्न कथन है।"
+                explanationHi = "प्रतिशत अंक सादा घटाव है: 20 - 16 = +4। सापेक्ष प्रतिशत परिवर्तन 25% होता, जो एक भिन्न कथन है।",
+                provenance = listOf(
+                    Provenance.ExamPattern(
+                        examId = ExamId("ssc_gd"),
+                        paper = LocalizedText.of(
+                            "CBT", "सीबीटी"
+                        ),
+                        section = LocalizedText.of(
+                            "Elementary Mathematics", "प्राथमिक गणित"
+                        )
+                    ),
+                    Provenance.ExamPattern(
+                        examId = ExamId("ibps_po"),
+                        paper = LocalizedText.of(
+                            "Prelims", "प्रीलिम्स"
+                        ),
+                        section = LocalizedText.of(
+                            "Quantitative Aptitude", "संख्यात्मक अभिरुचि"
+                        )
+                    )
+                )
             ),
             q(
                 id = "pts_relative",
@@ -1400,7 +3886,27 @@ class QuestionBank {
                 ),
                 correctIndex = 0,
                 explanationEn = "The relative change is (15 - 10) / 10 x 100 = 5/10 x 100 = 50%. The rise is 5 percentage points, which is a different statement.",
-                explanationHi = "सापेक्ष परिवर्तन (15 - 10) / 10 x 100 = 5/10 x 100 = 50%। वृद्धि 5 प्रतिशत अंक की है, जो एक भिन्न कथन है।"
+                explanationHi = "सापेक्ष परिवर्तन (15 - 10) / 10 x 100 = 5/10 x 100 = 50%। वृद्धि 5 प्रतिशत अंक की है, जो एक भिन्न कथन है।",
+                provenance = listOf(
+                    Provenance.ExamPattern(
+                        examId = ExamId("ssc_gd"),
+                        paper = LocalizedText.of(
+                            "CBT", "सीबीटी"
+                        ),
+                        section = LocalizedText.of(
+                            "Elementary Mathematics", "प्राथमिक गणित"
+                        )
+                    ),
+                    Provenance.ExamPattern(
+                        examId = ExamId("ibps_po"),
+                        paper = LocalizedText.of(
+                            "Prelims", "प्रीलिम्स"
+                        ),
+                        section = LocalizedText.of(
+                            "Quantitative Aptitude", "संख्यात्मक अभिरुचि"
+                        )
+                    )
+                )
             ),
             q(
                 id = "pts_interest",
@@ -1432,7 +3938,18 @@ class QuestionBank {
                 ),
                 correctIndex = 0,
                 explanationEn = "A percentage is a fraction out of 100, so 3/4 x 100 = 75%. Multiply by 100 rather than dividing, because the denominator is being compared against 100.",
-                explanationHi = "प्रतिशत 100 में से एक भिन्न होता है, इसलिए 3/4 x 100 = 75%। 100 से गुणा कीजिए, भाग न कीजिए, क्योंकि निचली संख्या की तुलना 100 से हो रही है।"
+                explanationHi = "प्रतिशत 100 में से एक भिन्न होता है, इसलिए 3/4 x 100 = 75%। 100 से गुणा कीजिए, भाग न कीजिए, क्योंकि निचली संख्या की तुलना 100 से हो रही है।",
+                provenance = listOf(
+                    Provenance.ExamPattern(
+                        examId = ExamId("ssc_gd"),
+                        paper = LocalizedText.of(
+                            "CBT", "सीबीटी"
+                        ),
+                        section = LocalizedText.of(
+                            "Elementary Mathematics", "प्राथमिक गणित"
+                        )
+                    )
+                )
             ),
             q(
                 id = "repr_5_8",
@@ -1448,7 +3965,18 @@ class QuestionBank {
                 ),
                 correctIndex = 0,
                 explanationEn = "A percentage is a fraction out of 100, so 5/8 x 100 = 62.5%. Multiply by 100 rather than dividing, because the denominator is being compared against 100.",
-                explanationHi = "प्रतिशत 100 में से एक भिन्न होता है, इसलिए 5/8 x 100 = 62.5%। 100 से गुणा कीजिए, भाग न कीजिए, क्योंकि निचली संख्या की तुलना 100 से हो रही है।"
+                explanationHi = "प्रतिशत 100 में से एक भिन्न होता है, इसलिए 5/8 x 100 = 62.5%। 100 से गुणा कीजिए, भाग न कीजिए, क्योंकि निचली संख्या की तुलना 100 से हो रही है।",
+                provenance = listOf(
+                    Provenance.ExamPattern(
+                        examId = ExamId("ssc_gd"),
+                        paper = LocalizedText.of(
+                            "CBT", "सीबीटी"
+                        ),
+                        section = LocalizedText.of(
+                            "Elementary Mathematics", "प्राथमिक गणित"
+                        )
+                    )
+                )
             ),
             q(
                 id = "repr_7_20",
@@ -1480,7 +4008,18 @@ class QuestionBank {
                 ),
                 correctIndex = 0,
                 explanationEn = "A percentage is a fraction out of 100, so 1/5 x 100 = 20%. Multiply by 100 rather than dividing, because the denominator is being compared against 100.",
-                explanationHi = "प्रतिशत 100 में से एक भिन्न होता है, इसलिए 1/5 x 100 = 20%। 100 से गुणा कीजिए, भाग न कीजिए, क्योंकि निचली संख्या की तुलना 100 से हो रही है।"
+                explanationHi = "प्रतिशत 100 में से एक भिन्न होता है, इसलिए 1/5 x 100 = 20%। 100 से गुणा कीजिए, भाग न कीजिए, क्योंकि निचली संख्या की तुलना 100 से हो रही है।",
+                provenance = listOf(
+                    Provenance.ExamPattern(
+                        examId = ExamId("ssc_gd"),
+                        paper = LocalizedText.of(
+                            "CBT", "सीबीटी"
+                        ),
+                        section = LocalizedText.of(
+                            "Elementary Mathematics", "प्राथमिक गणित"
+                        )
+                    )
+                )
             ),
             q(
                 id = "repr_2_3",
@@ -1496,7 +4035,18 @@ class QuestionBank {
                 ),
                 correctIndex = 0,
                 explanationEn = "A percentage is a fraction out of 100, so 2/3 x 100 = 66.67%. Multiply by 100 rather than dividing, because the denominator is being compared against 100.",
-                explanationHi = "प्रतिशत 100 में से एक भिन्न होता है, इसलिए 2/3 x 100 = 66.67%। 100 से गुणा कीजिए, भाग न कीजिए, क्योंकि निचली संख्या की तुलना 100 से हो रही है।"
+                explanationHi = "प्रतिशत 100 में से एक भिन्न होता है, इसलिए 2/3 x 100 = 66.67%। 100 से गुणा कीजिए, भाग न कीजिए, क्योंकि निचली संख्या की तुलना 100 से हो रही है।",
+                provenance = listOf(
+                    Provenance.ExamPattern(
+                        examId = ExamId("ssc_gd"),
+                        paper = LocalizedText.of(
+                            "CBT", "सीबीटी"
+                        ),
+                        section = LocalizedText.of(
+                            "Elementary Mathematics", "प्राथमिक गणित"
+                        )
+                    )
+                )
             ),
             q(
                 id = "repr_9_16",
@@ -1528,7 +4078,18 @@ class QuestionBank {
                 ),
                 correctIndex = 0,
                 explanationEn = "A percentage is a fraction out of 100, so 11/40 x 100 = 27.5%. Multiply by 100 rather than dividing, because the denominator is being compared against 100.",
-                explanationHi = "प्रतिशत 100 में से एक भिन्न होता है, इसलिए 11/40 x 100 = 27.5%। 100 से गुणा कीजिए, भाग न कीजिए, क्योंकि निचली संख्या की तुलना 100 से हो रही है।"
+                explanationHi = "प्रतिशत 100 में से एक भिन्न होता है, इसलिए 11/40 x 100 = 27.5%। 100 से गुणा कीजिए, भाग न कीजिए, क्योंकि निचली संख्या की तुलना 100 से हो रही है।",
+                provenance = listOf(
+                    Provenance.ExamPattern(
+                        examId = ExamId("ssc_gd"),
+                        paper = LocalizedText.of(
+                            "CBT", "सीबीटी"
+                        ),
+                        section = LocalizedText.of(
+                            "Elementary Mathematics", "प्राथमिक गणित"
+                        )
+                    )
+                )
             ),
             q(
                 id = "repr_largest",
@@ -1576,7 +4137,27 @@ class QuestionBank {
                 ),
                 correctIndex = 0,
                 explanationEn = "12.5% is one eighth, so divide by 8. 80.",
-                explanationHi = "12.5% is one eighth, so divide by 8. 80।"
+                explanationHi = "12.5% is one eighth, so divide by 8. 80।",
+                provenance = listOf(
+                    Provenance.ExamPattern(
+                        examId = ExamId("ssc_cgl"),
+                        paper = LocalizedText.of(
+                            "Tier 1", "टियर 1"
+                        ),
+                        section = LocalizedText.of(
+                            "Quantitative Aptitude", "संख्यात्मक अभिरुचि"
+                        )
+                    ),
+                    Provenance.ExamPattern(
+                        examId = ExamId("ssc_chsl"),
+                        paper = LocalizedText.of(
+                            "Tier 1", "टियर 1"
+                        ),
+                        section = LocalizedText.of(
+                            "Quantitative Aptitude", "संख्यात्मक अभिरुचि"
+                        )
+                    )
+                )
             ),
             q(
                 id = "short_25_of_180",
@@ -1592,7 +4173,27 @@ class QuestionBank {
                 ),
                 correctIndex = 0,
                 explanationEn = "25% is one quarter, so divide by 4. 45.",
-                explanationHi = "25% is one quarter, so divide by 4. 45।"
+                explanationHi = "25% is one quarter, so divide by 4. 45।",
+                provenance = listOf(
+                    Provenance.ExamPattern(
+                        examId = ExamId("ssc_cgl"),
+                        paper = LocalizedText.of(
+                            "Tier 1", "टियर 1"
+                        ),
+                        section = LocalizedText.of(
+                            "Quantitative Aptitude", "संख्यात्मक अभिरुचि"
+                        )
+                    ),
+                    Provenance.ExamPattern(
+                        examId = ExamId("ssc_chsl"),
+                        paper = LocalizedText.of(
+                            "Tier 1", "टियर 1"
+                        ),
+                        section = LocalizedText.of(
+                            "Quantitative Aptitude", "संख्यात्मक अभिरुचि"
+                        )
+                    )
+                )
             ),
             q(
                 id = "short_20_of_250",
@@ -1608,7 +4209,27 @@ class QuestionBank {
                 ),
                 correctIndex = 0,
                 explanationEn = "20% is one fifth, so divide by 5. 50.",
-                explanationHi = "20% is one fifth, so divide by 5. 50।"
+                explanationHi = "20% is one fifth, so divide by 5. 50।",
+                provenance = listOf(
+                    Provenance.ExamPattern(
+                        examId = ExamId("ssc_cgl"),
+                        paper = LocalizedText.of(
+                            "Tier 1", "टियर 1"
+                        ),
+                        section = LocalizedText.of(
+                            "Quantitative Aptitude", "संख्यात्मक अभिरुचि"
+                        )
+                    ),
+                    Provenance.ExamPattern(
+                        examId = ExamId("ssc_chsl"),
+                        paper = LocalizedText.of(
+                            "Tier 1", "टियर 1"
+                        ),
+                        section = LocalizedText.of(
+                            "Quantitative Aptitude", "संख्यात्मक अभिरुचि"
+                        )
+                    )
+                )
             ),
             q(
                 id = "short_50_of_90",
@@ -1624,7 +4245,27 @@ class QuestionBank {
                 ),
                 correctIndex = 0,
                 explanationEn = "50% is one half, so halve the number. 45.",
-                explanationHi = "50% is one half, so halve the number. 45।"
+                explanationHi = "50% is one half, so halve the number. 45।",
+                provenance = listOf(
+                    Provenance.ExamPattern(
+                        examId = ExamId("ssc_cgl"),
+                        paper = LocalizedText.of(
+                            "Tier 1", "टियर 1"
+                        ),
+                        section = LocalizedText.of(
+                            "Quantitative Aptitude", "संख्यात्मक अभिरुचि"
+                        )
+                    ),
+                    Provenance.ExamPattern(
+                        examId = ExamId("ssc_chsl"),
+                        paper = LocalizedText.of(
+                            "Tier 1", "टियर 1"
+                        ),
+                        section = LocalizedText.of(
+                            "Quantitative Aptitude", "संख्यात्मक अभिरुचि"
+                        )
+                    )
+                )
             ),
             q(
                 id = "short_10_of_350",
@@ -1640,7 +4281,27 @@ class QuestionBank {
                 ),
                 correctIndex = 0,
                 explanationEn = "10% is one tenth, so divide by 10. 35.",
-                explanationHi = "10% is one tenth, so divide by 10. 35।"
+                explanationHi = "10% is one tenth, so divide by 10. 35।",
+                provenance = listOf(
+                    Provenance.ExamPattern(
+                        examId = ExamId("ssc_cgl"),
+                        paper = LocalizedText.of(
+                            "Tier 1", "टियर 1"
+                        ),
+                        section = LocalizedText.of(
+                            "Quantitative Aptitude", "संख्यात्मक अभिरुचि"
+                        )
+                    ),
+                    Provenance.ExamPattern(
+                        examId = ExamId("ssc_chsl"),
+                        paper = LocalizedText.of(
+                            "Tier 1", "टियर 1"
+                        ),
+                        section = LocalizedText.of(
+                            "Quantitative Aptitude", "संख्यात्मक अभिरुचि"
+                        )
+                    )
+                )
             ),
             q(
                 id = "short_16_67_of_240",
@@ -1656,7 +4317,36 @@ class QuestionBank {
                 ),
                 correctIndex = 0,
                 explanationEn = "16.67% is one sixth, so divide by 6. 40.",
-                explanationHi = "16.67% is one sixth, so divide by 6. 40।"
+                explanationHi = "16.67% is one sixth, so divide by 6. 40।",
+                provenance = listOf(
+                    Provenance.ExamPattern(
+                        examId = ExamId("ssc_cgl"),
+                        paper = LocalizedText.of(
+                            "Tier 1", "टियर 1"
+                        ),
+                        section = LocalizedText.of(
+                            "Quantitative Aptitude", "संख्यात्मक अभिरुचि"
+                        )
+                    ),
+                    Provenance.ExamPattern(
+                        examId = ExamId("ssc_chsl"),
+                        paper = LocalizedText.of(
+                            "Tier 1", "टियर 1"
+                        ),
+                        section = LocalizedText.of(
+                            "Quantitative Aptitude", "संख्यात्मक अभिरुचि"
+                        )
+                    ),
+                    Provenance.ExamPattern(
+                        examId = ExamId("rrb_ntpc"),
+                        paper = LocalizedText.of(
+                            "CBT 1", "सीबीटी 1"
+                        ),
+                        section = LocalizedText.of(
+                            "Mathematics", "गणित"
+                        )
+                    )
+                )
             ),
             q(
                 id = "short_net_40",
@@ -1672,7 +4362,36 @@ class QuestionBank {
                 ),
                 correctIndex = 0,
                 explanationEn = "100 x 1.40 = 140, then 140 x 0.60 = 84. The net change is 84 - 100 = -16%. The two percentages do not cancel.",
-                explanationHi = "100 x 1.40 = 140, फिर 140 x 0.60 = 84। शुद्ध परिवर्तन 84 - 100 = -16%। दोनों प्रतिशत रद्द नहीं होते।"
+                explanationHi = "100 x 1.40 = 140, फिर 140 x 0.60 = 84। शुद्ध परिवर्तन 84 - 100 = -16%। दोनों प्रतिशत रद्द नहीं होते।",
+                provenance = listOf(
+                    Provenance.ExamPattern(
+                        examId = ExamId("ssc_cgl"),
+                        paper = LocalizedText.of(
+                            "Tier 1", "टियर 1"
+                        ),
+                        section = LocalizedText.of(
+                            "Quantitative Aptitude", "संख्यात्मक अभिरुचि"
+                        )
+                    ),
+                    Provenance.ExamPattern(
+                        examId = ExamId("ssc_chsl"),
+                        paper = LocalizedText.of(
+                            "Tier 1", "टियर 1"
+                        ),
+                        section = LocalizedText.of(
+                            "Quantitative Aptitude", "संख्यात्मक अभिरुचि"
+                        )
+                    ),
+                    Provenance.ExamPattern(
+                        examId = ExamId("rrb_ntpc"),
+                        paper = LocalizedText.of(
+                            "CBT 1", "सीबीटी 1"
+                        ),
+                        section = LocalizedText.of(
+                            "Mathematics", "गणित"
+                        )
+                    )
+                )
             ),
             q(
                 id = "short_ratio_20_more",
@@ -1688,7 +4407,36 @@ class QuestionBank {
                 ),
                 correctIndex = 0,
                 explanationEn = "Take B as 100, so A is 120. Then 120 : 100 = 6 : 5.",
-                explanationHi = "B को 100 मानें, तो A 120 है। फिर 120 : 100 = 6 : 5।"
+                explanationHi = "B को 100 मानें, तो A 120 है। फिर 120 : 100 = 6 : 5।",
+                provenance = listOf(
+                    Provenance.ExamPattern(
+                        examId = ExamId("ssc_cgl"),
+                        paper = LocalizedText.of(
+                            "Tier 1", "टियर 1"
+                        ),
+                        section = LocalizedText.of(
+                            "Quantitative Aptitude", "संख्यात्मक अभिरुचि"
+                        )
+                    ),
+                    Provenance.ExamPattern(
+                        examId = ExamId("ssc_chsl"),
+                        paper = LocalizedText.of(
+                            "Tier 1", "टियर 1"
+                        ),
+                        section = LocalizedText.of(
+                            "Quantitative Aptitude", "संख्यात्मक अभिरुचि"
+                        )
+                    ),
+                    Provenance.ExamPattern(
+                        examId = ExamId("rrb_ntpc"),
+                        paper = LocalizedText.of(
+                            "CBT 1", "सीबीटी 1"
+                        ),
+                        section = LocalizedText.of(
+                            "Mathematics", "गणित"
+                        )
+                    )
+                )
             ),
             q(
                 id = "pop_50k_up_12",
@@ -1704,7 +4452,18 @@ class QuestionBank {
                 ),
                 correctIndex = 0,
                 explanationEn = "12% of 50000 = 6000, so 50000 + 6000 = 56000.",
-                explanationHi = "50000 का 12% = 6000, अतः 50000 + 6000 = 56000।"
+                explanationHi = "50000 का 12% = 6000, अतः 50000 + 6000 = 56000।",
+                provenance = listOf(
+                    Provenance.ExamPattern(
+                        examId = ExamId("rrb_group_d"),
+                        paper = LocalizedText.of(
+                            "CBT", "सीबीटी"
+                        ),
+                        section = LocalizedText.of(
+                            "Mathematics", "गणित"
+                        )
+                    )
+                )
             ),
             q(
                 id = "pop_20k_down_15",
@@ -1720,7 +4479,18 @@ class QuestionBank {
                 ),
                 correctIndex = 0,
                 explanationEn = "15% of 20000 = 3000, so 20000 - 3000 = 17000.",
-                explanationHi = "20000 का 15% = 3000, अतः 20000 - 3000 = 17000।"
+                explanationHi = "20000 का 15% = 3000, अतः 20000 - 3000 = 17000।",
+                provenance = listOf(
+                    Provenance.ExamPattern(
+                        examId = ExamId("rrb_group_d"),
+                        paper = LocalizedText.of(
+                            "CBT", "सीबीटी"
+                        ),
+                        section = LocalizedText.of(
+                            "Mathematics", "गणित"
+                        )
+                    )
+                )
             ),
             q(
                 id = "pop_32k_up_12",
@@ -1736,7 +4506,18 @@ class QuestionBank {
                 ),
                 correctIndex = 0,
                 explanationEn = "12% of 32000 = 3840, so 32000 + 3840 = 35840.",
-                explanationHi = "32000 का 12% = 3840, अतः 32000 + 3840 = 35840।"
+                explanationHi = "32000 का 12% = 3840, अतः 32000 + 3840 = 35840।",
+                provenance = listOf(
+                    Provenance.ExamPattern(
+                        examId = ExamId("rrb_group_d"),
+                        paper = LocalizedText.of(
+                            "CBT", "सीबीटी"
+                        ),
+                        section = LocalizedText.of(
+                            "Mathematics", "गणित"
+                        )
+                    )
+                )
             ),
             q(
                 id = "pop_45k_down_8",
@@ -1752,7 +4533,18 @@ class QuestionBank {
                 ),
                 correctIndex = 0,
                 explanationEn = "8% of 45000 = 3600, so 45000 - 3600 = 41400.",
-                explanationHi = "45000 का 8% = 3600, अतः 45000 - 3600 = 41400।"
+                explanationHi = "45000 का 8% = 3600, अतः 45000 - 3600 = 41400।",
+                provenance = listOf(
+                    Provenance.ExamPattern(
+                        examId = ExamId("rrb_group_d"),
+                        paper = LocalizedText.of(
+                            "CBT", "सीबीटी"
+                        ),
+                        section = LocalizedText.of(
+                            "Mathematics", "गणित"
+                        )
+                    )
+                )
             ),
             q(
                 id = "pop_two_changes",
@@ -1768,7 +4560,27 @@ class QuestionBank {
                 ),
                 correctIndex = 0,
                 explanationEn = "12000 x 1.25 = 15000, then 15000 x 0.90 = 13500. The fall is measured on the population after the rise.",
-                explanationHi = "12000 x 1.25 = 15000, फिर 15000 x 0.90 = 13500। गिरावट वृद्धि के बाद की आबादी पर मापी जाती है।"
+                explanationHi = "12000 x 1.25 = 15000, फिर 15000 x 0.90 = 13500। गिरावट वृद्धि के बाद की आबादी पर मापी जाती है।",
+                provenance = listOf(
+                    Provenance.ExamPattern(
+                        examId = ExamId("ssc_cgl"),
+                        paper = LocalizedText.of(
+                            "Tier 1", "टियर 1"
+                        ),
+                        section = LocalizedText.of(
+                            "Quantitative Aptitude", "संख्यात्मक अभिरुचि"
+                        )
+                    ),
+                    Provenance.ExamPattern(
+                        examId = ExamId("rrb_ntpc"),
+                        paper = LocalizedText.of(
+                            "CBT 1", "सीबीटी 1"
+                        ),
+                        section = LocalizedText.of(
+                            "Mathematics", "गणित"
+                        )
+                    )
+                )
             ),
             q(
                 id = "pop_rate_of_change",
@@ -1784,7 +4596,18 @@ class QuestionBank {
                 ),
                 correctIndex = 0,
                 explanationEn = "The growth is 46000 - 40000 = 6000, and 6000 / 40000 x 100 = 15%.",
-                explanationHi = "वृद्धि 46000 - 40000 = 6000 है, और 6000 / 40000 x 100 = 15%।"
+                explanationHi = "वृद्धि 46000 - 40000 = 6000 है, और 6000 / 40000 x 100 = 15%।",
+                provenance = listOf(
+                    Provenance.ExamPattern(
+                        examId = ExamId("rrb_group_d"),
+                        paper = LocalizedText.of(
+                            "CBT", "सीबीटी"
+                        ),
+                        section = LocalizedText.of(
+                            "Mathematics", "गणित"
+                        )
+                    )
+                )
             ),
             q(
                 id = "pop_comparison",
@@ -1800,7 +4623,18 @@ class QuestionBank {
                 ),
                 correctIndex = 0,
                 explanationEn = "48000 x 1.25 = 60000.",
-                explanationHi = "48000 x 1.25 = 60000।"
+                explanationHi = "48000 x 1.25 = 60000।",
+                provenance = listOf(
+                    Provenance.ExamPattern(
+                        examId = ExamId("rrb_group_d"),
+                        paper = LocalizedText.of(
+                            "CBT", "सीबीटी"
+                        ),
+                        section = LocalizedText.of(
+                            "Mathematics", "गणित"
+                        )
+                    )
+                )
             ),
             q(
                 id = "pop_fall_20",
@@ -1832,7 +4666,27 @@ class QuestionBank {
                 ),
                 correctIndex = 0,
                 explanationEn = "40% of 25000 = 10000 is spent, so 25000 - 10000 = 15000 is saved.",
-                explanationHi = "25000 का 40% = 10000 खर्च होता है, अतः 25000 - 10000 = 15000 बचता है।"
+                explanationHi = "25000 का 40% = 10000 खर्च होता है, अतः 25000 - 10000 = 15000 बचता है।",
+                provenance = listOf(
+                    Provenance.ExamPattern(
+                        examId = ExamId("ibps_po"),
+                        paper = LocalizedText.of(
+                            "Prelims", "प्रीलिम्स"
+                        ),
+                        section = LocalizedText.of(
+                            "Quantitative Aptitude", "संख्यात्मक अभिरुचि"
+                        )
+                    ),
+                    Provenance.ExamPattern(
+                        examId = ExamId("ibps_clerk"),
+                        paper = LocalizedText.of(
+                            "Prelims", "प्रीलिम्स"
+                        ),
+                        section = LocalizedText.of(
+                            "Numerical Ability", "संख्यात्मक क्षमता"
+                        )
+                    )
+                )
             ),
             q(
                 id = "sal_savings_percent",
@@ -1848,7 +4702,27 @@ class QuestionBank {
                 ),
                 correctIndex = 0,
                 explanationEn = "Savings = 40000 - 24000 = 16000, and 16000 / 40000 x 100 = 40%.",
-                explanationHi = "बचत = 40000 - 24000 = 16000, और 16000 / 40000 x 100 = 40%।"
+                explanationHi = "बचत = 40000 - 24000 = 16000, और 16000 / 40000 x 100 = 40%।",
+                provenance = listOf(
+                    Provenance.ExamPattern(
+                        examId = ExamId("ibps_po"),
+                        paper = LocalizedText.of(
+                            "Prelims", "प्रीलिम्स"
+                        ),
+                        section = LocalizedText.of(
+                            "Quantitative Aptitude", "संख्यात्मक अभिरुचि"
+                        )
+                    ),
+                    Provenance.ExamPattern(
+                        examId = ExamId("ibps_clerk"),
+                        paper = LocalizedText.of(
+                            "Prelims", "प्रीलिम्स"
+                        ),
+                        section = LocalizedText.of(
+                            "Numerical Ability", "संख्यात्मक क्षमता"
+                        )
+                    )
+                )
             ),
             q(
                 id = "sal_exp_60",
@@ -1864,7 +4738,27 @@ class QuestionBank {
                 ),
                 correctIndex = 0,
                 explanationEn = "60% of 50000 = 30000 is spent, so 50000 - 30000 = 20000 remains.",
-                explanationHi = "50000 का 60% = 30000 खर्च होता है, अतः 50000 - 30000 = 20000 बचता है।"
+                explanationHi = "50000 का 60% = 30000 खर्च होता है, अतः 50000 - 30000 = 20000 बचता है।",
+                provenance = listOf(
+                    Provenance.ExamPattern(
+                        examId = ExamId("ibps_po"),
+                        paper = LocalizedText.of(
+                            "Prelims", "प्रीलिम्स"
+                        ),
+                        section = LocalizedText.of(
+                            "Quantitative Aptitude", "संख्यात्मक अभिरुचि"
+                        )
+                    ),
+                    Provenance.ExamPattern(
+                        examId = ExamId("ibps_clerk"),
+                        paper = LocalizedText.of(
+                            "Prelims", "प्रीलिम्स"
+                        ),
+                        section = LocalizedText.of(
+                            "Numerical Ability", "संख्यात्मक क्षमता"
+                        )
+                    )
+                )
             ),
             q(
                 id = "sal_exp_is_80pct",
@@ -1880,7 +4774,27 @@ class QuestionBank {
                 ),
                 correctIndex = 0,
                 explanationEn = "12000 / 0.80 = 15000. Check: 80% of 15000 = 12000.",
-                explanationHi = "12000 / 0.80 = 15000। जाँच: 15000 का 80% = 12000।"
+                explanationHi = "12000 / 0.80 = 15000। जाँच: 15000 का 80% = 12000।",
+                provenance = listOf(
+                    Provenance.ExamPattern(
+                        examId = ExamId("ibps_po"),
+                        paper = LocalizedText.of(
+                            "Prelims", "प्रीलिम्स"
+                        ),
+                        section = LocalizedText.of(
+                            "Quantitative Aptitude", "संख्यात्मक अभिरुचि"
+                        )
+                    ),
+                    Provenance.ExamPattern(
+                        examId = ExamId("ibps_clerk"),
+                        paper = LocalizedText.of(
+                            "Prelims", "प्रीलिम्स"
+                        ),
+                        section = LocalizedText.of(
+                            "Numerical Ability", "संख्यात्मक क्षमता"
+                        )
+                    )
+                )
             ),
             q(
                 id = "sal_exp_rises",
@@ -1896,7 +4810,18 @@ class QuestionBank {
                 ),
                 correctIndex = 0,
                 explanationEn = "Expenditure rises by 24000 x 0.20 = 4800 to 28800. Savings = 36000 - 28800 = 7200.",
-                explanationHi = "व्यय 24000 x 0.20 = 4800 बढ़कर 28800 हो जाता है। बचत = 36000 - 28800 = 7200।"
+                explanationHi = "व्यय 24000 x 0.20 = 4800 बढ़कर 28800 हो जाता है। बचत = 36000 - 28800 = 7200।",
+                provenance = listOf(
+                    Provenance.ExamPattern(
+                        examId = ExamId("ibps_po"),
+                        paper = LocalizedText.of(
+                            "Prelims", "प्रीलिम्स"
+                        ),
+                        section = LocalizedText.of(
+                            "Quantitative Aptitude", "संख्यात्मक अभिरुचि"
+                        )
+                    )
+                )
             ),
             q(
                 id = "sal_save_30pct",
@@ -1912,7 +4837,27 @@ class QuestionBank {
                 ),
                 correctIndex = 0,
                 explanationEn = "Savings = 30% of 9000 = 2700, so expenditure = 9000 - 2700 = 6300.",
-                explanationHi = "बचत = 9000 का 30% = 2700, अतः व्यय = 9000 - 2700 = 6300।"
+                explanationHi = "बचत = 9000 का 30% = 2700, अतः व्यय = 9000 - 2700 = 6300।",
+                provenance = listOf(
+                    Provenance.ExamPattern(
+                        examId = ExamId("ibps_po"),
+                        paper = LocalizedText.of(
+                            "Prelims", "प्रीलिम्स"
+                        ),
+                        section = LocalizedText.of(
+                            "Quantitative Aptitude", "संख्यात्मक अभिरुचि"
+                        )
+                    ),
+                    Provenance.ExamPattern(
+                        examId = ExamId("ibps_clerk"),
+                        paper = LocalizedText.of(
+                            "Prelims", "प्रीलिम्स"
+                        ),
+                        section = LocalizedText.of(
+                            "Numerical Ability", "संख्यात्मक क्षमता"
+                        )
+                    )
+                )
             ),
             q(
                 id = "sal_raise_then_cut",
@@ -1928,7 +4873,27 @@ class QuestionBank {
                 ),
                 correctIndex = 0,
                 explanationEn = "20000 x 1.25 = 25000, then 25000 x 0.90 = 22500. The net change is 12.5%.",
-                explanationHi = "20000 x 1.25 = 25000, फिर 25000 x 0.90 = 22500। शुद्ध परिवर्तन 12.5% है।"
+                explanationHi = "20000 x 1.25 = 25000, फिर 25000 x 0.90 = 22500। शुद्ध परिवर्तन 12.5% है।",
+                provenance = listOf(
+                    Provenance.ExamPattern(
+                        examId = ExamId("ibps_po"),
+                        paper = LocalizedText.of(
+                            "Prelims", "प्रीलिम्स"
+                        ),
+                        section = LocalizedText.of(
+                            "Quantitative Aptitude", "संख्यात्मक अभिरुचि"
+                        )
+                    ),
+                    Provenance.ExamPattern(
+                        examId = ExamId("ibps_clerk"),
+                        paper = LocalizedText.of(
+                            "Prelims", "प्रीलिम्स"
+                        ),
+                        section = LocalizedText.of(
+                            "Numerical Ability", "संख्यात्मक क्षमता"
+                        )
+                    )
+                )
             ),
             q(
                 id = "marks_pass_40",
@@ -1944,7 +4909,27 @@ class QuestionBank {
                 ),
                 correctIndex = 0,
                 explanationEn = "40% of 500 = 200 marks are needed to pass.",
-                explanationHi = "उत्तीर्ण होने के लिए 500 का 40% = 200 अंक चाहिए।"
+                explanationHi = "उत्तीर्ण होने के लिए 500 का 40% = 200 अंक चाहिए।",
+                provenance = listOf(
+                    Provenance.ExamPattern(
+                        examId = ExamId("ssc_gd"),
+                        paper = LocalizedText.of(
+                            "CBT", "सीबीटी"
+                        ),
+                        section = LocalizedText.of(
+                            "Elementary Mathematics", "प्राथमिक गणित"
+                        )
+                    ),
+                    Provenance.ExamPattern(
+                        examId = ExamId("rrb_group_d"),
+                        paper = LocalizedText.of(
+                            "CBT", "सीबीटी"
+                        ),
+                        section = LocalizedText.of(
+                            "Mathematics", "गणित"
+                        )
+                    )
+                )
             ),
             q(
                 id = "marks_score_80pct",
@@ -1960,7 +4945,27 @@ class QuestionBank {
                 ),
                 correctIndex = 0,
                 explanationEn = "360 / 450 x 100 = 80%.",
-                explanationHi = "360 / 450 x 100 = 80%।"
+                explanationHi = "360 / 450 x 100 = 80%।",
+                provenance = listOf(
+                    Provenance.ExamPattern(
+                        examId = ExamId("ssc_gd"),
+                        paper = LocalizedText.of(
+                            "CBT", "सीबीटी"
+                        ),
+                        section = LocalizedText.of(
+                            "Elementary Mathematics", "प्राथमिक गणित"
+                        )
+                    ),
+                    Provenance.ExamPattern(
+                        examId = ExamId("rrb_group_d"),
+                        paper = LocalizedText.of(
+                            "CBT", "सीबीटी"
+                        ),
+                        section = LocalizedText.of(
+                            "Mathematics", "गणित"
+                        )
+                    )
+                )
             ),
             q(
                 id = "marks_shortfall",
@@ -1976,7 +4981,54 @@ class QuestionBank {
                 ),
                 correctIndex = 0,
                 explanationEn = "240 - 216 = 24 marks short.",
-                explanationHi = "240 - 216 = 24 अंक की कमी।"
+                explanationHi = "240 - 216 = 24 अंक की कमी।",
+                provenance = listOf(
+                    Provenance.ExamPattern(
+                        examId = ExamId("ssc_cgl"),
+                        paper = LocalizedText.of(
+                            "Tier 1", "टियर 1"
+                        ),
+                        section = LocalizedText.of(
+                            "Quantitative Aptitude", "संख्यात्मक अभिरुचि"
+                        )
+                    ),
+                    Provenance.ExamPattern(
+                        examId = ExamId("ssc_chsl"),
+                        paper = LocalizedText.of(
+                            "Tier 1", "टियर 1"
+                        ),
+                        section = LocalizedText.of(
+                            "Quantitative Aptitude", "संख्यात्मक अभिरुचि"
+                        )
+                    ),
+                    Provenance.ExamPattern(
+                        examId = ExamId("ssc_gd"),
+                        paper = LocalizedText.of(
+                            "CBT", "सीबीटी"
+                        ),
+                        section = LocalizedText.of(
+                            "Elementary Mathematics", "प्राथमिक गणित"
+                        )
+                    ),
+                    Provenance.ExamPattern(
+                        examId = ExamId("rrb_group_d"),
+                        paper = LocalizedText.of(
+                            "CBT", "सीबीटी"
+                        ),
+                        section = LocalizedText.of(
+                            "Mathematics", "गणित"
+                        )
+                    ),
+                    Provenance.ExamPattern(
+                        examId = ExamId("ibps_po"),
+                        paper = LocalizedText.of(
+                            "Prelims", "प्रीलिम्स"
+                        ),
+                        section = LocalizedText.of(
+                            "Quantitative Aptitude", "संख्यात्मक अभिरुचि"
+                        )
+                    )
+                )
             ),
             q(
                 id = "marks_pass_rate",
@@ -1992,7 +5044,54 @@ class QuestionBank {
                 ),
                 correctIndex = 0,
                 explanationEn = "250 / 500 x 100 = 50% passed.",
-                explanationHi = "250 / 500 x 100 = 50% उत्तीर्ण हुए।"
+                explanationHi = "250 / 500 x 100 = 50% उत्तीर्ण हुए।",
+                provenance = listOf(
+                    Provenance.ExamPattern(
+                        examId = ExamId("ssc_cgl"),
+                        paper = LocalizedText.of(
+                            "Tier 1", "टियर 1"
+                        ),
+                        section = LocalizedText.of(
+                            "Quantitative Aptitude", "संख्यात्मक अभिरुचि"
+                        )
+                    ),
+                    Provenance.ExamPattern(
+                        examId = ExamId("ssc_chsl"),
+                        paper = LocalizedText.of(
+                            "Tier 1", "टियर 1"
+                        ),
+                        section = LocalizedText.of(
+                            "Quantitative Aptitude", "संख्यात्मक अभिरुचि"
+                        )
+                    ),
+                    Provenance.ExamPattern(
+                        examId = ExamId("ssc_gd"),
+                        paper = LocalizedText.of(
+                            "CBT", "सीबीटी"
+                        ),
+                        section = LocalizedText.of(
+                            "Elementary Mathematics", "प्राथमिक गणित"
+                        )
+                    ),
+                    Provenance.ExamPattern(
+                        examId = ExamId("rrb_group_d"),
+                        paper = LocalizedText.of(
+                            "CBT", "सीबीटी"
+                        ),
+                        section = LocalizedText.of(
+                            "Mathematics", "गणित"
+                        )
+                    ),
+                    Provenance.ExamPattern(
+                        examId = ExamId("ibps_po"),
+                        paper = LocalizedText.of(
+                            "Prelims", "प्रीलिम्स"
+                        ),
+                        section = LocalizedText.of(
+                            "Quantitative Aptitude", "संख्यात्मक अभिरुचि"
+                        )
+                    )
+                )
             ),
             q(
                 id = "marks_avg_vs_topper",
@@ -2008,7 +5107,36 @@ class QuestionBank {
                 ),
                 correctIndex = 0,
                 explanationEn = "The gap is 85 - 60 = 25 percentage points, and measured against the average of 60 that is 25 / 60 x 100 = 41.67%.",
-                explanationHi = "अंतर 85 - 60 = 25 प्रतिशत अंक है, और औसत 60 के सापेक्ष यह 25 / 60 x 100 = 41.67% है।"
+                explanationHi = "अंतर 85 - 60 = 25 प्रतिशत अंक है, और औसत 60 के सापेक्ष यह 25 / 60 x 100 = 41.67% है।",
+                provenance = listOf(
+                    Provenance.ExamPattern(
+                        examId = ExamId("ssc_cgl"),
+                        paper = LocalizedText.of(
+                            "Tier 1", "टियर 1"
+                        ),
+                        section = LocalizedText.of(
+                            "Quantitative Aptitude", "संख्यात्मक अभिरुचि"
+                        )
+                    ),
+                    Provenance.ExamPattern(
+                        examId = ExamId("ssc_chsl"),
+                        paper = LocalizedText.of(
+                            "Tier 1", "टियर 1"
+                        ),
+                        section = LocalizedText.of(
+                            "Quantitative Aptitude", "संख्यात्मक अभिरुचि"
+                        )
+                    ),
+                    Provenance.ExamPattern(
+                        examId = ExamId("rrb_ntpc"),
+                        paper = LocalizedText.of(
+                            "CBT 1", "सीबीटी 1"
+                        ),
+                        section = LocalizedText.of(
+                            "Mathematics", "गणित"
+                        )
+                    )
+                )
             ),
             q(
                 id = "marks_pass_rises",
@@ -2024,7 +5152,54 @@ class QuestionBank {
                 ),
                 correctIndex = 0,
                 explanationEn = "The relative change is (50 - 40) / 40 x 100 = 25%. The pass percentage also moved from 20% to 25%, which is 5 percentage points.",
-                explanationHi = "सापेक्ष परिवर्तन (50 - 40) / 40 x 100 = 25%। उत्तीर्ण प्रतिशत भी 20% से 25% हुआ, जो 5 प्रतिशत अंक है।"
+                explanationHi = "सापेक्ष परिवर्तन (50 - 40) / 40 x 100 = 25%। उत्तीर्ण प्रतिशत भी 20% से 25% हुआ, जो 5 प्रतिशत अंक है।",
+                provenance = listOf(
+                    Provenance.ExamPattern(
+                        examId = ExamId("ssc_cgl"),
+                        paper = LocalizedText.of(
+                            "Tier 1", "टियर 1"
+                        ),
+                        section = LocalizedText.of(
+                            "Quantitative Aptitude", "संख्यात्मक अभिरुचि"
+                        )
+                    ),
+                    Provenance.ExamPattern(
+                        examId = ExamId("ssc_chsl"),
+                        paper = LocalizedText.of(
+                            "Tier 1", "टियर 1"
+                        ),
+                        section = LocalizedText.of(
+                            "Quantitative Aptitude", "संख्यात्मक अभिरुचि"
+                        )
+                    ),
+                    Provenance.ExamPattern(
+                        examId = ExamId("ssc_gd"),
+                        paper = LocalizedText.of(
+                            "CBT", "सीबीटी"
+                        ),
+                        section = LocalizedText.of(
+                            "Elementary Mathematics", "प्राथमिक गणित"
+                        )
+                    ),
+                    Provenance.ExamPattern(
+                        examId = ExamId("rrb_group_d"),
+                        paper = LocalizedText.of(
+                            "CBT", "सीबीटी"
+                        ),
+                        section = LocalizedText.of(
+                            "Mathematics", "गणित"
+                        )
+                    ),
+                    Provenance.ExamPattern(
+                        examId = ExamId("ibps_po"),
+                        paper = LocalizedText.of(
+                            "Prelims", "प्रीलिम्स"
+                        ),
+                        section = LocalizedText.of(
+                            "Quantitative Aptitude", "संख्यात्मक अभिरुचि"
+                        )
+                    )
+                )
             ),
             q(
                 id = "marks_needs_21",
@@ -2040,7 +5215,63 @@ class QuestionBank {
                 ),
                 correctIndex = 0,
                 explanationEn = "40% of 300 = 120, so 120 - 99 = 21 more marks are needed.",
-                explanationHi = "300 का 40% = 120, अतः 120 - 99 = 21 और अंक चाहिए।"
+                explanationHi = "300 का 40% = 120, अतः 120 - 99 = 21 और अंक चाहिए।",
+                provenance = listOf(
+                    Provenance.ExamPattern(
+                        examId = ExamId("ssc_cgl"),
+                        paper = LocalizedText.of(
+                            "Tier 1", "टियर 1"
+                        ),
+                        section = LocalizedText.of(
+                            "Quantitative Aptitude", "संख्यात्मक अभिरुचि"
+                        )
+                    ),
+                    Provenance.ExamPattern(
+                        examId = ExamId("ssc_chsl"),
+                        paper = LocalizedText.of(
+                            "Tier 1", "टियर 1"
+                        ),
+                        section = LocalizedText.of(
+                            "Quantitative Aptitude", "संख्यात्मक अभिरुचि"
+                        )
+                    ),
+                    Provenance.ExamPattern(
+                        examId = ExamId("ssc_gd"),
+                        paper = LocalizedText.of(
+                            "CBT", "सीबीटी"
+                        ),
+                        section = LocalizedText.of(
+                            "Elementary Mathematics", "प्राथमिक गणित"
+                        )
+                    ),
+                    Provenance.ExamPattern(
+                        examId = ExamId("rrb_ntpc"),
+                        paper = LocalizedText.of(
+                            "CBT 1", "सीबीटी 1"
+                        ),
+                        section = LocalizedText.of(
+                            "Mathematics", "गणित"
+                        )
+                    ),
+                    Provenance.ExamPattern(
+                        examId = ExamId("rrb_group_d"),
+                        paper = LocalizedText.of(
+                            "CBT", "सीबीटी"
+                        ),
+                        section = LocalizedText.of(
+                            "Mathematics", "गणित"
+                        )
+                    ),
+                    Provenance.ExamPattern(
+                        examId = ExamId("ibps_po"),
+                        paper = LocalizedText.of(
+                            "Prelims", "प्रीलिम्स"
+                        ),
+                        section = LocalizedText.of(
+                            "Quantitative Aptitude", "संख्यात्मक अभिरुचि"
+                        )
+                    )
+                )
             ),
             q(
                 id = "vote_55pct",
@@ -2168,7 +5399,36 @@ class QuestionBank {
                 ),
                 correctIndex = 0,
                 explanationEn = "20% of 2500 = 500, so 2500 - 500 = 2000.",
-                explanationHi = "2500 का 20% = 500, अतः 2500 - 500 = 2000।"
+                explanationHi = "2500 का 20% = 500, अतः 2500 - 500 = 2000।",
+                provenance = listOf(
+                    Provenance.ExamPattern(
+                        examId = ExamId("ssc_gd"),
+                        paper = LocalizedText.of(
+                            "CBT", "सीबीटी"
+                        ),
+                        section = LocalizedText.of(
+                            "Elementary Mathematics", "प्राथमिक गणित"
+                        )
+                    ),
+                    Provenance.ExamPattern(
+                        examId = ExamId("ibps_po"),
+                        paper = LocalizedText.of(
+                            "Prelims", "प्रीलिम्स"
+                        ),
+                        section = LocalizedText.of(
+                            "Quantitative Aptitude", "संख्यात्मक अभिरुचि"
+                        )
+                    ),
+                    Provenance.ExamPattern(
+                        examId = ExamId("ibps_clerk"),
+                        paper = LocalizedText.of(
+                            "Prelims", "प्रीलिम्स"
+                        ),
+                        section = LocalizedText.of(
+                            "Numerical Ability", "संख्यात्मक क्षमता"
+                        )
+                    )
+                )
             ),
             q(
                 id = "price_two_discounts",
@@ -2184,7 +5444,27 @@ class QuestionBank {
                 ),
                 correctIndex = 0,
                 explanationEn = "1000 x 0.80 = 800, then 800 x 0.90 = 720. The net discount is 28%, not 30%, because the second discount is measured on 800.",
-                explanationHi = "1000 x 0.80 = 800, फिर 800 x 0.90 = 720। शुद्ध छूट 30% नहीं, 28% है, क्योंकि दूसरी छूट 800 पर मापी जाती है।"
+                explanationHi = "1000 x 0.80 = 800, फिर 800 x 0.90 = 720। शुद्ध छूट 30% नहीं, 28% है, क्योंकि दूसरी छूट 800 पर मापी जाती है।",
+                provenance = listOf(
+                    Provenance.ExamPattern(
+                        examId = ExamId("rrb_ntpc"),
+                        paper = LocalizedText.of(
+                            "CBT 1", "सीबीटी 1"
+                        ),
+                        section = LocalizedText.of(
+                            "Mathematics", "गणित"
+                        )
+                    ),
+                    Provenance.ExamPattern(
+                        examId = ExamId("ibps_po"),
+                        paper = LocalizedText.of(
+                            "Prelims", "प्रीलिम्स"
+                        ),
+                        section = LocalizedText.of(
+                            "Quantitative Aptitude", "संख्यात्मक अभिरुचि"
+                        )
+                    )
+                )
             ),
             q(
                 id = "price_net_discount",
@@ -2200,7 +5480,45 @@ class QuestionBank {
                 ),
                 correctIndex = 0,
                 explanationEn = "On a price of 100: 100 x 0.80 x 0.90 = 72, so the overall discount is 100 - 72 = 28%.",
-                explanationHi = "100 के मूल्य पर: 100 x 0.80 x 0.90 = 72, अतः कुल छूट 100 - 72 = 28%।"
+                explanationHi = "100 के मूल्य पर: 100 x 0.80 x 0.90 = 72, अतः कुल छूट 100 - 72 = 28%।",
+                provenance = listOf(
+                    Provenance.ExamPattern(
+                        examId = ExamId("ssc_gd"),
+                        paper = LocalizedText.of(
+                            "CBT", "सीबीटी"
+                        ),
+                        section = LocalizedText.of(
+                            "Elementary Mathematics", "प्राथमिक गणित"
+                        )
+                    ),
+                    Provenance.ExamPattern(
+                        examId = ExamId("rrb_group_d"),
+                        paper = LocalizedText.of(
+                            "CBT", "सीबीटी"
+                        ),
+                        section = LocalizedText.of(
+                            "Mathematics", "गणित"
+                        )
+                    ),
+                    Provenance.ExamPattern(
+                        examId = ExamId("ibps_po"),
+                        paper = LocalizedText.of(
+                            "Prelims", "प्रीलिम्स"
+                        ),
+                        section = LocalizedText.of(
+                            "Quantitative Aptitude", "संख्यात्मक अभिरुचि"
+                        )
+                    ),
+                    Provenance.ExamPattern(
+                        examId = ExamId("ibps_clerk"),
+                        paper = LocalizedText.of(
+                            "Prelims", "प्रीलिम्स"
+                        ),
+                        section = LocalizedText.of(
+                            "Numerical Ability", "संख्यात्मक क्षमता"
+                        )
+                    )
+                )
             ),
             q(
                 id = "price_tax_incl",
@@ -2216,7 +5534,45 @@ class QuestionBank {
                 ),
                 correctIndex = 0,
                 explanationEn = "If 550 is 110% of the price before tax, then the price before tax is 550 / 1.10 = 500, so the tax is 550 - 500 = 50.",
-                explanationHi = "यदि 550, कर से पहले मूल्य का 110% है, तो कर से पहले मूल्य 550 / 1.10 = 500 है, अतः कर 550 - 500 = 50 है।"
+                explanationHi = "यदि 550, कर से पहले मूल्य का 110% है, तो कर से पहले मूल्य 550 / 1.10 = 500 है, अतः कर 550 - 500 = 50 है।",
+                provenance = listOf(
+                    Provenance.ExamPattern(
+                        examId = ExamId("ssc_cgl"),
+                        paper = LocalizedText.of(
+                            "Tier 1", "टियर 1"
+                        ),
+                        section = LocalizedText.of(
+                            "Quantitative Aptitude", "संख्यात्मक अभिरुचि"
+                        )
+                    ),
+                    Provenance.ExamPattern(
+                        examId = ExamId("rrb_ntpc"),
+                        paper = LocalizedText.of(
+                            "CBT 1", "सीबीटी 1"
+                        ),
+                        section = LocalizedText.of(
+                            "Mathematics", "गणित"
+                        )
+                    ),
+                    Provenance.ExamPattern(
+                        examId = ExamId("ibps_po"),
+                        paper = LocalizedText.of(
+                            "Prelims", "प्रीलिम्स"
+                        ),
+                        section = LocalizedText.of(
+                            "Quantitative Aptitude", "संख्यात्मक अभिरुचि"
+                        )
+                    ),
+                    Provenance.ExamPattern(
+                        examId = ExamId("ibps_clerk"),
+                        paper = LocalizedText.of(
+                            "Prelims", "प्रीलिम्स"
+                        ),
+                        section = LocalizedText.of(
+                            "Numerical Ability", "संख्यात्मक क्षमता"
+                        )
+                    )
+                )
             ),
             q(
                 id = "price_disc_then_rise",
@@ -2232,7 +5588,45 @@ class QuestionBank {
                 ),
                 correctIndex = 0,
                 explanationEn = "1000 x 0.60 = 600, then 600 x 1.25 = 750. The net change is -25%.",
-                explanationHi = "1000 x 0.60 = 600, फिर 600 x 1.25 = 750। शुद्ध परिवर्तन -25% है।"
+                explanationHi = "1000 x 0.60 = 600, फिर 600 x 1.25 = 750। शुद्ध परिवर्तन -25% है।",
+                provenance = listOf(
+                    Provenance.ExamPattern(
+                        examId = ExamId("ssc_gd"),
+                        paper = LocalizedText.of(
+                            "CBT", "सीबीटी"
+                        ),
+                        section = LocalizedText.of(
+                            "Elementary Mathematics", "प्राथमिक गणित"
+                        )
+                    ),
+                    Provenance.ExamPattern(
+                        examId = ExamId("rrb_group_d"),
+                        paper = LocalizedText.of(
+                            "CBT", "सीबीटी"
+                        ),
+                        section = LocalizedText.of(
+                            "Mathematics", "गणित"
+                        )
+                    ),
+                    Provenance.ExamPattern(
+                        examId = ExamId("ibps_po"),
+                        paper = LocalizedText.of(
+                            "Prelims", "प्रीलिम्स"
+                        ),
+                        section = LocalizedText.of(
+                            "Quantitative Aptitude", "संख्यात्मक अभिरुचि"
+                        )
+                    ),
+                    Provenance.ExamPattern(
+                        examId = ExamId("ibps_clerk"),
+                        paper = LocalizedText.of(
+                            "Prelims", "प्रीलिम्स"
+                        ),
+                        section = LocalizedText.of(
+                            "Numerical Ability", "संख्यात्मक क्षमता"
+                        )
+                    )
+                )
             ),
             q(
                 id = "price_discount_then_tax",
@@ -2248,7 +5642,45 @@ class QuestionBank {
                 ),
                 correctIndex = 0,
                 explanationEn = "2000 x 0.80 = 1600, then 1600 x 1.10 = 1760.",
-                explanationHi = "2000 x 0.80 = 1600, फिर 1600 x 1.10 = 1760।"
+                explanationHi = "2000 x 0.80 = 1600, फिर 1600 x 1.10 = 1760।",
+                provenance = listOf(
+                    Provenance.ExamPattern(
+                        examId = ExamId("ssc_gd"),
+                        paper = LocalizedText.of(
+                            "CBT", "सीबीटी"
+                        ),
+                        section = LocalizedText.of(
+                            "Elementary Mathematics", "प्राथमिक गणित"
+                        )
+                    ),
+                    Provenance.ExamPattern(
+                        examId = ExamId("rrb_group_d"),
+                        paper = LocalizedText.of(
+                            "CBT", "सीबीटी"
+                        ),
+                        section = LocalizedText.of(
+                            "Mathematics", "गणित"
+                        )
+                    ),
+                    Provenance.ExamPattern(
+                        examId = ExamId("ibps_po"),
+                        paper = LocalizedText.of(
+                            "Prelims", "प्रीलिम्स"
+                        ),
+                        section = LocalizedText.of(
+                            "Quantitative Aptitude", "संख्यात्मक अभिरुचि"
+                        )
+                    ),
+                    Provenance.ExamPattern(
+                        examId = ExamId("ibps_clerk"),
+                        paper = LocalizedText.of(
+                            "Prelims", "प्रीलिम्स"
+                        ),
+                        section = LocalizedText.of(
+                            "Numerical Ability", "संख्यात्मक क्षमता"
+                        )
+                    )
+                )
             ),
             q(
                 id = "price_disc_25_640",
@@ -2264,7 +5696,36 @@ class QuestionBank {
                 ),
                 correctIndex = 0,
                 explanationEn = "25% of 640 = 640 / 4 = 160, so the discount is 160.",
-                explanationHi = "640 का 25% = 640 / 4 = 160, अतः छूट 160 है।"
+                explanationHi = "640 का 25% = 640 / 4 = 160, अतः छूट 160 है।",
+                provenance = listOf(
+                    Provenance.ExamPattern(
+                        examId = ExamId("ssc_gd"),
+                        paper = LocalizedText.of(
+                            "CBT", "सीबीटी"
+                        ),
+                        section = LocalizedText.of(
+                            "Elementary Mathematics", "प्राथमिक गणित"
+                        )
+                    ),
+                    Provenance.ExamPattern(
+                        examId = ExamId("ibps_po"),
+                        paper = LocalizedText.of(
+                            "Prelims", "प्रीलिम्स"
+                        ),
+                        section = LocalizedText.of(
+                            "Quantitative Aptitude", "संख्यात्मक अभिरुचि"
+                        )
+                    ),
+                    Provenance.ExamPattern(
+                        examId = ExamId("ibps_clerk"),
+                        paper = LocalizedText.of(
+                            "Prelims", "प्रीलिम्स"
+                        ),
+                        section = LocalizedText.of(
+                            "Numerical Ability", "संख्यात्मक क्षमता"
+                        )
+                    )
+                )
             ),
             q(
                 id = "profit_25_on_400",
@@ -2280,7 +5741,36 @@ class QuestionBank {
                 ),
                 correctIndex = 0,
                 explanationEn = "Profit is 500 - 400 = 100, and profit percentage is measured on the cost price: 100 / 400 x 100 = 25%.",
-                explanationHi = "लाभ 500 - 400 = 100 है, और लाभ प्रतिशत क्रय मूल्य पर मापा जाता है: 100 / 400 x 100 = 25%।"
+                explanationHi = "लाभ 500 - 400 = 100 है, और लाभ प्रतिशत क्रय मूल्य पर मापा जाता है: 100 / 400 x 100 = 25%।",
+                provenance = listOf(
+                    Provenance.ExamPattern(
+                        examId = ExamId("ssc_gd"),
+                        paper = LocalizedText.of(
+                            "CBT", "सीबीटी"
+                        ),
+                        section = LocalizedText.of(
+                            "Elementary Mathematics", "प्राथमिक गणित"
+                        )
+                    ),
+                    Provenance.ExamPattern(
+                        examId = ExamId("ibps_po"),
+                        paper = LocalizedText.of(
+                            "Prelims", "प्रीलिम्स"
+                        ),
+                        section = LocalizedText.of(
+                            "Quantitative Aptitude", "संख्यात्मक अभिरुचि"
+                        )
+                    ),
+                    Provenance.ExamPattern(
+                        examId = ExamId("ibps_clerk"),
+                        paper = LocalizedText.of(
+                            "Prelims", "प्रीलिम्स"
+                        ),
+                        section = LocalizedText.of(
+                            "Numerical Ability", "संख्यात्मक क्षमता"
+                        )
+                    )
+                )
             ),
             q(
                 id = "loss_10_on_600",
@@ -2296,7 +5786,45 @@ class QuestionBank {
                 ),
                 correctIndex = 0,
                 explanationEn = "Loss is 600 - 540 = 60, and 60 / 600 x 100 = 10%. The percentage is measured on the cost price, not the selling price.",
-                explanationHi = "हानि 600 - 540 = 60 है, और 60 / 600 x 100 = 10%। प्रतिशत क्रय मूल्य पर मापा जाता है, विक्रय मूल्य पर नहीं।"
+                explanationHi = "हानि 600 - 540 = 60 है, और 60 / 600 x 100 = 10%। प्रतिशत क्रय मूल्य पर मापा जाता है, विक्रय मूल्य पर नहीं।",
+                provenance = listOf(
+                    Provenance.ExamPattern(
+                        examId = ExamId("ssc_gd"),
+                        paper = LocalizedText.of(
+                            "CBT", "सीबीटी"
+                        ),
+                        section = LocalizedText.of(
+                            "Elementary Mathematics", "प्राथमिक गणित"
+                        )
+                    ),
+                    Provenance.ExamPattern(
+                        examId = ExamId("rrb_group_d"),
+                        paper = LocalizedText.of(
+                            "CBT", "सीबीटी"
+                        ),
+                        section = LocalizedText.of(
+                            "Mathematics", "गणित"
+                        )
+                    ),
+                    Provenance.ExamPattern(
+                        examId = ExamId("ibps_po"),
+                        paper = LocalizedText.of(
+                            "Prelims", "प्रीलिम्स"
+                        ),
+                        section = LocalizedText.of(
+                            "Quantitative Aptitude", "संख्यात्मक अभिरुचि"
+                        )
+                    ),
+                    Provenance.ExamPattern(
+                        examId = ExamId("ibps_clerk"),
+                        paper = LocalizedText.of(
+                            "Prelims", "प्रीलिम्स"
+                        ),
+                        section = LocalizedText.of(
+                            "Numerical Ability", "संख्यात्मक क्षमता"
+                        )
+                    )
+                )
             ),
             q(
                 id = "profit_cp_from_sp",
@@ -2312,7 +5840,36 @@ class QuestionBank {
                 ),
                 correctIndex = 0,
                 explanationEn = "The selling price is 120% of the cost, so cost = 1200 / 1.20 = 1000.",
-                explanationHi = "विक्रय मूल्य क्रय का 120% है, अतः क्रय = 1200 / 1.20 = 1000।"
+                explanationHi = "विक्रय मूल्य क्रय का 120% है, अतः क्रय = 1200 / 1.20 = 1000।",
+                provenance = listOf(
+                    Provenance.ExamPattern(
+                        examId = ExamId("ssc_gd"),
+                        paper = LocalizedText.of(
+                            "CBT", "सीबीटी"
+                        ),
+                        section = LocalizedText.of(
+                            "Elementary Mathematics", "प्राथमिक गणित"
+                        )
+                    ),
+                    Provenance.ExamPattern(
+                        examId = ExamId("ibps_po"),
+                        paper = LocalizedText.of(
+                            "Prelims", "प्रीलिम्स"
+                        ),
+                        section = LocalizedText.of(
+                            "Quantitative Aptitude", "संख्यात्मक अभिरुचि"
+                        )
+                    ),
+                    Provenance.ExamPattern(
+                        examId = ExamId("ibps_clerk"),
+                        paper = LocalizedText.of(
+                            "Prelims", "प्रीलिम्स"
+                        ),
+                        section = LocalizedText.of(
+                            "Numerical Ability", "संख्यात्मक क्षमता"
+                        )
+                    )
+                )
             ),
             q(
                 id = "loss_cp_from_sp",
@@ -2328,7 +5885,72 @@ class QuestionBank {
                 ),
                 correctIndex = 0,
                 explanationEn = "The selling price is 90% of the cost, so cost = 900 / 0.90 = 1000.",
-                explanationHi = "विक्रय मूल्य क्रय का 90% है, अतः क्रय = 900 / 0.90 = 1000।"
+                explanationHi = "विक्रय मूल्य क्रय का 90% है, अतः क्रय = 900 / 0.90 = 1000।",
+                provenance = listOf(
+                    Provenance.ExamPattern(
+                        examId = ExamId("ssc_cgl"),
+                        paper = LocalizedText.of(
+                            "Tier 1", "टियर 1"
+                        ),
+                        section = LocalizedText.of(
+                            "Quantitative Aptitude", "संख्यात्मक अभिरुचि"
+                        )
+                    ),
+                    Provenance.ExamPattern(
+                        examId = ExamId("ssc_chsl"),
+                        paper = LocalizedText.of(
+                            "Tier 1", "टियर 1"
+                        ),
+                        section = LocalizedText.of(
+                            "Quantitative Aptitude", "संख्यात्मक अभिरुचि"
+                        )
+                    ),
+                    Provenance.ExamPattern(
+                        examId = ExamId("ssc_gd"),
+                        paper = LocalizedText.of(
+                            "CBT", "सीबीटी"
+                        ),
+                        section = LocalizedText.of(
+                            "Elementary Mathematics", "प्राथमिक गणित"
+                        )
+                    ),
+                    Provenance.ExamPattern(
+                        examId = ExamId("rrb_ntpc"),
+                        paper = LocalizedText.of(
+                            "CBT 1", "सीबीटी 1"
+                        ),
+                        section = LocalizedText.of(
+                            "Mathematics", "गणित"
+                        )
+                    ),
+                    Provenance.ExamPattern(
+                        examId = ExamId("rrb_group_d"),
+                        paper = LocalizedText.of(
+                            "CBT", "सीबीटी"
+                        ),
+                        section = LocalizedText.of(
+                            "Mathematics", "गणित"
+                        )
+                    ),
+                    Provenance.ExamPattern(
+                        examId = ExamId("ibps_po"),
+                        paper = LocalizedText.of(
+                            "Prelims", "प्रीलिम्स"
+                        ),
+                        section = LocalizedText.of(
+                            "Quantitative Aptitude", "संख्यात्मक अभिरुचि"
+                        )
+                    ),
+                    Provenance.ExamPattern(
+                        examId = ExamId("ibps_clerk"),
+                        paper = LocalizedText.of(
+                            "Prelims", "प्रीलिम्स"
+                        ),
+                        section = LocalizedText.of(
+                            "Numerical Ability", "संख्यात्मक क्षमता"
+                        )
+                    )
+                )
             ),
             q(
                 id = "profit_then_loss",
@@ -2344,7 +5966,27 @@ class QuestionBank {
                 ),
                 correctIndex = 0,
                 explanationEn = "100 x 1.25 = 125, then 125 x 0.75 = 93.75. That is 6.25% below the cost price, so the two percentages do not cancel.",
-                explanationHi = "100 x 1.25 = 125, फिर 125 x 0.75 = 93.75। यह क्रय मूल्य से 6.25% नीचे है, अतः दोनों प्रतिशत रद्द नहीं होते।"
+                explanationHi = "100 x 1.25 = 125, फिर 125 x 0.75 = 93.75। यह क्रय मूल्य से 6.25% नीचे है, अतः दोनों प्रतिशत रद्द नहीं होते।",
+                provenance = listOf(
+                    Provenance.ExamPattern(
+                        examId = ExamId("rrb_ntpc"),
+                        paper = LocalizedText.of(
+                            "CBT 1", "सीबीटी 1"
+                        ),
+                        section = LocalizedText.of(
+                            "Mathematics", "गणित"
+                        )
+                    ),
+                    Provenance.ExamPattern(
+                        examId = ExamId("ibps_po"),
+                        paper = LocalizedText.of(
+                            "Prelims", "प्रीलिम्स"
+                        ),
+                        section = LocalizedText.of(
+                            "Quantitative Aptitude", "संख्यात्मक अभिरुचि"
+                        )
+                    )
+                )
             ),
             q(
                 id = "profit_amount",
@@ -2360,7 +6002,36 @@ class QuestionBank {
                 ),
                 correctIndex = 0,
                 explanationEn = "Cost = 1200 / 1.20 = 1000, so profit = 1200 - 1000 = 200. The 20% is measured on the cost price, which is smaller than the selling price.",
-                explanationHi = "क्रय = 1200 / 1.20 = 1000, अतः लाभ = 1200 - 1000 = 200। 20% क्रय मूल्य पर मापा जाता है, जो विक्रय मूल्य से छोटा है।"
+                explanationHi = "क्रय = 1200 / 1.20 = 1000, अतः लाभ = 1200 - 1000 = 200। 20% क्रय मूल्य पर मापा जाता है, जो विक्रय मूल्य से छोटा है।",
+                provenance = listOf(
+                    Provenance.ExamPattern(
+                        examId = ExamId("ssc_gd"),
+                        paper = LocalizedText.of(
+                            "CBT", "सीबीटी"
+                        ),
+                        section = LocalizedText.of(
+                            "Elementary Mathematics", "प्राथमिक गणित"
+                        )
+                    ),
+                    Provenance.ExamPattern(
+                        examId = ExamId("ibps_po"),
+                        paper = LocalizedText.of(
+                            "Prelims", "प्रीलिम्स"
+                        ),
+                        section = LocalizedText.of(
+                            "Quantitative Aptitude", "संख्यात्मक अभिरुचि"
+                        )
+                    ),
+                    Provenance.ExamPattern(
+                        examId = ExamId("ibps_clerk"),
+                        paper = LocalizedText.of(
+                            "Prelims", "प्रीलिम्स"
+                        ),
+                        section = LocalizedText.of(
+                            "Numerical Ability", "संख्यात्मक क्षमता"
+                        )
+                    )
+                )
             ),
             q(
                 id = "profit_28_on_250",
@@ -2376,7 +6047,45 @@ class QuestionBank {
                 ),
                 correctIndex = 0,
                 explanationEn = "Profit = 320 - 250 = 70, and 70 / 250 x 100 = 28%.",
-                explanationHi = "लाभ = 320 - 250 = 70, और 70 / 250 x 100 = 28%।"
+                explanationHi = "लाभ = 320 - 250 = 70, और 70 / 250 x 100 = 28%।",
+                provenance = listOf(
+                    Provenance.ExamPattern(
+                        examId = ExamId("ssc_gd"),
+                        paper = LocalizedText.of(
+                            "CBT", "सीबीटी"
+                        ),
+                        section = LocalizedText.of(
+                            "Elementary Mathematics", "प्राथमिक गणित"
+                        )
+                    ),
+                    Provenance.ExamPattern(
+                        examId = ExamId("rrb_group_d"),
+                        paper = LocalizedText.of(
+                            "CBT", "सीबीटी"
+                        ),
+                        section = LocalizedText.of(
+                            "Mathematics", "गणित"
+                        )
+                    ),
+                    Provenance.ExamPattern(
+                        examId = ExamId("ibps_po"),
+                        paper = LocalizedText.of(
+                            "Prelims", "प्रीलिम्स"
+                        ),
+                        section = LocalizedText.of(
+                            "Quantitative Aptitude", "संख्यात्मक अभिरुचि"
+                        )
+                    ),
+                    Provenance.ExamPattern(
+                        examId = ExamId("ibps_clerk"),
+                        paper = LocalizedText.of(
+                            "Prelims", "प्रीलिम्स"
+                        ),
+                        section = LocalizedText.of(
+                            "Numerical Ability", "संख्यात्मक क्षमता"
+                        )
+                    )
+                )
             ),
             q(
                 id = "rev_up_20_to_720",
@@ -2504,7 +6213,18 @@ class QuestionBank {
                 ),
                 correctIndex = 0,
                 explanationEn = "40000 x 1.10 = 44000, then 44000 x 0.80 = 35200. The net change is -12%, because the fall is measured on the already-raised salary.",
-                explanationHi = "40000 x 1.10 = 44000, फिर 44000 x 0.80 = 35200। शुद्ध परिवर्तन -12% है, क्योंकि गिरावट पहले बढ़े हुए वेतन पर मापी जाती है।"
+                explanationHi = "40000 x 1.10 = 44000, फिर 44000 x 0.80 = 35200। शुद्ध परिवर्तन -12% है, क्योंकि गिरावट पहले बढ़े हुए वेतन पर मापी जाती है।",
+                provenance = listOf(
+                    Provenance.ExamPattern(
+                        examId = ExamId("rrb_ntpc"),
+                        paper = LocalizedText.of(
+                            "CBT 1", "सीबीटी 1"
+                        ),
+                        section = LocalizedText.of(
+                            "Mathematics", "गणित"
+                        )
+                    )
+                )
             ),
             q(
                 id = "mix_price_up_down",
@@ -2520,7 +6240,18 @@ class QuestionBank {
                 ),
                 correctIndex = 0,
                 explanationEn = "500 x 1.10 = 550, then 550 x 0.80 = 440. The net change is -12%.",
-                explanationHi = "500 x 1.10 = 550, फिर 550 x 0.80 = 440। शुद्ध परिवर्तन -12% है।"
+                explanationHi = "500 x 1.10 = 550, फिर 550 x 0.80 = 440। शुद्ध परिवर्तन -12% है।",
+                provenance = listOf(
+                    Provenance.ExamPattern(
+                        examId = ExamId("rrb_ntpc"),
+                        paper = LocalizedText.of(
+                            "CBT 1", "सीबीटी 1"
+                        ),
+                        section = LocalizedText.of(
+                            "Mathematics", "गणित"
+                        )
+                    )
+                )
             ),
             q(
                 id = "mix_marks_relative",
@@ -2536,7 +6267,18 @@ class QuestionBank {
                 ),
                 correctIndex = 0,
                 explanationEn = "10% more than 40 is 40 x 1.10 = 44 marks.",
-                explanationHi = "40 से 10% अधिक 40 x 1.10 = 44 अंक है।"
+                explanationHi = "40 से 10% अधिक 40 x 1.10 = 44 अंक है।",
+                provenance = listOf(
+                    Provenance.ExamPattern(
+                        examId = ExamId("rrb_ntpc"),
+                        paper = LocalizedText.of(
+                            "CBT 1", "सीबीटी 1"
+                        ),
+                        section = LocalizedText.of(
+                            "Mathematics", "गणित"
+                        )
+                    )
+                )
             ),
             q(
                 id = "mix_a_b_c",
@@ -2552,7 +6294,36 @@ class QuestionBank {
                 ),
                 correctIndex = 0,
                 explanationEn = "B = 150 x 1.20 = 180, then C = 180 x 0.90 = 162.",
-                explanationHi = "B = 150 x 1.20 = 180, फिर C = 180 x 0.90 = 162।"
+                explanationHi = "B = 150 x 1.20 = 180, फिर C = 180 x 0.90 = 162।",
+                provenance = listOf(
+                    Provenance.ExamPattern(
+                        examId = ExamId("ssc_cgl"),
+                        paper = LocalizedText.of(
+                            "Tier 1", "टियर 1"
+                        ),
+                        section = LocalizedText.of(
+                            "Quantitative Aptitude", "संख्यात्मक अभिरुचि"
+                        )
+                    ),
+                    Provenance.ExamPattern(
+                        examId = ExamId("ssc_chsl"),
+                        paper = LocalizedText.of(
+                            "Tier 1", "टियर 1"
+                        ),
+                        section = LocalizedText.of(
+                            "Quantitative Aptitude", "संख्यात्मक अभिरुचि"
+                        )
+                    ),
+                    Provenance.ExamPattern(
+                        examId = ExamId("rrb_ntpc"),
+                        paper = LocalizedText.of(
+                            "CBT 1", "सीबीटी 1"
+                        ),
+                        section = LocalizedText.of(
+                            "Mathematics", "गणित"
+                        )
+                    )
+                )
             ),
             q(
                 id = "mix_pop_growth_deaths",
@@ -2568,7 +6339,27 @@ class QuestionBank {
                 ),
                 correctIndex = 0,
                 explanationEn = "30000 x 1.10 = 33000, then 33000 x 0.95 = 31350. The 5% is measured on the population after the growth.",
-                explanationHi = "30000 x 1.10 = 33000, फिर 33000 x 0.95 = 31350। 5% वृद्धि के बाद की आबादी पर मापा गया है।"
+                explanationHi = "30000 x 1.10 = 33000, फिर 33000 x 0.95 = 31350। 5% वृद्धि के बाद की आबादी पर मापा गया है।",
+                provenance = listOf(
+                    Provenance.ExamPattern(
+                        examId = ExamId("ssc_cgl"),
+                        paper = LocalizedText.of(
+                            "Tier 1", "टियर 1"
+                        ),
+                        section = LocalizedText.of(
+                            "Quantitative Aptitude", "संख्यात्मक अभिरुचि"
+                        )
+                    ),
+                    Provenance.ExamPattern(
+                        examId = ExamId("rrb_ntpc"),
+                        paper = LocalizedText.of(
+                            "CBT 1", "सीबीटी 1"
+                        ),
+                        section = LocalizedText.of(
+                            "Mathematics", "गणित"
+                        )
+                    )
+                )
             ),
             q(
                 id = "mix_discount_then_tax",
@@ -2584,7 +6375,36 @@ class QuestionBank {
                 ),
                 correctIndex = 0,
                 explanationEn = "1000 x 0.80 = 800, then 800 x 1.10 = 880.",
-                explanationHi = "1000 x 0.80 = 800, फिर 800 x 1.10 = 880।"
+                explanationHi = "1000 x 0.80 = 800, फिर 800 x 1.10 = 880।",
+                provenance = listOf(
+                    Provenance.ExamPattern(
+                        examId = ExamId("ssc_cgl"),
+                        paper = LocalizedText.of(
+                            "Tier 1", "टियर 1"
+                        ),
+                        section = LocalizedText.of(
+                            "Quantitative Aptitude", "संख्यात्मक अभिरुचि"
+                        )
+                    ),
+                    Provenance.ExamPattern(
+                        examId = ExamId("ssc_chsl"),
+                        paper = LocalizedText.of(
+                            "Tier 1", "टियर 1"
+                        ),
+                        section = LocalizedText.of(
+                            "Quantitative Aptitude", "संख्यात्मक अभिरुचि"
+                        )
+                    ),
+                    Provenance.ExamPattern(
+                        examId = ExamId("rrb_ntpc"),
+                        paper = LocalizedText.of(
+                            "CBT 1", "सीबीटी 1"
+                        ),
+                        section = LocalizedText.of(
+                            "Mathematics", "गणित"
+                        )
+                    )
+                )
             ),
             q(
                 id = "mix_tax_income",
@@ -2600,7 +6420,18 @@ class QuestionBank {
                 ),
                 correctIndex = 0,
                 explanationEn = "30% of 50000 = 15000 is tax, so 50000 - 15000 = 35000 is left.",
-                explanationHi = "50000 का 30% = 15000 कर है, अतः 50000 - 15000 = 35000 शेष रहता है。"
+                explanationHi = "50000 का 30% = 15000 कर है, अतः 50000 - 15000 = 35000 शेष रहता है。",
+                provenance = listOf(
+                    Provenance.ExamPattern(
+                        examId = ExamId("rrb_ntpc"),
+                        paper = LocalizedText.of(
+                            "CBT 1", "सीबीटी 1"
+                        ),
+                        section = LocalizedText.of(
+                            "Mathematics", "गणित"
+                        )
+                    )
+                )
             ),
         // ==== END GENERATED PHASE 6 QUESTIONS ===
         )
